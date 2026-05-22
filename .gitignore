@@ -52,4 +52,3 @@ server.log
 # Skills directory
 /skills/
 # Local config
-php-backend/api/config.php
