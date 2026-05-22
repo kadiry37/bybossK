@@ -47,11 +47,16 @@ const seoDesc = service ? (service[`seo_description${suffix}`] || service.seo_de
 const serviceImage = service?.mainImage ? (service.mainImage.startsWith('http') ? service.mainImage : `https://bybossmimarlik.com${service.mainImage}`) : '';
 
 // Build language mappings for this specific service
-const [servicesAllTr, servicesAllEn, servicesAllAr] = await Promise.all([
-  getServices('tr'),
-  getServices('en'),
-  getServices('ar')
-]);
+let servicesAllTr = [], servicesAllEn = [], servicesAllAr = [];
+try {
+  [servicesAllTr, servicesAllEn, servicesAllAr] = await Promise.all([
+    getServices('tr'),
+    getServices('en'),
+    getServices('ar')
+  ]);
+} catch (e) {
+  console.error("Failed to fetch services for lang mapping:", e);
+}
 
 const langMappings: Record<string, string> = {};
 if (service) {

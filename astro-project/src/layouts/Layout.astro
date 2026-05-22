@@ -1184,36 +1184,36 @@ const websiteSchema = {
     margin-left: auto;
   }
 
-  [dir="rtl"] @media (max-width: 1100px) {
-    .nv .cx::before {
+  @media (max-width: 1100px) {
+    [dir="rtl"] .nv .cx::before {
         left: auto;
         right: -140px;
     }
-    .nv .cx::after {
+    [dir="rtl"] .nv .cx::after {
         left: auto;
         right: -140px;
     }
-    .logo-w {
+    [dir="rtl"] .logo-w {
         margin: 0;
     }
-    .logo {
+    [dir="rtl"] .logo {
         margin-right: 0;
         margin-left: auto;
         justify-content: center;
     }
   }
 
-  [dir="rtl"] @media (max-width: 480px) {
-    .nv .cx::before {
+  @media (max-width: 480px) {
+    [dir="rtl"] .nv .cx::before {
         right: -120px;
     }
-    .nv .cx::after {
+    [dir="rtl"] .nv .cx::after {
         right: -120px;
     }
-    .logo-w {
+    [dir="rtl"] .logo-w {
         margin: 0;
     }
-    .logo {
+    [dir="rtl"] .logo {
         justify-content: center;
     }
   }

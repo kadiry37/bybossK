@@ -92,11 +92,16 @@ const videoSchema = initialPost?.videoUrl ? {
 } : null;
 
 // Build language mappings for this specific blog post
-const [postsAllTr, postsAllEn, postsAllAr] = await Promise.all([
-  getBlogPosts(undefined, 'tr'),
-  getBlogPosts(undefined, 'en'),
-  getBlogPosts(undefined, 'ar')
-]);
+let postsAllTr = [], postsAllEn = [], postsAllAr = [];
+try {
+  [postsAllTr, postsAllEn, postsAllAr] = await Promise.all([
+    getBlogPosts(undefined, 'tr'),
+    getBlogPosts(undefined, 'en'),
+    getBlogPosts(undefined, 'ar')
+  ]);
+} catch (e) {
+  console.error("Failed to fetch blog posts for lang mapping:", e);
+}
 
 const langMappings: Record<string, string> = {};
 if (initialPost) {

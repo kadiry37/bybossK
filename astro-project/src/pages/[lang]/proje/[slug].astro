@@ -43,11 +43,16 @@ try {
   navData = await getNavigation(lang);
 } catch (e) {}
 
-const [projectsAllTr, projectsAllEn, projectsAllAr] = await Promise.all([
-  getProjects(undefined, undefined, 'tr'),
-  getProjects(undefined, undefined, 'en'),
-  getProjects(undefined, undefined, 'ar')
-]);
+let projectsAllTr = [], projectsAllEn = [], projectsAllAr = [];
+try {
+  [projectsAllTr, projectsAllEn, projectsAllAr] = await Promise.all([
+    getProjects(undefined, undefined, 'tr'),
+    getProjects(undefined, undefined, 'en'),
+    getProjects(undefined, undefined, 'ar')
+  ]);
+} catch (e) {
+  console.error("Failed to fetch projects for lang mapping:", e);
+}
 
 const langMappings: Record<string, string> = {};
 if (project) {
