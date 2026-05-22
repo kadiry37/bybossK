@@ -53,6 +53,7 @@ jobs:
           server-dir: domains/bybossmimarlik.com/public_html/
           local-dir: ./php-backend/
           port: 21
+          security: loose
           timeout: 600000
           state-name: .ftp-backend-sync-state.json
           dry-run: false
@@ -88,6 +89,7 @@ jobs:
           server-dir: domains/bybossmimarlik.com/public_html/
           local-dir: ./astro-project/dist/
           port: 21
+          security: loose
           timeout: 600000
           state-name: .ftp-deploy-sync-state.json
           dry-run: false
