@@ -33,11 +33,38 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Upload Backend to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: public_html/
+          local-dir: ./php-backend/
+          port: 21
+          timeout: 600000
+          state-name: .ftp-backend-sync-state.json
+          dry-run: false
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/uploads/**
+            **/.env
+            **/config.php
+            **/github_webhook.log
+            **/.ftp-deploy-sync-state.json
+
+      - name: Add hosts entry for API mapping
+        run: |
+          echo "104.247.162.226 bybossmimarlik.com" | sudo tee -a /etc/hosts
+
       - name: Build Astro
         run: npm run build
         env:
           API_URL: ${{ secrets.API_URL }}
           NODE_ENV: production
+          NODE_TLS_REJECT_UNAUTHORIZED: '0'
 
       - name: Remove placeholder pages
         run: |
@@ -62,29 +89,8 @@ jobs:
             **/node_modules/**
             **/_placeholder/**
 
-      - name: Upload Backend to FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: public_html/
-          local-dir: ./php-backend/
-          port: 21
-          timeout: 600000
-          state-name: .ftp-backend-sync-state.json
-          dry-run: false
-          dangerous-clean-slate: false
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/uploads/**
-            **/.env
-            **/config.php
-            **/github_webhook.log
-            **/.ftp-deploy-sync-state.json
-
       - name: Ping IndexNow
         run: |
           echo "Pinging IndexNow API..."
-          curl -s -X GET "https://bybossmimarlik.com/api/indexnow.php"
+          curl -s -k -X GET "https://bybossmimarlik.com/api/indexnow.php"
+
