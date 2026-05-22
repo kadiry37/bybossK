@@ -1,0 +1,220 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar';
+import Footer from '../../../components/Footer';
+import ProductView from '../../../components/ProductView';
+import { getSettings, getNavigation, getProducts } from '../../../lib/api';
+
+export async function getStaticPaths() {
+  try {
+    const [productsTr, productsEn, productsAr] = await Promise.all([
+      getProducts(undefined, 'tr'),
+      getProducts(undefined, 'en'),
+      getProducts(undefined, 'ar')
+    ]);
+    
+    // Create a map by ID for cross-language lookup
+    const idMap: Record<number, any> = {};
+    const processProducts = (list: any[], l: string) => {
+      if (!list || !Array.isArray(list)) return;
+      list.forEach(p => {
+        if (!idMap[p.id]) idMap[p.id] = {};
+        idMap[p.id][l] = p.slug;
+      });
+    };
+    processProducts(productsTr, 'tr');
+    processProducts(productsEn, 'en');
+    processProducts(productsAr, 'ar');
+
+    const paths = [];
+    const buildPath = (list: any[], l: string) => {
+      if (!list || !Array.isArray(list)) return;
+      list.forEach(p => {
+        const mappings: Record<string, string> = {};
+        if (idMap[p.id]) {
+           if (idMap[p.id].tr) mappings.tr = `/urun/${idMap[p.id].tr}/`;
+           if (idMap[p.id].en) mappings.en = `/en/urun/${idMap[p.id].en}/`;
+           if (idMap[p.id].ar) mappings.ar = `/ar/urun/${idMap[p.id].ar}/`;
+        }
+        paths.push({ params: { lang: l, slug: p.slug }, props: { product: { ...p, langMappings: mappings } } });
+      });
+    };
+
+    buildPath(productsTr, 'tr');
+    buildPath(productsEn, 'en');
+    buildPath(productsAr, 'ar');
+
+    if (paths.length === 0) {
+      return [{ params: { lang: 'tr', slug: '_placeholder' }, props: { product: null } }];
+    }
+    return paths;
+  } catch (e) {
+    console.error("StaticPaths Error:", e);
+    return [{ params: { lang: 'tr', slug: '_placeholder' }, props: { product: null } }];
+  }
+}
+
+const { lang, slug } = Astro.params;
+const langPrefix = lang === 'tr' ? '' : `/${lang}`;
+
+const { product } = Astro.props;
+const suffix = lang === 'tr' ? '' : `_${lang}`;
+
+let settingsData = null;
+let navData = null;
+try {
+  settingsData = await getSettings(lang);
+  navData = await getNavigation(lang);
+} catch (e) {}
+
+const categoryMap: Record<string, { tr: string; en: string; ar: string }> = {
+  'metal-deck-klips': { tr: 'Metal Deck Klips', en: 'Metal Deck Clips', ar: 'متال ديك كليبس' },
+  'plastik-deck-klips': { tr: 'Plastik Deck Klips', en: 'Plastic Deck Clips', ar: 'بلاستيك ديك كليبس' },
+  'cam-balkon-aksesuarlari': { tr: 'Cam Balkon Aksesuarları', en: 'Glass Balcony Accessories', ar: 'إكسسوارات الشرفة الزجاجية' },
+  'cam-balkon-hareketli-boynuz': { tr: 'Cam Balkon Hareketli Boynuz', en: 'Glass Balcony Movable Horn', ar: 'شرفة زجاجية قرن متحرك' },
+};
+
+const faqSchema = product?.faqJson && Array.isArray(product.faqJson) && product.faqJson.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": product.faqJson.map((item: any) => ({
+    "@type": "Question",
+    "name": item.q || item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.a || item.answer
+    }
+  }))
+} : null;
+
+const howToSchema = product?.howtoJson && Array.isArray(product.howtoJson) && product.howtoJson.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": product.howtoTitle || ((product[`name${suffix}`] || product.name) + " Montaj Rehberi"),
+  "step": product.howtoJson.map((item: any, idx: number) => ({
+    "@type": "HowToStep",
+    "position": idx + 1,
+    "name": item.name || item.step,
+    "text": item.text || item.description
+  }))
+} : null;
+
+const videoSchema = product?.videoUrl ? {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": (product[`name${suffix}`] || product.name) + " Video",
+  "description": product[`seo_description${suffix}`] || product.seo_description || product[`shortDescription${suffix}`] || product.shortDescription || product.name,
+  "thumbnailUrl": product.mainImage ? (product.mainImage.startsWith('http') ? product.mainImage : `https://bybossmimarlik.com${product.mainImage}`) : 'https://bybossmimarlik.com/logo.svg',
+  "uploadDate": new Date().toISOString(),
+  "contentUrl": product.videoUrl
+} : null;
+
+const hreflangs = product?.langMappings ? Object.entries(product.langMappings).map(([l, href]) => ({
+  lang: l,
+  href: `https://bybossmimarlik.com${href}`
+})) : undefined;
+
+---
+
+<Layout 
+  title={product ? (product[`seo_title${suffix}`] || product.seo_title || product[`name${suffix}`] || product.name) : (lang === 'en' ? 'Product Detail' : (lang === 'ar' ? 'تفاصيل المنتج' : 'Ürün Detayı'))}
+  description={product ? (product[`seo_description${suffix}`] || product.seo_description || product[`shortDescription${suffix}`] || product.shortDescription) : ''}
+  keywords={product?.[`seo_keywords${suffix}`] || product?.seo_keywords || ''}
+  image={product?.mainImage ? (product.mainImage.startsWith('http') ? product.mainImage : `https://bybossmimarlik.com${product.mainImage}`) : ''}
+  hreflangs={hreflangs}
+
+  footerScripts={settingsData?.footer?.scripts || ''}
+  logo={settingsData?.general?.logo || ''}
+  favicon={settingsData?.general?.favicon || ''}
+  googleAnalytics={settingsData?.seo?.googleAnalytics || ''}
+  googleSearchConsole={settingsData?.seo?.searchConsole || ''}
+  yandexVerification={settingsData?.seo?.yandexVerification || ''}
+  bingVerification={settingsData?.seo?.bingVerification || ''}
+  lang={lang}
+>
+  <Fragment slot="head">
+    {product && product.mainImage && (
+      <link rel="preload" as="image" href={product.mainImage} fetchpriority="high" />
+    )}
+    {product && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": product.name,
+        "description": product.seo_description || product.shortDescription || '',
+        "image": product.mainImage ? (product.mainImage.startsWith('http') ? product.mainImage : `https://bybossmimarlik.com${product.mainImage}`) : '',
+        "brand": {
+          "@type": "Brand",
+          "name": "By Boss Mimarlık Mobilya"
+        },
+        "manufacturer": {
+          "@type": "Organization",
+          "name": settingsData?.general?.siteName || "By Boss Mimarlık Mobilya",
+          "url": "https://bybossmimarlik.com"
+        },
+        "category": product.categoryName || (product.category && categoryMap[product.category] ? categoryMap[product.category][lang] : (product.category || '').split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')),
+        "sku": `${
+          (settingsData?.general?.siteName || 'By Boss Mimarlık Mobilya')
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase())
+            .join('')
+            .substring(0, 3)
+        }-${
+          product.category 
+            ? product.category.split('-').map(word => word.charAt(0).toUpperCase()).join('').substring(0, 3)
+            : 'GEN'
+        }-${product.id}`,
+        "offers": {
+          "@type": "Offer",
+          "url": `https://bybossmimarlik.com${langPrefix}/urun/${product.slug}/`,
+          "priceCurrency": product.currency || "TRY",
+          "price": product.price ? String(product.price).replace(/[^0-9.]/g, '') : "0",
+          "availability": product.stock_status === 'in_stock' 
+            ? "https://schema.org/InStock" 
+            : product.stock_status === 'pre_order' 
+              ? "https://schema.org/PreOrder" 
+              : "https://schema.org/OutOfStock",
+          "seller": {
+            "@type": "Organization",
+            "name": "By Boss Mimarlık Mobilya"
+          }
+        }
+      })} />
+    )}
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": lang === 'en' ? 'Home' : (lang === 'ar' ? 'الصفحة الرئيسية' : 'Ana Sayfa'), "item": `https://bybossmimarlik.com${langPrefix}/` },
+        { "@type": "ListItem", "position": 2, "name": lang === 'en' ? 'Products' : (lang === 'ar' ? 'منتجات' : 'Ürünler'), "item": `https://bybossmimarlik.com${langPrefix}/urunler/` },
+        ...(product?.category ? [{ 
+          "@type": "ListItem", 
+          "position": 3, 
+          "name": product.categoryName || (categoryMap[product.category] ? categoryMap[product.category][lang] : product.category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')), 
+          "item": `https://bybossmimarlik.com${langPrefix}/urunler/#${product.category}` 
+        }] : []),
+        { 
+          "@type": "ListItem", 
+          "position": product?.category ? 4 : 3, 
+          "name": product?.[`name${suffix}`] || product?.name || (lang === 'en' ? 'Product' : (lang === 'ar' ? 'منتج' : 'Ürün')), 
+          "item": `https://bybossmimarlik.com${langPrefix}/urun/${product?.slug || ''}/` 
+        }
+      ]
+    })} />
+    {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+    {howToSchema && <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />}
+    {videoSchema && <script type="application/ld+json" set:html={JSON.stringify(videoSchema)} />}
+
+  </Fragment>
+
+  <main class="min-h-screen bg-noir-900 overflow-hidden">
+    <Navbar client:load data={settingsData} navData={navData?.header} lang={lang} langMappings={product?.langMappings} />
+    
+    <div class="pt-24 lg:pt-32">
+        <ProductView client:load product={product || null} lang={lang} />
+    </div>
+
+    <Footer client:visible data={settingsData} navData={navData?.footer} lang={lang} />
+
+  </main>
+</Layout>

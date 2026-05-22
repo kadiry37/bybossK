@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import RouterFallback from '../components/RouterFallback';
+---
+
+<Layout
+  title="Sayfa Bulunamadı"
+  description="Aradığınız sayfa bulunamadı. Ana sayfaya dönebilirsiniz."
+  lang="tr"
+>
+  <main class="min-h-screen bg-noir-1000 flex flex-col justify-between">
+    <div class="flex-grow flex flex-col justify-center">
+       <RouterFallback client:only="react" />
+    </div>
+  </main>
+</Layout>
+

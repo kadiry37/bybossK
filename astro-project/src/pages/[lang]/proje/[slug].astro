@@ -1,0 +1,141 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar';
+import Footer from '../../../components/Footer';
+import ProjectView from '../../../components/ProjectView';
+import { getSettings, getNavigation, getProjects } from '../../../lib/api';
+import { ArrowLeft, MapPin, Calendar, Tag, Share2 } from 'lucide-react';
+
+export async function getStaticPaths() {
+  try {
+    const [projectsTr, projectsEn, projectsAr] = await Promise.all([
+      getProjects(undefined, undefined, 'tr'),
+      getProjects(undefined, undefined, 'en'),
+      getProjects(undefined, undefined, 'ar')
+    ]);
+    
+    const paths = [];
+    if (projectsTr && Array.isArray(projectsTr)) projectsTr.forEach(p => paths.push({ params: { lang: 'tr', slug: p.slug }, props: { project: p } }));
+    if (projectsEn && Array.isArray(projectsEn)) projectsEn.forEach(p => paths.push({ params: { lang: 'en', slug: p.slug }, props: { project: p } }));
+    if (projectsAr && Array.isArray(projectsAr)) projectsAr.forEach(p => paths.push({ params: { lang: 'ar', slug: p.slug }, props: { project: p } }));
+    
+    if (paths.length === 0) {
+      return [{ params: { lang: 'tr', slug: '_placeholder' }, props: { project: null } }];
+    }
+    return paths;
+  } catch (e) {
+    console.error("Projects StaticPaths Error:", e);
+    return [{ params: { lang: 'tr', slug: '_placeholder' }, props: { project: null } }];
+  }
+}
+
+const { lang, slug } = Astro.params;
+const langPrefix = lang === 'tr' ? '' : `/${lang}`;
+
+const { project } = Astro.props;
+const suffix = lang === 'tr' ? '' : `_${lang}`;
+
+let settingsData = null;
+let navData = null;
+
+try {
+  settingsData = await getSettings(lang);
+  navData = await getNavigation(lang);
+} catch (e) {}
+
+const [projectsAllTr, projectsAllEn, projectsAllAr] = await Promise.all([
+  getProjects(undefined, undefined, 'tr'),
+  getProjects(undefined, undefined, 'en'),
+  getProjects(undefined, undefined, 'ar')
+]);
+
+const langMappings: Record<string, string> = {};
+if (project) {
+  const trItem = projectsAllTr?.find(s => s.id === project.id);
+  const enItem = projectsAllEn?.find(s => s.id === project.id);
+  const arItem = projectsAllAr?.find(s => s.id === project.id);
+  
+  if (trItem) langMappings.tr = `/proje/${trItem.slug}/`;
+  if (enItem) langMappings.en = `/en/proje/${enItem.slug}/`;
+  if (arItem) langMappings.ar = `/ar/proje/${arItem.slug}/`;
+}
+
+const hreflangs = langMappings ? Object.entries(langMappings).map(([l, href]) => ({
+  lang: l,
+  href: `https://bybossmimarlik.com${href}`
+})) : undefined;
+
+const seoTitle = project ? (project[`seo_title${suffix}`] || project.seo_title || project[`name${suffix}`] || project.name) : (lang === 'en' ? 'Project Detail' : (lang === 'ar' ? 'تفاصيل المشروع' : 'Proje Detayı'));
+const seoDesc = project ? (project[`seo_description${suffix}`] || project.seo_description || project[`description${suffix}`] || project.description || '').substring(0, 160) : '';
+const projectImage = project?.mainImage ? (project.mainImage.startsWith('http') ? project.mainImage : `https://bybossmimarlik.com${project.mainImage}`) : '';
+
+---
+
+<Layout 
+  title={seoTitle} 
+  description={seoDesc}
+  image={projectImage}
+  footerScripts={settingsData?.footer?.scripts || ''}
+  logo={settingsData?.general?.logo || ''}
+  favicon={settingsData?.general?.favicon || ''}
+  googleAnalytics={settingsData?.seo?.googleAnalytics || ''}
+  googleSearchConsole={settingsData?.seo?.searchConsole || ''}
+  yandexVerification={settingsData?.seo?.yandexVerification || ''}
+  bingVerification={settingsData?.seo?.bingVerification || ''}
+  hreflangs={hreflangs}
+  lang={lang}
+>
+  <Fragment slot="head">
+    {project && project.mainImage && (
+      <link rel="preload" as="image" href={project.mainImage} fetchpriority="high" />
+    )}
+    {project && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": project.name,
+        "description": seoDesc,
+        "image": projectImage,
+        "dateCreated": project.year ? `${project.year}-01-01` : '',
+        "locationCreated": project.location ? {
+          "@type": "Place",
+          "name": project.location
+        } : undefined,
+        "author": {
+          "@type": "Organization",
+          "name": "By Boss Mimarlık Mobilya",
+          "url": "https://bybossmimarlik.com"
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `https://bybossmimarlik.com${langPrefix}/proje/${project.slug}/`
+        }
+      })} />
+    )}
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": lang === 'en' ? 'Home' : (lang === 'ar' ? 'الصفحة الرئيسية' : 'Ana Sayfa'), "item": `https://bybossmimarlik.com${langPrefix}/` },
+        { "@type": "ListItem", "position": 2, "name": lang === 'en' ? 'Projects' : (lang === 'ar' ? 'المشاريع' : 'Projeler'), "item": `https://bybossmimarlik.com${langPrefix}/projeler/` },
+        { "@type": "ListItem", "position": 3, "name": project?.[`name${suffix}`] || project?.name || (lang === 'en' ? 'Project' : (lang === 'ar' ? 'مشروع' : 'Proje')), "item": `https://bybossmimarlik.com${langPrefix}/proje/${project?.slug || ''}/` }
+      ]
+    })} />
+
+  </Fragment>
+  <main class="min-h-screen bg-noir-900">
+    <Navbar client:load data={settingsData} navData={navData?.header} lang={lang} langMappings={langMappings} />
+    
+    <div class="pt-24 lg:pt-32 pb-16">
+        <ProjectView client:load project={project || null} lang={lang} />
+    </div>
+
+    <Footer client:load data={settingsData} navData={navData?.footer} lang={lang} />
+
+  </main>
+</Layout>
+
+<style is:global>
+  .prose-gold h3 { color: white; }
+  .prose-gold p { color: #8892b0; line-height: 1.8; }
+</style>

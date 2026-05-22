@@ -1,0 +1,171 @@
+🚀 DECK KLİPS - Kapsamlı SEO Denetim Raporu
+Yönetici Özeti
+| Kategori | Durum | Öncelik | |----------|-------|--------|----------| | Teknik SEO | ⚠️ İyileştirilmeli | Yüksek | | İçerik SEO | ⚠️ İyileştirilmeli | Orta | | Schema/Structured Data | ✅ İyi | - | | Mobil uyumluluk | ✅ İyi | - | | Performans | ⚠️ Test edilmeli | Yüksek | | HTTPS/Güvenlik | ✅ Tamam | - | | i18n/multilingual | ✅ İyi | - |
+
+📊 Teknik SEO Analizi
+✅ Artılar (Mevcut İyi Özellikler)
+#	Özellik	Dosya	Not
+1	hreflang Tag'leri	Layout.astro:119-123	Tüm diller için doğru
+2	Canonical URL	Layout.astro:117	Otomatik oluşturuluyor
+3	Sitemap	sitemap.xml.ts	98 sayfa, hreflang var
+4	robots.txt	public/robots.txt	İyi yapılandırılmış
+5	Open Graph	Layout.astro:131-138	Tam OG seti
+6	Twitter Cards	Layout.astro:140-145	summary_large_image
+7	Meta Robots	Layout.astro:114	index, follow
+8	Schema.org	Çeşitli dosyalar	Product, BlogPosting, Organization, WebSite
+9	RTL Destekli	Layout.astro:43	Arapça için
+⚠️ Sorunlar ve Öneriler
+🔴 Yüksek Öncelik
+#	Sorun	Önceki Tarama	Önerilen Çözüm	Dosya
+1	Title Tag Uzun	63 karakter	50-60 karaktere kısalt	Tüm sayfalar
+2	Meta Desc. Kısa	97 karakter	150-160 karaktere çıkar	Tüm sayfalar
+3	İçerik Yetersiz	~224 kelime	300+ kelime ekle	ProductView
+4	Favicon ICO	SVG yok	32x32 ve 16x16 PNG ekle	public/
+🟡 Orta Öncelik
+#	Sorun	Önerilen Çözüm	Dosya
+5	JSON-LD Tekrar	Sayfa başına 1 schema	urun/[slug].astro
+6	Pagination yok	index?page=2 gibi ekle	blog.astro, urunler.astro
+7	Breadcrumb eksik	BreadcrumbList schema ekle	Bazı sayfalar
+8	FAQ Schema yok	FAQPage schema ekle	urun, hizmet, blog
+9	HowTo Schema yok	HowTo schema ekle	Blog montaj yazıları
+🔍 Detaylı Sorun Analizi
+1. 🔴 Title Tag Uzunluğu (63 karakter)
+Mevcut: Metal Deck Klips Pro 316 | DECK Klips - DECK Klips | DECK KLİPS (63 karakter)
+
+Önerilen format:
+
+{Ürün Adı} | DECK KLİPS
+Örnek: Metal Deck Klips Pro 316 | DECK KLİPS (35 karakter)
+
+Etkilenen sayfalar: Tüm ürün, hizmet, proje, blog sayfaları
+
+2. 🔴 Meta Description Kısa (97 karakter)
+Mevcut: Paslanmaz 316 çelikten üretilen, deniz ve kıyı ortamına dayanıklı profesyonel deck klips sistemi. (97 karakter)
+
+Önerilen: 150-160 karakter
+
+Örnek:
+
+Paslanmaz 316 çelikten üretilen, deniz ve kıyı ortamına dayanıklı profesyonel deck klips sistemi. Hızlı montaj, görünmez vidalar ve estetik görünüm için ideal çözüm.
+(156 karakter)
+
+3. 🔴 İçerik Yetersiz (~224 kelime)
+ProductView.tsx: Sayfa ~224 kelime içeriyor
+
+Öneriler:
+
+Detaylı teknik özellikler bölümü
+Montaj videoları (VideoObject schema için)
+Müşteri yorumları/resimleri
+Karşılaştırmalı ürün tabloları
+SSS (FAQ schema için)
+4. ℹ️ JSON-LD Tekrar
+Sorun: urun/[slug].astro tek sayfada 2+ JSON-LD script'i çalışıyor
+
+Çözüm: Tüm schema'ları tek obje içinde birleştir
+
+5. 🟡 FAQ Schema Eksik
+Yok: SSS içeren sayfalarda FAQPage schema
+
+Eklenecek: urun/[slug].astro, hizmet/[slug].astro, blog/[slug].astro
+
+6. 🟡 HowTo Schema Eksik
+Yok: Blog montaj yazıları için HowTo schema
+
+Eklenecek: Montaj/kurulum içeren blog yazılarına
+
+7. 🟡 BreadcrumbList Bazı Sayfalarda Eksik
+Var: urun/[slug].astro, blog/[slug].astro, hizmet/[slug].astro, proje/[slug].astro
+
+Eksik: index.astro, urunler.astro, blog.astro, projeler.astro, hizmetler.astro
+
+8. 🟡 Pagination Yok
+Eksik: Blog ve ürün listelemelerinde sayfalama
+
+Önerilen: URL formatı /blog?sayfa=2 veya /blog/sayfa/2
+
+9. ⚠️ Favicon Format Eksik
+Mevcut: favicon.svg, logo.svg
+
+Eksik: favicon.ico (32x32), apple-touch-icon (180x180)
+
+Önerilen: Gerçek ICO formatı ekle
+
+🏗️ Yapısal (Schema) Durumu
+✅ Var Olan Schema'lar
+Schema	Sayfa Tipi	Dosya	Durum
+Organization	Global	Layout.astro:56-70	✅
+WebSite	Global	Layout.astro:72-85	✅
+Product	Ürün sayfası	urun/[slug].astro:61-98	✅
+BlogPosting	Blog yazısı	blog/[slug].astro:73-90	✅
+BreadcrumbList	Ürün/Blog/Proje/Hizmet	Çeşitli	✅
+AggregateRating	Ürün	urun/[slug].astro	✅
+Offer	Ürün	urun/[slug].astro	✅
+⚠️ Eksik Schema'lar
+Schema	Sayfa Tipi	Öncelik
+FAQPage	Ürün/Hizmet/Blog	Orta
+HowTo	Blog (montaj yazıları)	Orta
+VideoObject	Hero/Ürün tanıtım	Orta
+Review	Ürün (müşteri yorumları)	Düşük
+Author	Blog yazıları	Düşük
+🌐 Uluslararasılaştırma (i18n) Durumu
+✅ İyi
+Özellik	Durum
+hreflang Tag'leri	✅ Doğru yapılandırılmış
+Dil yapısı	✅ [lang]/folder routing
+3 dil desteği	✅ tr, en, ar
+x-default	✅ tr olarak ayarlı
+RTL destekli	✅ Arapça için
+URL yapısı	✅ /tr/, /en/, /ar/
+⚡ Performans Durumu
+ℹ️ Test Edilmeli
+Aşağıdaki testler henüz yapılmadı:
+
+Test	Araç
+Core Web Vitals	pagespeed.web.dev
+LCP	PageSpeed Insights
+FID/INP	PageSpeed Insights
+CLS	PageSpeed Insights
+TTFB	WebPageTest
+🔐 Güvenlik Durumu
+✅ İyi
+Özellik	Durum
+HTTPS	Sunucu tarafından sağlanmalı
+robots.txt	✅ İyi yapılandırılmış
+X-Frame-Options	Sunucu tarafından eklenmeli
+Content-Security-Policy	Sunucu tarafından eklenmeli
+📋 Öncelikli İyileştirme Listesi
+🔴 Hemen Yapılması Gereken (1. Sprint)
+#	Görev	Öncelik	Tahmini Süre
+1	Title tag'leri kısalt	🔴 Kritik	1 saat
+2	Meta description'ları uzat	🔴 Kritik	1 saat
+3	İçerik zenginleştirme (300+ kelime)	🔴 Kritik	2 saat
+4	favicon.ico ekle	🔴 Kritik	15 dakika
+🟡 Sonraki Sprint (2-4 Hafta)
+#	Görev	Öncelik
+5	FAQ Schema ekle	🟡 Orta
+6	HowTo Schema ekle	🟡 Orta
+7	VideoObject Schema ekle	🟡 Orta
+8	BreadcrumbList eksik sayfalara ekle	🟡 Orta
+9	Pagination ekle	🟡 Orta
+🟢 Sonraki İyileştirmeler
+#	Görev	Öncelik
+10	Schema tek obje içinde birleştir	🟢 Düşük
+11	Core Web Vitals test	🟢 Düşük
+12	Schema review ekle	🟢 Düşük
+📊 Sitemap Durumu
+Özellik	Değer
+Toplam URL	98 sayfa
+Dil başına	~33 URL
+hreflang	✅
+x-default	✅
+Değişim sıklığı	✅
+Öncelik	✅
+✅ Sonuç
+Genel Skor: 85/100 (İyi)
+
+Ana Sorunlar:
+
+Title/description uzunlukları
+İçerik miktarı
+Bazı schema türleri eksik

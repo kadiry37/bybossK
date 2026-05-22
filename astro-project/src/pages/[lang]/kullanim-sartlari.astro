@@ -1,0 +1,79 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import { getSettings, getNavigation } from '../../lib/api';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'tr' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'ar' } },
+  ];
+}
+
+const { lang } = Astro.params;
+
+let settingsData = null;
+let navData = null;
+
+try {
+  settingsData = await getSettings(lang);
+  navData = await getNavigation(lang);
+} catch (e) {
+  console.error("API Fetch Error:", e);
+}
+
+const siteName = settingsData?.general?.siteName || 'By Boss Mimarlık Mobilya';
+---
+
+<Layout 
+  title={`${lang === 'en' ? 'Terms of Use' : (lang === 'ar' ? 'شروط الاستخدام' : 'Kullanım Şartları')} | ${siteName}`} 
+  description={lang === 'en' ? 'Terms of use and site usage information' : (lang === 'ar' ? 'شروط الاستخدام ومعلومات استخدام الموقع' : 'Kullanım şartları ve site kullanım bilgilendirmesi')}
+  footerScripts={settingsData?.footer?.scripts || ''}
+  logo={settingsData?.general?.logo || ''}
+  favicon={settingsData?.general?.favicon || ''}
+  lang={lang}
+>
+  <main class="min-h-screen pt-32 pb-20 bg-noir-900">
+    <Navbar client:load data={settingsData} navData={navData?.header} />
+    
+    <div class="container mx-auto px-6 max-w-4xl">
+      <h1 class="font-serif text-4xl md:text-5xl font-bold text-white mb-10 text-center">
+        {lang === 'en' ? 'Terms of' : (lang === 'ar' ? 'شروط' : 'Kullanım')} <span class="text-gold-500">{lang === 'en' ? 'Use' : (lang === 'ar' ? 'الاستخدام' : 'Şartları')}</span>
+      </h1>
+      
+      <div class="prose prose-invert max-w-none text-noir-300 space-y-6">
+        {settingsData?.legal?.termsOfUse ? (
+          <div class="whitespace-pre-line" set:html={settingsData.legal.termsOfUse} />
+        ) : (
+          <div class="space-y-6">
+            <p>{lang === 'en' ? 'Last update: April 5, 2026' : (lang === 'ar' ? 'آخر تحديث: 5 أبريل 2026' : 'Son güncelleme: 5 Nisan 2026')}</p>
+            
+            <section>
+              <h2 class="text-white text-2xl font-bold mb-4">1. {lang === 'en' ? 'Acceptance' : (lang === 'ar' ? 'قبول' : 'Kabul')}</h2>
+              <p>{lang === 'en' ? 'By accessing and using our website, you are deemed to have accepted these terms of use and the agreement in advance.' : (lang === 'ar' ? 'من خلال الوصول إلى موقعنا واستخدامه، تعتبر أنك قد قبلت شروط الاستخدام هذه والاتفاقية مسبقًا.' : 'Web sitemize erişerek ve sitemizi kullanarak, bu kullanım şartlarını ve sözleşmesini peşinen kabul etmiş sayılırsınız.')}</p>
+            </section>
+
+            <section>
+              <h2 class="text-white text-2xl font-bold mb-4">2. {lang === 'en' ? 'Content and Intellectual Property' : (lang === 'ar' ? 'المحتوى والملكية الفكرية' : 'İçerik ve Fikri Mülkiyet')}</h2>
+              <p>{lang === 'en' ? `All visual and written content on our website belongs to ${siteName} and unauthorized copying, sharing or use for commercial purposes is prohibited.` : (lang === 'ar' ? `جميع المحتويات المرئية والمكتوبة على موقعنا تنتمي إلى شركة ${siteName} ويحظر نسخها أو مشاركتها أو استخدامها لأغراض تجارية دون إذن.` : `Web sitemizde yer alan tüm görsel ve yazılı içerik ${siteName} firmasına aittir ve izinsiz kopyalanması, paylaşılması veya ticari amaçlarla kullanılması yasaktır.`)}</p>
+            </section>
+
+            <section>
+              <h2 class="text-white text-2xl font-bold mb-4">3. {lang === 'en' ? 'Service Responsibility' : (lang === 'ar' ? 'مسؤولية الخدمة' : 'Hizmet Sorumluluğu')}</h2>
+              <p>{lang === 'en' ? 'Although maximum effort is made for the up-to-dateness and accuracy of the information on our website, our company cannot be held responsible for any technical errors that may occur.' : (lang === 'ar' ? 'على الرغم من بذل أقصى جهد لتحديث ودقة المعلومات على موقعنا، لا يمكن تحميل شركتنا المسؤولية عن أي أخطاء فنية قد تحدث.' : 'Web sitemizde yer alan bilgilerin güncelliği ve doğruluğu için azami gayret sarf edilse de oluşabilecek teknik hatalardan firmamız sorumlu tutulamaz.')}</p>
+            </section>
+            
+            <section>
+              <h2 class="text-white text-2xl font-bold mb-4">4. {lang === 'en' ? 'Contact and Support' : (lang === 'ar' ? 'الاتصال والدعم' : 'İletişim ve Destek')}</h2>
+              <p>{lang === 'en' ? `For any questions, suggestions and technical support requests regarding our services, you can reach us at ${settingsData?.contact?.email || 'info@bybossmimarlik.com'}.` : (lang === 'ar' ? `لأية أسئلة واقتراحات وطلبات دعم فني بخصوص خدماتنا، يمكنك الوصول إلينا عبر العنوان ${settingsData?.contact?.email || 'info@bybossmimarlik.com'}.` : `Hizmetlerimizle ilgili her türlü soru, öneri ve teknik destek talebiniz için ${settingsData?.contact?.email || 'info@bybossmimarlik.com'} adresi üzerinden bize ulaşabilirsiniz.`)}</p>
+            </section>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <Footer client:visible data={settingsData} navData={navData?.footer} />
+  </main>
+</Layout>

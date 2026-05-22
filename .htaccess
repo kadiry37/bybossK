@@ -1,0 +1,111 @@
+# DECK KLIPS - Root Router Configuration
+# Bu dosya referans amaçlıdır. Production'da php-backend/.htaccess kullanılır.
+# Astro public/.htaccess de aynı mantığı taşır.
+DirectoryIndex index.html index.php
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # 0. Admin ve API: PHP'ye direkt geçiş
+    RewriteCond %{REQUEST_URI} ^/(admin|api)/ [NC]
+    RewriteRule ^ - [L]
+
+    # 0. HTTPS zorunlu yönlendirme
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # 0.1 URL'den /tr/ ibaresini gizle (SEO: root = Turkish)
+    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /tr/ [NC]
+    RewriteRule ^tr/(.*)$ /$1 [L,R=301]
+
+    # 0.2. Google Verification - Don't redirect these files
+    RewriteCond %{REQUEST_URI} ^/google[a-z0-9]+\.html$
+    RewriteRule ^ - [L]
+
+    # 0.3. Trailing slash ekle - Dinamik içerik klasörleri için
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(urun|blog|proje|hizmet|projeler|urunler|hizmetler)/(.*[^/])$ /$1/$2/ [L,R=301]
+
+    # 0.4. Sitemap.xml → PHP router
+    RewriteRule ^sitemap\.xml$ /api/sitemap.php [L]
+    RewriteRule ^(tr|en|ar)/sitemap\.xml$ /api/sitemap.php [L]
+
+    # 1. Root-level TR rewrite: /proje/X → /tr/proje/X (internal)
+    RewriteCond %{REQUEST_URI} !^/(tr|en|ar|api|admin|assets|uploads|images|_astro)/? [NC]
+    RewriteCond %{REQUEST_URI} !^/(sitemap\.php|sitemap\.xml|robots\.txt|favicon\.ico|logo\.svg) [NC]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.+)$ /tr/$1 [L]
+
+    # 2. Dosya gerçekten varsa, onu göster
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+
+    # 3. Klasör ise ve içinde index.html varsa onu sessizce göster
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteCond %{REQUEST_FILENAME}/index.html -f
+    RewriteRule ^(.*)/?$ $1/index.html [L]
+
+    # 4. SSG fallback: Yeni eklenen sayfalar build olmadan önce çalışsın diye
+    RewriteRule ^(tr|en|ar)/urun/([^/]+)/?$ /api/seo-router.php?lang=$1&type=product&slug=$2&no_redirect=1 [L]
+    RewriteRule ^(tr|en|ar)/blog/([^/]+)/?$ /api/seo-router.php?lang=$1&type=blog&slug=$2&no_redirect=1 [L]
+    RewriteRule ^(tr|en|ar)/proje/([^/]+)/?$ /api/seo-router.php?lang=$1&type=project&slug=$2&no_redirect=1 [L]
+    RewriteRule ^(tr|en|ar)/hizmet/([^/]+)/?$ /api/seo-router.php?lang=$1&type=service&slug=$2&no_redirect=1 [L]
+
+    # 5. Fallback
+    RewriteRule ^ /index.html [L]
+</IfModule>
+
+# MIME Tipleri (Fontların 404 / HTML dönmesini engellemek için)
+<IfModule mod_mime.c>
+    AddType font/woff2 .woff2
+    AddType font/woff .woff
+    AddType font/ttf .ttf
+    AddType image/svg+xml .svg
+    AddType image/webp .webp
+</IfModule>
+
+# Brotli Sıkıştırma (Daha yüksek performans)
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml image/svg+xml font/woff2 font/woff font/ttf
+</IfModule>
+
+# Gzip / Deflate Sıkıştırma (Performans için)
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json application/xml image/svg+xml font/woff2 font/woff font/ttf
+</IfModule>
+
+# Tarayıcı Önbellekleme Ayarları
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+    
+    # HTML dosyalar her zaman kontrol edilmeli
+    ExpiresByType text/html "access plus 0 seconds"
+    
+    # Resimler, fontlar ve statik dosyalar
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+</IfModule>
+
+# Cache-Control Header'larını zorla (PageSpeed için)
+<IfModule mod_headers.c>
+    <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|webp|svg|woff2|woff|ttf)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+    <FilesMatch "\.(html|htm|php)$">
+        Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+    Header append Vary "Accept-Encoding"
+</IfModule>

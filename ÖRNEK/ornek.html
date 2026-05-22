@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Sanctuary - Woodland Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #4a7c59;
+            --secondary-brown: #8b6914;
+            --accent-earth: #d4a574;
+            --warm-beige: #f5e6d3;
+            --dark-wood: #3e2723;
+            --forest-bg: #1a2f23;
+            --light-text: #f5f5dc;
+            --muted-text: #a8b5a0;
+            --wood-texture: #5d4037;
+            --leaf-green: #6b8e23;
+            --golden-sun: #daa520;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background: var(--forest-bg);
+            color: var(--light-text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Wood Grain Overlay */
+        .wood-grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10000;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='woodGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02 0.15' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23woodGrain)'/%3E%3C/svg%3E");
+            animation: grainShift 8s ease-in-out infinite;
+        }
+
+        @keyframes grainShift {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(2px); }
+        }
+
+        /* Atmospheric Fog */
+        .atmospheric-fog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            background: radial-gradient(ellipse at center, 
+                transparent 0%,
+                rgba(26, 47, 35, 0.1) 50%,
+                rgba(26, 47, 35, 0.25) 100%
+            );
+            animation: fogDrift 12s ease-in-out infinite;
+        }
+
+        @keyframes fogDrift {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        /* Floating Pollen/Dust Particles */
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(212, 165, 116, 0.4);
+            border-radius: 50%;
+            animation: floatParticle 15s infinite linear;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 12s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 14s; }
+        .particle:nth-child(3) { left: 35%; animation-delay: 4s; animation-duration: 16s; }
+        .particle:nth-child(4) { left: 50%; animation-delay: 1s; animation-duration: 13s; }
+        .particle:nth-child(5) { left: 65%; animation-delay: 3s; animation-duration: 15s; }
+        .particle:nth-child(6) { left: 80%; animation-delay: 5s; animation-duration: 17s; }
+        .particle:nth-child(7) { left: 90%; animation-delay: 2.5s; animation-duration: 14s; }
+
+        @keyframes floatParticle {
+            0% { 
+                transform: translateY(100vh) rotate(0deg); 
+                opacity: 0;
+            }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { 
+                transform: translateY(-100px) rotate(360deg); 
+                opacity: 0;
+            }
+        }
+
+        /* Rain Canvas - Preserved with natural colors */
+        #rainCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .parallax-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        /* Forest Layers replacing cityscape */
+        .forest-layer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-size: cover;
+            background-position: bottom center;
+            background-repeat: repeat-x;
+        }
+
+        .forest-back {
+            height: 65%;
+            background: linear-gradient(to top,
+                transparent 0%,
+                rgba(74, 124, 89, 0.05) 50%,
+                transparent 100%
+            ),
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 350'%3E%3Cpath d='M50 350 L70 220 L90 350 Z' fill='%230f1f16'/%3E%3Cpath d='M85 350 L110 200 L135 350 Z' fill='%23132419'/%3E%3Cpath d='M130 350 L155 210 L180 350 Z' fill='%230f1f16'/%3E%3Cpath d='M175 350 L205 190 L235 350 Z' fill='%23162a1d'/%3E%3Cpath d='M230 350 L260 205 L290 350 Z' fill='%230f1f16'/%3E%3Cpath d='M285 350 L315 185 L345 350 Z' fill='%231a3022'/%3E%3Cpath d='M340 350 L370 215 L400 350 Z' fill='%230f1f16'/%3E%3Cpath d='M395 350 L425 195 L455 350 Z' fill='%23132419'/%3E%3Cpath d='M450 350 L480 180 L510 350 Z' fill='%231e3828'/%3E%3Cpath d='M505 350 L535 210 L565 350 Z' fill='%230f1f16'/%3E%3Cpath d='M560 350 L590 200 L620 350 Z' fill='%23132419'/%3E%3Cpath d='M615 350 L645 225 L675 350 Z' fill='%230f1f16'/%3E%3Cpath d='M670 350 L700 190 L730 350 Z' fill='%231a3022'/%3E%3Cpath d='M725 350 L755 215 L785 350 Z' fill='%230f1f16'/%3E%3Cpath d='M780 350 L810 205 L840 350 Z' fill='%23132419'/%3E%3Cpath d='M835 350 M865 185 L895 350 Z' fill='%231e3828'/%3E%3Cpath d='M890 350 M920 210 L950 350 Z' fill='%230f1f16'/%3E%3Cpath d='M945 350 M975 195 L1005 350 Z' fill='%23132419'/%3E%3C/svg%3E");
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        .forest-mid {
+            height: 48%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 250'%3E%3Cellipse cx='60' cy='250' rx='40' ry='120' fill='%23152b1f'/%3E%3Cellipse cx='140' cy='250' rx='50' ry='140' fill='%231a3325'/%3E%3Cellipse cx='240' cy='250' rx='45' ry='125' fill='%23152b1f'/%3E%3Cellipse cx='340' cy='250' rx='55' ry='150' fill='%231f3b2c'/%3E%3Cellipse cx='450' cy='250' rx='48' ry='130' fill='%23152b1f'/%3E%3Cellipse cx='550' cy='250' rx='58' ry='155' fill='%23244232'/%3E%3Cellipse cx='660' cy='250' rx='50' ry='135' fill='%23152b1f'/%3E%3Cellipse cx='760' cy='250' rx='52' ry='142' fill='%231a3325'/%3E%3Cellipse cx='870' cy='250' rx='46' ry='128' fill='%23152b1f'/%3E%3Cellipse cx='960' cy='250' rx='56' ry='148' fill='%231f3b2c'/%3E%3C/svg%3E");
+            opacity: 0.82;
+            z-index: 2;
+        }
+
+        .forest-front {
+            height: 32%;
+            background: linear-gradient(to top,
+                #1a2f23 0%,
+                transparent 100%
+            ),
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 150'%3E%3Cpath d='M0 150 Q50 120 100 130 T200 125 T300 135 T400 120 T500 130 T600 125 T700 135 T800 120 T900 130 T1000 125 L1000 150 Z' fill='%231a3022'/%3E%3Cpath d='M0 150 Q80 135 160 140 T320 138 T480 142 T640 136 T800 140 T960 138 L1000 150 Z' fill='%23243d2e'/%3E%3Ccircle cx='50' cy='145' r='3' fill='%233d5c47'/%3E%3Ccircle cx='180' cy='142' r='4' fill='%234a6b54'/%3E%3Ccircle cx='320' cy='144' r='3' fill='%233d5c47'/%3E%3Ccircle cx='480' cy='141' r='5' fill='%234a6b54'/%3E%3Ccircle cx='650' cy='143' r='3' fill='%233d5c47'/%3E%3Ccircle cx='820' cy='142' r='4' fill='%234a6b54'/%3E%3Ccircle cx='950' cy='144' r='3' fill='%233d5c47'/%3E%3C/svg%3E");
+            opacity: 0.92;
+            z-index: 3;
+        }
+
+        /* Sun Rays Overlay */
+        .sun-rays {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 30% 20%,
+                rgba(218, 165, 32, 0.08) 0%,
+                transparent 50%
+            );
+            z-index: 4;
+            animation: sunPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes sunPulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Floating Leaves */
+        .floating-leaves {
+            position: absolute;
+            bottom: 20%;
+            left: 0;
+            width: 100%;
+            height: 25%;
+            z-index: 5;
+            overflow: visible;
+        }
+
+        .leaf {
+            position: absolute;
+            font-size: 1.5rem;
+            color: var(--leaf-green);
+            opacity: 0.6;
+            animation: leafFloat 6s ease-in-out infinite;
+        }
+
+        .leaf:nth-child(1) { left: 8%; animation-delay: 0s; color: var(--primary-green); }
+        .leaf:nth-child(2) { left: 22%; animation-delay: 1.5s; color: var(--secondary-brown); }
+        .leaf:nth-child(3) { left: 52%; animation-delay: 0.8s; color: var(--leaf-green); }
+        .leaf:nth-child(4) { left: 72%; animation-delay: 2.2s; color: var(--primary-green); }
+        .leaf:nth-child(5) { left: 88%; animation-delay: 1.2s; color: var(--secondary-brown); }
+
+        @keyframes leafFloat {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+                opacity: 0.6;
+            }
+            50% { 
+                transform: translateY(-20px) rotate(10deg); 
+                opacity: 0.9;
+            }
+        }
+
+        /* Wooden Sign Decorations */
+        .wooden-signs {
+            position: absolute;
+            bottom: 18%;
+            left: 0;
+            width: 100%;
+            height: 15%;
+            z-index: 6;
+        }
+
+        .wood-sign {
+            position: absolute;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem;
+            color: var(--warm-beige);
+            background: linear-gradient(135deg, var(--dark-wood) 0%, var(--wood-texture) 100%);
+            padding: 0.4rem 1rem;
+            border-radius: 2px;
+            box-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            animation: signSway 4s ease-in-out infinite;
+            letter-spacing: 0.1em;
+        }
+
+        .wood-sign::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -8px;
+            width: 8px;
+            height: 2px;
+            background: var(--wood-texture);
+            transform: translateY(-50%);
+        }
+
+        .wood-sign::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -8px;
+            width: 8px;
+            height: 2px;
+            background: var(--wood-texture);
+            transform: translateY(-50%);
+        }
+
+        .wood-sign:nth-child(1) { left: 12%; top: 25%; animation-delay: 0s; }
+        .wood-sign:nth-child(2) { left: 28%; top: 65%; animation-delay: 0.7s; }
+        .wood-sign:nth-child(3) { left: 58%; top: 35%; animation-delay: 1.4s; }
+        .wood-sign:nth-child(4) { left: 78%; top: 70%; animation-delay: 2.1s; }
+        .wood-sign:nth-child(5) { left: 88%; top: 40%; animation-delay: 2.8s; }
+
+        @keyframes signSway {
+            0%, 100% { transform: rotate(-1deg); }
+            50% { transform: rotate(1deg); }
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .natural-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            color: var(--warm-beige);
+            letter-spacing: 0.08em;
+            position: relative;
+            animation: gentleBreathe 5s ease-in-out infinite;
+            text-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(218, 165, 32, 0.3),
+                0 0 60px rgba(218, 165, 32, 0.15);
+        }
+
+        @keyframes gentleBreathe {
+            0%, 100% { 
+                transform: scale(1);
+                text-shadow: 
+                    0 2px 4px rgba(0, 0, 0, 0.5),
+                    0 0 30px rgba(218, 165, 32, 0.3),
+                    0 0 60px rgba(218, 165, 32, 0.15);
+            }
+            50% { 
+                transform: scale(1.02);
+                text-shadow: 
+                    0 2px 4px rgba(0, 0, 0, 0.5),
+                    0 0 40px rgba(218, 165, 32, 0.4),
+                    0 0 80px rgba(218, 165, 32, 0.2);
+            }
+        }
+
+        .subtitle {
+            font-family: 'Lora', serif;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 300;
+            letter-spacing: 0.4em;
+            color: var(--muted-text);
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
+
+        .subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--golden-sun), transparent);
+            animation: underlineGrow 3s ease-in-out infinite;
+        }
+
+        @keyframes underlineGrow {
+            0%, 100% { width: 0; }
+            50% { width: 80%; }
+        }
+
+        .year-badge {
+            display: inline-flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+        }
+
+        .year-badge span {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--primary-green);
+            color: var(--warm-beige);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            background: rgba(74, 124, 89, 0.1);
+        }
+
+        .year-badge span::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(107, 142, 35, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .year-badge span:hover::before {
+            left: 100%;
+        }
+
+        .year-badge span:hover {
+            background: rgba(74, 124, 89, 0.2);
+            box-shadow: 0 0 20px rgba(74, 124, 89, 0.3);
+            border-color: var(--leaf-green);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: gentleBounce 3s ease-in-out infinite;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--leaf-green), transparent);
+            margin: 0 auto;
+            border-radius: 1px;
+        }
+
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Section Styles */
+        section {
+            position: relative;
+            z-index: 10;
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            color: var(--warm-beige);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-green), var(--secondary-brown));
+        }
+
+        /* Timeline with Rope/Vine styling */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: linear-gradient(to bottom, 
+                var(--primary-green) 0%, 
+                var(--secondary-brown) 50%,
+                var(--wood-texture) 100%
+            );
+            border-radius: 2px;
+            box-shadow: 0 0 8px rgba(74, 124, 89, 0.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, 
+                rgba(62, 39, 35, 0.85) 0%, 
+                rgba(93, 64, 55, 0.85) 100%
+            );
+            border: 1px solid rgba(139, 105, 20, 0.3);
+            backdrop-filter: blur(8px);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.6rem;
+            top: 2.5rem;
+            width: 16px;
+            height: 16px;
+            background: radial-gradient(circle, var(--leaf-green) 0%, var(--primary-green) 70%, var(--dark-wood) 100%);
+            border-radius: 50%;
+            border: 2px solid var(--warm-beige);
+            box-shadow: 
+                0 0 12px rgba(107, 142, 35, 0.5),
+                inset 0 0 4px rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            border-color: var(--primary-green);
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(74, 124, 89, 0.2),
+                inset 0 0 20px rgba(74, 124, 89, 0.05);
+        }
+
+        .timeline-item:hover::before {
+            background: radial-gradient(circle, var(--golden-sun) 0%, var(--secondary-brown) 70%, var(--dark-wood) 100%);
+            box-shadow: 
+                0 0 18px rgba(218, 165, 32, 0.6),
+                inset 0 0 4px rgba(255, 255, 255, 0.3);
+            transform: scale(1.15);
+        }
+
+        .timeline-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.9rem;
+            color: var(--leaf-green);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--warm-beige);
+        }
+
+        .timeline-desc {
+            color: var(--muted-text);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Character Cards with Wood Plank Design */
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .character-card {
+            position: relative;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    var(--dark-wood) 0px,
+                    var(--wood-texture) 2px,
+                    var(--dark-wood) 4px
+                );
+            border: 2px solid var(--wood-texture);
+            padding: 2.5rem;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.4),
+                inset 0 0 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .character-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--leaf-green));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .character-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(245, 230, 211, 0.03) 0%, 
+                transparent 60%
+            );
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .character-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-green);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(74, 124, 89, 0.15),
+                inset 0 0 30px rgba(245, 230, 211, 0.03);
+        }
+
+        .character-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .character-card:hover::after {
+            opacity: 1;
+        }
+
+        .character-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--warm-beige);
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .character-role {
+            font-size: 0.9rem;
+            color: var(--leaf-green);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+            font-weight: 500;
+        }
+
+        .character-desc {
+            color: var(--muted-text);
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+        }
+
+        .character-movie {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            background: linear-gradient(135deg, var(--wood-texture), var(--dark-wood));
+            border: 1px solid var(--secondary-brown);
+            color: var(--accent-earth);
+            z-index: 2;
+            box-shadow: 
+                0 2px 6px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Theme Cards with Botanical Design */
+        .themes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .theme-card {
+            background: linear-gradient(145deg, 
+                rgba(26, 47, 35, 0.9) 0%, 
+                rgba(21, 37, 28, 0.95) 100%
+            );
+            border: 1px solid rgba(107, 142, 35, 0.2);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .theme-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(107, 142, 35, 0.1) 0%, transparent 50%);
+            animation: radialGlow 6s ease-in-out infinite;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        @keyframes radialGlow {
+            0%, 100% { 
+                transform: scale(1); 
+                opacity: 0;
+            }
+            50% { 
+                transform: scale(1.1); 
+                opacity: 1;
+            }
+        }
+
+        .theme-card:hover::before {
+            opacity: 1;
+        }
+
+        .theme-card:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-5px);
+            box-shadow: 
+                0 12px 30px rgba(0, 0, 0, 0.4),
+                0 0 25px rgba(74, 124, 89, 0.15);
+        }
+
+        .theme-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1.5rem;
+            color: var(--leaf-green);
+            position: relative;
+            z-index: 2;
+        }
+
+        .theme-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--warm-beige);
+            position: relative;
+            z-index: 2;
+        }
+
+        .theme-desc {
+            color: var(--muted-text);
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Quote Wall as Wooden Plaques */
+        .quotes-section {
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    var(--dark-wood) 0px,
+                    var(--wood-texture) 3px,
+                    rgba(62, 39, 35, 0.98) 6px
+                );
+            padding: 6rem 2rem;
+            margin: 4rem 0;
+            position: relative;
+            box-shadow: 
+                inset 0 0 60px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .quotes-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--primary-green), 
+                var(--secondary-brown), 
+                transparent
+            );
+        }
+
+        .quotes-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--secondary-brown), 
+                var(--primary-green), 
+                transparent
+            );
+        }
+
+        .quotes-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .quote-card {
+            padding: 2rem;
+            background: linear-gradient(135deg, 
+                rgba(93, 64, 55, 0.95) 0%, 
+                rgba(62, 39, 35, 0.98) 100%
+            );
+            border-left: 3px solid var(--primary-green);
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 15px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .quote-card:nth-child(even) {
+            border-left-color: var(--secondary-brown);
+        }
+
+        .quote-card:hover {
+            background: linear-gradient(135deg, 
+                rgba(107, 142, 35, 0.15) 0%, 
+                rgba(93, 64, 55, 0.98) 100%
+            );
+            transform: translateX(5px);
+            box-shadow: 
+                0 6px 20px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(74, 124, 89, 0.1);
+        }
+
+        .quote-text {
+            font-family: 'Lora', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: var(--warm-beige);
+        }
+
+        .quote-text .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background: var(--golden-sun);
+            margin-left: 2px;
+            animation: softBlink 1s infinite;
+            vertical-align: text-bottom;
+            border-radius: 1px;
+        }
+
+        @keyframes softBlink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .quote-author {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            color: var(--muted-text);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-style: normal;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 10;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 2px solid var(--wood-texture);
+            background: linear-gradient(to bottom, 
+                rgba(26, 47, 35, 0.5) 0%, 
+                rgba(26, 47, 35, 0.8) 100%
+            );
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: var(--muted-text);
+        }
+
+        .footer-text span {
+            color: var(--accent-earth);
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .timeline-item::before {
+                left: -1.9rem;
+                width: 13px;
+                height: 13px;
+            }
+
+            .characters-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .year-badge {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .wood-sign {
+                font-size: 0.65rem;
+                padding: 0.3rem 0.7rem;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Soft Glow Effects for Interactive Elements */
+        .glow-nature:hover {
+            box-shadow: 
+                0 0 20px rgba(74, 124, 89, 0.3), 
+                inset 0 0 15px rgba(74, 124, 89, 0.08);
+        }
+
+        .glow-warm:hover {
+            box-shadow: 
+                0 0 20px rgba(218, 165, 32, 0.3), 
+                inset 0 0 15px rgba(218, 165, 32, 0.08);
+        }
+    </style>
+</head>
+<body>
+    <!-- Organic Overlays -->
+    <div class="wood-grain"></div>
+    <div class="atmospheric-fog"></div>
+    
+    <!-- Floating Particles -->
+    <div class="floating-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Rain Canvas - Preserved with Natural Colors -->
+    <canvas id="rainCanvas"></canvas>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="parallax-container">
+            <!-- Forest Layers replacing Cityscape -->
+            <div class="forest-layer forest-back" data-speed="0.1"></div>
+            <div class="forest-layer forest-mid" data-speed="0.3"></div>
+            <div class="forest-layer forest-front" data-speed="0.5"></div>
+            
+            <!-- Sun Rays Effect -->
+            <div class="sun-rays"></div>
+            
+            <!-- Floating Leaves -->
+            <div class="floating-leaves">
+                <span class="leaf">🍃</span>
+                <span class="leaf">🌿</span>
+                <span class="leaf">🍃</span>
+                <span class="leaf">🌿</span>
+                <span class="leaf">🍃</span>
+            </div>
+            
+            <!-- Wooden Sign Decorations -->
+            <div class="wooden-signs">
+                <span class="wood-sign">FOREST</span>
+                <span class="wood-sanctuary">SANCTUARY</span>
+                <span class="wood-sign">NATURE</span>
+                <span class="wood-sign">WOODLAND</span>
+                <span class="wood-sign">PEACE</span>
+            </div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="natural-title">NATURAL SANCTUARY</h1>
+            <p class="subtitle">Where Earth Meets Soul</p>
+            <div class="year-badge">
+                <span>Forest</span>
+                <span>Woodland</span>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Timeline Section -->
+    <section id="timeline">
+        <h2 class="section-title">The Journey</h2>
+        <div class="timeline">
+            <article class="timeline-item">
+                <span class="timeline-year">Spring - The Awakening</span>
+                <h3 class="timeline-title">New Beginnings in Nature</h3>
+                <p class="timeline-desc">As winter fades, the forest comes alive with renewed energy. Seeds sprout, animals emerge from hibernation, and the cycle of life begins anew. This is a time of hope and fresh possibilities.</p>
+            </article>
+            <article class="timeline-item">
+                <span class="timeline-year">Summer - Full Bloom</span>
+                <h3 class="timeline-title">The Peak of Life</h3>
+                <p class="timeline-desc">The forest reaches its zenith of growth and activity. Canopies provide shade, streams flow freely, and the ecosystem thrives in abundance. Every creature finds its place in the harmony of nature.</p>
+            </article>
+            <article class="timeline-item">
+                <span class="timeline-year">Autumn - The Harvest</span>
+                <h3 class="timeline-title">Time of Reflection</h3>
+                <p class="timeline-desc">Leaves turn golden and crimson as nature prepares for rest. It's a season of gratitude for the bounty received and wisdom gained. "All those moments will be cherished, like leaves in memory."</p>
+            </article>
+            <article class="timeline-item">
+                <span class="timeline-year">Winter - Deep Rest</span>
+                <h3 class="timeline-title">The Quiet Contemplation</h3>
+                <p class="timeline-desc">The forest sleeps under blankets of snow. In stillness, there is profound peace. This dormant period holds the promise of future growth, teaching us patience and resilience.</p>
+            </article>
+            <article class="timeline-item">
+                <span class="timeline-year">The Eternal Cycle</span>
+                <h3 class="timeline-title">Renewal and Continuity</h3>
+                <p class="timeline-desc">Nature's rhythm teaches us that endings are beginnings. Each season builds upon the last, creating an eternal dance of life, death, and rebirth that sustains all living things.</p>
+            </article>
+            <article class="timeline-item">
+                <span class="timeline-year">Present Moment</span>
+                <h3 class="timeline-title">Living in Harmony</h3>
+                <p class="timeline-desc">Here and now, we find our place within the greater whole. By aligning ourselves with natural rhythms, we discover balance, purpose, and deep connection to the earth.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Characters Section -->
+    <section id="characters">
+        <h2 class="section-title">Guardians of the Wood</h2>
+        <div class="characters-grid">
+            <article class="character-card">
+                <span class="character-movie">Ancient</span>
+                <h3 class="character-name">The Elder Oak</h3>
+                <span class="character-role">Wise Guardian</span>
+                <p class="character-desc">Standing for centuries, this majestic tree has witnessed countless seasons. Its roots run deep into the earth, connecting past and present. The Elder Oak offers shelter and wisdom to all who seek it beneath its sprawling canopy.</p>
+            </article>
+            <article class="character-card">
+                <span class="character-movie">Spirit</span>
+                <h3 class="character-name">River Keeper</h3>
+                <span class="character-role">Life Giver</span>
+                <p class="character-desc">The pure waters flow through the heart of the forest, nurturing every living thing. The River Keeper ensures the flow remains clean and abundant, representing the life force that sustains all existence in this sanctuary.</p>
+            </article>
+            <article class="character-card">
+                <span class="character-movie">Guide</span>
+                <h3 class="character-name">Forest Sage</h3>
+                <span class="character-role">Path Finder</span>
+                <p class="character-desc">A wise spirit who knows every trail and hidden grove. The Forest Sage helps lost souls find their way, not just through the woods, but through life's challenges. "To walk in nature is to walk with purpose."</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Themes Section -->
+    <section id="themes">
+        <h2 class="section-title">Natural Wisdom</h2>
+        <div class="themes-container">
+            <article class="theme-card">
+                <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 2L15 8L22 9L17 14L18 21L12 18L6 21L7 14L2 9L9 8L12 2Z"/>
+                </svg>
+                <h3 class="theme-title">Growth</h3>
+                <p class="theme-desc">Like a seed becoming a mighty tree, personal growth requires patience, nourishment, and time. Nature shows us that transformation happens gradually, with each small step building toward greatness.</p>
+            </article>
+            <article class="theme-card">
+                <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <circle cx="12" cy="12" r="6"/>
+                    <circle cx="12" cy="12" r="2"/>
+                </svg>
+                <h3 class="theme-title">Cycles</h3>
+                <p class="theme-desc">Life moves in rhythms—day and night, seasons, birth and death. Understanding these cycles helps us accept change and find meaning in each phase. What ends prepares space for new beginnings.</p>
+            </article>
+            <article class="theme-card">
+                <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+                <h3 class="theme-title">Connection</h3>
+                <p class="theme-desc">All life is interconnected through invisible threads—the mycelium network, shared water, common air. We are not separate from nature but part of its vast, breathing web of existence.</p>
+            </article>
+            <article class="theme-card">
+                <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 3V21M3 12H21"/>
+                    <path d="M12 7L17 12L12 17M12 7L7 12L12 17"/>
+                </svg>
+                <h3 class="theme-title">Balance</h3>
+                <p class="theme-desc">Ecosystems thrive on delicate balance—predator and prey, growth and decay. When we honor equilibrium in our own lives, we mirror nature's wisdom and create sustainable harmony.</p>
+            </article>
+            <article class="theme-card">
+                <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                    <path d="M12 6v6l4 2"/>
+                </svg>
+                <h3 class="theme-title">Patience</h3>
+                <p class="theme-desc">A tree doesn't rush to become tall. Seasons pass, years accumulate, and slowly, steadily, growth occurs. Nature teaches us that meaningful development cannot be hurried—it must unfold in its own time.</p>
+            </article>
+            <article class="theme-card">
+                <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/>
+                </svg>
+                <h3 class="theme-title">Resilience</h3>
+                <p class="theme-desc">After every storm, forests recover. After every fire, new growth emerges. Nature demonstrates incredible strength and adaptability, showing us that we too can endure and flourish despite adversity.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Quote Wall as Wooden Plaques -->
+    <section class="quotes-section">
+        <h2 class="section-title" style="text-align: center; display: block; margin: 0 auto 3rem;">Voices of the Wild</h2>
+        <div class="quotes-grid">
+            <article class="quote-card">
+                <blockquote class="quote-text" data-quote="In every walk with nature, one receives far more than he seeks. The forest whispers secrets to those who listen with open hearts."></blockquote>
+                <cite class="quote-author">John Muir, Naturalist</cite>
+            </article>
+            <article class="quote-card">
+                <blockquote class="quote-text" data-quote="Look deep into nature, and you will understand everything better. The answers have always been here, written in leaves and flowing water."></blockquote>
+                <cite class="quote-author">Albert Einstein, Physicist</cite>
+            </article>
+            <article class="quote-card">
+                <blockquote class="quote-text" data-quote="The clearest way into the Universe is through a forest wilderness. Among ancient trees, we remember who we truly are."></blockquote>
+                <cite class="quote-author">John Muir, Naturalist</cite>
+            </article>
+            <article class="quote-card">
+                <blockquote class="quote-text" data-quote="Adopt the pace of nature: her secret is patience. In stillness, we find the wisdom that rushing cannot reveal."></blockquote>
+                <cite class="quote-author">Ralph Waldo Emerson, Philosopher</cite>
+            </article>
+            <article class="quote-card">
+                <blockquote class="quote-text" data-quote="The earth has music for those who listen. Every rustling leaf, every bird's song, every flowing stream carries nature's melody."></blockquote>
+                <cite class="quote-author">George Santayana, Poet</cite>
+            </article>
+            <article class="quote-card">
+                <blockquote class="quote-text" data-quote="Going to the woods is going home. In nature's embrace, we find the peace that eludes us in the noise of modern life."></blockquote>
+                <cite class="quote-author">John Muir, Naturalist</cite>
+            </article>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">A tribute to the enduring wisdom of <span>Nature</span> and the <span>Earth</span></p>
+    </footer>
+
+    <script>
+        // Rain Effect - Preserved with Natural Colors
+        const rainCanvas = document.getElementById('rainCanvas');
+        const ctx = rainCanvas.getContext('2d');
+        let raindrops = [];
+        let animationId = null;
+
+        function resizeCanvas() {
+            rainCanvas.width = window.innerWidth;
+            rainCanvas.height = window.innerHeight;
+        }
+
+        class Raindrop {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * rainCanvas.width;
+                this.y = Math.random() * -rainCanvas.height;
+                this.speed = Math.random() * 8 + 12;
+                this.length = Math.random() * 20 + 10;
+                this.opacity = Math.random() * 0.25 + 0.08;
+                this.width = Math.random() * 1.5 + 0.5;
+            }
+
+            update() {
+                this.y += this.speed;
+                if (this.y > rainCanvas.height) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y);
+                ctx.lineTo(this.x + this.width * 0.5, this.y + this.length);
+                // Natural water color tone
+                ctx.strokeStyle = `rgba(168, 197, 221, ${this.opacity})`;
+                ctx.lineWidth = this.width;
+                ctx.lineCap = 'round';
+                ctx.stroke();
+            }
+        }
+
+        function initRain() {
+            raindrops = [];
+            const dropCount = Math.floor((rainCanvas.width * rainCanvas.height) / 15000);
+            for (let i = 0; i < Math.min(dropCount, 200); i++) {
+                raindrops.push(new Raindrop());
+            }
+        }
+
+        function animateRain() {
+            ctx.clearRect(0, 0, rainCanvas.width, rainCanvas.height);
+            raindrops.forEach(drop => {
+                drop.update();
+                drop.draw();
+            });
+            animationId = requestAnimationFrame(animateRain);
+        }
+
+        // Parallax Effect for Forest Layers
+        function handleParallax() {
+            const scrollY = window.scrollY;
+            const layers = document.querySelectorAll('.forest-layer');
+            
+            layers.forEach(layer => {
+                const speed = parseFloat(layer.dataset.speed) || 0.1;
+                const yPos = -(scrollY * speed);
+                layer.style.transform = `translateY(${yPos}px)`;
+            });
+        }
+
+        // Typewriter Effect - Preserved
+        function typeWriter(element, text, speed = 40) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML = text.substring(0, i + 1) + '<span class="cursor"></span>';
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    element.innerHTML = text;
+                }
+            }
+            type();
+        }
+
+        // Intersection Observer for typewriter
+        const quoteObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const quoteEl = entry.target.querySelector('.quote-text');
+                    if (quoteEl && !quoteEl.dataset.typed) {
+                        const text = quoteEl.dataset.quote;
+                        quoteEl.dataset.typed = 'true';
+                        setTimeout(() => typeWriter(quoteEl, text, 30), Math.random() * 300);
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.quote-card').forEach(card => {
+            quoteObserver.observe(card);
+        });
+
+        // Timeline items animation
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateX(0)';
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-30px)';
+            item.style.transition = 'all 0.6s ease';
+            timelineObserver.observe(item);
+        });
+
+        // Character cards animation
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 150);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.character-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(40px)';
+            card.style.transition = 'all 0.6s ease';
+            cardObserver.observe(card);
+        });
+
+        // Theme cards animation
+        const themeObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'scale(1)';
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.theme-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.95)';
+            card.style.transition = 'all 0.5s ease';
+            themeObserver.observe(card);
+        });
+
+        // Gentle hover effect for title
+        const naturalTitle = document.querySelector('.natural-title');
+        naturalTitle.addEventListener('mouseenter', () => {
+            naturalTitle.style.animation = 'gentleBreathe 2s ease-in-out infinite';
+        });
+        naturalTitle.addEventListener('mouseleave', () => {
+            naturalTitle.style.animation = 'gentleBreathe 5s ease-in-out infinite';
+        });
+
+        // Initialize
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initRain();
+        });
+
+        window.addEventListener('scroll', () => {
+            handleParallax();
+        });
+
+        // Check for reduced motion preference
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        
+        function handleReducedMotion() {
+            if (prefersReducedMotion.matches) {
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                }
+                ctx.clearRect(0, 0, rainCanvas.width, rainCanvas.height);
+            } else {
+                initRain();
+                animateRain();
+            }
+        }
+
+        prefersReducedMotion.addEventListener('change', handleReducedMotion);
+
+        // Start everything
+        resizeCanvas();
+        handleReducedMotion();
+    </script>
+</body>
+</html>

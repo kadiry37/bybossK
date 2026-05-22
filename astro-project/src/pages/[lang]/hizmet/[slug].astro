@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar';
+import Footer from '../../../components/Footer';
+import ServiceView from '../../../components/ServiceView';
+import { getSettings, getNavigation, getServices } from '../../../lib/api';
+
+export async function getStaticPaths() {
+  try {
+    const [servicesTr, servicesEn, servicesAr] = await Promise.all([
+      getServices('tr'),
+      getServices('en'),
+      getServices('ar')
+    ]);
+    
+    const paths = [];
+    if (servicesTr && Array.isArray(servicesTr)) servicesTr.forEach(s => paths.push({ params: { lang: 'tr', slug: s.slug }, props: { service: s } }));
+    if (servicesEn && Array.isArray(servicesEn)) servicesEn.forEach(s => paths.push({ params: { lang: 'en', slug: s.slug }, props: { service: s } }));
+    if (servicesAr && Array.isArray(servicesAr)) servicesAr.forEach(s => paths.push({ params: { lang: 'ar', slug: s.slug }, props: { service: s } }));
+
+    if (paths.length === 0) {
+      return [{ params: { lang: 'tr', slug: '_placeholder' }, props: { service: null } }];
+    }
+    return paths;
+  } catch (e) {
+    console.error("Services StaticPaths Error:", e);
+    return [{ params: { lang: 'tr', slug: '_placeholder' }, props: { service: null } }];
+  }
+}
+
+const { lang, slug } = Astro.params;
+const langPrefix = lang === 'tr' ? '' : `/${lang}`;
+
+const { service } = Astro.props;
+const suffix = lang === 'tr' ? '' : `_${lang}`;
+
+let settingsData = null;
+let navData = null;
+
+try {
+  settingsData = await getSettings(lang);
+  navData = await getNavigation(lang);
+} catch (e) {}
+
+const seoTitle = service ? `${service[`seo_title${suffix}`] || service.seo_title || service[`name${suffix}`] || service.name} - Hizmetlerimiz` : (lang === 'en' ? 'Service Detail' : (lang === 'ar' ? 'تفاصيل الخدمة' : 'Hizmet Detayı'));
+const seoDesc = service ? (service[`seo_description${suffix}`] || service.seo_description || service[`shortDescription${suffix}`] || service.shortDescription || '').substring(0, 160) : '';
+const serviceImage = service?.mainImage ? (service.mainImage.startsWith('http') ? service.mainImage : `https://bybossmimarlik.com${service.mainImage}`) : '';
+
+// Build language mappings for this specific service
+const [servicesAllTr, servicesAllEn, servicesAllAr] = await Promise.all([
+  getServices('tr'),
+  getServices('en'),
+  getServices('ar')
+]);
+
+const langMappings: Record<string, string> = {};
+if (service) {
+  const trItem = servicesAllTr?.find(s => s.id === service.id);
+  const enItem = servicesAllEn?.find(s => s.id === service.id);
+  const arItem = servicesAllAr?.find(s => s.id === service.id);
+  
+  if (trItem) langMappings.tr = `/hizmet/${trItem.slug}/`;
+  if (enItem) langMappings.en = `/en/hizmet/${enItem.slug}/`;
+  if (arItem) langMappings.ar = `/ar/hizmet/${arItem.slug}/`;
+}
+
+const hreflangs = langMappings ? Object.entries(langMappings).map(([l, href]) => ({
+  lang: l,
+  href: `https://bybossmimarlik.com${href}`
+})) : undefined;
+
+---
+
+<Layout 
+  title={seoTitle} 
+  description={seoDesc}
+  image={serviceImage}
+  footerScripts={settingsData?.footer?.scripts || ''}
+  logo={settingsData?.general?.logo || ''}
+  favicon={settingsData?.general?.favicon || ''}
+  googleAnalytics={settingsData?.seo?.googleAnalytics || ''}
+  googleSearchConsole={settingsData?.seo?.searchConsole || ''}
+  yandexVerification={settingsData?.seo?.yandexVerification || ''}
+  bingVerification={settingsData?.seo?.bingVerification || ''}
+  hreflangs={hreflangs}
+  lang={lang}
+>
+  <Fragment slot="head">
+    {service && service.mainImage && (
+      <link rel="preload" as="image" href={service.mainImage} fetchpriority="high" />
+    )}
+    {service && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": service.name,
+        "description": seoDesc,
+        "image": serviceImage,
+        "provider": {
+          "@type": "Organization",
+          "name": "By Boss Mimarlık Mobilya",
+          "url": "https://bybossmimarlik.com"
+        },
+        "url": `https://bybossmimarlik.com${langPrefix}/hizmet/${service.slug}/`
+      })} />
+    )}
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": lang === 'en' ? 'Home' : (lang === 'ar' ? 'الصفحة الرئيسية' : 'Ana Sayfa'), "item": `https://bybossmimarlik.com${langPrefix}/` },
+        { "@type": "ListItem", "position": 2, "name": lang === 'en' ? 'Services' : (lang === 'ar' ? 'خدمات' : 'Hizmetler'), "item": `https://bybossmimarlik.com${langPrefix}/hizmetler/` },
+        { "@type": "ListItem", "position": 3, "name": service?.[`name${suffix}`] || service?.name || (lang === 'en' ? 'Service' : (lang === 'ar' ? 'خدمة' : 'Hizmet')), "item": `https://bybossmimarlik.com${langPrefix}/hizmet/${service?.slug || ''}/` }
+      ]
+    })} />
+
+  </Fragment>
+  <main class="min-h-screen bg-noir-900">
+    <Navbar client:load data={settingsData} navData={navData?.header} lang={lang} langMappings={langMappings} />
+    
+    <div class="pt-24 lg:pt-32 pb-16">
+        <ServiceView client:load service={service || null} lang={lang} />
+    </div>
+
+    <Footer client:visible data={settingsData} navData={navData?.footer} lang={lang} />
+
+  </main>
+</Layout>
+
+<style is:global>
+  .prose-gold h3 { color: white; }
+  .prose-gold p { color: #8892b0; line-height: 1.8; }
+</style>

@@ -1,0 +1,204 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar';
+import Footer from '../../../components/Footer';
+import BlogPostView from '../../../components/BlogPostView';
+import { getBlogPosts, getBlogPost, getSettings, getNavigation } from '../../../lib/api';
+
+export async function getStaticPaths() {
+  try {
+    const [postsTr, postsEn, postsAr] = await Promise.all([
+      getBlogPosts(undefined, 'tr'),
+      getBlogPosts(undefined, 'en'),
+      getBlogPosts(undefined, 'ar')
+    ]);
+    
+    const paths = [];
+    if (postsTr && Array.isArray(postsTr)) postsTr.forEach(post => paths.push({ params: { lang: 'tr', slug: post.slug }, props: { post } }));
+    if (postsEn && Array.isArray(postsEn)) postsEn.forEach(post => paths.push({ params: { lang: 'en', slug: post.slug }, props: { post } }));
+    if (postsAr && Array.isArray(postsAr)) postsAr.forEach(post => paths.push({ params: { lang: 'ar', slug: post.slug }, props: { post } }));
+    
+    if (paths.length === 0) {
+      return [{ params: { lang: 'tr', slug: '_placeholder' }, props: { post: null } }];
+    }
+    return paths;
+  } catch (e) {
+    console.error("Error generating static paths for blog");
+    return [{ params: { lang: 'tr', slug: '_placeholder' }, props: { post: null } }];
+  }
+}
+
+const { lang, slug } = Astro.params;
+const langPrefix = lang === 'tr' ? '' : `/${lang}`;
+const { post: listPost } = Astro.props;
+
+let initialPost = listPost;
+if (slug && (!listPost || !listPost.content)) {
+  try {
+    const fullPost = await getBlogPost(slug, lang);
+    if (fullPost) {
+      initialPost = fullPost;
+    }
+  } catch (e) {
+    console.error(`Error loading full post for ${slug}:`, e);
+  }
+}
+
+let settingsData = null;
+let navData = null;
+
+try {
+  settingsData = await getSettings(lang);
+  navData = await getNavigation(lang);
+} catch (e) {
+  console.error("Error loading common data");
+}
+
+const suffix = lang === 'tr' ? '' : `_${lang}`;
+
+const faqSchema = initialPost?.faqJson && Array.isArray(initialPost.faqJson) && initialPost.faqJson.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": initialPost.faqJson.map((item: any) => ({
+    "@type": "Question",
+    "name": item.q || item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.a || item.answer
+    }
+  }))
+} : null;
+
+const howToSchema = initialPost?.howtoJson && Array.isArray(initialPost.howtoJson) && initialPost.howtoJson.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": (initialPost[`title${suffix}`] || initialPost.title) + " - Nasıl Yapılır",
+  "step": initialPost.howtoJson.map((item: any, idx: number) => ({
+    "@type": "HowToStep",
+    "position": idx + 1,
+    "name": item.name || item.step,
+    "text": item.text || item.description
+  }))
+} : null;
+
+const videoSchema = initialPost?.videoUrl ? {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": (initialPost[`title${suffix}`] || initialPost.title) + " Video",
+  "description": initialPost[`seo_description${suffix}`] || initialPost.seo_description || initialPost.excerpt || initialPost.title,
+  "thumbnailUrl": initialPost.featured_image ? (initialPost.featured_image.startsWith('http') ? initialPost.featured_image : `https://bybossmimarlik.com${initialPost.featured_image}`) : 'https://bybossmimarlik.com/logo.svg',
+  "uploadDate": initialPost.published_at || new Date().toISOString(),
+  "contentUrl": initialPost.videoUrl
+} : null;
+
+// Build language mappings for this specific blog post
+const [postsAllTr, postsAllEn, postsAllAr] = await Promise.all([
+  getBlogPosts(undefined, 'tr'),
+  getBlogPosts(undefined, 'en'),
+  getBlogPosts(undefined, 'ar')
+]);
+
+const langMappings: Record<string, string> = {};
+if (initialPost) {
+  const trItem = Array.isArray(postsAllTr) ? postsAllTr.find(p => p.id === initialPost.id) : undefined;
+  const enItem = Array.isArray(postsAllEn) ? postsAllEn.find(p => p.id === initialPost.id) : undefined;
+  const arItem = Array.isArray(postsAllAr) ? postsAllAr.find(p => p.id === initialPost.id) : undefined;
+  
+  if (trItem) langMappings.tr = `/blog/${trItem.slug}/`;
+  if (enItem) langMappings.en = `/en/blog/${enItem.slug}/`;
+  if (arItem) langMappings.ar = `/ar/blog/${arItem.slug}/`;
+}
+
+const hreflangs = langMappings ? Object.entries(langMappings).map(([l, href]) => ({
+  lang: l,
+  href: `https://bybossmimarlik.com${href}`
+})) : undefined;
+
+---
+
+<Layout 
+  title={initialPost ? (initialPost[`seo_title${suffix}`] || initialPost.seo_title || initialPost[`title${suffix}`] || initialPost.title) : (lang === 'en' ? 'Blog Post' : (lang === 'ar' ? 'منشور المدونة' : 'Blog Yazısı'))}
+  description={initialPost ? (initialPost[`seo_description${suffix}`] || initialPost.seo_description || initialPost.excerpt) : ''}
+  type="article"
+  image={initialPost?.featured_image ? (initialPost.featured_image.startsWith('http') ? initialPost.featured_image : `https://bybossmimarlik.com${initialPost.featured_image}`) : ''}
+  keywords={initialPost?.[`seo_keywords${suffix}`] || initialPost?.seo_keywords || ''}
+  footerScripts={settingsData?.footer?.scripts || ''}
+  logo={settingsData?.general?.logo || ''}
+  favicon={settingsData?.general?.favicon || ''}
+  googleAnalytics={settingsData?.seo?.googleAnalytics || ''}
+  googleSearchConsole={settingsData?.seo?.searchConsole || ''}
+  yandexVerification={settingsData?.seo?.yandexVerification || ''}
+  bingVerification={settingsData?.seo?.bingVerification || ''}
+  hreflangs={hreflangs}
+  lang={lang}
+>
+
+  <Fragment slot="head">
+    {initialPost && initialPost.featured_image && (
+      <link rel="preload" as="image" href={initialPost.featured_image} fetchpriority="high" />
+    )}
+    {initialPost && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": initialPost.seo_title || initialPost.title,
+        "description": initialPost.seo_description || initialPost.excerpt || '',
+        "image": initialPost.featured_image ? (initialPost.featured_image.startsWith('http') ? initialPost.featured_image : `https://bybossmimarlik.com${initialPost.featured_image}`) : '',
+        "datePublished": initialPost.published_at || new Date().toISOString(),
+        "dateModified": initialPost.updated_at || initialPost.published_at || new Date().toISOString(),
+        "author": {
+          "@type": "Organization",
+          "name": initialPost.author || "By Boss Mimarlık Ekibi",
+          "url": "https://bybossmimarlik.com"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "By Boss Mimarlık Mobilya",
+          "logo": {
+            "@type": "ImageObject",
+            "url": `https://bybossmimarlik.com${settingsData?.general?.logo || '/logo.svg'}`
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `https://bybossmimarlik.com${langPrefix}/blog/${slug}/`
+        },
+        "keywords": initialPost.seo_keywords || ''
+      })} />
+    )}
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": lang === 'en' ? 'Home' : (lang === 'ar' ? 'الصفحة الرئيسية' : 'Ana Sayfa'), "item": `https://bybossmimarlik.com${langPrefix}/` },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": `https://bybossmimarlik.com${langPrefix}/blog/` },
+        { "@type": "ListItem", "position": 3, "name": initialPost?.[`title${suffix}`] || initialPost?.title || (lang === 'en' ? 'Blog Post' : (lang === 'ar' ? 'منشور المدونة' : 'Blog Yazısı')), "item": `https://bybossmimarlik.com${langPrefix}/blog/${slug}/` }
+      ]
+    })} />
+    {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+    {howToSchema && <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />}
+    {videoSchema && <script type="application/ld+json" set:html={JSON.stringify(videoSchema)} />}
+
+  </Fragment>
+  <main class="min-h-screen bg-noir-1000">
+    <Navbar client:load data={settingsData} navData={navData?.header} lang={lang} langMappings={langMappings} />
+    
+    <div class="pt-20">
+      <BlogPostView client:visible initialPost={initialPost || null} lang={lang} />
+    </div>
+
+    <Footer client:visible data={settingsData} navData={navData?.footer} lang={lang} />
+
+  </main>
+</Layout>
+
+<style is:global>
+  /* Blog content refined typography - still needed for injected HTML */
+  .blog-content h2 { @apply text-white text-3xl font-serif font-bold mt-12 mb-6 leading-tight; }
+  .blog-content h3 { @apply text-white text-2xl font-serif font-bold mt-8 mb-4; }
+  .blog-content p { @apply mb-6 text-noir-300 font-light text-lg leading-relaxed; }
+  .blog-content ul { @apply list-disc list-outside mb-8 ml-6 space-y-3 text-noir-300; }
+  .blog-content ol { @apply list-decimal list-outside mb-8 ml-6 space-y-3 text-noir-300; }
+  .blog-content strong { @apply text-gold-500 font-bold; }
+  .blog-content a { @apply text-gold-500 underline decoration-gold-500/30 underline-offset-4 hover:text-white transition-colors; }
+</style>

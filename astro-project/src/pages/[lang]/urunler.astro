@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import ProductsSection from '../../components/Products';
+import { getSettings, getNavigation, getProducts } from '../../lib/api';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'tr' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'ar' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const langPrefix = lang === 'tr' ? '' : `/${lang}`;
+
+let settingsData = null;
+let navData = null;
+let productsData = null;
+try {
+  settingsData = await getSettings(lang);
+  navData = await getNavigation(lang);
+  productsData = await getProducts(undefined, lang);
+} catch (e) {}
+---
+
+<Layout 
+  title={settingsData?.general?.productsPageTitle || (lang === 'en' ? 'Product Catalog' : (lang === 'ar' ? 'كتالوج المنتجات' : 'Ürün Kataloğu'))}
+  description={settingsData?.general?.productsPageDesc || (lang === 'en' ? 'Professional architectural designs and custom furniture collections. High-quality craftsmanship and aesthetic appearance.' : (lang === 'ar' ? 'التصاميم المعمارية الاحترافية ومجموعات الأثاث المخصصة. حرفية عالية الجودة ومظهر جمالي.' : 'Profesyonel mimari tasarımlar ve özel mobilya koleksiyonları. Yüksek kaliteli işçilik ve estetik görünüm sunar.'))}
+  keywords="by boss, mimarlık, mobilya, özel tasarım mobilya, iç mimari, by boss mimarlık"
+  footerScripts={settingsData?.footer?.scripts || ''}
+  logo={settingsData?.general?.logo || ''}
+  favicon={settingsData?.general?.favicon || ''}
+  googleAnalytics={settingsData?.seo?.googleAnalytics || ''}
+  googleSearchConsole={settingsData?.seo?.searchConsole || ''}
+  yandexVerification={settingsData?.seo?.yandexVerification || ''}
+  bingVerification={settingsData?.seo?.bingVerification || ''}
+  lang={lang}
+>
+
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": lang === 'en' ? 'Home' : (lang === 'ar' ? 'الصفحة الرئيسية' : 'Ana Sayfa'), "item": `https://bybossmimarlik.com${langPrefix}/` },
+        { "@type": "ListItem", "position": 2, "name": settingsData?.general?.productsPageTitle || (lang === 'en' ? 'Product Catalog' : (lang === 'ar' ? 'كتالوج المنتجات' : 'Ürün Kataloğu')), "item": `https://bybossmimarlik.com${langPrefix}/urunler/` }
+      ]
+    })} />
+
+  </Fragment>
+  <main class="min-h-screen bg-noir-900">
+    <Navbar client:load data={settingsData} navData={navData?.header} productsData={productsData} servicesData={null} projectsData={null} lang={lang} />
+
+    
+    {/* Page Header */}
+    <div class="relative pt-40 pb-12 lg:pt-52 lg:pb-20 overflow-hidden bg-noir-900">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(201,169,98,0.1),transparent_70%)] pointer-events-none"></div>
+      
+      <div class="container mx-auto px-6 relative z-10 text-center">
+        <div class="max-w-4xl mx-auto">
+          <span class="inline-flex items-center gap-2 px-4 py-2 border border-gold-500/30 text-gold-500 text-xs font-medium tracking-widest uppercase mb-8 bg-gold-500/5 backdrop-blur-sm rounded-full">
+             <span class="w-1.5 h-1.5 rounded-full bg-gold-500 animate-pulse"></span>
+             {lang === 'en' ? 'Professional Solutions' : (lang === 'ar' ? 'حلول احترافية' : 'Profesyonel Çözümler')}
+          </span>
+          <h1 class="text-white text-5xl md:text-8xl font-bold font-serif mb-8 leading-[1.1]">
+             {settingsData?.general?.productsPageTitle ? (
+               settingsData.general.productsPageTitle
+             ) : (
+               <span>{lang === 'en' ? 'Product' : (lang === 'ar' ? 'منتج' : 'Ürün')} <span class="gradient-text">{lang === 'en' ? 'Collection' : (lang === 'ar' ? 'مجموعة' : 'Koleksiyonu')}</span></span>
+             )}
+          </h1>
+          <p class="text-noir-300 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+             {settingsData?.general?.productsPageDesc || (lang === 'en' ? 'Explore our deck mounting systems that are resistant to the most demanding outdoor conditions, aesthetic and reliable.' : (lang === 'ar' ? 'استكشف أنظمة تثبيت الأسطح لدينا والمقاومة لأقسى الظروف الخارجية والجمالية والموثوقة.' : 'En zorlu dış mekan koşullarına dayanıklı, estetik ve güvenilir deck montaj sistemlerimizi keşfedin.'))}
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    {/* Using the React Component for filtering and grid */}
+    <ProductsSection client:visible data={productsData} lang={lang} isHomePage={false} />
+
+
+    {/* Quality Assurance Section */}
+    <div class="container mx-auto px-6 pb-24">
+       <div class="bg-noir-800/20 border border-noir-800 rounded-[3rem] p-12 text-center backdrop-blur-xl">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+             <div class="space-y-4">
+                <div class="text-3xl text-gold-500 font-bold font-serif">{settingsData?.features?.slogan1_title || (lang === 'en' ? 'Quality' : (lang === 'ar' ? 'جودة' : 'Yüksek Kalite'))}</div>
+                <div class="text-white font-medium">{settingsData?.features?.slogan1_desc || (lang === 'en' ? 'Guaranteed Support' : (lang === 'ar' ? 'دعم مضمون' : 'Garantili Destek'))}</div>
+             </div>
+             <div class="space-y-4">
+                <div class="text-3xl text-gold-500 font-bold font-serif">{settingsData?.features?.slogan2_title || (lang === 'en' ? 'Stainless' : (lang === 'ar' ? 'ستانلس ستيل' : 'Paslanmaz'))}</div>
+                <div class="text-white font-medium">{settingsData?.features?.slogan2_desc || (lang === 'en' ? 'High Quality Steel' : (lang === 'ar' ? 'فولاذ عالي الجودة' : 'Yüksek Kalite Çelik'))}</div>
+             </div>
+             <div class="space-y-4">
+                <div class="text-3xl text-gold-500 font-bold font-serif">{settingsData?.features?.slogan3_title || (lang === 'en' ? 'A+ Grade' : (lang === 'ar' ? 'درجة A+' : 'A+ Seviye'))}</div>
+                <div class="text-white font-medium">{settingsData?.features?.slogan3_desc || (lang === 'en' ? 'UV Resistant Polymer' : (lang === 'ar' ? 'بوليمر مقاوم للأشعة فوق البنفسجية' : 'UV Dayanımlı Polimer'))}</div>
+             </div>
+          </div>
+       </div>
+    </div>
+
+  </main>
+  <Footer client:load data={settingsData} navData={navData?.footer} lang={lang} />
+
+</Layout>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deckklips - Sekmeli Kayan Ürün Modülü Tasarımı</title>
+    <style>
+        /* Sayfa Geneli */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sahte Ürün Detay Sayfası (Modülün üstündeki içerik) */
+        .fake-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .fake-page-content h1 {
+            font-size: 28px;
+            color: #002f6c; /* Deckklips tarzı koyu mavi */
+        }
+        .fake-page-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* --- İSTEDİĞİNİZ MODÜL BURASI BAŞLIYOR --- */
+        .cross-sell-module {
+            background-color: #f8f9fa;
+            padding: 40px 0;
+            margin-top: 20px;
+        }
+
+        .module-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .module-header h2 {
+            font-size: 24px;
+            color: #222;
+            margin: 0 0 10px 0;
+        }
+        .module-header p {
+            color: #777;
+            font-size: 15px;
+        }
+
+        /* 1. Kategoriler: Soldan Sağa Kayan Sekmeler */
+        .tabs-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            position: relative;
+            margin-bottom: 30px;
+            /* Kaydırma çubuğunu gizledik (isterseniz kaldırabilirsiniz) */
+            scrollbar-width: none; 
+        }
+        .tabs-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tabs-inner {
+            display: flex;
+            gap: 10px;
+            min-width: max-content;
+            padding: 0 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .tab-button {
+            background: transparent;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #888;
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px; /* Alt çizgiyle tam bitişik olması için */
+            transition: all 0.3s ease;
+        }
+
+        .tab-button:hover {
+            color: #555;
+        }
+
+        .tab-button.active {
+            color: #002f6c; /* Aktif sekme rengi */
+            border-bottom-color: #002f6c;
+        }
+
+        /* 2. Ürünler: Soldan Sağa Kayan Grid */
+        .products-slider-wrapper {
+            overflow: hidden;
+        }
+
+        .products-grid {
+            display: none; /* Varsayılan olarak gizli */
+            gap: 20px;
+            padding: 0 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            /* Kaydırma çubuğu stili */
+            scrollbar-width: thin;
+            scrollbar-color: #ccc #f8f9fa;
+        }
+        .products-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+        .products-grid::-webkit-scrollbar-track {
+            background: #f8f9fa;
+        }
+        .products-grid::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 4px;
+        }
+
+        .products-grid.active {
+            display: flex; /* Sadece aktif olan kategorinin ürünleri görünsün */
+        }
+
+        /* 3. Ürün Kartı Tasarımı */
+        .product-card {
+            min-width: 250px;
+            max-width: 250px;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            scroll-snap-align: start;
+            text-decoration: none;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .card-image-container {
+            width: 100%;
+            height: 200px;
+            background-color: #f0f2f5;
+            overflow: hidden;
+        }
+
+        .card-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .card-image-container img {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-category-tag {
+            display: inline-block;
+            background: #eef2f7;
+            color: #002f6c;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+            line-height: 1.4;
+            color: #222;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            font-size: 14px;
+            color: #002f6c;
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.3s ease;
+            gap: 5px;
+        }
+        .card-link:hover {
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- YUKARIDAKİ ÜRÜN DETAY SAYFASI (SAHTE) -->
+    <div class="fake-page-content">
+        <h1>Sonlama Bitim Kapak Cam Balkon</h1>
+        <p>Cam balkon sistemlerinde sonlama ve bitim işlemleri için kullanılan yüksek kaliteli kapak profilleri. Su sızdırmazlığı ve estetik görünüm sağlar. (Aşağıya kaydırarak modülü görebilirsiniz)</p>
+    </div>
+
+    <!-- --- İSTEDİĞİNİZ MODÜL --- -->
+    <section class="cross-sell-module">
+        <div class="module-header">
+            <h2>Diğer Kategorilerdeki Ürünlerimiz</h2>
+            <p>İhtiyacınıza uygun diğer çözümleri inceleyin</p>
+        </div>
+
+        <!-- Sekmeler -->
+        <div class="tabs-wrapper">
+            <div class="tabs-inner" id="categoryTabs">
+                <!-- Butonlar JS ile doldurulacak -->
+            </div>
+        </div>
+
+        <!-- Kayan Ürünler Alanı -->
+        <div class="products-slider-wrapper" id="productsArea">
+            <!-- Gridler JS ile doldurulacak -->
+        </div>
+    </section>
+
+
+    <script>
+        // ---------------------------------------------------------
+        // VERİ TABANI (BURAYI KENDİ ÜRÜNLERİNİZLE DEĞİŞTİRECEKSİNİZ)
+        // Şimdilik Unsplash'dan rastgele telifsiz görsellerle test ediyorum.
+        // ---------------------------------------------------------
+        const mockData = [
+            {
+                category: "Cam Balkon Aksesuarları",
+                products: [
+                    { title: "Teleskobik Süpürgelik", img: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=500&q=80", slug: "#1" },
+                    { title: "Fonksiyonel Kelepçe", img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500&q=80", slug: "#2" },
+                    { title: "Sızdırmazlık Fitili", img: "https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=500&q=80", slug: "#3" },
+                    { title: "Rulo Conta Silikonu", img: "https://images.unsplash.com/photo-1635405074683-96d6921a2a68?w=500&q=80", slug: "#4" },
+                    { title: "Alt Profil Drenaj Kanalı", img: "https://images.unsplash.com/photo-1596548438137-d51ea5c83ca5?w=500&q=80", slug: "#5" }
+                ]
+            },
+            {
+                category: "Sonlama ve Bitim Elemanları",
+                products: [
+                    { title: "Dışa Doğru Sivri Bitim", img: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500&q=80", slug: "#6" },
+                    { title: "İçe Doğru Yyuvarlak Kapak", img: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=500&q=80", slug: "#7" },
+                    { title: "Dikdörtgen Kapanış Profili", img: "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=500&q=80", slug: "#8" },
+                    { title: "45 Derece Köşe Birleştirme", img: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=500&q=80", slug: "#9" }
+                ]
+            },
+            {
+                category: "Temizlik ve Bakım",
+                products: [
+                    { title: "Cam Balkon Temizlik Seti", img: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=500&q=80", slug: "#10" },
+                    { title: " Profil Parlatma Spreyi", img: "https://images.unsplash.com/photo-1622398925373-3f91b1e275f5?w=500&q=80", slug: "#11" },
+                    { title: "Mikrofiber Cam Bez", img: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=500&q=80", slug: "#12" },
+                    { title: "Tekerlekli Ray Yağı", img: "https://images.unsplash.com/photo-1635405074683-96d6921a2a68?w=500&q=80", slug: "#13" },
+                    { title: "Paslanmaz Çelik Koruyucu", img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500&q=80", slug: "#14" },
+                    { title: "Fırçalı Ray Temizleyici", img: "https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=500&q=80", slug: "#15" }
+                ]
+            }
+        ];
+
+        // ---------------------------------------------------------
+        // TASARIMI RENDER EDEN JAVASCRIPT KISMI
+        // ---------------------------------------------------------
+        const tabsContainer = document.getElementById('categoryTabs');
+        const productsArea = document.getElementById('productsArea');
+
+        // 1. Sekmeleri Oluştur
+        mockData.forEach((data, index) => {
+            const btn = document.createElement('button');
+            btn.className = `tab-button ${index === 0 ? 'active' : ''}`;
+            btn.textContent = data.category;
+            btn.addEventListener('click', () => switchTab(data.category, btn));
+            tabsContainer.appendChild(btn);
+        });
+
+        // 2. İlk Grid'i Oluştur
+        renderProducts(mockData[0].category);
+
+        // 3. Sekme Değiştirme Fonksiyonu
+        function switchTab(categoryName, clickedBtn) {
+            // Buton stillerini güncelle
+            document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+            clickedBtn.classList.add('active');
+            
+            // Ürünleri güncelle
+            renderProducts(categoryName);
+        }
+
+        // 4. Ürünleri Ekrana Çizme Fonksiyonu
+        function renderProducts(categoryName) {
+            // Eski grid'i gizle
+            const oldGrid = document.querySelector('.products-grid.active');
+            if (oldGrid) oldGrid.remove();
+
+            // İlgili kategorinin ürünlerini bul
+            const categoryData = mockData.find(d => d.category === categoryName);
+            
+            // Yeni grid div'i oluştur
+            const grid = document.createElement('div');
+            grid.className = 'products-grid active';
+
+            // Ürün kartlarını oluştur
+            categoryData.products.forEach(product => {
+                const card = document.createElement('a');
+                card.href = product.slug;
+                card.className = 'product-card';
+                
+                card.innerHTML = `
+                    <div class="card-image-container">
+                        <img src="${product.img}" alt="${product.title}" loading="lazy">
+                    </div>
+                    <div class="card-body">
+                        <span class="card-category-tag">${categoryName}</span>
+                        <h3 class="card-title">${product.title}</h3>
+                        <span class="card-link">Ürünü İncele →</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            productsArea.appendChild(grid);
+            
+            // Yeni kategoriye geçildiğinde scroll'un başa dönmesi için
+            grid.scrollLeft = 0; 
+        }
+    </script>
+</body>
+</html>

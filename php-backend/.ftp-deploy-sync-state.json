@@ -1,0 +1,1215 @@
+{
+    "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
+    "version": "1.0.0",
+    "generatedTime": 1777026331201,
+    "data": [
+        {
+            "type": "file",
+            "name": "404.html",
+            "size": 107728,
+            "hash": "f6c2b2084d76ca6bb89c299bb474d26572f7009345c22e4994dd1bb44147b035"
+        },
+        {
+            "type": "folder",
+            "name": "_astro"
+        },
+        {
+            "type": "folder",
+            "name": "blog"
+        },
+        {
+            "type": "file",
+            "name": "favicon.ico",
+            "size": 655,
+            "hash": "09d2ac08d8cca9b6e1f90221f345a8c4dd0371c64a0dc52b6f96fc589b1e3d67"
+        },
+        {
+            "type": "file",
+            "name": "favicon.svg",
+            "size": 749,
+            "hash": "2d7a310283d6f9cc753210d83224cd6db6348cb82a5536348884e5831d46203f"
+        },
+        {
+            "type": "folder",
+            "name": "gizlilik-politikasi"
+        },
+        {
+            "type": "folder",
+            "name": "hizmet"
+        },
+        {
+            "type": "file",
+            "name": "index.html",
+            "size": 249695,
+            "hash": "8461136e351679517449088d031b20ae22c1ffe7ad9ca056e949e39588ae6840"
+        },
+        {
+            "type": "folder",
+            "name": "kullanim-sartlari"
+        },
+        {
+            "type": "folder",
+            "name": "proje"
+        },
+        {
+            "type": "file",
+            "name": "logo.svg",
+            "size": 371,
+            "hash": "c7ca416d68ded0fe6b4e6bc300b6cce24ca02d76844d21dab71440f9b0ca109f"
+        },
+        {
+            "type": "folder",
+            "name": "projeler"
+        },
+        {
+            "type": "file",
+            "name": "robots.txt",
+            "size": 546,
+            "hash": "a5b8f5675f1aec36f4de48b82db0aa353fc392bcd51cb19d735d67eefa962add"
+        },
+        {
+            "type": "file",
+            "name": "sitemap.xml",
+            "size": 6480,
+            "hash": "be5cc6c607552e4b12225ac7cddac34aef5dfa57264ffab59b117b64aeb60e66"
+        },
+        {
+            "type": "folder",
+            "name": "tarihce"
+        },
+        {
+            "type": "folder",
+            "name": "urun"
+        },
+        {
+            "type": "folder",
+            "name": "urunler"
+        },
+        {
+            "type": "file",
+            "name": "_astro/About.C133682V.js",
+            "size": 6966,
+            "hash": "19f4fad8c6a5646f02ea9aecea239ed254bdca60ff6fabae271f11e42bd764cb"
+        },
+        {
+            "type": "file",
+            "name": "_astro/Blog.Ck8Pnxh0.js",
+            "size": 2696,
+            "hash": "47f7e8c36a649b2991700ba42d564e1c6b0b97ab2bd3be4586a91511ed48f274"
+        },
+        {
+            "type": "file",
+            "name": "_astro/BlogPostView.x9IKWWVG.js",
+            "size": 4260,
+            "hash": "e56af482876e48e26c41c6616e879a9bbf872721c2d07d40ab0bb891589a2f9f"
+        },
+        {
+            "type": "file",
+            "name": "_astro/Contact.C6jOge86.js",
+            "size": 7388,
+            "hash": "70003a503d4a9648b4e88058d126126a80ab3caed4960cbce2bbcff309331020"
+        },
+        {
+            "type": "file",
+            "name": "_astro/Footer.CkKVAtK8.js",
+            "size": 10988,
+            "hash": "6e186a01ea26a629190b3e9d0a63d9e7ec7094788aa1b18c01e245c4706179e0"
+        },
+        {
+            "type": "file",
+            "name": "_astro/Hero.6cFqD7ht.js",
+            "size": 10952,
+            "hash": "465835ccbeb2336c03aeb776b30f10f4f0a69d65a2c267e85122233da1a41b1b"
+        },
+        {
+            "type": "file",
+            "name": "_astro/ImageLightbox.CWOEb5-N.js",
+            "size": 4791,
+            "hash": "051d4ffbd7fa88725855608065f702aa3112709e2b21adadb68b93c922cb3eb2"
+        },
+        {
+            "type": "file",
+            "name": "_astro/Navbar.CK-ptRUu.js",
+            "size": 10190,
+            "hash": "8dca5f9aee0d53958479dc0bba279292b1cce2d4b1cd91370bdadee043e03f5d"
+        },
+        {
+            "type": "file",
+            "name": "_astro/ProductView.DXH3yPQ7.js",
+            "size": 9051,
+            "hash": "91ee583f1e92c1ff38b4514c6dd7786b95f9611964c6ef6776d4e6164fd9994f"
+        },
+        {
+            "type": "file",
+            "name": "_astro/Products.NSfo7CbJ.js",
+            "size": 4548,
+            "hash": "af672e735e5adfe59073d28ab478c1c397d82f1ba6cc6eb9f89e6701803f4554"
+        },
+        {
+            "type": "file",
+            "name": "_astro/ProjectView.Bf3FuyZL.js",
+            "size": 6158,
+            "hash": "79bb95e564692eb56c124679a876324c4eae91e66ba853fea14c45320ed57e9a"
+        },
+        {
+            "type": "file",
+            "name": "_astro/Projects.BUVrYrci.js",
+            "size": 5959,
+            "hash": "8323d36e8d3fd4105e5d7bca4f8e62a0f8e358802d6e2a0bf9cc7818fd9a6be6"
+        },
+        {
+            "type": "file",
+            "name": "_astro/QuoteModal.BLvbWRkI.js",
+            "size": 5690,
+            "hash": "a2f58f2eabd555241a63d972b2ac3332e7f6c56103ee52dd5899b3ca080d3faf"
+        },
+        {
+            "type": "file",
+            "name": "_astro/RouterFallback.DbTkxL0z.js",
+            "size": 1788,
+            "hash": "306d5655c5cec10da80143a4a60423c8020a9444de24767148aadb5cae2146bd"
+        },
+        {
+            "type": "file",
+            "name": "_astro/ScrollTrigger.C0eCJjti.js",
+            "size": 114397,
+            "hash": "1d99854c604bedff102458ba402e813955bb9793d718df863ce0451948077f1d"
+        },
+        {
+            "type": "file",
+            "name": "_astro/ServiceView.DsPjmIlB.js",
+            "size": 4141,
+            "hash": "d55c4f46a628dbe9ea79f20f2af715665234508ddab4ad98098772a1ef1db341"
+        },
+        {
+            "type": "file",
+            "name": "_astro/Services.gj7J2lbj.js",
+            "size": 6355,
+            "hash": "c59da32e0ccdd3615012f8e016e52061abfd524860ee620b7ccde30f1ed47fb2"
+        },
+        {
+            "type": "file",
+            "name": "_astro/arrow-left.D1MVxCts.js",
+            "size": 348,
+            "hash": "af77a5b79e460c10b20ae74b3904c3c3596eb2ed1d0f549e7f0440340a340387"
+        },
+        {
+            "type": "file",
+            "name": "_astro/arrow-right.DtJ2W_XP.js",
+            "size": 348,
+            "hash": "dcfe36e97606a11b68c209d0c05e191dab5e78a2b41df2f29c463d9ab8fd138e"
+        },
+        {
+            "type": "file",
+            "name": "_astro/arrow-up-right.CDi9Db74.js",
+            "size": 349,
+            "hash": "44fac7714dd95c73042f9783464273ac690e77f0e7a4870427c539d8dbc7a721"
+        },
+        {
+            "type": "file",
+            "name": "_astro/chevron-right.CHDxbJnn.js",
+            "size": 313,
+            "hash": "a47ccf2868ed477264f5bb4573c36bfb01e3e25f45e2cdf39caf866801ff29cb"
+        },
+        {
+            "type": "file",
+            "name": "_astro/client.Dc9Vh3na.js",
+            "size": 186619,
+            "hash": "8d42091ba7d51873675e01035d5443d9fe80fed8d6c76fc6a0de232db628cb67"
+        },
+        {
+            "type": "file",
+            "name": "_astro/createLucideIcon.D1jDATJw.js",
+            "size": 1575,
+            "hash": "81e0ae04f32e997cdee76c4160334fc3934379e3eb528d2b328c0fb3dc7c3cb9"
+        },
+        {
+            "type": "file",
+            "name": "_astro/index.DiEladB3.js",
+            "size": 7848,
+            "hash": "85800a57a5c2a7a363b7bd1c7bf22bdd8cf2cb1cd97f7012c3197ed29eea4645"
+        },
+        {
+            "type": "file",
+            "name": "_astro/index.KobUHUVR.js",
+            "size": 3950,
+            "hash": "ed21b35de35d6beef231d10e57444903ac23f9a29f3acc286f7c7822e829c7ff"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-300-normal.BnqRxXuy.woff2",
+            "size": 7812,
+            "hash": "2f4d3f2e59e0dd665765f7e6d52f0cd8173a1ec1732b544622e3a4780ad3877c"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-300-normal.LR1W_oT8.woff",
+            "size": 9816,
+            "hash": "3992f7793def227d01ffa09136961b3db4f37fa56edf4703baf8a0bd7df18903"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-400-normal.HOLc17fK.woff",
+            "size": 9780,
+            "hash": "6e441a6c94788318fa02b6d0a633aa29eebe27b69c6567eb1e59b4edc68ed70e"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-400-normal.obahsSVq.woff2",
+            "size": 7712,
+            "hash": "f0bb586459ce8f09b238285040f17e3e9e9538b2c5a7aae0775194e33c36c3c3"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-500-normal.BasfLYem.woff2",
+            "size": 7900,
+            "hash": "b77a86ec16aadc157f4a99e8898d71cd75ea264753d9bdf13f962f8c3988cbb0"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-500-normal.CxZf_p3X.woff",
+            "size": 9940,
+            "hash": "5be18e0345781cb882a267798518553c0e915174fc70731ab5f085ca64ba1ebc"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-600-normal.4D_pXhcN.woff",
+            "size": 9936,
+            "hash": "cc190ed1b64eb650a4ad7e97c7a668cb8b34acd9c4c7f7bf4372c0cbacd35795"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-600-normal.CWCymEST.woff2",
+            "size": 7972,
+            "hash": "6c2a37f82a676bcd441b735e4e2cda4edb8873a059ab9c362a84f0711f257041"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-700-normal.CjBOestx.woff2",
+            "size": 7904,
+            "hash": "5917871d3cc970d8ce195101cbf65c1f68ec948022eb6070030342bb7edfb3bb"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-700-normal.DrXBdSj3.woff",
+            "size": 9912,
+            "hash": "72b6daa49173e531027d8a260ef128e142a165811cab6a2875eefe0c3c58fa0e"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-ext-300-normal.CgCALhwJ.woff2",
+            "size": 10356,
+            "hash": "71090ccd2581f26325c9a702e0238a5a2364e311e94f6315cdb773c8a2e42244"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-ext-300-normal.RId2JxDB.woff",
+            "size": 13400,
+            "hash": "1d7d39494011221ffe9e83dbd430fd633c95a20e3751af36c19b8e34bd188851"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-ext-400-normal.BQZuk6qB.woff2",
+            "size": 10232,
+            "hash": "ef572f9187a8be018d9d9c2c6b77c1f6cb2af4199f02fc16c292ea10ab25a2cc"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-ext-400-normal.DQukG94-.woff",
+            "size": 13336,
+            "hash": "5cb2f1cc0936f89a42ceae34f5a5720248dc5b8114c12b1c33a7d2ef01a9b6b9"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-ext-500-normal.B0yAr1jD.woff2",
+            "size": 10432,
+            "hash": "1c2db92d3cd9b237ca7c9c07af556d542f28ded1db54cd4382cf776501c5291f"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-ext-500-normal.BmqWE9Dz.woff",
+            "size": 13452,
+            "hash": "e250c05aebcf49971e0b25f476992dd463c28c0292ebb204d9db542fb5066ca7"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-ext-600-normal.Bcila6Z-.woff",
+            "size": 13464,
+            "hash": "a5073285409443f4653c858de58c5dc0bfc2fd33e60d8747388345e7c5ab1ab3"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-ext-600-normal.Dfes3d0z.woff2",
+            "size": 10484,
+            "hash": "509fca9c59564f9a846fa69bc647f9b050fc11abf1c9f6f3da71fb2d5ed425bd"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-ext-700-normal.BjwYoWNd.woff2",
+            "size": 10496,
+            "hash": "a46b99781170971e2c99a87ff7ee9f5cf90a9dfcd18175e1be6300201d030123"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-cyrillic-ext-700-normal.LO58E6JB.woff",
+            "size": 13408,
+            "hash": "0f3d4be2bd7018f78fa3484a5f6e9d8ce567689426643b84a47e8cabb91e5f16"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-300-normal.BrhSP0vQ.woff",
+            "size": 9996,
+            "hash": "2fa04efd6f5b6d43ab685326e7f27245cca528d701d578ee4241c1836abc85bb"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-300-normal.DmGD3g_f.woff2",
+            "size": 8004,
+            "hash": "88669b6ea20ccf52555d032740c5a1b7f550f6d54ca0acc0969cf938fafead55"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-400-normal.B4URO6DV.woff2",
+            "size": 7776,
+            "hash": "c15ddd00a9927b56f5c655a41f976f79bd848a20cce91fc14227751872a1cc27"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-400-normal.q2sYcFCs.woff",
+            "size": 9924,
+            "hash": "bdae9d28729e8c68587d5d54e216d771a40d7a6800e824586a6e2f570c2f10df"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-500-normal.BIZE56-Y.woff2",
+            "size": 7920,
+            "hash": "cc197d79d33a3615a047baae85f4d1957f6f98b8898313658e160b1d519b1b6f"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-500-normal.Xzm54t5V.woff",
+            "size": 9980,
+            "hash": "86d55a4b1b9cbced7e61e76d5d44cf49d0bd1c814d3df2de67b7136ab4fdcece"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-600-normal.BZpKdvQh.woff",
+            "size": 10032,
+            "hash": "090b24e22fc4ddf41450d13bdec81c8a74808b9fc7edaf8df06c909b177a8992"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-600-normal.plRanbMR.woff2",
+            "size": 7944,
+            "hash": "9c5a897f9d9fcfe60d90631d766ae62b4bf1edd76633fa7a4b2f8c87e036789b"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-700-normal.BUv2fZ6O.woff",
+            "size": 9980,
+            "hash": "53368f53d5fc43381dcc45c8533ba2476f80337136313525f96dcbdc736616a5"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-700-normal.C3JjAnD8.woff2",
+            "size": 7920,
+            "hash": "737c6c91cd60372d30e6540096ada83c89c9b4613cd7472e3366bf2e07ad99f1"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-ext-300-normal.DLbbeei1.woff",
+            "size": 7128,
+            "hash": "3456cf2a25f7772120e265af7604c29c23da950bf55ec81a99688f2c829ae033"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-ext-300-normal.l2DDyC6M.woff2",
+            "size": 5348,
+            "hash": "a605c6297c3a4193ce503d8ffbe9d8f9575343a186f2c94fe2844d5035a8c5e6"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-ext-400-normal.DGGRlc-M.woff2",
+            "size": 5264,
+            "hash": "eadedd9e13c2582430a9fb1519eb86152fdabb483a6f66d90f8d8a52e977a1b7"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-ext-400-normal.KugGGMne.woff",
+            "size": 7064,
+            "hash": "4f2b6f92ddfece8812e79774d446218aa6e0773ff8c2d31130fe2bdc23bd22d0"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-ext-500-normal.2j5mBUwD.woff",
+            "size": 7192,
+            "hash": "c85d11bde719108cc9a4f6f5b008087f6c36493b47395580d4f5336182b0f0c7"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-ext-500-normal.C4iEst2y.woff2",
+            "size": 5428,
+            "hash": "75a9ec9383a3b7a7bf7cfb94f64edf38d9cfdc5f7ffa0cbed2733627a6e4426d"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-ext-600-normal.B8X0CLgF.woff",
+            "size": 7212,
+            "hash": "efc7aa9cce5c505dd8cc4c4daf00247fa805f37bcda96079239ba3358ab27dfb"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-ext-600-normal.DRtmH8MT.woff2",
+            "size": 5432,
+            "hash": "399f94d75aa73403e40e2353e8c0cc75c38f7362a6ca263b3b02d9723157ffe5"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-ext-700-normal.BoQ6DsYi.woff",
+            "size": 7216,
+            "hash": "b26ed64c9135a750ad580b92152bedeef90771e74e18f6f7759a6d7adb0f1b5d"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-greek-ext-700-normal.qfdV9bQt.woff2",
+            "size": 5444,
+            "hash": "b7b2732ebc981b30a5463ffc850407649dba41e625aee124cc63293da4547629"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-300-normal.BVlfKGgI.woff2",
+            "size": 23916,
+            "hash": "be0276550393a72b94d673505567dceba801511d5e1ca5a87793190dc5d5a6ca"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-300-normal.i8F0SvXL.woff",
+            "size": 31012,
+            "hash": "635cf706b3a3528c1617ce8edaa4e767489c1c61320a97b4aa649495ee49ac2a"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-400-normal.C38fXH4l.woff2",
+            "size": 23664,
+            "hash": "8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-400-normal.CyCys3Eg.woff",
+            "size": 30696,
+            "hash": "e20fa0b4fd2dd26e4d14b3ac3cc922509c3a63fa5e910e90c614544aa042dd45"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-500-normal.BL9OpVg8.woff",
+            "size": 31284,
+            "hash": "9b42c108da48b5ed55a3072e815ffee2d271562e6c0dd6998910e8f9c09e0a3d"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-500-normal.Cerq10X2.woff2",
+            "size": 24272,
+            "hash": "f3779f1efccc4bdcdf9c0a02ab95bf6bd092ed09c48c08cedc725889edd1d19f"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-600-normal.CiBQ2DWP.woff",
+            "size": 31260,
+            "hash": "6a9cb3a509b4eeaf12b7dda6c4aacac3e85d07f4201bf4dd716e332e692b87bd"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-600-normal.LgqL8muc.woff2",
+            "size": 24452,
+            "hash": "f9a06e79cd3a2a20951c0f0e28f66dd0e6d3fda73911d640a2125c8fcb78f21a"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-700-normal.BLAVimhd.woff",
+            "size": 31320,
+            "hash": "7c5ed5655730de337704d3fc94628515cd7e3d8d32368871709bf56ac0397e7a"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-700-normal.Yt3aPRUw.woff2",
+            "size": 24356,
+            "hash": "6f56409fd3d64bb85f7d070bce20749db2d66b6d63cec586cc22d1c761be2491"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-ext-300-normal.CPgO9Ksf.woff2",
+            "size": 35880,
+            "hash": "b11def546ac052fad7993e39c53801b55af99b0fd51a9ac0e72884b5c3fcaa3f"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-ext-300-normal.Dp1L8vcn.woff",
+            "size": 48608,
+            "hash": "0d9db034891287b2bd0c896a8e3cbf3f4594b385d95388c9841382cb3ef03bd6"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-ext-400-normal.77YHD8bZ.woff",
+            "size": 47560,
+            "hash": "22ae8360fbad24d2af7c6c9898a346c881774dc87f7cf94bd262c48ad58d7116"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-ext-400-normal.C1nco2VV.woff2",
+            "size": 35000,
+            "hash": "6744a7f509ebc6ab220a6cd4ea77e898adf014f03d88dcda5d45d8a9feefb4e9"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-ext-500-normal.BxGbmqWO.woff",
+            "size": 48492,
+            "hash": "30d2903ce97f8a89ea0e9c083b42cb8bf97e7bbb5607e7f00352815f19cb0d5b"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-ext-500-normal.CV4jyFjo.woff2",
+            "size": 36024,
+            "hash": "2c6fbc42d315528beb06c1096df45487bf4186c4b78b8111d12c9c951f8acca2"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-ext-600-normal.CIVaiw4L.woff",
+            "size": 48668,
+            "hash": "22ff20a6170674fb9637c2a072227be86303bb6ec52b829b9d7077405f7196a6"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-ext-600-normal.D2bJ5OIk.woff2",
+            "size": 36260,
+            "hash": "e4bdf67b0cd15ca9e184509275be95db942195d3cc2b17f6a0452f2adf75d0bf"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-ext-700-normal.Ca8adRJv.woff2",
+            "size": 36244,
+            "hash": "143f9504f1377012aa3e39c90c4354ef429cb0494b9ac0e1437f1a81e5412236"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-latin-ext-700-normal.TidjK2hL.woff",
+            "size": 48632,
+            "hash": "1761edba32014180deab3dbbe3f7156c64ef6f34bc76313ba31ce227fc9ff391"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-vietnamese-300-normal.Bdr24Bqb.woff2",
+            "size": 5060,
+            "hash": "1e3cde652acfbc67194e84d2068953d4799df8b125089f11687142c39603cd7f"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-vietnamese-300-normal.DDGmYYdT.woff",
+            "size": 6588,
+            "hash": "6305c5e2d150a513007f66f24d4ea5eb49a840cf59e46b166718cf845183b274"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-vietnamese-400-normal.Bbgyi5SW.woff",
+            "size": 6500,
+            "hash": "54aa42d325bcdfd623ecb9eac4a5e3c6420c63d7b86e9d8545fb479f653beb57"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-vietnamese-400-normal.DMkecbls.woff2",
+            "size": 4972,
+            "hash": "547ad9fdaeb0ae43487f4b8a02e47c36553c0c0cb73c8aa98f93b7b615f6b55d"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-vietnamese-500-normal.DOriooB6.woff2",
+            "size": 5112,
+            "hash": "44e36aa5a8f12130029a29bb0e6695d0262b67446ce321e878b1fb56162b5de6"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-vietnamese-500-normal.mJboJaSs.woff",
+            "size": 6596,
+            "hash": "18a4a09f751671cd8929d7c66e8fe7d820b511c36e51cf6047ffceab88eec4a4"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-vietnamese-600-normal.BuLX-rYi.woff",
+            "size": 6640,
+            "hash": "24a01e7bd947aeef91ae8f7b8edeb23fadaf5ceda34a610ce62d2bbdaea57e83"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-vietnamese-600-normal.Cc8MFFhd.woff2",
+            "size": 5100,
+            "hash": "1aeb94ae9db052a4a2fe6f3046f928cff1fdbd7abdf870a9a01c13cae6faeba5"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-vietnamese-700-normal.BZaoP0fm.woff",
+            "size": 6632,
+            "hash": "412023ab2f41333b373e2c6eb2a3ebab806fddd610015d2ae8cd4f4314c7ba92"
+        },
+        {
+            "type": "file",
+            "name": "_astro/inter-vietnamese-700-normal.DlLaEgI2.woff2",
+            "size": 5104,
+            "hash": "5fafa3829a16d9ea5ac3a67c51e54186353122790b604a3e361f96cab188da8b"
+        },
+        {
+            "type": "file",
+            "name": "_astro/jsx-runtime.D_zvdyIk.js",
+            "size": 725,
+            "hash": "9a9f4c93f46147e7cdce588af1497f6728a2e1d6e622c638f0a94da1b7fee8ab"
+        },
+        {
+            "type": "file",
+            "name": "_astro/map-pin.DhHF73xB.js",
+            "size": 437,
+            "hash": "87db2fa16fc1cbd31f03fe7dbb967167dd2f2d7b3d9755701862faacd36ffd13"
+        },
+        {
+            "type": "file",
+            "name": "_astro/phone.BEeuIhIU.js",
+            "size": 917,
+            "hash": "62a9c73e9a23ccc526e1924bf28b86a740841035c5835704845b169ab3bc69c4"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-cyrillic-400-normal.CjW2EstV.woff2",
+            "size": 11444,
+            "hash": "e740be684698fe83afd47e28ba5070f6e8d9759d37717679a74abd461eda01f6"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-cyrillic-400-normal.ZiRag6zj.woff",
+            "size": 13792,
+            "hash": "2d30f338946c98005a7c85ff3f8f3d96695a5122b1b76dcdf7265ee50a363aa2"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-cyrillic-500-normal.DmDODJdV.woff",
+            "size": 14536,
+            "hash": "9b8fbf11e8ebf639a07aee4cd8e719087c974fb49fcaffcf8ed6097f076f674b"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-cyrillic-500-normal.GO7-LTbC.woff2",
+            "size": 12248,
+            "hash": "6d434cc2c6c1eaa9c4b2da02652637991dd93fe980315f06f446d6371234a522"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-cyrillic-600-normal.DbWAkkgN.woff",
+            "size": 14576,
+            "hash": "d189334205cf1dfb4929abfde8baac5060c7c7ed49f066c2baea86add36b5e67"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-cyrillic-600-normal.oLY6jnZ7.woff2",
+            "size": 12224,
+            "hash": "6106d72e36626a3a77914192ac8f89f0e737d9aea78387238bd6df50d2ce1a2c"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-cyrillic-700-normal.Dk1mTcxf.woff",
+            "size": 14648,
+            "hash": "3d503750a651068cd8e49eb42eb186810425c51ccec95b544258dfef3c6d6212"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-cyrillic-700-normal.Dw3uKy19.woff2",
+            "size": 12360,
+            "hash": "cfbfb0e36791f82470367d25c5a8d498dc1561a7a66a4172b7c6df749fdf9894"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-latin-400-normal.CFtfchNt.woff2",
+            "size": 21856,
+            "hash": "1fe9ad5d8b2ebd8ecb8fbd05bed1e3fdfa52dae3f1a04e1c219918442fe9394d"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-latin-400-normal.DHYHbkg3.woff",
+            "size": 26900,
+            "hash": "3afd64d114a27e2f6604684c30f72d6dbb6ba3e6f6b1675f15a942efc7a56410"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-latin-500-normal.BScSeVwi.woff",
+            "size": 28100,
+            "hash": "29bceb26218e4d06f84792d571112cb7447448ef375ac3c07a367a14f756bd37"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-latin-500-normal.DIxvyhka.woff2",
+            "size": 23048,
+            "hash": "1e3429a2122b4171bf393c8de5c501820e17ca2074c498d7080e2326975d825c"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-latin-600-normal.CZLGqjJe.woff2",
+            "size": 23228,
+            "hash": "5d2286941a6b02a29387efa94809a064f8917598eafa67b938261cf13bb887cd"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-latin-600-normal.CxxueQ0Z.woff",
+            "size": 28356,
+            "hash": "5798aa5a8bab09880d5e1dd9bfbc8e952fb0c80ec78e695cc339e15f006e8bb8"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-latin-700-normal.Bc_1Q1cG.woff",
+            "size": 28296,
+            "hash": "648a046ddf99139a09b0ef25eb21890ea95c6323eead5285fdb4c9797a0bfc18"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-latin-700-normal.CuDiGg7c.woff2",
+            "size": 23224,
+            "hash": "28453852ea165c47b5a941be00e418402e1407002ed87507f062a1e316328fe6"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-latin-ext-400-normal.BxlSGspa.woff2",
+            "size": 12336,
+            "hash": "b13dce34203d893eb00980383bc5abf8b75c9eb1f59c3a630e9fc8baf2e9984f"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-latin-ext-400-normal.qdZwdvNS.woff",
+            "size": 15868,
+            "hash": "e5fb3069334a8d37927d192f0bfc55983a788dd7905876321fda576a6a4a7bc2"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-latin-ext-500-normal.CFxFMdkY.woff",
+            "size": 16360,
+            "hash": "7d5f0f9219d842b6dfc75b9cecaa2114a7463246ef00ace1ddef9454a9de957f"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-latin-ext-600-normal.BumBfC1v.woff",
+            "size": 16476,
+            "hash": "ae65def2e5cd939e1fc964bebb85528728b36d10502d59427a58affbce64aa10"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-latin-ext-500-normal.DE-Iylxw.woff2",
+            "size": 12928,
+            "hash": "30dee03523782294cd9b0d3ab46dfd3130c356cea831bf6cc8724e157f51846d"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-latin-ext-600-normal.CEjQclLc.woff2",
+            "size": 12880,
+            "hash": "cf968562375eceed83b66f2b5445aa4ecdc4d5300de94930da06433877a975a1"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-latin-ext-700-normal.C58ejOkc.woff2",
+            "size": 12904,
+            "hash": "edb9f5d879b30c617698bcc288692c339d5a0a2464a5476f00025195e5cad166"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-latin-ext-700-normal.D5HUU8GT.woff",
+            "size": 16472,
+            "hash": "d784356c3a7aefa42abd0eaa8873d55585aca0fe60b55ca9012a9ce3ee564d22"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-vietnamese-400-normal.BV2APVTb.woff2",
+            "size": 5584,
+            "hash": "8e05ed367ad11305be595bd17e48eea6ada9303a6414924563ceb72534342f76"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-vietnamese-400-normal.BbvUAu4N.woff",
+            "size": 7032,
+            "hash": "d045749e092df35e79de8ff19bc47655dbfcd24ce4e42d814db6e0b520486f4a"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-vietnamese-500-normal.Jyt54flB.woff2",
+            "size": 5708,
+            "hash": "aba40b8a2342f0b6fb39852a22c896ce68994c8e8213c42784934a3f1874d203"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-vietnamese-500-normal._Z41d-72.woff",
+            "size": 7132,
+            "hash": "dd05c9db29ac7ec94ef53d75eabcaa6964ce627e41a65402ab2f17b3bb454ca3"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-vietnamese-600-normal.BPJkAZPN.woff",
+            "size": 7144,
+            "hash": "6c5a892f939fa41ae3db2ad841aa02a88c4a1e1838acc33cbb9d19ab273921bc"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-vietnamese-600-normal.ICsRR-qJ.woff2",
+            "size": 5672,
+            "hash": "fdfc3667172fc08a812935ab31a4096841115da99e4334eebed65d992075aff3"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-vietnamese-700-normal.CaKJSIny.woff2",
+            "size": 5664,
+            "hash": "560402596d5f067fab1884bd39cadedbc8da9b01f85e39f134c06fb4d4472f2d"
+        },
+        {
+            "type": "file",
+            "name": "_astro/playfair-display-vietnamese-700-normal.Cr1rw0mr.woff",
+            "size": 7164,
+            "hash": "cdb48b72bf34eec9d9095e08486860cbba6084e92729328e91c7964efaa100c5"
+        },
+        {
+            "type": "file",
+            "name": "_astro/proxy.DeTZihzZ.js",
+            "size": 122043,
+            "hash": "50175e048c510247c10e3181d5e131ed9781af0c66ff8101c35cdaf0ab7ef9c2"
+        },
+        {
+            "type": "file",
+            "name": "_astro/send.B3-gnM4E.js",
+            "size": 770,
+            "hash": "171232947ead1dc94c15bb44daf0a11f1963952be6491efd77818f0be4fc03b1"
+        },
+        {
+            "type": "file",
+            "name": "_astro/share-2.CYk3T7Nw.js",
+            "size": 535,
+            "hash": "7cff357375ace15c63111f11836d24f5df8888a48d02997415cb57fab2f365b9"
+        },
+        {
+            "type": "file",
+            "name": "_astro/utils.DeOhkY2N.js",
+            "size": 250,
+            "hash": "eaca49c4409a4e2245478d0580c9aa8143cb3dee0b4e9df47685830c80fe28f7"
+        },
+        {
+            "type": "file",
+            "name": "_astro/x.ChA6XCEg.js",
+            "size": 338,
+            "hash": "64be21ece3a710503e881307ad27333e6c919d52272d4cea68c0440ad87a1687"
+        },
+        {
+            "type": "folder",
+            "name": "blog/deck-bakimi-ve-omrunu-uzatma-yollari"
+        },
+        {
+            "type": "folder",
+            "name": "blog/deck-montajinda-dikkat-edilmesi-gerekenler"
+        },
+        {
+            "type": "file",
+            "name": "blog/index.html",
+            "size": 122145,
+            "hash": "37cb78f0833ab7c939c118f594b120cfe7e35b56e4269b416b027f4ee7a8c94e"
+        },
+        {
+            "type": "folder",
+            "name": "blog/metal-vs-plastik-deck-klipsleri-karsilastirmasi"
+        },
+        {
+            "type": "folder",
+            "name": "blog/paslanmaz-celik-deck-klipslerinin-avantajlari"
+        },
+        {
+            "type": "folder",
+            "name": "blog/uv-dayanimli-deck-klipslerinin-onemi"
+        },
+        {
+            "type": "file",
+            "name": "gizlilik-politikasi/index.html",
+            "size": 108712,
+            "hash": "0b03d2105f861ea90130ae5de07c74d9d81ee88fb6017ccf820e81b6d200d3a7"
+        },
+        {
+            "type": "folder",
+            "name": "hizmet/ahsap-dis-cephe-tadilat-hizmetleri"
+        },
+        {
+            "type": "folder",
+            "name": "hizmet/ahsap-guneslik-pergola-sundurma-uretim-ve-tadilat"
+        },
+        {
+            "type": "folder",
+            "name": "hizmet/ahsap-ve-kompozit-deck-uretim-ve-montaj-hizmetleri-"
+        },
+        {
+            "type": "folder",
+            "name": "hizmet/cafe-dekorasyonu-ve-saksi-dekoru-imalat-montaj-tadilat"
+        },
+        {
+            "type": "folder",
+            "name": "hizmet/cati-yenileme-tamir-ve-tadilat"
+        },
+        {
+            "type": "folder",
+            "name": "hizmet/deck-bakimi-ve-tadilat"
+        },
+        {
+            "type": "folder",
+            "name": "hizmet/placeholder"
+        },
+        {
+            "type": "file",
+            "name": "kullanim-sartlari/index.html",
+            "size": 108632,
+            "hash": "86eeacaf5dbba4f81b63bf5527dcd9ef77f32271f1c0217b865431deed8f657a"
+        },
+        {
+            "type": "folder",
+            "name": "proje/ahsap-cocuk-evi-imalat-ve-kurulum"
+        },
+        {
+            "type": "folder",
+            "name": "proje/placeholder"
+        },
+        {
+            "type": "file",
+            "name": "projeler/index.html",
+            "size": 122267,
+            "hash": "7058df184f137e33493e3cd600a19f0aaa44493a78f50edb03498a48ce0e1101"
+        },
+        {
+            "type": "file",
+            "name": "tarihce/index.html",
+            "size": 117595,
+            "hash": "49c2a4a9f78fca5c149672734fc32ac02788f8cfd9e7eabff209a8543ca70342"
+        },
+        {
+            "type": "folder",
+            "name": "urun/darbe-dayanimli-plastik-deck-klipsi"
+        },
+        {
+            "type": "folder",
+            "name": "urun/ekonomik-plastik-deck-baglanti-klipsi"
+        },
+        {
+            "type": "folder",
+            "name": "urun/esnek-plastik-deck-sabitleme-klipsi"
+        },
+        {
+            "type": "folder",
+            "name": "urun/gizli-montaj-deck-klipsi"
+        },
+        {
+            "type": "folder",
+            "name": "urun/metal-deck-klips-pro-316"
+        },
+        {
+            "type": "folder",
+            "name": "urun/paslanmaz-celik-deck-sabitleme-klipsi"
+        },
+        {
+            "type": "folder",
+            "name": "urun/placeholder"
+        },
+        {
+            "type": "folder",
+            "name": "urun/gizli-montaj-plastik-deck-aparati"
+        },
+        {
+            "type": "folder",
+            "name": "urun/plastik-deck-klips-uv-pro"
+        },
+        {
+            "type": "folder",
+            "name": "urun/profesyonel-deck-montaj-klipsi"
+        },
+        {
+            "type": "folder",
+            "name": "urun/t-deck-klipsi"
+        },
+        {
+            "type": "folder",
+            "name": "urun/uv-dayanimli-plastik-deck-klipsi"
+        },
+        {
+            "type": "folder",
+            "name": "urun/yan-gizli-baglanti-deck-klipsi"
+        },
+        {
+            "type": "folder",
+            "name": "urun/yuksek-dayanimli-deck-baglanti-klipsi"
+        },
+        {
+            "type": "file",
+            "name": "urunler/index.html",
+            "size": 167508,
+            "hash": "c9abad36b8c731873411972cffe2bec333a23180caef77b60055af69da29f3e4"
+        },
+        {
+            "type": "file",
+            "name": "blog/deck-bakimi-ve-omrunu-uzatma-yollari/index.html",
+            "size": 117001,
+            "hash": "59ffe0c0c60038ee28a4034553bec6fb7765f8c72780e5bfd8fbb8a2c1fdd1bb"
+        },
+        {
+            "type": "file",
+            "name": "blog/deck-montajinda-dikkat-edilmesi-gerekenler/index.html",
+            "size": 122967,
+            "hash": "57a15d4c94993af8f919caf80dd05f350bd618733e3c79b7eb4a39c3932971f9"
+        },
+        {
+            "type": "file",
+            "name": "blog/metal-vs-plastik-deck-klipsleri-karsilastirmasi/index.html",
+            "size": 117216,
+            "hash": "bb3ee13725feaf6aac787e6ec27253f952e35279d06b587b2ceec21b899aa5e9"
+        },
+        {
+            "type": "file",
+            "name": "blog/paslanmaz-celik-deck-klipslerinin-avantajlari/index.html",
+            "size": 116915,
+            "hash": "918601c712f54e9ac64c66189db34df52a1dd8883915e6bd5a36e6aee9862890"
+        },
+        {
+            "type": "file",
+            "name": "blog/uv-dayanimli-deck-klipslerinin-onemi/index.html",
+            "size": 115850,
+            "hash": "e161c804c5e321c508be38cdb0f2664372178b9604fd47cb791a7a0b067cb8b0"
+        },
+        {
+            "type": "file",
+            "name": "hizmet/ahsap-dis-cephe-tadilat-hizmetleri/index.html",
+            "size": 116310,
+            "hash": "aeb053dee650f143c267a10b6ff2e01eab5a568538d6f9a1b62e1687781dcc2d"
+        },
+        {
+            "type": "file",
+            "name": "hizmet/ahsap-guneslik-pergola-sundurma-uretim-ve-tadilat/index.html",
+            "size": 117364,
+            "hash": "b5d1d56d9be0c3f69a5c9d3940b5eaaa9113bc9b32f19f0d0d25ef0d8a04cb84"
+        },
+        {
+            "type": "file",
+            "name": "hizmet/ahsap-ve-kompozit-deck-uretim-ve-montaj-hizmetleri-/index.html",
+            "size": 116128,
+            "hash": "9fd9f9d68c1bb9efbcb0cf2e860d231a4f590f2afd5225113f7456ec426212ea"
+        },
+        {
+            "type": "file",
+            "name": "hizmet/cafe-dekorasyonu-ve-saksi-dekoru-imalat-montaj-tadilat/index.html",
+            "size": 116361,
+            "hash": "b8dded430dc271529686034eb49d5b567f20717e5bc3bbf6397f75819a22cdaa"
+        },
+        {
+            "type": "file",
+            "name": "hizmet/cati-yenileme-tamir-ve-tadilat/index.html",
+            "size": 115334,
+            "hash": "dba0f4b68727caaa45542611407b972dc1a4192b02a167d451389be17806bfd3"
+        },
+        {
+            "type": "file",
+            "name": "hizmet/deck-bakimi-ve-tadilat/index.html",
+            "size": 116075,
+            "hash": "c3f6977e7a759e3448cb3e7f20390a96ac94d9feac3bbef3a8925b6f1ca4f0c5"
+        },
+        {
+            "type": "file",
+            "name": "hizmet/placeholder/index.html",
+            "size": 108175,
+            "hash": "c66ddc39b3bb87dee0b74e1a1a16f37f85163b63f6a42fdb0f45e7eca6c47b23"
+        },
+        {
+            "type": "file",
+            "name": "proje/ahsap-cocuk-evi-imalat-ve-kurulum/index.html",
+            "size": 121665,
+            "hash": "6bd346cfeac532ac573ea116170169e314d5a82cbece28ccef7e22b1ac600f8a"
+        },
+        {
+            "type": "file",
+            "name": "proje/placeholder/index.html",
+            "size": 108162,
+            "hash": "63a8f07c60b571f8c32b187e2489790e55c2a398a284d7464b5c891931212976"
+        },
+        {
+            "type": "file",
+            "name": "urun/darbe-dayanimli-plastik-deck-klipsi/index.html",
+            "size": 119980,
+            "hash": "d5b83431508f4fc1f0cb8fb8f048fbc242790cc5eebbeb3bc400aa1c3c8b479f"
+        },
+        {
+            "type": "file",
+            "name": "urun/ekonomik-plastik-deck-baglanti-klipsi/index.html",
+            "size": 119871,
+            "hash": "d4fa3fc6e6a6d65ab10bdde60081b1d0552aa1b35a0786d3d3f5ca9c5fa2adb8"
+        },
+        {
+            "type": "file",
+            "name": "urun/esnek-plastik-deck-sabitleme-klipsi/index.html",
+            "size": 119564,
+            "hash": "271b166527340391fe56cba2a03e05b9cf060bc43b49aac3a7cb6de7e4f91318"
+        },
+        {
+            "type": "file",
+            "name": "urun/gizli-montaj-deck-klipsi/index.html",
+            "size": 120548,
+            "hash": "fa4797689f264b105183c4178eddbab1ecc7b215fde1c65025d2d98e2102f965"
+        },
+        {
+            "type": "file",
+            "name": "urun/metal-deck-klips-pro-316/index.html",
+            "size": 122442,
+            "hash": "763c52c7998f491ac99ecef6a778ba8e6eea284683ee618b26ca758d204afe6c"
+        },
+        {
+            "type": "file",
+            "name": "urun/paslanmaz-celik-deck-sabitleme-klipsi/index.html",
+            "size": 119302,
+            "hash": "96286b3c94fd5aa3a27ce136c0219847a6c9116f5ecc4fd063b3ecd7a207c34d"
+        },
+        {
+            "type": "file",
+            "name": "urun/placeholder/index.html",
+            "size": 107968,
+            "hash": "ff260509fdda5a2aca148c47fb15956b58dab681385233bda4b8154ba8a9dba5"
+        },
+        {
+            "type": "file",
+            "name": "urun/gizli-montaj-plastik-deck-aparati/index.html",
+            "size": 120066,
+            "hash": "afe47c848096514f90397ffac4e023ef1de6b9885cd38496eea5fa4ceb722633"
+        },
+        {
+            "type": "file",
+            "name": "urun/plastik-deck-klips-uv-pro/index.html",
+            "size": 119324,
+            "hash": "4a5f6732810cb27706080272af918da9163e1b309ab219ad0d7206b7625519cf"
+        },
+        {
+            "type": "file",
+            "name": "urun/profesyonel-deck-montaj-klipsi/index.html",
+            "size": 119547,
+            "hash": "d4315890f96b0aaac42ec8b7befbc6d15692d37cdd6da2f39e2174d474db1b2a"
+        },
+        {
+            "type": "file",
+            "name": "urun/t-deck-klipsi/index.html",
+            "size": 121486,
+            "hash": "b1f7c72fbbb0aff0f451a6135fc86ce8e1b76597ae12526de9dec938a205bd6e"
+        },
+        {
+            "type": "file",
+            "name": "urun/uv-dayanimli-plastik-deck-klipsi/index.html",
+            "size": 119762,
+            "hash": "69fb2bfad4165a59d6bd049ec25faabccb1b43a74ad6d532b9c627aba4fe0b8e"
+        },
+        {
+            "type": "file",
+            "name": "urun/yan-gizli-baglanti-deck-klipsi/index.html",
+            "size": 119018,
+            "hash": "0e8d51e2c784bec23a490b123b99ce580237df76950c3e20b01d5e0d580a98fb"
+        },
+        {
+            "type": "file",
+            "name": "urun/yuksek-dayanimli-deck-baglanti-klipsi/index.html",
+            "size": 119559,
+            "hash": "8bbb2dfccc2f8b58658eb5012afa4b0f056309d63ff3f20f0e5b52c549c941ea"
+        }
+    ]
+}

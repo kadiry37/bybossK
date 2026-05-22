@@ -1,0 +1,106 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import BlogList from '../../components/Blog';
+import { getSettings, getNavigation, getBlogPosts } from '../../lib/api';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'tr' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'ar' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const langPrefix = lang === 'tr' ? '' : `/${lang}`;
+
+let settingsData = null;
+let navData = null;
+let blogData = null;
+try {
+  settingsData = await getSettings(lang);
+  navData = await getNavigation(lang);
+  blogData = await getBlogPosts(undefined, lang);
+} catch (e) {}
+---
+
+<Layout 
+  title={lang === 'en' ? 'Blog & Information Guide' : (lang === 'ar' ? 'المدونة ودليل المعلومات' : 'Blog & Bilgi Rehberi')}
+  description={lang === 'en' ? 'Deck installation, clip selection and application guides. Latest information and sector news from our professional team.' : (lang === 'ar' ? 'تركيب الأسطح، اختيار المشابك وأدلة التطبيق. أحدث المعلومات وأخبار القطاع من فريقنا المحترف.' : 'Deck montajı, klips seçimi ve uygulama rehberleri. Profesyonel ekibimizden en güncel bilgiler ve sektör haberleri.')}
+  keywords="deck montajı, deck klips rehberi, deck uygulama, deck bakımı, ahşap deck"
+  footerScripts={settingsData?.footer?.scripts || ''}
+  logo={settingsData?.general?.logo || ''}
+  favicon={settingsData?.general?.favicon || ''}
+  googleAnalytics={settingsData?.seo?.googleAnalytics || ''}
+  googleSearchConsole={settingsData?.seo?.searchConsole || ''}
+  yandexVerification={settingsData?.seo?.yandexVerification || ''}
+  bingVerification={settingsData?.seo?.bingVerification || ''}
+  lang={lang}
+>
+
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": lang === 'en' ? 'Home' : (lang === 'ar' ? 'الصفحة الرئيسية' : 'Ana Sayfa'), "item": `https://bybossmimarlik.com${langPrefix}/` },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": `https://bybossmimarlik.com${langPrefix}/blog/` }
+      ]
+    })} />
+
+  </Fragment>
+  <main class="min-h-screen bg-noir-1000 overflow-hidden">
+    <Navbar client:load data={settingsData} navData={navData?.header} lang={lang} />
+
+    {/* Page Header */}
+    <div class="relative pt-40 pb-12 lg:pt-52 lg:pb-24 overflow-hidden bg-noir-1000">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(201,169,98,0.1),transparent_70%)] pointer-events-none"></div>
+      
+      <div class="container mx-auto px-6 relative z-10 text-center">
+        <div class="max-w-4xl mx-auto">
+          <span class="inline-flex items-center gap-2 px-5 py-2.5 border border-gold-500/20 text-gold-500 text-[10px] font-bold tracking-[0.2em] uppercase mb-10 bg-gold-500/5 backdrop-blur-xl rounded-full">
+             <span class="w-1.5 h-1.5 rounded-full bg-gold-500 shadow-[0_0_10px_rgba(201,169,98,0.8)]"></span>
+              {lang === 'en' ? 'Knowledge & Sharing' : (lang === 'ar' ? 'المعرفة والمشاركة' : 'Bilgi & Paylaşım')}
+          </span>
+          <h1 class="text-white text-5xl md:text-8xl font-bold font-serif mb-10 leading-[1.1]">
+              Blog <span class="gradient-text">{lang === 'en' ? '& Guide' : (lang === 'ar' ? '& مرشد' : '& Rehber')}</span>
+          </h1>
+          <p class="text-noir-300 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+            {lang === 'en' ? 'Expert opinions, technical tips and the latest application methods for the deck world are here.' : (lang === 'ar' ? 'آراء الخبراء والنصائح الفنية وأحدث طرق التطبيق لعالم الأسطح موجودة هنا.' : 'Deck dünyasına dair uzman görüşleri, teknik ipuçları ve en yeni uygulama yöntemleri burada.')}
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    {/* Blog List React Component */}
+    <BlogList client:visible data={blogData} lang={lang} />
+
+
+    {/* Newsletter / CTA */}
+    <div class="container mx-auto px-6 pb-32">
+       <div class="relative bg-noir-900/50 border border-noir-800 rounded-[4rem] p-16 overflow-hidden backdrop-blur-3xl">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(201,169,98,0.05),transparent_50%)]"></div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-16 relative z-10">
+             <div class="space-y-6">
+                <h2 class="text-white text-4xl lg:text-5xl font-serif font-bold">{lang === 'en' ? 'Do you want technical info?' : (lang === 'ar' ? 'هل تريد معلومات تقنية؟' : 'Teknik bilgi ister misiniz?')}</h2>
+                <p class="text-noir-300 text-lg max-w-md">{lang === 'en' ? 'Our expert team offers free consultancy in choosing the most suitable product for your projects.' : (lang === 'ar' ? 'يقدم فريق الخبراء لدينا استشارات مجانية في اختيار المنتج الأكثر ملاءمة لمشاريعك.' : 'Projeleriniz için en uygun ürün seçiminde uzman ekibimiz size ücretsiz danışmanlık sunuyor.')}</p>
+             </div>
+
+             <div class="flex justify-start lg:justify-end">
+                <a href={`${langPrefix || '/'}/#contact`} class="btn-primary group">
+                   <span>{lang === 'en' ? 'CONTACT US' : (lang === 'ar' ? 'اتصل بنا' : 'BİZE ULAŞIN')}</span>
+                   <svg class="w-5 h-5 ml-4 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                   </svg>
+                </a>
+             </div>
+          </div>
+       </div>
+    </div>
+  </main>
+  <Footer client:load data={settingsData} navData={navData?.footer} lang={lang} />
+
+</Layout>

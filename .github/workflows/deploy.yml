@@ -1,0 +1,90 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  repository_dispatch:
+    types: [content-update]
+
+# IMPORTANT: Only one deploy at a time. If a new one starts, cancel the previous.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./astro-project
+        
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: './astro-project/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Astro
+        run: npm run build
+        env:
+          API_URL: ${{ secrets.API_URL }}
+          NODE_ENV: production
+
+      - name: Remove placeholder pages
+        run: |
+          find dist -type d -name '_placeholder' -exec rm -rf {} + 2>/dev/null || true
+
+      - name: Upload Frontend to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: public_html/
+          local-dir: ./astro-project/dist/
+          port: 21
+          timeout: 600000
+          state-name: .ftp-deploy-sync-state.json
+          dry-run: false
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/_placeholder/**
+
+      - name: Upload Backend to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: public_html/
+          local-dir: ./php-backend/
+          port: 21
+          timeout: 600000
+          state-name: .ftp-backend-sync-state.json
+          dry-run: false
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/uploads/**
+            **/.env
+            **/config.php
+            **/github_webhook.log
+            **/.ftp-deploy-sync-state.json
+
+      - name: Ping IndexNow
+        run: |
+          echo "Pinging IndexNow API..."
+          curl -s -X GET "https://bybossmimarlik.com/api/indexnow.php"

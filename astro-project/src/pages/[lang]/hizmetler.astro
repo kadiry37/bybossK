@@ -1,0 +1,83 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import ServicesSection from '../../components/Services';
+import { getSettings, getNavigation, getServices } from '../../lib/api';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'tr' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'ar' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const langPrefix = lang === 'tr' ? '' : `/${lang}`;
+
+let settingsData = null;
+let navData = null;
+let servicesData = null;
+try {
+  settingsData = await getSettings(lang);
+  navData = await getNavigation(lang);
+  servicesData = await getServices(lang);
+} catch (e) {}
+---
+
+<Layout 
+  title={lang === 'en' ? 'Our Services' : (lang === 'ar' ? 'خدماتنا' : 'Hizmetlerimiz')}
+  description={lang === 'en' ? 'Professional architectural design and custom furniture solutions.' : (lang === 'ar' ? 'تصميم معماري احترافي وحلول أثاث مخصصة.' : 'Profesyonel mimari tasarım ve özel mobilya çözümleri.')}
+  keywords="hizmetler, mimari, tasarım, mobilya, deck"
+  footerScripts={settingsData?.footer?.scripts || ''}
+  logo={settingsData?.general?.logo || ''}
+  favicon={settingsData?.general?.favicon || ''}
+  googleAnalytics={settingsData?.seo?.googleAnalytics || ''}
+  googleSearchConsole={settingsData?.seo?.searchConsole || ''}
+  yandexVerification={settingsData?.seo?.yandexVerification || ''}
+  bingVerification={settingsData?.seo?.bingVerification || ''}
+  lang={lang}
+>
+
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": lang === 'en' ? 'Home' : (lang === 'ar' ? 'الصفحة الرئيسية' : 'Ana Sayfa'), "item": `https://bybossmimarlik.com${langPrefix}/` },
+        { "@type": "ListItem", "position": 2, "name": lang === 'en' ? 'Services' : (lang === 'ar' ? 'الخدمات' : 'Hizmetler'), "item": `https://bybossmimarlik.com${langPrefix}/hizmetler/` }
+      ]
+    })} />
+  </Fragment>
+
+  <main class="min-h-screen bg-noir-900">
+    <Navbar client:load data={settingsData} navData={navData?.header} servicesData={servicesData} lang={lang} />
+
+    {/* Page Header */}
+    <div class="relative pt-40 pb-12 lg:pt-52 lg:pb-20 overflow-hidden bg-noir-950">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(201,169,98,0.1),transparent_70%)] pointer-events-none"></div>
+      
+      <div class="container mx-auto px-6 relative z-10 text-center">
+        <div class="max-w-4xl mx-auto">
+          <span class="inline-flex items-center gap-2 px-4 py-2 border border-gold-500/30 text-gold-500 text-xs font-medium tracking-widest uppercase mb-8 bg-gold-500/5 backdrop-blur-sm rounded-full">
+             <span class="w-1.5 h-1.5 rounded-full bg-gold-500 animate-pulse"></span>
+             {lang === 'en' ? 'What We Do' : (lang === 'ar' ? 'ماذا نفعل' : 'Neler Yapıyoruz')}
+          </span>
+          <h1 class="text-white text-5xl md:text-8xl font-bold font-serif mb-8 leading-[1.1]">
+             {lang === 'en' ? 'Professional' : (lang === 'ar' ? 'احترافي' : 'Profesyonel')} <span class="gradient-text">{lang === 'en' ? 'Services' : (lang === 'ar' ? 'الخدمات' : 'Hizmetlerimiz')}</span>
+          </h1>
+          <p class="text-noir-300 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+            {lang === 'en' ? 'We offer expert solutions in architectural design, implementation, and custom furniture manufacturing.' : (lang === 'ar' ? 'نقدم حلولاً خبيرة في التصميم المعماري والتنفيذ وتصنيع الأثاث المخصص.' : 'Mimari tasarım, uygulama ve özel mobilya imalatında uzman çözümler sunuyoruz.')}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pb-16">
+        <ServicesSection client:visible data={servicesData} lang={lang} isHomePage={false} />
+    </div>
+
+    <Footer client:visible data={settingsData} navData={navData?.footer} lang={lang} />
+  </main>
+</Layout>

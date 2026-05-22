@@ -1,0 +1,66 @@
+# .htaccess - Optimized for Clean Multilingual URLs
+DirectoryIndex index.html index.php
+AddDefaultCharset UTF-8
+
+RewriteEngine On
+RewriteBase /
+
+ErrorDocument 404 /404.html
+
+# 0. Admin ve API klasörleri: PHP'ye direkt geçiş (Astro kurallarından önce)
+# Admin paneli ve API endpointleri PHP ile çalışır, Astro rewrite'larına takılmamalı
+RewriteCond %{REQUEST_URI} ^/(admin|api)/ [NC]
+RewriteRule ^ - [L]
+
+# 1. www'yi non-www'ye ve HTTP'yi HTTPS'e yönlendir (301 Redirect)
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2. URL'den /tr/ ibaresini gizle ve ana dizine yönlendir (301 Redirect)
+# Eğer kullanıcı elle /tr/ yazarsa onu ana dizine atarız
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /tr([/\?\s]) [NC]
+RewriteRule ^tr(?:/(.*))?$ /$1 [L,R=301]
+
+# 2.5. Google Verification - Don't redirect these files
+RewriteCond %{REQUEST_URI} ^/google[a-z0-9]+\.html$
+RewriteRule ^ - [L]
+
+# 2.6. Trailing slash ekle - Tüm sayfalar için tutarlılık (Ayar, Admin, API ve dosyalar hariç)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^/(api|admin|assets|uploads|images|_astro) [NC]
+RewriteCond %{REQUEST_URI} !(.*)\.[a-zA-Z0-9]+$
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ /$1/ [L,R=301]
+
+# 2.7. Sitemap.xml → PHP router
+RewriteRule ^sitemap\.xml$ /api/sitemap.php [L]
+RewriteRule ^(tr|en|ar)/sitemap\.xml$ /api/sitemap.php [L]
+
+# 3. /tr/ klasörünü arka planda "root" olarak kullan (Rewrite)
+# (en, ar, api, admin vb. gerçek klasörler hariç her şeyi /tr/ klasörüne sorar)
+RewriteCond %{REQUEST_URI} !^/(tr|en|ar|api|admin|assets|uploads|images|_astro)/? [NC]
+RewriteCond %{REQUEST_URI} !^/(sitemap\.php|sitemap\.xml|robots\.txt|favicon\.ico|logo\.svg) [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /tr/$1 [L]
+
+# 4. Dosya varsa direkt servis et
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# 4.5. Klasör ise ve içinde index.html varsa onu sessizce göster
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.html -f
+RewriteRule ^(.*)/?$ $1/index.html [L]
+
+# 4.6. Klasör ise ama index.html yoksa - SEO router fallback
+# (Yeni eklenen proje/hizmet henüz build edilmemiş olabilir)
+RewriteRule ^(tr|en|ar)/proje/([^/]+)/?$ /api/seo-router.php?lang=$1&type=project&slug=$2&no_redirect=1 [L]
+RewriteRule ^(tr|en|ar)/hizmet/([^/]+)/?$ /api/seo-router.php?lang=$1&type=service&slug=$2&no_redirect=1 [L]
+RewriteRule ^(tr|en|ar)/urun/([^/]+)/?$ /api/seo-router.php?lang=$1&type=product&slug=$2&no_redirect=1 [L]
+RewriteRule ^(tr|en|ar)/blog/([^/]+)/?$ /api/seo-router.php?lang=$1&type=blog&slug=$2&no_redirect=1 [L]
+
+# 5. Fallback: Return 404 status code (will serve /404.html via ErrorDocument)
+RewriteRule ^ - [R=404,L]

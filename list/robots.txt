@@ -1,0 +1,32 @@
+# robots.txt for ATELIER NOIR
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://ateliernoir.com/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /*.json$
+
+# Allow important assets
+Allow: /images/
+Allow: /fonts/
+Allow: /*.css$
+Allow: /*.js$
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Google specific
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing specific
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1

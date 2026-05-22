@@ -1,0 +1,87 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import ProjectsSection from '../../components/Projects';
+import { getSettings, getNavigation, getProjects } from '../../lib/api';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'tr' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'ar' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const langPrefix = lang === 'tr' ? '' : `/${lang}`;
+
+let settingsData = null;
+let navData = null;
+let projectsData = null;
+try {
+  settingsData = await getSettings(lang);
+  navData = await getNavigation(lang);
+  projectsData = await getProjects(undefined, undefined, lang);
+} catch (e) {}
+---
+
+<Layout 
+  title={lang === 'en' ? 'Projects' : (lang === 'ar' ? 'المشاريع' : 'Projeler')}
+  description={lang === 'en' ? 'We transform the spaces of your dreams into reality. From architectural design to custom furniture, we are with you in every project.' : (lang === 'ar' ? 'نحن نحول مساحات أحلامك إلى حقيقة. من التصميم المعماري إلى الأثاث المخصص، نحن معك في her projemizde.' : 'Hayalinizdeki mekanları gerçeğe dönüştürüyoruz. Mimari tasarımdan özel mobilyaya, her projede mükemmellik ve özgünlük arayışımızla yanınızdayız.')}
+  keywords="projeler, mimari, mobilya, deck, portfölyo"
+  footerScripts={settingsData?.footer?.scripts || ''}
+  logo={settingsData?.general?.logo || ''}
+  favicon={settingsData?.general?.favicon || ''}
+  googleAnalytics={settingsData?.seo?.googleAnalytics || ''}
+  googleSearchConsole={settingsData?.seo?.searchConsole || ''}
+  yandexVerification={settingsData?.seo?.yandexVerification || ''}
+  bingVerification={settingsData?.seo?.bingVerification || ''}
+  lang={lang}
+>
+
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": lang === 'en' ? 'Home' : (lang === 'ar' ? 'الصفحة الرئيسية' : 'Ana Sayfa'), "item": `https://bybossmimarlik.com${langPrefix}/` },
+        { "@type": "ListItem", "position": 2, "name": lang === 'en' ? 'Projects' : (lang === 'ar' ? 'المشاريع' : 'Projeler'), "item": `https://bybossmimarlik.com${langPrefix}/projeler/` }
+      ]
+    })} />
+
+  </Fragment>
+  <main class="min-h-screen bg-noir-900">
+    <Navbar client:load data={settingsData} navData={navData?.header} projectsData={projectsData} lang={lang} />
+
+    
+    {/* Page Header */}
+    <div class="relative pt-40 pb-12 lg:pt-52 lg:pb-20 overflow-hidden bg-noir-900">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(201,169,98,0.1),transparent_70%)] pointer-events-none"></div>
+      
+      <div class="container mx-auto px-6 relative z-10 text-center">
+        <div class="max-w-4xl mx-auto">
+          <span class="inline-flex items-center gap-2 px-4 py-2 border border-gold-500/30 text-gold-500 text-xs font-medium tracking-widest uppercase mb-8 bg-gold-500/5 backdrop-blur-sm rounded-full">
+             <span class="w-1.5 h-1.5 rounded-full bg-gold-500 animate-pulse"></span>
+             {lang === 'en' ? 'All Our Designs' : (lang === 'ar' ? 'كل تصاميمنا' : 'Tüm Tasarımlarımız')}
+          </span>
+          <h1 class="text-white text-5xl md:text-8xl font-bold font-serif mb-8 leading-[1.1]">
+             {lang === 'en' ? 'Exclusive' : (lang === 'ar' ? 'خاصة' : 'Özel')} <span class="gradient-text">{lang === 'en' ? 'Projects' : (lang === 'ar' ? 'مشاريعنا' : 'Projelerimiz')}</span>
+          </h1>
+          <p class="text-noir-300 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+            {lang === 'en' ? 'All projects we have successfully completed, from architectural design to custom furniture applications.' : (lang === 'ar' ? 'جميع المشاريع التي أكملناها بنجاح، من التصميم المعmari إلى تطبيقات الأثاث المخصصة.' : 'Mimari tasarımdan özel mobilya uygulamalarına kadar başarıyla tamamladığımız tüm projeler.')}
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="pb-16">
+        <ProjectsSection client:visible data={projectsData} lang={lang} isHomePage={false} />
+
+    </div>
+
+    <Footer client:visible data={settingsData} navData={navData?.footer} lang={lang} />
+
+  </main>
+</Layout>

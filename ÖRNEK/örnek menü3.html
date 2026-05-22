@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DECK KLİPS - Premium Deck Çözümleri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-0: #060608;
+            --bg-1: #0b0b0f;
+            --bg-2: #131318;
+            --bg-glass: rgba(11,11,15,0.82);
+            --accent: #3a9ec0;
+            --accent-l: #52b8da;
+            --accent-d: #2c809e;
+            --accent-glow: rgba(58,158,192,0.10);
+            --txt: #e8e9ec;
+            --txt-2: #6a6d75;
+            --txt-3: #3a3c42;
+            --brd: rgba(255,255,255,0.05);
+            --brd-a: rgba(58,158,192,0.22);
+            --fh: 'Space Grotesk', sans-serif;
+            --fb: 'DM Sans', sans-serif;
+            --top-h: 36px;
+            --nav-h: 66px;
+            --tf: .2s cubic-bezier(.4,0,.2,1);
+            --ts: .4s cubic-bezier(.4,0,.2,1);
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+        body{font-family:var(--fb);background:var(--bg-0);color:var(--txt);line-height:1.6;overflow-x:hidden}
+        a{text-decoration:none;color:inherit;transition:color var(--tf)}
+        ul,ol{list-style:none}
+        img{display:block;max-width:100%}
+
+        .cx{max-width:1440px;margin:0 auto;padding:0 24px}
+
+        /* ===== HEADER ===== */
+        #hd{position:sticky;top:0;z-index:1000;background:var(--bg-0);transition:background var(--ts),border-color var(--ts),box-shadow var(--ts)}
+        body.scrolled #hd{background:var(--bg-glass);backdrop-filter:blur(28px) saturate(1.4);-webkit-backdrop-filter:blur(28px) saturate(1.4);border-bottom:1px solid var(--brd);box-shadow:0 1px 0 var(--brd)}
+
+        /* Top bar */
+        .tb{height:var(--top-h);border-bottom:1px solid var(--brd);max-height:var(--top-h);overflow:hidden;transition:max-height var(--ts),opacity var(--ts)}
+        body.scrolled .tb{max-height:0;opacity:0;border-bottom-color:transparent}
+        .tb .cx{display:flex;align-items:center;justify-content:space-between;height:100%}
+        .tb-l,.tb-r{display:flex;align-items:center;gap:20px}
+        .tb-a{display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--txt-2)}
+        .tb-a svg{flex-shrink:0;opacity:.45}
+        .tb-a:hover{color:var(--accent-l)}
+        .tb-a:hover svg{opacity:1}
+        .tb-sep{width:1px;height:12px;background:var(--brd)}
+        .lang{display:flex;align-items:center;gap:3px;font-size:11.5px;font-weight:500;color:var(--txt-2);cursor:pointer;padding:2px 7px;border-radius:4px;transition:all var(--tf)}
+        .lang:hover{color:var(--txt);background:rgba(255,255,255,.04)}
+
+        /* Nav */
+        .nv{height:var(--nav-h)}
+        .nv .cx{display:flex;align-items:center;height:100%}
+
+        /* Logo */
+        .logo{flex:0 0 auto;margin-right:auto;display:flex;align-items:center}
+        .logo-w{width:154px;height:42px;position:relative;border-radius:5px;overflow:hidden}
+        .logo-w img{width:100%;height:100%;object-fit:contain;transition:opacity var(--tf)}
+        .logo-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:14px;font-weight:700;letter-spacing:.06em;color:var(--txt);background:var(--bg-2);border:1px solid var(--brd);border-radius:5px;transition:opacity var(--tf)}
+        .logo-ph span{color:var(--accent)}
+        .logo-w:has(img[src]:not([src*="data:"])) .logo-ph{opacity:0;pointer-events:none}
+
+        /* Menu */
+        .nm{flex:1 1 0%;display:flex;align-items:center;justify-content:center;gap:0}
+        .ni{position:relative}
+        .nl{display:flex;align-items:center;gap:4px;padding:8px 16px;font-size:13.5px;font-weight:500;color:var(--txt-2);border-radius:7px;transition:all var(--tf);white-space:nowrap}
+        .nl:hover,.ni.act>.nl{color:var(--txt);background:rgba(255,255,255,.035)}
+        .ni.act>.nl{color:var(--accent-l)}
+        .ni.act>.nl::after{content:'';position:absolute;bottom:0;left:16px;right:16px;height:2px;background:var(--accent);border-radius:1px}
+        .nc{width:11px;height:11px;transition:transform var(--tf)}
+        .ni:hover>.nl .nc,.ni.open>.nl .nc{transform:rotate(180deg)}
+
+        /* CTA sağ yaslı */
+        .cta-n{flex:0 0 auto;margin-left:20px;display:flex;align-items:center;gap:7px;padding:9px 22px;font-family:var(--fh);font-size:13px;font-weight:600;letter-spacing:.015em;color:var(--bg-0);background:var(--accent);border-radius:9px;position:relative;overflow:hidden;transition:all var(--tf)}
+        .cta-n:hover{background:var(--accent-l);transform:translateY(-1px);box-shadow:0 6px 22px rgba(58,158,192,.28)}
+        .cta-n::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.22) 50%,transparent 70%);animation:shim 4.5s ease-in-out infinite}
+        @keyframes shim{0%,75%{left:-100%}100%{left:200%}}
+
+        /* ===== MEGA MENU ===== */
+        /* Görünmez köprü — hover alanını dropdown'a kadar genişletir */
+        .ni.hm::after,.ni.hd::after{content:'';position:absolute;top:100%;left:0;right:0;height:16px;z-index:10}
+
+        .mm{position:absolute;top:calc(100% + 2px);left:50%;transform:translateX(-50%) translateY(-8px);width:860px;background:var(--bg-1);border:1px solid var(--brd);border-radius:16px;padding:10px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s ease,transform .25s ease,visibility 0s .25s;box-shadow:0 32px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.02) inset}
+        .mm::before{content:'';position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:44px;height:2.5px;background:var(--accent);border-radius:2px;opacity:0;transition:opacity .25s ease .06s}
+        .ni:hover>.mm,.ni.open>.mm{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);transition:opacity .25s ease,transform .25s ease,visibility 0s 0s}
+        .ni:hover>.mm::before,.ni.open>.mm::before{opacity:.65}
+
+        /* Featured */
+        .mm-feat{position:relative;border-radius:13px;overflow:hidden;display:grid;grid-template-columns:190px 1fr auto;align-items:center;gap:20px;background:linear-gradient(135deg,var(--bg-2),rgba(58,158,192,.05));border:1px solid rgba(58,158,192,.08);margin-bottom:10px;opacity:0;transform:translateY(5px);transition:opacity .32s ease .04s,transform .32s ease .04s}
+        .ni:hover>.mm .mm-feat,.ni.open>.mm .mm-feat{opacity:1;transform:translateY(0)}
+        .mm-feat-img{width:190px;height:120px;position:relative;overflow:hidden}
+        .mm-feat-img img{width:100%;height:100%;object-fit:cover}
+        .mm-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity var(--tf)}
+        .mm-ph svg{color:var(--txt-3);opacity:.35}
+        .mm-feat-img:has(img[src]:not([src*="data:"])) .mm-ph{opacity:0}
+        .mm-feat-body{padding:16px 0}
+        .mm-feat-t{font-family:var(--fh);font-size:15px;font-weight:600;margin-bottom:3px}
+        .mm-feat-d{font-size:12.5px;color:var(--txt-2);line-height:1.5}
+        .mm-feat-cta{padding:0 20px}
+        .mm-feat-link{display:flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:var(--accent);white-space:nowrap;transition:gap var(--tf)}
+        .mm-feat-link:hover{gap:9px}
+
+        /* Kart grid */
+        .mm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+        .mc{position:relative;border-radius:13px;overflow:hidden;background:var(--bg-2);border:1px solid transparent;cursor:pointer;transition:all var(--tf);opacity:0;transform:translateY(7px)}
+        .ni:hover>.mm .mc:nth-child(1){opacity:1;transform:translateY(0);transition-delay:.07s}
+        .ni:hover>.mm .mc:nth-child(2){opacity:1;transform:translateY(0);transition-delay:.13s}
+        .ni:hover>.mm .mc:nth-child(3){opacity:1;transform:translateY(0);transition-delay:.19s}
+        .ni:hover>.mm .mc:nth-child(4){opacity:1;transform:translateY(0);transition-delay:.25s}
+        .ni:hover>.mm .mc:nth-child(5){opacity:1;transform:translateY(0);transition-delay:.31s}
+        .ni:hover>.mm .mc:nth-child(6){opacity:1;transform:translateY(0);transition-delay:.37s}
+        .ni.open>.mm .mc{opacity:1;transform:translateY(0);transition-delay:0s !important}
+        .mc:hover{border-color:var(--brd-a);background:rgba(58,158,192,.025);transform:translateY(-2px) !important;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+        .mc-img{width:100%;height:150px;position:relative;overflow:hidden}
+        .mc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+        .mc:hover .mc-img img{transform:scale(1.06)}
+        .mc-img:has(img[src]:not([src*="data:"])) .mm-ph{opacity:0}
+        .mc-body{padding:14px}
+        .mc-t{font-family:var(--fh);font-size:13.5px;font-weight:600;margin-bottom:2px}
+        .mc-d{font-size:11.5px;color:var(--txt-2);line-height:1.5}
+        .mc-arr{position:absolute;top:12px;right:12px;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;color:var(--txt-3);opacity:0;transform:translateX(-4px);transition:all var(--tf)}
+        .mc-arr svg{width:13px;height:13px}
+        .mc:hover .mc-arr{opacity:1;transform:translateX(0);color:var(--accent)}
+
+        .mm-ft{display:flex;align-items:center;justify-content:space-between;padding:12px 8px 4px;border-top:1px solid var(--brd);margin-top:8px;opacity:0;transform:translateY(5px);transition:opacity .32s ease .2s,transform .32s ease .2s}
+        .ni:hover>.mm .mm-ft,.ni.open>.mm .mm-ft{opacity:1;transform:translateY(0)}
+        .mm-ft-t{font-size:11.5px;color:var(--txt-3)}
+        .mm-ft-l{display:flex;gap:18px}
+        .mm-ft-l a{font-size:11.5px;font-weight:500;color:var(--txt-2);transition:color var(--tf)}
+        .mm-ft-l a:hover{color:var(--accent-l)}
+
+        /* Küçük mega (Hizmetler) */
+        .mm-sm{width:560px}
+        .mm-sm .mm-grid{grid-template-columns:repeat(2,1fr)}
+        .mm-sm .mc-img{height:120px}
+
+        /* ===== MOBİL ===== */
+        .mt{display:none;width:42px;height:42px;border:none;background:transparent;color:var(--txt);cursor:pointer;border-radius:9px;flex-shrink:0;transition:background var(--tf)}
+        .mt:hover{background:rgba(255,255,255,.04)}
+        .mp{display:none;position:fixed;top:0;right:0;width:100%;max-width:380px;height:100dvh;background:var(--bg-1);border-left:1px solid var(--brd);z-index:2000;padding:20px;overflow-y:auto;transform:translateX(100%);transition:transform var(--ts)}
+        .mp.open{transform:translateX(0)}
+        .mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1999;opacity:0;transition:opacity var(--ts);pointer-events:none}
+        .mo.open{opacity:1;pointer-events:auto}
+        .mp-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+        .mp-x{width:38px;height:38px;border:1px solid var(--brd);background:transparent;color:var(--txt-2);border-radius:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--tf)}
+        .mp-x:hover{color:var(--txt);border-color:var(--brd-a)}
+        .ml{display:flex;flex-direction:column;gap:1px}
+        .ml-a{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;font-size:14.5px;font-weight:500;color:var(--txt-2);border-radius:9px;transition:all var(--tf)}
+        .ml-a:hover,.ml-a.act{color:var(--txt);background:rgba(255,255,255,.035)}
+        .ml-a.act{color:var(--accent-l)}
+        .ml-s{max-height:0;overflow:hidden;transition:max-height .4s ease;padding-left:10px}
+        .ml-s.open{max-height:400px}
+        .ml-s a{display:block;padding:9px 14px;font-size:13.5px;color:var(--txt-3);border-radius:7px;transition:all var(--tf)}
+        .ml-s a:hover{color:var(--txt-2);background:rgba(255,255,255,.02)}
+        .mp-cta{display:block;margin-top:24px;padding:13px 22px;text-align:center;font-family:var(--fh);font-size:13.5px;font-weight:600;color:var(--bg-0);background:var(--accent);border-radius:9px}
+
+        /* ===== HERO ===== */
+        .hero{position:relative;min-height:calc(100vh - var(--top-h) - var(--nav-h));display:flex;align-items:center;overflow:hidden;padding:28px 0 20px}
+        .h-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+        .h-grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.02) 1px,transparent 1px);background-size:42px 42px;mask-image:radial-gradient(ellipse 80% 65% at 50% 50%,black 10%,transparent 65%);-webkit-mask-image:radial-gradient(ellipse 80% 65% at 50% 50%,black 10%,transparent 65%)}
+        .h-orb{position:absolute;border-radius:50%;filter:blur(110px);opacity:.3}
+        .h-orb-1{width:650px;height:650px;background:radial-gradient(circle,rgba(58,158,192,.14),transparent 70%);top:-22%;right:-8%;animation:oF1 22s ease-in-out infinite}
+        .h-orb-2{width:500px;height:500px;background:radial-gradient(circle,rgba(44,128,158,.09),transparent 70%);bottom:-15%;left:-8%;animation:oF2 28s ease-in-out infinite}
+        @keyframes oF1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-30px,40px) scale(1.06)}66%{transform:translate(20px,-22px) scale(.94)}}
+        @keyframes oF2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.07)}}
+        .h-noise{position:absolute;inset:0;opacity:.02;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:200px}
+        .h-ln{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(58,158,192,.04),transparent)}
+        .h-ln:nth-child(1){top:30%}.h-ln:nth-child(2){top:60%}.h-ln:nth-child(3){top:85%}
+
+        .hero .cx{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:start}
+
+        /* Metin — sağ üst */
+        .h-txt{padding-top:12px;max-width:640px;justify-self:end}
+        .h-badge{display:inline-flex;align-items:center;gap:7px;padding:6px 16px 6px 7px;border-radius:100px;background:var(--accent-glow);border:1px solid rgba(58,158,192,.14);font-size:12.5px;font-weight:500;color:var(--accent-l);margin-bottom:28px;opacity:0;transform:translateY(16px);animation:fU .6s ease forwards .18s}
+        .h-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pD 2s ease-in-out infinite}
+        @keyframes pD{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.7)}}
+        .h-title{font-family:var(--fh);font-size:clamp(54px,6.8vw,96px);font-weight:700;line-height:.95;letter-spacing:-.025em;margin-bottom:8px;opacity:0;transform:translateY(26px);animation:fU .7s ease forwards .32s}
+        .h-title-a{background:linear-gradient(135deg,var(--accent-l),var(--accent),var(--accent-d));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .h-sub{font-family:var(--fh);font-size:clamp(17px,2vw,22px);font-weight:300;color:var(--txt-2);margin-bottom:18px;opacity:0;transform:translateY(20px);animation:fU .7s ease forwards .46s}
+        .h-desc{font-size:15px;line-height:1.75;color:var(--txt-2);margin-bottom:36px;max-width:540px;opacity:0;transform:translateY(20px);animation:fU .7s ease forwards .58s}
+        @keyframes fU{to{opacity:1;transform:translateY(0)}}
+
+        .h-acts{display:flex;align-items:center;gap:14px;margin-bottom:48px;opacity:0;transform:translateY(20px);animation:fU .7s ease forwards .72s}
+        .btn-p{display:inline-flex;align-items:center;gap:9px;padding:15px 32px;font-family:var(--fh);font-size:14.5px;font-weight:600;color:var(--bg-0);background:var(--accent);border-radius:11px;transition:all var(--tf);position:relative;overflow:hidden}
+        .btn-p::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.22) 50%,transparent 70%);animation:shim 4.5s ease-in-out infinite}
+        .btn-p:hover{background:var(--accent-l);transform:translateY(-2px);box-shadow:0 8px 30px rgba(58,158,192,.25)}
+        .btn-s{display:inline-flex;align-items:center;gap:7px;padding:15px 28px;font-family:var(--fh);font-size:14.5px;font-weight:500;color:var(--txt-2);background:transparent;border:1px solid var(--brd);border-radius:11px;transition:all var(--tf)}
+        .btn-s:hover{color:var(--txt);border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.025)}
+        .btn-arr{transition:transform var(--tf)}
+        .btn-s:hover .btn-arr{transform:translateX(4px)}
+
+        .h-stats{display:flex;gap:40px;opacity:0;transform:translateY(20px);animation:fU .7s ease forwards .88s}
+        .h-st{position:relative}
+        .h-st:not(:last-child)::after{content:'';position:absolute;right:-20px;top:50%;transform:translateY(-50%);width:1px;height:38px;background:var(--brd)}
+        .h-st-n{font-family:var(--fh);font-size:30px;font-weight:700;line-height:1.2}
+        .h-st-n .ac{color:var(--accent)}
+        .h-st-l{font-size:12.5px;color:var(--txt-3);margin-top:1px}
+
+        /* ===== 3D KÜP — sol üst ===== */
+        .h-vis{display:flex;align-items:flex-start;justify-content:flex-start;position:relative;opacity:0;transform:scale(.88);animation:cIn 1s ease forwards .5s}
+        @keyframes cIn{to{opacity:1;transform:scale(1)}}
+
+        .c-sc{perspective:1200px;width:440px;height:440px}
+        .cb{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:cR 24s linear infinite}
+        .cb:hover{animation-duration:10s}
+        @keyframes cR{0%{transform:rotateX(-16deg) rotateY(0deg)}100%{transform:rotateX(-16deg) rotateY(360deg)}}
+
+        .cf{position:absolute;width:440px;height:440px;display:flex;flex-direction:column;background:rgba(10,10,14,.88);border:1px solid rgba(58,158,192,.15);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);overflow:hidden}
+        .cf::before{content:'';position:absolute;inset:8px;border:1px solid rgba(58,158,192,.04);border-radius:7px;pointer-events:none;z-index:2}
+        .cf.fr{transform:rotateY(0deg) translateZ(220px)}
+        .cf.bk{transform:rotateY(180deg) translateZ(220px)}
+        .cf.rt{transform:rotateY(90deg) translateZ(220px)}
+        .cf.lt{transform:rotateY(-90deg) translateZ(220px)}
+        .cf.tp{transform:rotateX(90deg) translateZ(220px)}
+        .cf.bt{transform:rotateX(-90deg) translateZ(220px)}
+
+        .cf-img{flex:1;position:relative;overflow:hidden;min-height:0}
+        .cf-img img{width:100%;height:100%;object-fit:cover}
+        .cf-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:36px;background:linear-gradient(to bottom,transparent,rgba(10,10,14,.45));pointer-events:none}
+        .cf-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity var(--tf)}
+        .cf-ph svg{width:36px;height:36px;color:var(--txt-3);opacity:.2}
+        .cf-img:has(img[src]:not([src*="data:"])) .cf-ph{opacity:0}
+
+        .cf-ct{flex:0 0 auto;padding:13px 18px;border-top:1px solid rgba(58,158,192,.08);background:rgba(6,6,8,.55);position:relative;z-index:1}
+        .cf-t{font-family:var(--fh);font-size:13.5px;font-weight:600;line-height:1.3}
+        .cf-s{font-size:11px;color:var(--txt-2);margin-top:1px;line-height:1.4}
+        .cf-b{display:inline-block;margin-top:6px;padding:2px 7px;border-radius:3px;background:var(--accent-glow);border:1px solid rgba(58,158,192,.08);font-size:9.5px;font-weight:600;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+        .cf-big{font-family:var(--fh);font-size:44px;font-weight:700;color:var(--accent);line-height:1}
+        .cf-u{font-size:12.5px;color:var(--txt-2);margin-top:1px}
+
+        /* Yörünge */
+        .orb{position:absolute;border-radius:50%;border:1px solid rgba(58,158,192,.04);top:50%;left:50%;transform-style:preserve-3d;pointer-events:none}
+        .orb-1{width:600px;height:600px;margin:-300px 0 0 -300px;animation:oS1 36s linear infinite}
+        .orb-2{width:730px;height:730px;margin:-365px 0 0 -365px;border-color:rgba(58,158,192,.025);animation:oS2 52s linear infinite reverse}
+        .orb-3{width:480px;height:480px;margin:-240px 0 0 -240px;border-style:dashed;border-color:rgba(58,158,192,.035);animation:oS1 28s linear infinite}
+        @keyframes oS1{from{transform:rotateX(60deg) rotateZ(0deg)}to{transform:rotateX(60deg) rotateZ(360deg)}}
+        @keyframes oS2{from{transform:rotateX(76deg) rotateY(26deg) rotateZ(0deg)}to{transform:rotateX(76deg) rotateY(26deg) rotateZ(360deg)}}
+        .orb-d{position:absolute;width:5px;height:5px;background:var(--accent);border-radius:50%;top:-2.5px;left:50%;margin-left:-2.5px;box-shadow:0 0 10px rgba(58,158,192,.5)}
+        .orb-2 .orb-d{width:3.5px;height:3.5px;top:-1.75px;margin-left:-1.75px;background:var(--accent-d);box-shadow:0 0 7px rgba(58,158,192,.3)}
+
+        .c-glow{position:absolute;width:440px;height:440px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(58,158,192,.07),transparent 60%);border-radius:50%;filter:blur(45px);pointer-events:none;animation:cG 4.5s ease-in-out infinite}
+        @keyframes cG{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}}
+        .c-ref{position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);width:220px;height:60px;background:radial-gradient(ellipse,rgba(58,158,192,.04),transparent 70%);filter:blur(10px);pointer-events:none}
+
+        .sc-ind{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;animation:fU .6s ease forwards 1.2s;z-index:1}
+        .sc-t{font-size:10.5px;font-weight:500;color:var(--txt-3);letter-spacing:.1em;text-transform:uppercase}
+        .sc-l{width:1px;height:32px;background:linear-gradient(to bottom,var(--txt-3),transparent);animation:sL 2.2s ease-in-out infinite}
+        @keyframes sL{0%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1;transform:scaleY(1);transform-origin:top}100%{opacity:0;transform:scaleY(0);transform-origin:bottom}}
+
+        /* Focus */
+        .nl:focus-visible,.cta-n:focus-visible,.btn-p:focus-visible,.btn-s:focus-visible,.mt:focus-visible,.mp-x:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:1100px){
+            .nm{display:none}.cta-n{display:none}.mt{display:flex;align-items:center;justify-content:center}.mp{display:block}.mo{display:block}
+            .hero .cx{grid-template-columns:1fr;text-align:center}
+            .h-txt{max-width:100%;justify-self:center;display:flex;flex-direction:column;align-items:center}
+            .h-desc{max-width:100%}
+            .h-acts{justify-content:center}
+            .h-stats{justify-content:center}
+            .h-vis{order:-1;justify-content:center;margin-bottom:8px}
+            .c-sc,.cf{width:340px;height:340px}
+            .cf.fr{transform:rotateY(0deg) translateZ(170px)}.cf.bk{transform:rotateY(180deg) translateZ(170px)}.cf.rt{transform:rotateY(90deg) translateZ(170px)}.cf.lt{transform:rotateY(-90deg) translateZ(170px)}.cf.tp{transform:rotateX(90deg) translateZ(170px)}.cf.bt{transform:rotateX(-90deg) translateZ(170px)}
+            .orb-1{width:480px;height:480px;margin:-240px 0 0 -240px}.orb-2{width:580px;height:580px;margin:-290px 0 0 -290px}.orb-3{width:390px;height:390px;margin:-195px 0 0 -195px}
+            .cf-big{font-size:36px}
+        }
+        @media(max-width:640px){
+            :root{--top-h:32px;--nav-h:60px}
+            .tb-r{display:none}.tb-l{gap:12px}.cx{padding:0 16px}
+            .hero{min-height:auto;padding:48px 0 40px}
+            .h-title{font-size:44px}
+            .h-acts{flex-direction:column;width:100%}
+            .btn-p,.btn-s{width:100%;justify-content:center}
+            .h-stats{gap:24px;flex-wrap:wrap;justify-content:center}
+            .h-st:not(:last-child)::after{display:none}
+            .h-st-n{font-size:24px}
+            .c-sc,.cf{width:280px;height:280px}
+            .cf.fr{transform:rotateY(0deg) translateZ(140px)}.cf.bk{transform:rotateY(180deg) translateZ(140px)}.cf.rt{transform:rotateY(90deg) translateZ(140px)}.cf.lt{transform:rotateY(-90deg) translateZ(140px)}.cf.tp{transform:rotateX(90deg) translateZ(140px)}.cf.bt{transform:rotateX(-90deg) translateZ(140px)}
+            .cf-ct{padding:10px 14px}.cf-t{font-size:12px}.cf-s{font-size:10px}.cf-ph svg{width:28px;height:28px}.cf-big{font-size:30px}
+            .orb-1{width:380px;height:380px;margin:-190px 0 0 -190px}.orb-2{width:460px;height:460px;margin:-230px 0 0 -230px}.orb-3{width:310px;height:310px;margin:-155px 0 0 -155px}
+            .sc-ind{display:none}
+        }
+        @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}.cb{animation-duration:80s}}
+    </style>
+</head>
+<body>
+
+<header id="hd">
+    <div class="tb">
+        <div class="cx">
+            <div class="tb-l">
+                <a href="tel:+902121234567" class="tb-a">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.11 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    +90 212 123 45 67
+                </a>
+                <div class="tb-sep"></div>
+                <a href="mailto:info@deckklips.com" class="tb-a">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+                    info@deckklips.com
+                </a>
+            </div>
+            <div class="tb-r">
+                <span class="tb-a">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    İstanbul, Türkiye
+                </span>
+                <div class="tb-sep"></div>
+                <div class="lang" role="button" tabindex="0" aria-label="Dil seçici">TR<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nv" aria-label="Ana navigasyon">
+        <div class="cx">
+            <a href="/" class="logo" aria-label="DECK KLİPS">
+                <div class="logo-w">
+                    <!-- Astro: <Image src="@assets/images/logo.png" alt="DECK KLİPS" width="154" height="42" /> -->
+                    <div class="logo-ph">DECK <span>KLİPS</span></div>
+                </div>
+            </a>
+
+            <ul class="nm" role="menubar">
+                <li class="ni act" role="none"><a href="#" class="nl" role="menuitem" aria-current="page">Ana Sayfa</a></li>
+                <li class="ni hm" role="none">
+                    <a href="#" class="nl" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                        Ürünlerimiz<svg class="nc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </a>
+                    <div class="mm" role="menu" aria-label="Ürünlerimiz">
+                        <div class="mm-feat">
+                            <div class="mm-feat-img">
+                                <!-- <Image src="..." alt="Kromajlı Klips" width="190" height="120" /> -->
+                                <div class="mm-ph" style="background:linear-gradient(135deg,#181c20,#101214)"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+                            </div>
+                            <div class="mm-feat-body">
+                                <div class="mm-feat-t">Kromajlı Metal Klips Sistemleri</div>
+                                <div class="mm-feat-d">Ahşap deck uygulamaları için profesyonel sabitleme</div>
+                            </div>
+                            <div class="mm-feat-cta"><a href="#" class="mm-feat-link">Katalog<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+                        </div>
+                        <div class="mm-grid">
+                            <a href="#" class="mc" role="menuitem">
+                                <div class="mc-img">
+                                    <!-- <Image src="@assets/images/urun-metal.jpg" alt="Metal Deck Klipsler" width="280" height="150" /> -->
+                                    <div class="mm-ph" style="background:linear-gradient(135deg,#1a1c1e,#121416)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="8" rx="1.5"/><line x1="8" y1="8" x2="8" y2="16"/><line x1="16" y1="8" x2="16" y2="16"/></svg></div>
+                                </div>
+                                <div class="mc-body"><div class="mc-t">Metal Deck Klipsler</div><div class="mc-d">1.5 mm sac, kromajlı yüzey. 4x4 cm, 9 mm sabitleme.</div></div>
+                                <div class="mc-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+                            </a>
+                            <a href="#" class="mc" role="menuitem">
+                                <div class="mc-img">
+                                    <!-- <Image src="@assets/images/urun-plastik.jpg" alt="Plastik Deck Klipsler" width="280" height="150" /> -->
+                                    <div class="mm-ph" style="background:linear-gradient(135deg,#181c1a,#101412)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+                                </div>
+                                <div class="mc-body"><div class="mc-t">Plastik Deck Klipsler</div><div class="mc-d">UV dayanıklı polimer. Hafif, kolay montaj.</div></div>
+                                <div class="mc-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+                            </a>
+                            <a href="#" class="mc" role="menuitem">
+                                <div class="mc-img">
+                                    <!-- <Image src="@assets/images/urun-aksesuar.jpg" alt="Montaj Aksesuarları" width="280" height="150" /> -->
+                                    <div class="mm-ph" style="background:linear-gradient(135deg,#1c1a18,#141210)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+                                </div>
+                                <div class="mc-body"><div class="mc-t">Montaj Aksesuarları</div><div class="mc-d">Vidalama, sıkıştırma ve hizalama aletleri.</div></div>
+                                <div class="mc-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+                            </a>
+                        </div>
+                        <div class="mm-ft">
+                            <span class="mm-ft-t">Yılmazer Kalite Garantisi</span>
+                            <div class="mm-ft-l"><a href="#">Teknik Dosya</a><a href="#">Montaj Rehberi</a><a href="#">Fiyat Listesi</a></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="ni" role="none"><a href="#" class="nl" role="menuitem">Projelerimiz</a></li>
+                <li class="ni hm" role="none">
+                    <a href="#" class="nl" role="menuitem" aria-haspopup="true" aria-expanded="false">
+                        Hizmetler<svg class="nc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                    </a>
+                    <div class="mm mm-sm" role="menu" aria-label="Hizmetler">
+                        <div class="mm-grid">
+                            <a href="#" class="mc" role="menuitem"><div class="mc-img"><div class="mm-ph" style="background:linear-gradient(135deg,#1a1816,#121010)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div></div><div class="mc-body"><div class="mc-t">Profesyonel Montaj</div><div class="mc-d">Uzman ekip ile hatasız uygulama.</div></div><div class="mc-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div></a>
+                            <a href="#" class="mc" role="menuitem"><div class="mc-img"><div class="mm-ph" style="background:linear-gradient(135deg,#18181e,#101016)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div></div><div class="mc-body"><div class="mc-t">Teknik Danışmanlık</div><div class="mc-d">Proje aşamasında doğru ürün seçimi.</div></div><div class="mc-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div></a>
+                            <a href="#" class="mc" role="menuitem"><div class="mc-img"><div class="mm-ph" style="background:linear-gradient(135deg,#1c1a16,#141210)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div></div><div class="mc-body"><div class="mc-t">Proje Tasarım</div><div class="mc-d">Ölçüden teslimata komple çözüm.</div></div><div class="mc-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div></a>
+                            <a href="#" class="mc" role="menuitem"><div class="mc-img"><div class="mm-ph" style="background:linear-gradient(135deg,#181c1a,#101412)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div></div><div class="mc-body"><div class="mc-t">Sonrası Destek</div><div class="mc-d">Garanti ve bakım hizmetleri.</div></div><div class="mc-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div></a>
+                        </div>
+                        <div class="mm-ft"><span class="mm-ft-t">Tüm hizmetlerimiz</span><div class="mm-ft-l"><a href="#">Detaylı Bilgi</a><a href="#">Referanslar</a></div></div>
+                    </div>
+                </li>
+                <li class="ni" role="none"><a href="#" class="nl" role="menuitem">Hakkımızda</a></li>
+                <li class="ni" role="none"><a href="#" class="nl" role="menuitem">İletişim</a></li>
+            </ul>
+
+            <a href="#" class="cta-n">Teklif Al<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            <button class="mt" aria-label="Menüyü aç" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="16" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button>
+        </div>
+    </nav>
+</header>
+
+<!-- Mobil Panel -->
+<div class="mo" id="mo" aria-hidden="true"></div>
+<div class="mp" id="mp" role="dialog" aria-label="Mobil navigasyon" aria-hidden="true">
+    <div class="mp-h">
+        <a href="/" class="logo"><div class="logo-w"><div class="logo-ph">DECK <span>KLİPS</span></div></div></a>
+        <button class="mp-x" id="mpx" aria-label="Kapat"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <nav aria-label="Mobil menü">
+        <ul class="ml">
+            <li><a href="#" class="ml-a act">Ana Sayfa</a></li>
+            <li><a href="#" class="ml-a" data-sm="mp1">Ürünlerimiz<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a><div class="ml-s" id="mp1"><a href="#">Metal Deck Klipsler</a><a href="#">Plastik Deck Klipsler</a><a href="#">Montaj Aksesuarları</a></div></li>
+            <li><a href="#" class="ml-a">Projelerimiz</a></li>
+            <li><a href="#" class="ml-a" data-sm="mp2">Hizmetler<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a><div class="ml-s" id="mp2"><a href="#">Profesyonel Montaj</a><a href="#">Teknik Danışmanlık</a><a href="#">Proje Tasarım</a><a href="#">Sonrası Destek</a></div></li>
+            <li><a href="#" class="ml-a">Hakkımızda</a></li>
+            <li><a href="#" class="ml-a">İletişim</a></li>
+        </ul>
+    </nav>
+    <a href="#" class="mp-cta">Teklif Al</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<main>
+    <section class="hero" id="hero">
+        <div class="h-bg" aria-hidden="true">
+            <div class="h-grid"></div>
+            <div class="h-orb h-orb-1"></div>
+            <div class="h-orb h-orb-2"></div>
+            <div class="h-noise"></div>
+            <div class="h-ln"></div><div class="h-ln"></div><div class="h-ln"></div>
+        </div>
+
+        <div class="cx">
+            <!-- Sol: 3D Küp -->
+            <div class="h-vis" aria-hidden="true">
+                <div class="c-glow"></div>
+                <div class="orb orb-1"><div class="orb-d"></div></div>
+                <div class="orb orb-2"><div class="orb-d"></div></div>
+                <div class="orb orb-3"></div>
+                <div class="c-sc">
+                    <div class="cb">
+                        <div class="cf fr">
+                            <div class="cf-img">
+                                <!-- <Image src="@assets/images/cube-marka.jpg" alt="DECK KLİPS" width="440" height="340" /> -->
+                                <div class="cf-ph" style="background:linear-gradient(160deg,#161a1e,#0c0e10)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="6" y="6" width="12" height="12" rx="1" transform="rotate(45 12 12)"/><rect x="9" y="9" width="6" height="6" rx=".5" transform="rotate(45 12 12)"/></svg></div>
+                            </div>
+                            <div class="cf-ct"><div class="cf-t">DECK KLİPS</div><div class="cf-s">Premium Çözümler</div><div class="cf-b">Yılmazer</div></div>
+                        </div>
+                        <div class="cf bk">
+                            <div class="cf-img">
+                                <!-- <Image src="@assets/images/cube-kalite.jpg" alt="Kalite" width="440" height="340" /> -->
+                                <div class="cf-ph" style="background:linear-gradient(160deg,#161418,#0c0a0e)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.27 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg></div>
+                            </div>
+                            <div class="cf-ct"><div class="cf-t">Kalite Garantisi</div><div class="cf-s">TSE Belgeli Üretim</div></div>
+                        </div>
+                        <div class="cf rt">
+                            <div class="cf-img">
+                                <!-- <Image src="@assets/images/cube-metal.jpg" alt="Metal Klipsler" width="440" height="340" /> -->
+                                <div class="cf-ph" style="background:linear-gradient(160deg,#1a1818,#101010)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="8" width="18" height="8" rx="1"/><line x1="8" y1="8" x2="8" y2="16"/><line x1="16" y1="8" x2="16" y2="16"/></svg></div>
+                            </div>
+                            <div class="cf-ct"><div class="cf-t">Metal Klipsler</div><div class="cf-s">1.5 mm Sac · Kromajlı</div><div class="cf-b">4 x 4 cm</div></div>
+                        </div>
+                        <div class="cf lt">
+                            <div class="cf-img">
+                                <!-- <Image src="@assets/images/cube-plastik.jpg" alt="Plastik Klipsler" width="440" height="340" /> -->
+                                <div class="cf-ph" style="background:linear-gradient(160deg,#141a18,#0a100e)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+                            </div>
+                            <div class="cf-ct"><div class="cf-t">Plastik Klipsler</div><div class="cf-s">UV Dayanıklı Polimer</div></div>
+                        </div>
+                        <div class="cf tp">
+                            <div class="cf-img">
+                                <!-- <Image src="@assets/images/cube-proje.jpg" alt="Projeler" width="440" height="340" /> -->
+                                <div class="cf-ph" style="background:linear-gradient(160deg,#181816,#10100e)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+                            </div>
+                            <div class="cf-ct"><div class="cf-big">500+</div><div class="cf-u">Tamamlanan Proje</div></div>
+                        </div>
+                        <div class="cf bt">
+                            <div class="cf-img">
+                                <!-- <Image src="@assets/images/cube-iletisim.jpg" alt="İletişim" width="440" height="340" /> -->
+                                <div class="cf-ph" style="background:linear-gradient(160deg,#161614,#0e0e0c)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.11 2 2 0 014.11 2h3a2 2 0 012 1.72"/></svg></div>
+                            </div>
+                            <div class="cf-ct"><div class="cf-t">İletişime Geçin</div><div class="cf-s">+90 212 123 45 67</div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-ref"></div>
+            </div>
+
+            <!-- Sağ: Metin -->
+            <div class="h-txt">
+                <div class="h-badge"><span class="h-badge-dot"></span>Premium Deck Çözümleri</div>
+                <h1 class="h-title">DECK <span class="h-title-a">KLİPS</span></h1>
+                <p class="h-sub">Profesyonel montaj çözümleri</p>
+                <p class="h-desc">Ahşap deck uygulamalarınızda güvenilir ve dayanıklı klips sistemleri. Yılmazer kalitesiyle 1.5 mm kromajlı sac ürünler, profesyonel montaj ile uzun ömürlü kullanım sağlar.</p>
+                <div class="h-acts">
+                    <a href="#" class="btn-p">Bize Yazın<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                    <a href="#" class="btn-s">Ürünleri Keşfet<svg class="btn-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                </div>
+                <div class="h-stats">
+                    <div class="h-st"><div class="h-st-n"><span class="ac" data-count="500">0</span>+</div><div class="h-st-l">Tamamlanan Proje</div></div>
+                    <div class="h-st"><div class="h-st-n"><span class="ac" data-count="15">0</span>+</div><div class="h-st-l">Yıl Deneyim</div></div>
+                    <div class="h-st"><div class="h-st-n"><span data-count="100">0</span>%</div><div class="h-st-l">Müşteri Memnuniyeti</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sc-ind" aria-hidden="true"><span class="sc-t">Keşfet</span><div class="sc-l"></div></div>
+    </section>
+</main>
+
+<script>
+/* Scroll → Header */
+!function(){var t=!1;window.addEventListener("scroll",function(){t||(requestAnimationFrame(function(){document.body.classList.toggle("scrolled",window.scrollY>40),t=!1}),t=!0)},{passive:!0})}();
+
+/* Mobil Menü */
+!function(){var p=document.getElementById("mp"),o=document.getElementById("mo"),c=document.getElementById("mpx"),b=document.querySelector(".mt"),op=!1;
+function open(){op=!0;p.classList.add("open");o.classList.add("open");p.setAttribute("aria-hidden","false");o.setAttribute("aria-hidden","false");b.setAttribute("aria-expanded","true");document.body.style.overflow="hidden"}
+function close(){op=!1;p.classList.remove("open");o.classList.remove("open");p.setAttribute("aria-hidden","true");o.setAttribute("aria-hidden","true");b.setAttribute("aria-expanded","false");document.body.style.overflow=""}
+b.addEventListener("click",function(){op?close():open()});c.addEventListener("click",close);o.addEventListener("click",close);
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&op)close()});
+document.querySelectorAll("[data-sm]").forEach(function(tr){tr.addEventListener("click",function(e){e.preventDefault();var t=document.getElementById(tr.getAttribute("data-sm")),is=t.classList.contains("open");document.querySelectorAll(".ml-s").forEach(function(s){s.classList.remove("open")});if(!is)t.classList.add("open")})})}();
+
+/* Mega Menü — Click + Dış tıklama */
+!function(){var items=document.querySelectorAll(".ni.hm");
+items.forEach(function(item){var link=item.querySelector(".nl");
+link.addEventListener("click",function(e){e.preventDefault();var isO=item.classList.contains("open");items.forEach(function(i){i.classList.remove("open");var l=i.querySelector(".nl");if(l)l.setAttribute("aria-expanded","false")});if(!isO){item.classList.add("open");link.setAttribute("aria-expanded","true")}});
+/* Kart linkleri tıklanınca normal navigate */item.querySelectorAll(".mc a, .mm-feat-link, .mm-ft-l a").forEach(function(a){a.addEventListener("click",function(e){e.stopPropagation()})})});
+document.addEventListener("click",function(e){if(!e.target.closest(".ni.hm")){items.forEach(function(i){i.classList.remove("open");var l=i.querySelector(".nl");if(l)l.setAttribute("aria-expanded","false")})}})}();
+
+/* Sayaç */
+!function(){var els=document.querySelectorAll("[data-count]"),done=!1;
+function run(){if(done)return;done=true;els.forEach(function(el){var end=parseInt(el.getAttribute("data-count"),10),dur=2200,st=null;
+function step(ts){if(!st)st=ts;var pr=Math.min((ts-st)/dur,1),e=1-Math.pow(2,-10*pr);el.textContent=Math.floor(e*end);if(pr<1)requestAnimationFrame(step);else el.textContent=end}
+requestAnimationFrame(step)})}
+if("IntersectionObserver" in window){new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){setTimeout(run,900);this.disconnect()}})},{threshold:.2}).observe(document.getElementById("hero"))}else setTimeout(run,1400)}();
+
+/* Klavye */
+!function(){document.querySelectorAll("[aria-haspopup]").forEach(function(l){l.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();var p=l.parentElement,isO=p.classList.contains("open");document.querySelectorAll(".ni.open").forEach(function(i){i.classList.remove("open")});if(!isO){p.classList.add("open");l.setAttribute("aria-expanded","true")}else l.setAttribute("aria-expanded","false")}})});
+document.querySelectorAll(".mm").forEach(function(m){m.addEventListener("focusout",function(e){if(!m.contains(e.relatedTarget)){var p=m.parentElement;p.classList.remove("open");var l=p.querySelector(".nl");if(l)l.setAttribute("aria-expanded","false")}})})}();
+</script>
+</body>
+</html>

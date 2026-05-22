@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar';
+import Hero from '../../components/Hero';
+import Products from '../../components/Products';
+import Projects from '../../components/Projects';
+import Services from '../../components/Services';
+import About from '../../components/About';
+import Contact from '../../components/Contact';
+import Footer from '../../components/Footer';
+import { getHero, getProjects, getServices, getSettings, getNavigation, getProducts, getAbout } from '../../lib/api';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'tr' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'ar' } },
+  ];
+}
+
+const { lang } = Astro.params;
+let heroData, projectsData, servicesData, settingsData, navData, productsData, aboutData;
+
+try {
+  heroData = await getHero(lang);
+  projectsData = await getProjects(undefined, undefined, lang);
+  servicesData = await getServices(lang);
+  settingsData = await getSettings(lang);
+  navData = await getNavigation(lang);
+  productsData = await getProducts(undefined, lang);
+  aboutData = await getAbout(lang);
+} catch (e) {
+  console.error('API Error:', e);
+}
+
+const seoTitle = settingsData?.seo?.title || settingsData?.general?.siteName || 'By Boss Mimarlık Mobilya - Mimarlık ve Mobilya Çözümleri';
+const seoDescription = settingsData?.seo?.description || settingsData?.general?.description || settingsData?.general?.tagline || 'By Boss Mimarlık Mobilya - Modern estetik ve zamansız tasarımın buluştuğu noktada, mekanlarınızı sanata dönüştürüyoruz.';
+const seoKeywords = settingsData?.seo?.keywords || '';
+
+const heroImagePath = heroData?.images?.[0] || 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1000&q=80';
+const firstHeroImage = heroImagePath.startsWith('http') ? heroImagePath : `https://bybossmimarlik.com${heroImagePath.startsWith('/') ? '' : '/'}${heroImagePath}`;
+
+const videoId = heroData?.videoUrl ? (() => {
+  const m = heroData.videoUrl.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|v\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return m ? m[1] : null;
+})() : null;
+
+const videoSchema = videoId && heroData?.videoUrl ? {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": heroData.title || 'By Boss Mimarlık Mobilya Video',
+  "description": heroData.subtitle || '',
+  "thumbnailUrl": firstHeroImage,
+  "uploadDate": new Date().toISOString(),
+  "contentUrl": heroData.videoUrl
+} : null;
+---
+
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  image={firstHeroImage}
+  footerScripts={settingsData?.footer?.scripts || ''}
+  logo={settingsData?.general?.logo || ''}
+  favicon={settingsData?.general?.favicon || ''}
+  keywords={seoKeywords}
+  googleAnalytics={settingsData?.seo?.googleAnalytics || ''}
+  googleSearchConsole={settingsData?.seo?.searchConsole || ''}
+  yandexVerification={settingsData?.seo?.yandexVerification || ''}
+  bingVerification={settingsData?.seo?.bingVerification || ''}
+  lang={lang}
+>
+  <Fragment slot="head">
+    <link rel="preload" as="image" href={firstHeroImage} fetchpriority="high" />
+    {productsData && productsData[0]?.mainImage && (
+      <link rel="preload" as="image" href={productsData[0].mainImage} fetchpriority="high" />
+    )}
+    {videoSchema && <script type="application/ld+json" set:html={JSON.stringify(videoSchema)} />}
+  </Fragment>
+  <main class="min-h-screen overflow-x-hidden pt-[102px] lg:pt-[102px]">
+    <Navbar client:load data={settingsData} navData={navData?.header} servicesData={servicesData} productsData={productsData} projectsData={projectsData} lang={lang} />
+    <Hero client:visible data={heroData} lang={lang} />
+    <Products client:visible data={productsData} lang={lang} isHomePage={true} />
+    <Projects client:visible data={projectsData} lang={lang} isHomePage={true} />
+    <Services client:visible data={servicesData} lang={lang} isHomePage={true} />
+    <About client:visible data={aboutData} lang={lang} />
+    <Contact client:visible data={settingsData} lang={lang} />
+    <Footer client:visible data={settingsData} navData={navData?.footer} lang={lang} />
+  </main>
+</Layout>
