@@ -134,7 +134,12 @@ if (isset($_GET['action']) && $_GET['action'] === 'manual_deploy') {
     <div class="sidebar" id="sidebar">
         <div style="padding: 1.5rem 1.25rem; border-bottom: 1px solid #1e2235; flex-shrink: 0; background: #0b0d12;">
             <div style="font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em;">
-                <span style="color: #fff;">DECK</span> <span style="color: #c9a962;">Klips</span>
+                <?php
+                $nameParts = explode(' ', $siteName, 2);
+                $firstPart = $nameParts[0] ?? 'By';
+                $secondPart = $nameParts[1] ?? 'Boss';
+                ?>
+                <span style="color: #fff;"><?php echo htmlspecialchars($firstPart); ?></span> <span style="color: #c9a962;"><?php echo htmlspecialchars($secondPart); ?></span>
             </div>
             <div style="font-size: 0.75rem; color: #8892b0; font-weight: 500; margin-top: 0.25rem;">Admin Panel v2.0</div>
         </div>

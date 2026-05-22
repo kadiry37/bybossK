@@ -24,7 +24,8 @@ if (isset($_POST['reset_request'])) {
             
             $resetLink = "https://" . $_SERVER['HTTP_HOST'] . "/admin/reset-password.php?token=" . $token;
             
-            $subject = "Şifre Sıfırlama Talebi - DECK Klips";
+            $siteName = getSetting('site_name', 'DECK Klips');
+            $subject = "Şifre Sıfırlama Talebi - " . $siteName;
             $body = "
                 <div style='font-family: Arial; padding: 20px; border: 1px solid #eee; border-radius: 10px;'>
                     <h2 style='color: #c9a962;'>Şifre Sıfırlama</h2>
@@ -54,7 +55,8 @@ if (isset($_POST['reset_request'])) {
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Şifremi Unuttum - DECK Klips</title>
+    <?php $siteName = getSetting('site_name', 'DECK Klips'); ?>
+    <title>Şifremi Unuttum - <?php echo htmlspecialchars($siteName); ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body { background: #0f1117; color: #fff; font-family: 'Inter', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }

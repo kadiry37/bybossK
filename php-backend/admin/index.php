@@ -63,7 +63,10 @@ if (!isLoggedIn()) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin Giriş - DECK Klips</title>
+        <?php
+        $siteName = getSetting('site_name', 'DECK Klips');
+        ?>
+        <title>Admin Giriş - <?php echo htmlspecialchars($siteName); ?></title>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
         <style>
             * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -82,7 +85,12 @@ if (!isLoggedIn()) {
     </head>
     <body>
         <div class="login-card">
-            <div class="login-title"><span style="color:#fff;">DECK</span> <span style="color:#c9a962;">Klips</span></div>
+            <?php
+            $nameParts = explode(' ', $siteName, 2);
+            $firstPart = $nameParts[0] ?? 'By';
+            $secondPart = $nameParts[1] ?? 'Boss';
+            ?>
+            <div class="login-title"><span style="color:#fff;"><?php echo htmlspecialchars($firstPart); ?></span> <span style="color:#c9a962;"><?php echo htmlspecialchars($secondPart); ?></span></div>
             <div class="login-sub">Admin Panel Girişi</div>
             <?php if (isset($loginError)): ?>
                 <div class="error"><?php echo $loginError; ?></div>

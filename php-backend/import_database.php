@@ -14,8 +14,9 @@ require_once __DIR__ . '/api/config.php';
 
 // Güvenlik Kilidi Kontrolü
 $lockFile = __DIR__ . '/import_database.lock';
-if (file_exists($lockFile)) {
-    die("HATA: Bu script daha önce çalıştırılmış ve kilitlenmiş. Tekrar çalıştırmak için 'import_database.lock' dosyasını sunucudan silmeniz gerekir.");
+$bypassLock = ($_GET['bypass'] ?? '') === '1';
+if (file_exists($lockFile) && !$bypassLock) {
+    die("HATA: Bu script daha önce çalıştırılmış ve kilitlenmiş. Tekrar çalıştırmak için 'import_database.lock' dosyasını sunucudan silmeniz gerekir veya URL sonuna '&bypass=1' ekleyebilirsiniz.");
 }
 
 // Güvenlik Anahtarı Kontrolü
@@ -65,6 +66,17 @@ try {
     
     // Yabancı anahtar kontrollerini geçici olarak kapatalım
     $db->exec("SET FOREIGN_KEY_CHECKS = 0;");
+    
+    // Veritabanını açıkça seçelim
+    try {
+        $db->exec("USE `" . DB_NAME . "`;");
+        echo "Veritabanı seçimi başarılı (" . htmlspecialchars(DB_NAME) . ")!<br>";
+    } catch (PDOException $e) {
+        echo "<h3 style='color: red;'>Veritabanı Seçim Hatası: " . htmlspecialchars($e->getMessage()) . "</h3>";
+        echo "<p style='color: darkred; font-weight: bold;'>Lütfen DirectAdmin panelinize gidip '" . htmlspecialchars(DB_USER) . "' kullanıcısının '" . htmlspecialchars(DB_NAME) . "' veritabanına eklendiğinden ve TÜM YETKİLERE (All Privileges) sahip olduğundan emin olun.</p>";
+        $db->exec("SET FOREIGN_KEY_CHECKS = 1;");
+        return;
+    }
     
     foreach ($queries as $query) {
         $query = trim($query);

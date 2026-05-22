@@ -51,7 +51,8 @@ try {
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Yeni Şifre Belirle - DECK Klips</title>
+    <?php $siteName = getSetting('site_name', 'DECK Klips'); ?>
+    <title>Yeni Şifre Belirle - <?php echo htmlspecialchars($siteName); ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body { background: #0f1117; color: #fff; font-family: 'Inter', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
