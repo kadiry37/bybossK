@@ -97,10 +97,16 @@ export default function Footer({ navData: initialNavData, data: initialData, lan
           {/* Brand Info */}
           <div className="lg:col-span-4 space-y-8 min-h-[160px]">
             <a href={lang === 'tr' ? '/' : `/${lang}/`} className="inline-block group">
-              {general?.logo && !logoFailed ? (
-                <img src={logoUrl} alt={general.siteName} width="180" height="50" className="h-12 w-auto object-contain transition-transform group-hover:scale-105" onError={() => setLogoFailed(true)} />
-              ) : (
-                <div className="font-serif text-3xl font-bold uppercase tracking-tight">
+                {general?.logo && !logoFailed ? (
+                  <img 
+                    src={logoUrl} 
+                    alt={general?.siteName || 'Logo'} 
+                    width={320} 
+                    height={120} 
+                    className={`w-auto h-24 md:h-32 object-contain filter drop-shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-opacity duration-300 ${logoFailed ? 'opacity-0' : 'opacity-100'}`}
+                    onError={() => setLogoFailed(true)}
+                  />
+                ) : (<div className="font-serif text-3xl font-bold uppercase tracking-tight">
                   <span className="text-white">{brandFirst}</span>
                   <span className="gradient-text ml-2">{brandSecond}</span>
                 </div>

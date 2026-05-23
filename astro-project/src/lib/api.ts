@@ -158,14 +158,14 @@ export async function getBlogPost(slug: string, lang: string = 'tr') {
  * Site Settings
  */
 export async function getSettings(lang: string = 'tr') {
-  return apiFetch<SiteSettings>(`/settings.php?lang=${lang}`);
+  return apiFetch<SiteSettings>(`/settings.php?lang=${lang}&_cb=${Date.now()}`);
 }
 
 /**
  * Site Navigation (Menus)
  */
 export async function getNavigation(lang: string = 'tr') {
-  return apiFetch<any>(`/navigation.php?lang=${lang}`);
+  return apiFetch<any>(`/navigation.php?lang=${lang}&_cb=${Date.now()}`);
 }
 
 /**
