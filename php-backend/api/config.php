@@ -29,6 +29,17 @@ if (file_exists($envFile)) {
     }
 }
 
+$tokenFile = __DIR__ . '/token.ini';
+if (file_exists($tokenFile)) {
+    $lines = file($tokenFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos($line, '=') !== false) {
+            list($name, $value) = explode('=', $line, 2);
+            $GLOBALS['_CUSTOM_ENV'][trim($name)] = trim($value);
+        }
+    }
+}
+
 function get_env($key, $default = '') {
     if (isset($GLOBALS['_CUSTOM_ENV'][$key])) return $GLOBALS['_CUSTOM_ENV'][$key];
     $val = getenv($key);
