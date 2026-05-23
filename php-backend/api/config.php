@@ -9,6 +9,7 @@
 // ============================================
 // ENVIRONMENT VARIABLES LOADER
 // ============================================
+$GLOBALS['_CUSTOM_ENV'] = [];
 $envFile = __DIR__ . '/../.env';
 if (file_exists($envFile)) {
     $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -16,13 +17,17 @@ if (file_exists($envFile)) {
         if (strpos(trim($line), '#') === 0) continue;
         if (strpos($line, '=') !== false) {
             list($name, $value) = explode('=', $line, 2);
-            putenv(trim($name) . '=' . trim($value));
-            $_ENV[trim($name)] = trim($value);
+            $name = trim($name);
+            $value = trim($value);
+            putenv($name . '=' . $value);
+            $_ENV[$name] = $value;
+            $GLOBALS['_CUSTOM_ENV'][$name] = $value;
         }
     }
 }
 
 function get_env($key, $default = '') {
+    if (isset($GLOBALS['_CUSTOM_ENV'][$key])) return $GLOBALS['_CUSTOM_ENV'][$key];
     $val = getenv($key);
     if ($val === false && isset($_ENV[$key])) $val = $_ENV[$key];
     return $val !== false ? $val : $default;

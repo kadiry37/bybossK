@@ -137,7 +137,7 @@ export default function Footer({ navData: initialNavData, data: initialData, lan
                   
                   const langPrefix = lang === 'tr' ? '' : `/${lang}`;
                   let finalLink = link.url || link.href || '#';
-                  if (finalLink.includes('bybossmimarlik.com/blog')) {
+                  if (finalLink.includes('bybossmimarlik.com/blog') || finalLink.includes('deckklips.com.tr/blog')) {
                     finalLink = `${langPrefix}/blog`;
                   } else if (finalLink.startsWith('http://') || finalLink.startsWith('https://')) {
                     // Keep absolute URLs as is
