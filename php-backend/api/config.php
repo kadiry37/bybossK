@@ -11,6 +11,9 @@
 // ============================================
 $GLOBALS['_CUSTOM_ENV'] = [];
 $envFile = __DIR__ . '/../.env';
+if (!file_exists($envFile)) {
+    $envFile = __DIR__ . '/../env.ini';
+}
 if (file_exists($envFile)) {
     $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {

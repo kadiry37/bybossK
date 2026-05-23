@@ -33,16 +33,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Create .env file for Backend
+      - name: Create env.ini file for Backend
         working-directory: .
         run: |
-          echo "DB_HOST=localhost" > ./php-backend/.env
-          echo "DB_NAME=${{ secrets.DB_NAME }}" >> ./php-backend/.env
-          echo "DB_USER=${{ secrets.DB_USER }}" >> ./php-backend/.env
-          echo "DB_PASS=${{ secrets.DB_PASS }}" >> ./php-backend/.env
-          echo "GITHUB_TOKEN=${{ secrets.GITHUB_PAT }}" >> ./php-backend/.env
-          echo "GITHUB_REPO_OWNER=kadiry37" >> ./php-backend/.env
-          echo "GITHUB_REPO_NAME=bybossK" >> ./php-backend/.env
+          echo "DB_HOST=localhost" > ./php-backend/env.ini
+          echo "DB_NAME=${{ secrets.DB_NAME }}" >> ./php-backend/env.ini
+          echo "DB_USER=${{ secrets.DB_USER }}" >> ./php-backend/env.ini
+          echo "DB_PASS=${{ secrets.DB_PASS }}" >> ./php-backend/env.ini
+          echo "GITHUB_TOKEN=${{ secrets.GITHUB_PAT }}" >> ./php-backend/env.ini
+          echo "GITHUB_REPO_OWNER=kadiry37" >> ./php-backend/env.ini
+          echo "GITHUB_REPO_NAME=bybossK" >> ./php-backend/env.ini
 
       - name: Upload Backend to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
