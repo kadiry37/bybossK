@@ -349,24 +349,29 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
 
         {/* Navigation */}
         <nav className="nv" aria-label="Ana navigasyon">
-          <div className="cx">
-            <a href={currentLang === 'tr' ? '/' : `/${currentLang}/`} className="logo" aria-label="By Boss Mimarlık Mobilya">
-              <div className="logo-w">
+          <div className="container mx-auto px-4 lg:px-6 h-full flex items-center justify-between gap-4 w-full relative z-20">
+            {/* Logo Area */}
+            <a href={currentLang === 'tr' ? '/' : `/${currentLang}/`} className="flex-shrink-0 flex items-center h-full py-2 z-30" aria-label="By Boss Mimarlık Mobilya">
+              <div className="h-[50px] lg:h-[75px] min-w-[140px] flex items-center">
                 {showLogoImage && (
                   <img
                     src={logoUrl}
                     alt={siteName}
-                    width={220}
-                    height={64}
-                    className={`w-full h-full object-contain transition-opacity duration-300 ${logoFailed ? 'opacity-0' : 'opacity-100'}`}
+                    width={320}
+                    height={120}
+                    className={`w-auto h-full object-contain object-left transition-transform duration-300 hover:scale-[1.02] ${logoFailed ? 'opacity-0' : 'opacity-100'}`}
                     onError={() => setLogoFailed(true)}
                   />
                 )}
                 {(!showLogoImage || logoFailed) && (
-                  <div className="logo-ph">BY BOSS <span>MİMARLIK MOBİLYA</span></div>
+                  <div className="text-lg lg:text-xl font-bold uppercase tracking-wider text-white bg-black/20 px-3 py-1.5 rounded-lg backdrop-blur-sm border border-white/10">
+                    BY BOSS <span className="text-[#f2ca00]">MİMARLIK</span>
+                  </div>
                 )}
               </div>
             </a>
+
+            <div className="flex items-center justify-end flex-1 h-full">
 
            {/* Desktop Menu */}
            <ul className="nm" role="menubar">
@@ -500,21 +505,22 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
              ))}
           </ul>
 
-          <a href="#" className="cta-n" onClick={(e) => { e.preventDefault(); setIsQuoteModalOpen(true); }} aria-label={currentLang === 'en' ? 'Get Quote Request' : (currentLang === 'ar' ? 'طلب عرض سعر' : 'Teklif Alın')}>
-            {currentLang === 'en' ? 'Get Quote' : (currentLang === 'ar' ? 'احصل على عرض' : 'Teklif Al')}
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-          <button
-            className="mt"
-            aria-label={isMobileMenuOpen ? (currentLang === 'en' ? 'Close Menu' : (currentLang === 'ar' ? 'إغلاق القائمة' : 'Menüyü kapat')) : (currentLang === 'en' ? 'Open Menu' : (currentLang === 'ar' ? 'فتح القائمة' : 'Menüyü aç'))}
-            aria-expanded={isMobileMenuOpen}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
-          </button>
-        </div>
-      </nav>
-    </header>
+              <a href="#" className="cta-n" onClick={(e) => { e.preventDefault(); setIsQuoteModalOpen(true); }} aria-label={currentLang === 'en' ? 'Get Quote Request' : (currentLang === 'ar' ? 'طلب عرض سعر' : 'Teklif Alın')}>
+                {currentLang === 'en' ? 'Get Quote' : (currentLang === 'ar' ? 'احصل على عرض' : 'Teklif Al')}
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <button
+                className="lg:hidden flex items-center justify-center w-[42px] h-[42px] rounded-lg text-white bg-white/5 border border-white/10 hover:bg-white/10 transition-colors ml-2"
+                aria-label={isMobileMenuOpen ? (currentLang === 'en' ? 'Close Menu' : (currentLang === 'ar' ? 'إغلاق القائمة' : 'Menüyü kapat')) : (currentLang === 'en' ? 'Open Menu' : (currentLang === 'ar' ? 'فتح القائمة' : 'Menüyü aç'))}
+                aria-expanded={isMobileMenuOpen}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                {isMobileMenuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
+              </button>
+            </div>
+          </div>
+        </nav>
+      </header>
 
       {/* Mobile Menu Overlay */}
       <div
