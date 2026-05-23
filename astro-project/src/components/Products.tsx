@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { ArrowUpRight, Star } from 'lucide-react';
 import { getProducts } from '../lib/api';
 
-export default function Products({ data, lang = 'tr', isHomePage = false }: { data?: any[], lang?: string, isHomePage?: boolean }) {
+export default function Products({ data, lang = 'tr', isHomePage = false, settingsData }: { data?: any[], lang?: string, isHomePage?: boolean, settingsData?: any }) {
   const products: any[] = data || [];
   const suffix = lang === 'tr' ? '' : `_${lang}`;
 
@@ -77,10 +77,18 @@ export default function Products({ data, lang = 'tr', isHomePage = false }: { da
             {lang === 'en' ? 'Our Products' : (lang === 'ar' ? 'منتجاتنا' : 'Ürünlerimiz')}
           </span>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 uppercase">
-            <span>MOBİLYA</span><span className="gradient-text ml-4">{lang === 'en' ? 'Models' : (lang === 'ar' ? 'عارضات ازياء' : 'Modelleri')}</span>
+            {settingsData?.general?.productsPageTitle ? (
+              settingsData.general.productsPageTitle
+            ) : (
+              <><span>MOBİLYA</span><span className="gradient-text ml-4">{lang === 'en' ? 'Models' : (lang === 'ar' ? 'عارضات ازياء' : 'Modelleri')}</span></>
+            )}
           </h2>
           <p className="text-noir-400 text-lg max-w-2xl mx-auto">
-            {lang === 'en' ? 'Superior customized furniture and architectural designs for your projects.' : (lang === 'ar' ? 'تصاميم معمارية وأثاث مخصص لمشاريعك.' : 'Projeleriniz için en yüksek kaliteli özel tasarım mobilya ve mimari çözümler.')}
+            {settingsData?.general?.productsPageDesc ? (
+              settingsData.general.productsPageDesc
+            ) : (
+              lang === 'en' ? 'Superior customized furniture and architectural designs for your projects.' : (lang === 'ar' ? 'تصاميم معمارية وأثاث مخصص لمشاريعك.' : 'Projeleriniz için en yüksek kaliteli özel tasarım mobilya ve mimari çözümler.')
+            )}
           </p>
         </div>
 

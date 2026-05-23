@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_seo'])) {
     setSetting('google_search_console', $_POST['google_search_console'] ?? '', 'seo');
     setSetting('yandex_verification', $_POST['yandex_verification'] ?? '', 'seo');
     setSetting('bing_verification', $_POST['bing_verification'] ?? '', 'seo');
+    setSetting('tawkto_script', $_POST['tawkto_script'] ?? '', 'seo');
     
     if (!empty($_FILES['seo_og_image']['name'])) {
         $result = handleUpload($_FILES['seo_og_image'], 'branding');
@@ -90,6 +91,11 @@ $s = getSettings();
                 <div class="form-group">
                     <label class="form-label">Bing Verification Kodu</label>
                     <input type="text" name="bing_verification" class="form-input" value="<?php echo htmlspecialchars($s['bing_verification'] ?? ''); ?>">
+                </div>
+                <div class="form-group mt-4 pt-4 border-t border-gray-800">
+                    <label class="form-label text-gold-500">Tawk.to Canlı Destek Kodu</label>
+                    <textarea name="tawkto_script" class="form-textarea" rows="4" placeholder="<!-- Start of Tawk.to Script -->..."><?php echo htmlspecialchars($s['tawkto_script'] ?? ''); ?></textarea>
+                    <p class="text-xs text-gray-500 mt-1">Tawk.to panelinden aldığınız widget kodunu buraya yapıştırın.</p>
                 </div>
             </div>
         </div>

@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_settings'])) {
         'footer_scripts',
         'smtp_host', 'smtp_port', 'smtp_user', 'smtp_pass', 'smtp_encryption', 'admin_email',
         'auto_deploy',
-        'google_verification', 'bing_verification', 'yandex_verification',
         'turnstile_site_key', 'turnstile_secret_key'
     ];
     
@@ -38,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_settings'])) {
             elseif (in_array($field, ['privacy_policy', 'terms_of_use'])) $group = 'legal';
             elseif (in_array($field, ['smtp_host', 'smtp_port', 'smtp_user', 'smtp_pass', 'smtp_encryption', 'admin_email'])) $group = 'smtp';
             
-            elseif (in_array($field, ['google_verification', 'bing_verification', 'yandex_verification'])) $group = 'seo';
             elseif (in_array($field, ['turnstile_site_key', 'turnstile_secret_key'])) $group = 'security';
             
             setSetting($field, trim($_POST[$field]), $group);
@@ -87,7 +85,6 @@ $s = getSettings();
             <button type="button" @click="activeTab = 'general'" :class="activeTab === 'general' ? 'bg-gray-800 text-white' : 'text-gray-400'" class="px-4 py-2 rounded-md text-sm font-bold">Genel</button>
             <button type="button" @click="activeTab = 'branding'" :class="activeTab === 'branding' ? 'bg-gray-800 text-white' : 'text-gray-400'" class="px-4 py-2 rounded-md text-sm font-bold">Marka & Logo</button>
             <button type="button" @click="activeTab = 'contact'" :class="activeTab === 'contact' ? 'bg-gray-800 text-white' : 'text-gray-400'" class="px-4 py-2 rounded-md text-sm font-bold">İletişim</button>
-            <button type="button" @click="activeTab = 'seo'" :class="activeTab === 'seo' ? 'bg-gray-800 text-white' : 'text-gray-400'" class="px-4 py-2 rounded-md text-sm font-bold">SEO & Doğrulama</button>
             <button type="button" @click="activeTab = 'features'" :class="activeTab === 'features' ? 'bg-gray-800 text-white' : 'text-gray-400'" class="px-4 py-2 rounded-md text-sm font-bold">Sloganlar</button>
             <button type="button" @click="activeTab = 'mega_menu'" :class="activeTab === 'mega_menu' ? 'bg-gray-800 text-white' : 'text-gray-400'" class="px-4 py-2 rounded-md text-sm font-bold">Mega Menü</button>
             <button type="button" @click="activeTab = 'social'" :class="activeTab === 'social' ? 'bg-gray-800 text-white' : 'text-gray-400'" class="px-4 py-2 rounded-md text-sm font-bold">Sosyal</button>
@@ -178,24 +175,6 @@ $s = getSettings();
             </div>
         </div>
         <p class="text-xs text-gray-500 mt-4">Tavsiye: Logo için şeffaf PNG (min 200px), Favicon için 32x32px .ico veya .png kullanın.</p>
-    </div>
-
-    <!-- SEO Tab -->
-    <div x-show="activeTab === 'seo'" class="card">
-        <div class="card-header border-b border-gray-800 mb-4 pb-2">🔍 Arama Motoru Doğrulama</div>
-        <div class="form-group">
-            <label class="form-label">Google Verification Code</label>
-            <input type="text" name="google_verification" class="form-input" value="<?php echo htmlspecialchars($s['google_verification'] ?? ''); ?>" placeholder="Örn: google-site-verification=...">
-        </div>
-        <div class="form-group">
-            <label class="form-label">Bing Verification Code</label>
-            <input type="text" name="bing_verification" class="form-input" value="<?php echo htmlspecialchars($s['bing_verification'] ?? ''); ?>">
-        </div>
-        <div class="form-group">
-            <label class="form-label">Yandex Verification Code</label>
-            <input type="text" name="yandex_verification" class="form-input" value="<?php echo htmlspecialchars($s['yandex_verification'] ?? ''); ?>">
-        </div>
-        <p class="text-xs text-gray-500 mt-2">Sadece kodun kendisini veya tam meta etiketini yapıştırabilirsiniz.</p>
     </div>
     
     <!-- Legal Tab -->
@@ -326,6 +305,11 @@ $s = getSettings();
             <div class="form-group">
                 <label class="form-label">Telefon (Global)</label>
                 <input type="text" name="site_phone" class="form-input" value="<?php echo htmlspecialchars($s['site_phone'] ?? ''); ?>">
+            </div>
+            <div class="form-group" style="grid-column: span 2;">
+                <label class="form-label">Google Haritalar Embed Kodu</label>
+                <textarea name="google_maps_embed" class="form-textarea" rows="3" placeholder="<iframe src='...' ></iframe>"><?php echo htmlspecialchars($s['google_maps_embed'] ?? ''); ?></textarea>
+                <p class="text-xs text-gray-500 mt-1">Google Haritalar'dan aldığınız "Haritayı Yerleştir" iframe kodunu buraya yapıştırın.</p>
             </div>
         </div>
     </div>

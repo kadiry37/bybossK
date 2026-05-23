@@ -80,7 +80,7 @@ const videoSchema = videoId && heroData?.videoUrl ? {
   <main class="min-h-screen overflow-x-hidden pt-[102px] lg:pt-[102px]">
     <Navbar client:load data={settingsData} navData={navData?.header} servicesData={servicesData} productsData={productsData} projectsData={projectsData} lang={lang} />
     <Hero client:visible data={heroData} lang={lang} />
-    <Products client:visible data={productsData} lang={lang} isHomePage={true} />
+    <Products client:visible data={productsData} lang={lang} isHomePage={true} settingsData={settingsData} />
     <Projects client:visible data={projectsData} lang={lang} isHomePage={true} />
     <Services client:visible data={servicesData} lang={lang} isHomePage={true} />
     <About client:visible data={aboutData} lang={lang} />

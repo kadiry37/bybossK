@@ -56,7 +56,7 @@ try {
             'tiktok' => $settings['social_tiktok'] ?? ''
         ],
         'footer' => [
-            'scripts' => $settings['footer_scripts'] ?? '',
+            'scripts' => trim(($settings['footer_scripts'] ?? '') . "\n" . ($settings['tawkto_script'] ?? '')),
             'whatsappText' => $settings['footer_whatsapp_text'] ?? 'Müşteri Hattı'
         ],
         'seo' => [
@@ -67,7 +67,8 @@ try {
             'googleAnalytics' => $settings['google_analytics'] ?? '',
             'searchConsole' => $settings['google_search_console'] ?? '',
             'yandexVerification' => $settings['yandex_verification'] ?? '',
-            'bingVerification' => $settings['bing_verification'] ?? ''
+            'bingVerification' => $settings['bing_verification'] ?? '',
+            'tawktoScript' => $settings['tawkto_script'] ?? ''
         ],
         'legal' => [
             'privacyPolicy' => (!empty($settings['privacy_policy' . $suffix]) ? $settings['privacy_policy' . $suffix] : ($settings['privacy_policy'] ?? '')),
