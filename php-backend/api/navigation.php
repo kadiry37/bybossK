@@ -45,7 +45,7 @@ try {
             'Projeler' => 'Projects', 'Hizmetler' => 'Services', 'Hakkımızda' => 'About Us',
             'İletişim' => 'Contact', 'Kurumsal' => 'Corporate', 'Kariyer' => 'Careers',
             'Ürünler' => 'Products', 'Deck Sistemleri' => 'Deck Systems', 'Modeller' => 'Models',
-            'Blog' => 'Blog', 'Tarihçe' => 'History', 'Gizlilik Politikası' => 'Privacy Policy',
+            'Blog' => 'Blog', 'Tarihçe' => 'History', 'Referanslarımız' => 'References', 'Gizlilik Politikası' => 'Privacy Policy',
             'Kullanım Şartları' => 'Terms of Use', 'Ürün & Hizmetler' => 'Products & Services',
             'Deck Klipsleri' => 'Deck Clips', 'Karkas Sistemleri' => 'Frame Systems',
             'Montaj Hizmeti' => 'Installation Service',
@@ -57,7 +57,7 @@ try {
             'Projeler' => 'المشاريع', 'Hizmetler' => 'الخدمات', 'Hakkımızda' => 'من نحن',
             'İletişim' => 'اتصل بنا', 'Kurumsal' => 'الشركة', 'Kariyer' => 'وظائف',
             'Ürünler' => 'المنتجات', 'Deck Sistemleri' => 'أنظمة التزيين', 'Modeller' => 'الموديلات',
-            'Blog' => 'المدونة', 'Tarihçe' => 'تاريخنا', 'Gizlilik Politikası' => 'سياسة الخصوصية',
+            'Blog' => 'المدونة', 'Tarihçe' => 'تاريخنا', 'Referanslarımız' => 'المراجع', 'Gizlilik Politikası' => 'سياسة الخصوصية',
             'Kullanım Şartları' => 'شروط الاستخدام', 'Ürün & Hizmetler' => 'المنتجات والخدمات',
             'Deck Klipsleri' => 'مشابك التزيين', 'Karkas Sistemleri' => 'أنظمة الهيكل',
             'Montaj Hizmeti' => 'خدمة التركيب',
@@ -132,7 +132,10 @@ try {
             ]],
             ['label' => ($lang == 'ar' ? 'المشاريع' : ($lang == 'en' ? 'Projects' : 'Projelerimiz')), 'url' => '/projeler', 'subitems' => []],
             ['label' => ($lang == 'ar' ? 'الخدمات' : ($lang == 'en' ? 'Services' : 'Hizmetler')), 'url' => '/hizmetler', 'subitems' => []],
-            ['label' => ($lang == 'ar' ? 'من نحن' : ($lang == 'en' ? 'About Us' : 'Hakkımızda')), 'url' => '/tarihce', 'subitems' => []],
+            ['label' => ($lang == 'ar' ? 'من نحن' : ($lang == 'en' ? 'About Us' : 'Hakkımızda')), 'url' => '#', 'subitems' => [
+                ['label' => ($lang == 'ar' ? 'تاريخنا' : ($lang == 'en' ? 'History' : 'Tarihçe')), 'url' => '/tarihce'],
+                ['label' => ($lang == 'ar' ? 'المراجع' : ($lang == 'en' ? 'References' : 'Referanslarımız')), 'url' => '/referanslar']
+            ]],
             ['label' => ($lang == 'ar' ? 'اتصل بنا' : ($lang == 'en' ? 'Contact' : 'İletişim')), 'url' => '/#contact', 'subitems' => []]
         ];
     }

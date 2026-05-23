@@ -178,8 +178,26 @@ export async function getAbout(lang: string = 'tr') {
 /**
  * Timeline Data
  */
-export async function getTimeline(lang: string = 'tr') {
-  return apiFetch<any[]>(`/timeline.php?lang=${lang}`);
+export async function getTimeline(lang: string = 'tr'): Promise<any[]> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/timeline.php?lang=${lang}`);
+    if (!response.ok) return [];
+    return await response.json();
+  } catch (error) {
+    console.error('API Error (getTimeline):', error);
+    return [];
+  }
+}
+
+export async function getReferences(lang: string = 'tr'): Promise<any[]> {
+  try {
+    const response = await fetch(`${API_BASE_URL}/references.php?lang=${lang}`);
+    if (!response.ok) return [];
+    return await response.json();
+  } catch (error) {
+    console.error('API Error (getReferences):', error);
+    return [];
+  }
 }
 
 /**

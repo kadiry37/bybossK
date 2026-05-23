@@ -24,7 +24,10 @@ const navLinks: NavLink[] = [
     { name: 'Proje Tasarım', href: '/hizmetler/', description: 'Ölçüden teslimata komple çözüm.' },
     { name: 'Sonrası Destek', href: '/hizmetler/', description: 'Garanti ve bakım hizmetleri.' },
   ]},
-  { name: 'Hakkımızda', href: '/tarihce/' },
+  { name: 'Hakkımızda', href: '#', dropdown: [
+    { name: 'Tarihçe', href: '/tarihce/', description: 'Geçmişten günümüze firmamız.' },
+    { name: 'Referanslarımız', href: '/referanslar/', description: 'Değerli iş ortaklarımız ve müşterilerimiz.' }
+  ]},
   { name: 'İletişim', href: '/#contact' },
 ];
 

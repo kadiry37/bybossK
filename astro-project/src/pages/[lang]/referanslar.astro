@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import References from '../../components/References';
+import Contact from '../../components/Contact';
+import { getNavigation, getSettings, getServices, getProducts, getProjects, getReferences } from '../../lib/api';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'ar' } },
+  ];
+}
+
+const { lang } = Astro.params;
+let settingsData, navData, servicesData, productsData, projectsData, referencesData;
+
+try {
+  settingsData = await getSettings(lang);
+  navData = await getNavigation(lang);
+  servicesData = await getServices(lang);
+  productsData = await getProducts(undefined, lang);
+  projectsData = await getProjects(undefined, undefined, lang);
+  referencesData = await getReferences(lang);
+} catch (e) {
+  console.error('API Error:', e);
+}
+
+const seoTitle = lang === 'en' 
+  ? `Our References - ${settingsData?.general?.siteName || 'By Boss Architecture Furniture'}` 
+  : `مراجعنا - ${settingsData?.general?.siteName || 'By Boss Architecture Furniture'}`;
+
+const seoDescription = settingsData?.general?.description || '';
+const firstHeroImage = settingsData?.general?.logo || '';
+---
+
+<Layout
+  title={seoTitle}
+  description={seoDescription}
+  image={firstHeroImage}
+  footerScripts={settingsData?.footer?.scripts || ''}
+  logo={settingsData?.general?.logo || ''}
+  favicon={settingsData?.general?.favicon || ''}
+  lang={lang}
+>
+  <main class="min-h-screen pt-[102px] lg:pt-[102px] bg-noir-950">
+    <Navbar client:load data={settingsData} navData={navData?.header} servicesData={servicesData} productsData={productsData} projectsData={projectsData} lang={lang} />
+    
+    <References client:visible data={referencesData} lang={lang} />
+
+    <Contact client:visible data={settingsData} lang={lang} />
+    <Footer client:visible data={settingsData} navData={navData?.footer} lang={lang} />
+  </main>
+</Layout>

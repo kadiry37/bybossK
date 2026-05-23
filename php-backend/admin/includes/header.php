@@ -152,6 +152,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'manual_deploy') {
             <a href="?page=hero" class="<?php echo $currentPage === 'hero' ? 'active' : ''; ?>">🎯 Hero Bölümü</a>
             <a href="?page=about" class="<?php echo $currentPage === 'about' ? 'active' : ''; ?>">ℹ️ Hakkımızda</a>
             <a href="?page=timeline" class="<?php echo $currentPage === 'timeline' ? 'active' : ''; ?>">📅 Tarihçe Yönetimi</a>
+            <a href="?page=references" class="<?php echo $currentPage === 'references' ? 'active' : ''; ?>">🤝 Referans Yönetimi</a>
             <a href="?page=products" class="<?php echo $currentPage === 'products' ? 'active' : ''; ?>">📦 Ürünler</a>
             <a href="?page=categories&tab=products" class="<?php echo $currentPage === 'categories' ? 'active' : ''; ?>">🏷️ Kategori Yönetimi</a>
             <a href="?page=projects" class="<?php echo $currentPage === 'projects' ? 'active' : ''; ?>">🏗️ Projeler</a>
@@ -214,7 +215,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'manual_deploy') {
                         'navigation' => 'Menü ve Navigasyon',
                         'seo' => 'SEO Ayarları',
                         'ai' => 'AI Ayarları',
-                        'timeline' => 'Tarihçe Yönetimi'
+                        'timeline' => 'Tarihçe Yönetimi',
+                        'references' => 'Referans Yönetimi'
                     ];
                     echo $pageTitles[$currentPage] ?? 'Admin';
                     ?>
