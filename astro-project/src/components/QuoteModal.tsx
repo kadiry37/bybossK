@@ -121,58 +121,49 @@ export default function QuoteModal({
       setError('');
       setTurnstileToken(null);
 
-      // Fetch Site Key if not already known
+      // Fetch Site Key if not already known, then render
       fetch(`${apiUrl}/settings.php`)
         .then(res => res.json())
         .then(data => {
+          const currentSiteKey = data?.general?.turnstileSiteKey || '0x4AAAAAADNnjtllqKnfryZP';
           if (data?.general?.turnstileSiteKey) {
-            setSiteKey(data.general.turnstileSiteKey);
+            setSiteKey(currentSiteKey);
+          }
+
+          const renderWidget = () => {
+            if ((window as any).turnstile && isOpen) {
+              try {
+                // Clear any existing widget just in case
+                const container = document.getElementById('turnstile-quote');
+                if (container) container.innerHTML = '';
+                
+                (window as any).turnstile.render('#turnstile-quote', {
+                  sitekey: currentSiteKey,
+                  callback: (token: string) => setTurnstileToken(token),
+                  'expired-callback': () => setTurnstileToken(null)
+                });
+              } catch (e) {
+                console.warn("Turnstile render error:", e);
+              }
+            }
+          };
+
+          // Turnstile Script Load
+          if (!(window as any).turnstile) {
+            (window as any).onTurnstileQuoteLoad = renderWidget;
+            if (!document.querySelector('script[src*="turnstile/v0/api.js"]')) {
+              const script = document.createElement('script');
+              script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileQuoteLoad';
+              script.async = true;
+              script.defer = true;
+              document.head.appendChild(script);
+            }
+          } else {
+            // Already loaded, render with a slight delay for DOM
+            setTimeout(renderWidget, 300);
           }
         })
         .catch(err => console.error("Settings load error:", err));
-
-      // Define global callback before loading script
-      (window as any).onTurnstileQuoteLoad = () => {
-        if ((window as any).turnstile && isOpen) {
-          try {
-            (window as any).turnstile.render('#turnstile-quote', {
-              sitekey: siteKey,
-              callback: (token: string) => setTurnstileToken(token),
-              'expired-callback': () => setTurnstileToken(null)
-            });
-          } catch (e) {
-            console.warn("Turnstile render error:", e);
-          }
-        }
-      };
-
-      // Turnstile Script Load
-      if (!(window as any).turnstile) {
-        // Check if script already exists to avoid duplicates
-        if (!document.querySelector('script[src*="turnstile/v0/api.js"]')) {
-          const script = document.createElement('script');
-          script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileQuoteLoad';
-          script.async = true;
-          script.defer = true;
-          document.head.appendChild(script);
-        }
-      } else {
-        // Already loaded, render with a slight delay for DOM
-        setTimeout(() => {
-          if ((window as any).turnstile) {
-            try {
-              (window as any).turnstile.render('#turnstile-quote', {
-                sitekey: siteKey,
-                callback: (token: string) => setTurnstileToken(token),
-                'expired-callback': () => setTurnstileToken(null)
-              });
-            } catch (e) {
-              // Might already be rendered, reset if so
-              console.log("Turnstile already rendered or error, skipping.");
-            }
-          }
-        }, 300);
-      }
     } else {
       document.body.style.overflow = 'unset';
     }

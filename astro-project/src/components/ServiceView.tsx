@@ -40,7 +40,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
   }
 
   const serviceName = service[`name${suffix}`] || service.name;
-  const mainImgUrl = service.mainImage || 'https://deckklips.com.tr/uploads/placeholder.jpg';
+  const mainImgUrl = service.mainImage || 'https://bybossmimarlik.com/uploads/placeholder.jpg';
   
   const allImages = [
     { url: mainImgUrl, alt: serviceName },

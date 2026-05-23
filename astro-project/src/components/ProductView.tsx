@@ -29,7 +29,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
 
   // Prepare images for lightbox
   const productName = product[`name${suffix}`] || product.name;
-  const mainImgUrl = product.mainImage || 'https://deckklips.com.tr/uploads/placeholder.jpg';
+  const mainImgUrl = product.mainImage || 'https://bybossmimarlik.com/uploads/placeholder.jpg';
   
   const allImages = [
     { url: mainImgUrl, alt: product.mainImageAlt || productName, title: product.mainImageTitle },
@@ -77,7 +77,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
                 />
             ) : (
                 <img 
-                  src={product.mainImage || 'https://deckklips.com.tr/uploads/placeholder.jpg'} 
+                  src={product.mainImage || 'https://bybossmimarlik.com/uploads/placeholder.jpg'} 
                   alt={(product.mainImageAlt || product.name || 'Ürün Resmi').trim()} 
                   title={product.mainImageTitle}
                   width="800"
@@ -348,7 +348,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
                     <img 
                       src={product.videoUrl.includes('youtube.com') || product.videoUrl.includes('youtu.be') 
                         ? `https://img.youtube.com/vi/${product.videoUrl.includes('v=') ? product.videoUrl.split('v=')[1].split('&')[0] : product.videoUrl.split('/').pop()}/maxresdefault.jpg` 
-                        : (product.mainImage || 'https://deckklips.com.tr/uploads/placeholder.jpg')} 
+                        : (product.mainImage || 'https://bybossmimarlik.com/uploads/placeholder.jpg')} 
                       alt="Video Preview"
                       className="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700"
                       loading="lazy"

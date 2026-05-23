@@ -40,7 +40,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
   }
 
   const projectName = project[`name${suffix}`] || project.name;
-  const mainImgUrl = project.mainImage || 'https://deckklips.com.tr/uploads/placeholder.jpg';
+  const mainImgUrl = project.mainImage || 'https://bybossmimarlik.com/uploads/placeholder.jpg';
   
   const allImages = [
     { url: mainImgUrl, alt: projectName },
