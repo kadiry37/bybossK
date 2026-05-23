@@ -458,81 +458,44 @@ const websiteSchema = {
     margin-right: auto;
     display: flex;
     align-items: center;
+    z-index: 10;
   }
 
   .logo-w {
     width: auto;
-    min-width: 180px;
-    height: 95px;
-    position: relative;
-    padding: 8px;
-    /* No borders or sharp edges - using a soft radial aura */
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+    height: 80px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    transform-style: preserve-3d;
-    perspective: 1200px;
-  }
-
-  /* Shimmer effect stays but as a soft light sweep */
-  .logo-w::before {
-    content: '';
-    position: absolute;
-    inset: -20px;
-    background: linear-gradient(110deg, transparent 40%, rgba(255, 255, 255, 0.03) 50%, transparent 60%);
-    background-size: 200% 100%;
-    animation: shine-logo 8s linear infinite;
-    pointer-events: none;
-    opacity: 0.5;
-  }
-
-  @keyframes shine-logo {
-    0% { background-position: -100% 0; }
-    100% { background-position: 100% 0; }
+    justify-content: flex-start;
+    transition: transform 0.3s ease;
   }
 
   .logo:hover .logo-w {
-    transform: translateY(-5px) scale(1.06) rotateX(10deg);
-    /* Luminous glow on hover instead of border color */
-    background: radial-gradient(circle at center, rgba(58, 158, 192, 0.12) 0%, transparent 75%);
+    transform: scale(1.02);
   }
 
   .logo-w img {
-    width: 100%;
+    width: auto;
     height: 100%;
+    max-width: 260px;
     object-fit: contain;
-    /* Focus on image shadow for depth */
-    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.4));
-    transition: all 0.6s ease;
-    transform: translateZ(25px);
-  }
-
-  .logo:hover .logo-w img {
-    transform: translateZ(45px) scale(1.05);
-    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.6));
+    object-position: left center;
   }
 
   .logo-ph {
-    position: absolute;
-    inset: 0;
+    font-family: var(--fh);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #111;
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-family: var(--fh);
-    font-size: 17px;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    color: #fff;
-    /* Soft blur background instead of a solid box */
-    background: radial-gradient(circle at center, rgba(20, 20, 25, 0.4) 0%, transparent 80%);
-    transition: all 0.4s ease;
+    gap: 6px;
+    background: transparent !important;
   }
 
   .logo-ph span {
     color: var(--accent);
-    text-shadow: 0 0 15px rgba(58, 158, 192, 0.5);
   }
 
   /* Menu */
@@ -953,8 +916,8 @@ const websiteSchema = {
   @media (max-width: 991px) {
     .tb { display: none !important; }
     #hd { position: fixed; background: var(--bg-glass); backdrop-filter: blur(20px); border-bottom: 1px solid var(--brd); }
-    .logo-w { width: auto; min-width: 130px; height: 50px; padding: 4px; }
-    .logo-ph { font-size: 11px; }
+    .logo-w { height: 50px; }
+    .logo-ph { font-size: 14px; }
   }
 
   .mt {
@@ -1132,16 +1095,16 @@ const websiteSchema = {
         clip-path: polygon(0 0, 96% 0, 84% 100%, 0 100%);
     }
     .logo-w {
-        width: 150px;
-        height: 52px;
-        margin: 0; /* Clear margin */
+        height: 60px;
+        margin: 0; 
     }
     .logo {
-        width: 200px; /* Force width to match white area on mobile */
-        justify-content: center;
+        width: auto;
+        justify-content: flex-start;
+        padding-left: 10px;
     }
     .logo-ph {
-        font-size: 14px !important;
+        font-size: 16px !important;
     }
   }
 
@@ -1155,13 +1118,11 @@ const websiteSchema = {
         left: -120px;
     }
     .logo-w {
-        width: 130px;
-        height: 42px;
-        margin: 0;
+        height: 50px;
     }
     .logo {
-        width: 150px;
-        justify-content: center;
+        width: auto;
+        padding-left: 5px;
     }
     .logo-ph {
         font-size: 12px !important;

@@ -356,14 +356,14 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
                   <img
                     src={logoUrl}
                     alt={siteName}
-                    width={220}
-                    height={64}
-                    className={`w-full h-full object-contain transition-opacity duration-300 ${logoFailed ? 'opacity-0' : 'opacity-100'}`}
+                    width={320}
+                    height={120}
+                    className={`w-auto h-full object-contain object-left transition-opacity duration-300 ${logoFailed ? 'opacity-0' : 'opacity-100'}`}
                     onError={() => setLogoFailed(true)}
                   />
                 )}
                 {(!showLogoImage || logoFailed) && (
-                  <div className="logo-ph">BY BOSS <span>MİMARLIK MOBİLYA</span></div>
+                  <div className="logo-ph">BY BOSS <span>MİMARLIK</span></div>
                 )}
               </div>
             </a>
