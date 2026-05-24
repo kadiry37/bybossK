@@ -168,10 +168,10 @@ export default function Hero({ data, lang = 'tr' }: Props = {}) {
           {/* 3D Cube */}
           <div className="relative order-1 lg:order-2 flex items-center justify-center py-12">
             <div className="cube-wrapper relative z-20" style={{ perspective: '2500px' }}>
-              <div className="hero-cube relative w-[280px] h-[280px] md:w-[440px] md:h-[440px] preserve-3d animate-rotate-cube">
+              <div className="hero-cube relative w-[240px] h-[240px] md:w-[360px] md:h-[360px] preserve-3d animate-rotate-cube">
                   <div className="cube-face cube-front absolute inset-0 border border-white/10 bg-noir-950/90 flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative">
-                      <img src={img0} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-60" />
+                      <img src={img0} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-100" />
                       <div className="absolute inset-0 bg-gradient-to-t from-noir-950 to-transparent opacity-60" />
                     </div>
                     <div className="p-5 bg-noir-900/90 border-t border-white/5">
@@ -181,7 +181,7 @@ export default function Hero({ data, lang = 'tr' }: Props = {}) {
                   </div>
                   <div className="cube-face cube-right absolute inset-0 border border-white/10 bg-noir-950/90 flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative">
-                      <img src={img1} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-60" />
+                      <img src={img1} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-100" />
                       <div className="absolute inset-0 bg-gradient-to-t from-noir-950 to-transparent opacity-60" />
                     </div>
                     <div className="p-5 bg-noir-900/90 border-t border-white/5">
@@ -201,7 +201,7 @@ export default function Hero({ data, lang = 'tr' }: Props = {}) {
                   </div>
                   <div className="cube-face cube-left absolute inset-0 border border-white/10 bg-noir-950/90 flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative">
-                      <img src={img3} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-60" />
+                      <img src={img3} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-100" />
                       <div className="absolute inset-0 bg-gradient-to-t from-noir-950 to-transparent opacity-60" />
                     </div>
                     <div className="p-5 bg-noir-900/90 border-t border-white/5">
@@ -211,7 +211,7 @@ export default function Hero({ data, lang = 'tr' }: Props = {}) {
                   </div>
                   <div className="cube-face cube-top absolute inset-0 border border-white/10 bg-noir-950/90 flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative">
-                      <img src={img4} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-60" />
+                      <img src={img4} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-100" />
                       <div className="absolute inset-0 bg-gradient-to-t from-noir-950 to-transparent opacity-60" />
                     </div>
                     <div className="p-5 bg-noir-900/90 border-t border-white/5">
@@ -247,19 +247,20 @@ export default function Hero({ data, lang = 'tr' }: Props = {}) {
         @keyframes cubeRotate { 0%{transform:rotateX(-15deg) rotateY(0deg)} 100%{transform:rotateX(-15deg) rotateY(360deg)} }
         @keyframes rotateSlow { from{transform:rotateX(60deg) rotateZ(0deg)} to{transform:rotateX(60deg) rotateZ(360deg)} }
         .cube-face { backface-visibility: hidden; background: rgba(10,10,10,0.95); border: 1px solid rgba(255,255,255,0.1); }
-        .cube-front { transform: rotateY(0deg) translateZ(150px); }
-        .cube-back { transform: rotateY(180deg) translateZ(150px); }
-        .cube-right { transform: rotateY(90deg) translateZ(150px); }
-        .cube-left { transform: rotateY(-90deg) translateZ(150px); }
-        .cube-top { transform: rotateX(90deg) translateZ(150px); }
-        .cube-bottom { transform: rotateX(-90deg) translateZ(150px); }
+        .cube-face img { image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; filter: contrast(1.1) saturate(1.1); transform: translateZ(0); }
+        .cube-front { transform: rotateY(0deg) translateZ(120px); }
+        .cube-back { transform: rotateY(180deg) translateZ(120px); }
+        .cube-right { transform: rotateY(90deg) translateZ(120px); }
+        .cube-left { transform: rotateY(-90deg) translateZ(120px); }
+        .cube-top { transform: rotateX(90deg) translateZ(120px); }
+        .cube-bottom { transform: rotateX(-90deg) translateZ(120px); }
         @media (min-width:768px) {
-          .cube-front { transform: rotateY(0deg) translateZ(220px); }
-          .cube-back { transform: rotateY(180deg) translateZ(220px); }
-          .cube-right { transform: rotateY(90deg) translateZ(220px); }
-          .cube-left { transform: rotateY(-90deg) translateZ(220px); }
-          .cube-top { transform: rotateX(90deg) translateZ(220px); }
-          .cube-bottom { transform: rotateX(-90deg) translateZ(220px); }
+          .cube-front { transform: rotateY(0deg) translateZ(180px); }
+          .cube-back { transform: rotateY(180deg) translateZ(180px); }
+          .cube-right { transform: rotateY(90deg) translateZ(180px); }
+          .cube-left { transform: rotateY(-90deg) translateZ(180px); }
+          .cube-top { transform: rotateX(90deg) translateZ(180px); }
+          .cube-bottom { transform: rotateX(-90deg) translateZ(180px); }
         }
       `}</style>
     </section>
