@@ -34,7 +34,7 @@ const firstHeroImage = settingsData?.general?.logo || '';
   favicon={settingsData?.general?.favicon || ''}
   lang={lang}
 >
-  <main class="min-h-screen pt-[102px] lg:pt-[102px] bg-noir-950">
+  <main class="min-h-screen pt-[122px] lg:pt-[122px] bg-noir-950">
     <Navbar client:load data={settingsData} navData={navData?.header} servicesData={servicesData} productsData={productsData} projectsData={projectsData} lang={lang} />
     
     <References client:visible data={referencesData} lang={lang} />
