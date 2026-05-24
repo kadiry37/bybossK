@@ -157,8 +157,8 @@ function generateAIContent($prompt, $type = 'description') {
 function callOpenAICompatibleGen($url, $apiKey, $model, $prompt, $system, $type = 'description') {
     if (empty($apiKey)) return ['error' => 'API anahtarı girilmemiş'];
     
-    // Increase token limit for comprehensive JSON generation types with HTML content
-    $maxTokens = in_array($type, ['all_product', 'all_service', 'all_project', 'blog_all']) ? 4000 : 2000;
+    $isJson = in_array($type, ['all_product', 'all_service', 'all_project', 'blog_all']);
+    $maxTokens = $isJson ? 4000 : 2000;
     
     $data = [
         'model' => $model,
@@ -169,6 +169,10 @@ function callOpenAICompatibleGen($url, $apiKey, $model, $prompt, $system, $type 
         'max_tokens' => $maxTokens,
         'temperature' => 0.7
     ];
+    
+    if ($isJson && !strpos($url, 'anthropic')) {
+        $data['response_format'] = ['type' => 'json_object'];
+    }
     
     $ch = curl_init($url);
     curl_setopt_array($ch, [
@@ -198,7 +202,8 @@ function callMistral($prompt, $system, $type = 'description') {
     $model = getSetting('ai_mistral_model', 'mistral-large-latest');
     if (empty($key)) return ['error' => 'Mistral API anahtarı girilmemiş'];
     
-    $maxTokens = in_array($type, ['all_product', 'all_service', 'all_project', 'blog_all']) ? 4000 : 2000;
+    $isJson = in_array($type, ['all_product', 'all_service', 'all_project', 'blog_all']);
+    $maxTokens = $isJson ? 4000 : 2000;
     
     $data = [
         'model' => $model,
@@ -208,6 +213,10 @@ function callMistral($prompt, $system, $type = 'description') {
         ],
         'max_tokens' => $maxTokens
     ];
+    
+    if ($isJson) {
+        $data['response_format'] = ['type' => 'json_object'];
+    }
     
     $ch = curl_init('https://api.mistral.ai/v1/chat/completions');
     curl_setopt_array($ch, [
@@ -223,7 +232,6 @@ function callMistral($prompt, $system, $type = 'description') {
     
     $response = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    // curl_close($ch); // Deprecated in PHP 8.5+
     
     if ($httpCode !== 200) return ['error' => 'Mistral API hatası (HTTP ' . $httpCode . ')'];
     
@@ -236,7 +244,8 @@ function callOpenAI($prompt, $system, $type = 'description') {
     $model = getSetting('ai_openai_model', 'gpt-4o-mini');
     if (empty($key)) return ['error' => 'OpenAI API anahtarı girilmemiş'];
     
-    $maxTokens = in_array($type, ['all_product', 'all_service', 'all_project', 'blog_all']) ? 4000 : 2000;
+    $isJson = in_array($type, ['all_product', 'all_service', 'all_project', 'blog_all']);
+    $maxTokens = $isJson ? 4000 : 2000;
     
     $data = [
         'model' => $model,
@@ -247,6 +256,10 @@ function callOpenAI($prompt, $system, $type = 'description') {
         'max_tokens' => $maxTokens,
         'temperature' => 0.7
     ];
+    
+    if ($isJson) {
+        $data['response_format'] = ['type' => 'json_object'];
+    }
     
     if (strpos($prompt, 'JSON Formatı') !== false || strpos($prompt, 'JSON olarak ver') !== false) {
         $data['response_format'] = ['type' => 'json_object'];
