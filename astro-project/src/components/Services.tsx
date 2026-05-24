@@ -15,7 +15,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string; strokeWi
 const defaultServices: ServiceData[] = [];
 
 export default function Services({ data, lang = 'tr', isHomePage = false }: { data?: any[], lang?: string, isHomePage?: boolean }) {
-  const services: any[] = data || [];
+  const services: any[] = Array.isArray(data) ? data : (data?.data && Array.isArray(data.data) ? data.data : []);
   const suffix = lang === 'tr' ? '' : `_${lang}`;
 
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
