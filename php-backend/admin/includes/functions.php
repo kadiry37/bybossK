@@ -125,9 +125,9 @@ function generateAIContent($prompt, $type = 'description') {
     $isJson = in_array($type, ['all_product', 'blog_all', 'all_project', 'all_service']);
     
     if ($isJson) {
-        $systemPrompt = "Sen profesyonel bir SEO içerik yazarısın. Türkçe yaz. Sitenin markası 'DECK Klips'tir. İstenen alanları eksiksiz doldurarak SADECE geçerli bir JSON objesi döndür. DİKKAT: Yanıtın DOĞRUDAN '{' ile başlamalı ve '}' ile bitmelidir. Öncesinde veya sonrasında 'İşte JSON formatında içerik' gibi açıklamalar, düşünce süreci (reasoning) veya markdown (```json vb.) KESİNLİKLE YAZMA. JSON içindeki değerlere '...' şeklinde yer tutucular koyma, hepsini yaratıcı ve uzun içeriklerle GERÇEK şekilde doldur. Türkçe karakterleri doğrudan UTF-8 olarak kullan, HTML entity yapma.";
+        $systemPrompt = "You are an expert Turkish SEO content writer. The brand is 'DECK Klips'. You MUST output ONLY a valid JSON object. Your entire response MUST start exactly with '{' and end exactly with '}'. DO NOT output any chain of thought, reasoning, or markdown (no ```json). DO NOT output any English text outside the JSON. All generated values inside the JSON MUST be written in fluent, professional Turkish. Do NOT leave placeholders like '...'; you MUST generate full, comprehensive, and real content for every field. Use proper HTML tags (h2, h3, p, strong) inside long text fields.";
     } else {
-        $systemPrompt = "Sen profesyonel bir SEO içerik yazarısın. Türkçe yaz. Sitenin markası 'DECK Klips'tir. SADECE içeriği üret, açıklama veya markdown yapma. Türkçe karakterleri (Ü, Ş, İ, Ç, Ö, Ğ) ASLA HTML entity (&#220; vb) olarak kodlama, her zaman doğrudan UTF-8 karakterlerini kullan. Doğru Türkçe terimler kullan ('kurulum', 'montaj', 'dayanım').";
+        $systemPrompt = "You are an expert Turkish SEO content writer. The brand is 'DECK Klips'. Generate professional, SEO-optimized content in fluent Turkish. DO NOT use placeholders. DO NOT wrap your response in markdown. Use correct Turkish terminology (e.g. 'kurulum', 'montaj', 'dayanım').";
     }
     
     switch ($provider) {

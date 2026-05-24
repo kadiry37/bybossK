@@ -327,10 +327,15 @@ $s = getSettings();
 
     <div x-show="activeTab === 'mail'" class="card">
         <div class="card-header border-b border-gray-800 mb-4 pb-2">📧 Mail Ayarları</div>
-        <div class="form-group"><label class="form-label">SMTP Host</label><input type="text" name="smtp_host" class="form-input" value="<?php echo $s['smtp_host']??''; ?>"></div>
+        <div class="form-group">
+            <label class="form-label">Alıcı E-posta Adresi (İletişim formları bu adrese düşer)</label>
+            <input type="text" name="admin_email" class="form-input" value="<?php echo htmlspecialchars($s['admin_email'] ?? ''); ?>" placeholder="ornek@firma.com, baska@firma.com">
+            <p class="text-xs text-gray-500 mt-1">Birden fazla kişiye göndermek için aralarına virgül (,) koyarak yazabilirsiniz.</p>
+        </div>
+        <div class="form-group"><label class="form-label">SMTP Host</label><input type="text" name="smtp_host" class="form-input" value="<?php echo htmlspecialchars($s['smtp_host']??''); ?>"></div>
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
-            <div class="form-group"><label class="form-label">SMTP User</label><input type="text" name="smtp_user" class="form-input" value="<?php echo $s['smtp_user']??''; ?>"></div>
-            <div class="form-group"><label class="form-label">SMTP Pass</label><input type="password" name="smtp_pass" class="form-input" value="<?php echo $s['smtp_pass']??''; ?>"></div>
+            <div class="form-group"><label class="form-label">SMTP User</label><input type="text" name="smtp_user" class="form-input" value="<?php echo htmlspecialchars($s['smtp_user']??''); ?>"></div>
+            <div class="form-group"><label class="form-label">SMTP Pass</label><input type="password" name="smtp_pass" class="form-input" value="<?php echo htmlspecialchars($s['smtp_pass']??''); ?>"></div>
         </div>
     </div>
 
