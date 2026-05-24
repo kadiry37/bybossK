@@ -125,9 +125,9 @@ function generateAIContent($prompt, $type = 'description') {
     $isJson = in_array($type, ['all_product', 'blog_all', 'all_project', 'all_service']);
     
     if ($isJson) {
-        $systemPrompt = "You are an expert Turkish SEO content writer. The brand is 'DECK Klips'. You MUST output ONLY a valid JSON object. Your entire response MUST start exactly with '{' and end exactly with '}'. DO NOT output any chain of thought, reasoning, or markdown (no ```json). DO NOT output any English text outside the JSON. All generated values inside the JSON MUST be written in fluent, professional Turkish. Do NOT leave placeholders like '...'; you MUST generate full, comprehensive, and real content for every field. Use proper HTML tags (h2, h3, p, strong) inside long text fields.";
+        $systemPrompt = "You are an expert Turkish SEO content writer for the brand 'DECK Klips'.\n\nCRITICAL INSTRUCTIONS:\n1. You MUST respond with ONLY a valid JSON object. Do not include any text, greetings, or markdown formatting outside the JSON.\n2. ALL values inside the JSON MUST be in Turkish.\n3. DO NOT BE LAZY. You MUST generate FULL, comprehensive, and realistic content for EVERY field requested. DO NOT use placeholders like '...', 'short description here', etc. Write actual paragraphs.\n4. Ensure valid JSON syntax.";
     } else {
-        $systemPrompt = "You are an expert Turkish SEO content writer. The brand is 'DECK Klips'. Generate professional, SEO-optimized content in fluent Turkish. DO NOT use placeholders. DO NOT wrap your response in markdown. Use correct Turkish terminology (e.g. 'kurulum', 'montaj', 'dayanım').";
+        $systemPrompt = "You are an expert Turkish SEO content writer for the brand 'DECK Klips'. Generate professional, SEO-optimized content in fluent Turkish. DO NOT use placeholders. DO NOT wrap your response in markdown. Use correct Turkish terminology (e.g. 'kurulum', 'montaj', 'dayanım').";
     }
     
     switch ($provider) {
