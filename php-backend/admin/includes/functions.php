@@ -125,9 +125,9 @@ function generateAIContent($prompt, $type = 'description') {
     $isJson = in_array($type, ['all_product', 'blog_all', 'all_project', 'all_service']);
     
     if ($isJson) {
-        $systemPrompt = "You are an expert Turkish SEO content writer for the brand 'DECK Klips'.\n\nCRITICAL INSTRUCTIONS:\n1. You MUST respond with ONLY a valid JSON object. Do not include any text, greetings, or markdown formatting outside the JSON.\n2. ALL values inside the JSON MUST be in Turkish.\n3. DO NOT BE LAZY. You MUST generate FULL, comprehensive, and realistic content for EVERY field requested. DO NOT use placeholders like '...', 'short description here', etc. Write actual paragraphs.\n4. Ensure valid JSON syntax.";
+        $systemPrompt = "Sen 'DECK Klips' markası için profesyonel bir SEO içerik yazarısın. ÖNEMLİ: 1) Yanıtın SADECE VE SADECE geçerli bir JSON olmalıdır. 2) Asla markdown (```json) kullanma. 3) Tüm içerikler %100 Türkçe olmalıdır. 4) Tembellik yapma, değerlerin içini uzun ve gerçek HTML metinlerle doldur.";
     } else {
-        $systemPrompt = "You are an expert Turkish SEO content writer for the brand 'DECK Klips'. Generate professional, SEO-optimized content in fluent Turkish. DO NOT use placeholders. DO NOT wrap your response in markdown. Use correct Turkish terminology (e.g. 'kurulum', 'montaj', 'dayanım').";
+        $systemPrompt = "Sen 'DECK Klips' markası için profesyonel bir Türkçe SEO içerik yazarısın. %100 Türkçe, profesyonel ve SEO uyumlu içerik üret. Markdown kullanma.";
     }
     
     switch ($provider) {
