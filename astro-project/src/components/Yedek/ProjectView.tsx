@@ -16,7 +16,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
   if (!project) {
     return (
       <div className="container mx-auto px-6 py-40 text-center">
-        <h2 className="text-white text-4xl font-serif font-bold mb-6">{lang === 'en' ? 'Project Not Found' : (lang === 'ar' ? 'لم يتم العثور على المشروع' : 'Proje Bulunamadı')}</h2>
+        <h2 className="text-noir-950 text-4xl font-serif font-bold mb-6">{lang === 'en' ? 'Project Not Found' : (lang === 'ar' ? 'لم يتم العثور على المشروع' : 'Proje Bulunamadı')}</h2>
         <p className="text-noir-400 mb-8">{lang === 'en' ? 'The project you are looking for may not have been published or moved.' : (lang === 'ar' ? 'قد لا يكون المشروع الذي تبحث عنه قد تم نشره أو نقله.' : 'Aradığınız proje henüz yayınlanmamış veya taşınmış olabilir.')}</p>
         <a href={`/${lang}/#projects`} className="btn btn-gold">
           {lang === 'en' ? 'Back to Projects' : (lang === 'ar' ? 'العودة إلى المشاريع' : 'Projelere Dön')}
@@ -41,7 +41,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
   return (
     <>
       <div className="container mx-auto px-6 py-12 animate-fade-in">
-         <a href={`/${lang}/#projects`} className="inline-flex items-center gap-2 text-gold-500 hover:text-white transition-colors mb-12 group">
+         <a href={`/${lang}/#projects`} className="inline-flex items-center gap-2 text-gold-500 hover:text-noir-950 transition-colors mb-12 group">
            <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
            <span>{lang === 'en' ? 'Back to All Projects' : (lang === 'ar' ? 'العودة إلى كافة المشاريع' : 'Tüm Projelere Dön')}</span>
          </a>
@@ -50,7 +50,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
           {/* Left: Images */}
           <div className="lg:col-span-7 space-y-6">
             <div 
-              className="aspect-[16/10] overflow-hidden bg-noir-800 border border-noir-700 cursor-pointer group relative"
+              className="aspect-[16/10] overflow-hidden bg-white/80 border border-noir-950/15 cursor-pointer group relative"
               onClick={() => openLightbox(0)}
             >
               <img 
@@ -59,7 +59,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/10 transition-colors flex items-center justify-center">
-                 <ZoomIn size={48} className="text-white opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all duration-300" />
+                 <ZoomIn size={48} className="text-noir-950 opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all duration-300" />
               </div>
             </div>
             
@@ -68,7 +68,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                 {project.gallery_images.split(',').map((img: string, i: number) => (
                   <div 
                       key={i} 
-                      className="aspect-[4/3] overflow-hidden bg-noir-800 border border-noir-700 group cursor-pointer relative"
+                      className="aspect-[4/3] overflow-hidden bg-white/80 border border-noir-950/15 group cursor-pointer relative"
                       onClick={() => openLightbox(i + 1)}
                   >
                     <img 
@@ -76,7 +76,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
                     />
                     <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/20 transition-colors flex items-center justify-center">
-                       <ZoomIn size={24} className="text-white opacity-0 group-hover:opacity-100 transition-all" />
+                       <ZoomIn size={24} className="text-noir-950 opacity-0 group-hover:opacity-100 transition-all" />
                     </div>
                   </div>
                 ))}
@@ -91,33 +91,33 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                 {project.category === 'architecture' ? (lang === 'en' ? 'Architectural Project' : (lang === 'ar' ? 'مشروع معماري' : 'Mimari Proje')) : (lang === 'en' ? 'Furniture & Decoration' : (lang === 'ar' ? 'أثاث وديكور' : 'Mobilya & Dekorasyon'))}
               </span>
               
-              <h1 className="font-serif text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">
+              <h1 className="font-serif text-4xl lg:text-5xl font-bold text-noir-950 mb-8 leading-tight">
                 {project[`name${suffix}`] || project.name}
               </h1>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10 pb-10 border-b border-noir-800">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10 pb-10 border-b border-noir-950/10">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-noir-800 flex items-center justify-center text-gold-500 border border-noir-700">
+                  <div className="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center text-gold-500 border border-noir-950/15">
                     <MapPin size={20} />
                   </div>
                   <div>
                     <p className="text-noir-500 text-xs uppercase tracking-wider">{lang === 'en' ? 'Location' : (lang === 'ar' ? 'موقع' : 'Konum')}</p>
-                    <p className="text-white font-medium">{project.location || (lang === 'en' ? 'Not specified' : (lang === 'ar' ? 'غير محدد' : 'Belirtilmedi'))}</p>
+                    <p className="text-noir-950 font-medium">{project.location || (lang === 'en' ? 'Not specified' : (lang === 'ar' ? 'غير محدد' : 'Belirtilmedi'))}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-noir-800 flex items-center justify-center text-gold-500 border border-noir-700">
+                  <div className="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center text-gold-500 border border-noir-950/15">
                     <Calendar size={20} />
                   </div>
                   <div>
                     <p className="text-noir-500 text-xs uppercase tracking-wider">{lang === 'en' ? 'Year' : (lang === 'ar' ? 'سنة' : 'Yıl')}</p>
-                    <p className="text-white font-medium">{project.year || '-'}</p>
+                    <p className="text-noir-950 font-medium">{project.year || '-'}</p>
                   </div>
                 </div>
               </div>
 
               <div className="prose prose-invert max-w-none mb-12">
-                <h3 className="text-white text-xl mb-4 font-serif">{lang === 'en' ? 'Project Details' : (lang === 'ar' ? 'تفاصيل المشروع' : 'Proje Detayları')}</h3>
+                <h3 className="text-noir-950 text-xl mb-4 font-serif">{lang === 'en' ? 'Project Details' : (lang === 'ar' ? 'تفاصيل المشروع' : 'Proje Detayları')}</h3>
                 <div 
                   className="text-noir-400 leading-relaxed text-lg whitespace-pre-line rich-content-view"
                   dangerouslySetInnerHTML={{ __html: parseMarkdown(project[`description${suffix}`] || project.description) }}
@@ -125,12 +125,12 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
               </div>
 
               {project.specifications && (
-                  <div className="p-6 bg-noir-800/50 border border-noir-700 rounded-lg mb-12">
+                  <div className="p-6 bg-white/80/50 border border-noir-950/15 rounded-lg mb-12">
                       <h4 className="text-gold-500 font-serif text-lg mb-4 flex items-center gap-2">
                           <Tag size={18} /> Teknik Bilgiler
                       </h4>
                       <div 
-                          className="text-noir-300 text-sm rich-content-view"
+                          className="text-noir-700 text-sm rich-content-view"
                           dangerouslySetInnerHTML={{ __html: parseMarkdown(project.specifications) }}
                       />
                   </div>

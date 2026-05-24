@@ -43,7 +43,7 @@ const siteName = settingsData?.general?.siteName || 'By Boss Mimarlık Mobilya';
         {lang === 'en' ? 'Terms of' : (lang === 'ar' ? 'شروط' : 'Kullanım')} <span class="text-gold-500">{lang === 'en' ? 'Use' : (lang === 'ar' ? 'الاستخدام' : 'Şartları')}</span>
       </h1>
       
-      <div class="prose prose-invert max-w-none text-noir-300 space-y-6">
+      <div class="prose prose-invert max-w-none text-noir-700 space-y-6">
         {settingsData?.legal?.termsOfUse ? (
           <div class="whitespace-pre-line" set:html={settingsData.legal.termsOfUse} />
         ) : (

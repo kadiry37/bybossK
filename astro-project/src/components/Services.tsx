@@ -105,7 +105,7 @@ export default function Services({ data, lang = 'tr', isHomePage = false }: { da
             return (
                 <div
                   key={service.id}
-                  className={`service-card group relative bg-white/80 border border-noir-800 p-8 hover:border-gold-500/50 transition-all duration-500 cursor-pointer flex flex-col h-full ${isVisible ? 'visible' : ''}`}
+                  className={`service-card group relative bg-white/80 border border-noir-950/10 p-8 hover:border-gold-500/50 transition-all duration-500 cursor-pointer flex flex-col h-full ${isVisible ? 'visible' : ''}`}
                   onClick={() => {
                     window.location.href = `/${lang}/hizmet/${service.slug}`;
                   }}
@@ -113,7 +113,7 @@ export default function Services({ data, lang = 'tr', isHomePage = false }: { da
                 <div className={`absolute top-4 ${lang === 'ar' ? 'left-4' : 'right-4'} text-noir-800 text-5xl font-serif font-bold select-none pointer-events-none`}>
                   {String((currentPage - 1) * itemsPerPage + index + 1).padStart(2, '0')}
                 </div>
-                <div className="w-14 h-14 bg-noir-800 group-hover:bg-gold-500 flex items-center justify-center mb-6 transition-colors duration-300">
+                <div className="w-14 h-14 bg-white/80 group-hover:bg-gold-500 flex items-center justify-center mb-6 transition-colors duration-300">
                   <IconComponent className="text-gold-500 group-hover:text-noir-900 w-6 h-6 transition-colors duration-300" strokeWidth={1.5} />
                 </div>
                 <h3 className="font-serif text-xl font-bold text-noir-950 mb-3 group-hover:text-gold-500 transition-colors">{service.name}</h3>
@@ -142,7 +142,7 @@ export default function Services({ data, lang = 'tr', isHomePage = false }: { da
             <button
               onClick={() => { setCurrentPage(p => Math.max(1, p - 1)); setShouldScroll(true); }}
               disabled={currentPage === 1}
-              className="px-4 py-2 border border-noir-700 rounded-lg text-noir-300 disabled:opacity-50 hover:bg-noir-800 transition-colors"
+              className="px-4 py-2 border border-noir-950/15 rounded-lg text-noir-700 disabled:opacity-50 hover:bg-white/80 transition-colors"
             >
               {lang === 'en' ? 'Previous' : (lang === 'ar' ? 'السابق' : 'Önceki')}
             </button>
@@ -151,7 +151,7 @@ export default function Services({ data, lang = 'tr', isHomePage = false }: { da
                 <button
                   key={i}
                   onClick={() => { setCurrentPage(i + 1); setShouldScroll(true); }}
-                  className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${currentPage === i + 1 ? 'bg-gold-500 text-noir-900 font-bold' : 'border border-noir-700 text-noir-300 hover:bg-noir-800'}`}
+                  className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${currentPage === i + 1 ? 'bg-gold-500 text-noir-900 font-bold' : 'border border-noir-950/15 text-noir-700 hover:bg-white/80'}`}
                 >
                   {i + 1}
                 </button>
@@ -160,14 +160,14 @@ export default function Services({ data, lang = 'tr', isHomePage = false }: { da
             <button
               onClick={() => { setCurrentPage(p => Math.min(totalPages, p + 1)); setShouldScroll(true); }}
               disabled={currentPage === totalPages}
-              className="px-4 py-2 border border-noir-700 rounded-lg text-noir-300 disabled:opacity-50 hover:bg-noir-800 transition-colors"
+              className="px-4 py-2 border border-noir-950/15 rounded-lg text-noir-700 disabled:opacity-50 hover:bg-white/80 transition-colors"
             >
               {lang === 'en' ? 'Next' : (lang === 'ar' ? 'التالي' : 'Sonraki')}
             </button>
           </div>
         )}
 
-        <div className="mt-20 p-8 lg:p-12 bg-gradient-to-r from-noir-900 to-noir-800 border border-noir-700 flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div className="mt-20 p-8 lg:p-12 bg-gradient-to-r from-noir-900 to-noir-800 border border-noir-950/15 flex flex-col lg:flex-row items-center justify-between gap-6">
           <div>
             <h3 className="font-serif text-2xl lg:text-3xl font-bold text-noir-950 mb-2">{lang === "en" ? "Let's Work Together" : (lang === "ar" ? "لنعمل معا" : "Projeniz İçin Birlikte Çalışalım")}</h3>
             <p className="text-noir-700">{lang === "en" ? "Contact us now for free consultation." : (lang === "ar" ? "اتصل بنا الآن للحصول على استشارة مجانية." : "Ücretsiz danışmanlık için hemen iletişime geçin.")}</p>

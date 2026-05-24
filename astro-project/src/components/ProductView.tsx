@@ -65,7 +65,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
         {/* Left Column: Images */}
         <div className="space-y-6">
         <div 
-          className="group relative rounded-[2.5rem] overflow-hidden border border-noir-800 bg-transparent aspect-square cursor-pointer active:scale-[0.98] transition-transform duration-300"
+          className="group relative rounded-[2.5rem] overflow-hidden border border-noir-950/10 bg-transparent aspect-square cursor-pointer active:scale-[0.98] transition-transform duration-300"
           onClick={() => openLightbox(0)}
         >
             {product.mainImage?.match(/\.(mp4|webm)$/i) ? (
@@ -118,7 +118,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
               {product.galleryImages.map((img: string, idx: number) => (
                 <div
                   key={idx}
-                  className="aspect-square rounded-2xl overflow-hidden border border-noir-800 bg-white/80 cursor-pointer group relative active:scale-95 transition-all animate-gallery-item"
+                  className="aspect-square rounded-2xl overflow-hidden border border-noir-950/10 bg-white/80 cursor-pointer group relative active:scale-95 transition-all animate-gallery-item"
                   style={{ animationDelay: `${idx * 0.1}s` } as React.CSSProperties}
                   onClick={() => openLightbox(idx + 1)}
                 >
@@ -175,7 +175,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
                 <span className="text-gold-500">{lang === 'en' ? 'Get Price Quote' : (lang === 'ar' ? 'احصل على عرض سعر' : 'Fiyat Teklifi Alın')}</span>
               )}
               {product.priceQuantity && (
-                <div className="ml-2 bg-noir-800 border border-noir-700 text-noir-300 px-3 py-1.5 rounded-lg text-xs font-sans font-semibold uppercase tracking-widest flex items-center gap-1.5">
+                <div className="ml-2 bg-white/80 border border-noir-950/15 text-noir-700 px-3 py-1.5 rounded-lg text-xs font-sans font-semibold uppercase tracking-widest flex items-center gap-1.5">
                    <Package size={14} className="text-gold-500" />
                    {product.priceQuantity}
                 </div>
@@ -183,7 +183,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
             </div>
 
             <div 
-              className="text-noir-300 text-lg leading-relaxed font-light mb-10 border-l-2 border-gold-500/30 pl-6"
+              className="text-noir-700 text-lg leading-relaxed font-light mb-10 border-l-2 border-gold-500/30 pl-6"
               dangerouslySetInnerHTML={{ __html: parseMarkdown(product[`shortDescription${suffix}`] || product.shortDescription) }}
             ></div>
           </div>
@@ -216,7 +216,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
                       alert(lang === 'en' ? 'Link copied!' : (lang === 'ar' ? 'تم نسخ الرابط!' : 'Link kopyalandı!'));
                    }
                 }}
-                className="p-5 bg-noir-800 hover:bg-noir-700 text-noir-950 border border-noir-700 rounded-2xl transition-all duration-300 flex items-center justify-center active:scale-95"
+                className="p-5 bg-white/80 hover:bg-white/60 text-noir-950 border border-noir-950/15 rounded-2xl transition-all duration-300 flex items-center justify-center active:scale-95"
                 aria-label={lang === 'en' ? 'Share Product' : (lang === 'ar' ? 'مشاركة المنتج' : 'Ürünü Paylaş')}
              >
                 <Share2 size={24} aria-hidden="true" />
@@ -234,7 +234,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
                 const hasHtml = /<[a-z][\s\S]*>/i.test(rawDesc);
                 const htmlContent = hasHtml ? parseMarkdown(rawDesc) : parseMarkdown(rawDesc).replace(/\n/g, '<br/>');
                 return (
-                  <div className="text-noir-300 leading-relaxed font-light text-sm rich-content-view" dangerouslySetInnerHTML={{ __html: htmlContent }}></div>
+                  <div className="text-noir-700 leading-relaxed font-light text-sm rich-content-view" dangerouslySetInnerHTML={{ __html: htmlContent }}></div>
                 );
               })()}
             </div>
@@ -251,7 +251,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
                 {allSpecs.map((item, idx) => (
                   <div 
                     key={idx} 
-                    className="bg-white/80/40 backdrop-blur-sm p-5 rounded-2xl border border-noir-800/60 border-l-2 border-l-gold-500 hover:border-gold-500/30 hover:bg-noir-800/40 hover:scale-[1.02] transition-all duration-300 flex flex-col justify-center shadow-lg"
+                    className="bg-white/80/40 backdrop-blur-sm p-5 rounded-2xl border border-noir-950/10/60 border-l-2 border-l-gold-500 hover:border-gold-500/30 hover:bg-white/80/40 hover:scale-[1.02] transition-all duration-300 flex flex-col justify-center shadow-lg"
                   >
                     <span className="text-[10px] uppercase tracking-widest text-noir-700 font-semibold mb-1">{item.key}</span>
                     <span className="text-noir-950 text-base font-bold tracking-wide">{item.val}</span>
@@ -263,13 +263,13 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
 
           <div className="space-y-8">
             {product.features && (
-              <div className="bg-noir-800/20 backdrop-blur-sm p-8 rounded-[2rem] border border-noir-800/30">
+              <div className="bg-white/80/20 backdrop-blur-sm p-8 rounded-[2rem] border border-noir-950/10/30">
                 <div className="flex items-center gap-3 mb-6">
                    <BadgeCheck className="text-gold-500" size={18} aria-hidden="true" />
                    <h2 className="text-noir-950 font-bold uppercase tracking-widest text-xs">{lang === 'en' ? 'Features' : (lang === 'ar' ? 'المميزات' : 'Özellikler')}</h2>
                 </div>
                 <div 
-                  className="text-noir-300 text-sm leading-relaxed rich-content-view"
+                  className="text-noir-700 text-sm leading-relaxed rich-content-view"
                   dangerouslySetInnerHTML={{ __html: parseMarkdown(product.features) }}
                 />
               </div>
@@ -277,7 +277,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
 
             {/* Assembly Steps (HowTo) Section */}
             {product.howtoJson && Array.isArray(product.howtoJson) && product.howtoJson.length > 0 && (
-              <div className="mt-12 bg-noir-800/30 backdrop-blur-sm p-8 rounded-[2rem] border border-noir-800/50">
+              <div className="mt-12 bg-white/80/30 backdrop-blur-sm p-8 rounded-[2rem] border border-noir-950/10/50">
                 <div className="flex items-center gap-3 mb-8">
                    <Wrench className="text-gold-500" size={24} aria-hidden="true" />
                    <h2 className="text-noir-950 text-xl font-bold uppercase tracking-widest">{product.howtoTitle || `${productName} ${lang === 'en' ? 'Assembly Steps' : (lang === 'ar' ? 'خطوات التجميع' : 'Montaj Adımları')}`}</h2>
@@ -316,20 +316,20 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
                 </div>
                 <div className="space-y-4">
                   {product.faqJson.map((faq: any, idx: number) => (
-                    <div key={idx} className="bg-white/80 rounded-2xl overflow-hidden border border-noir-800/50">
+                    <div key={idx} className="bg-white/80 rounded-2xl overflow-hidden border border-noir-950/10/50">
                       <button 
-                        className="w-full px-6 py-5 flex items-center justify-between bg-white/80 hover:bg-noir-800 transition-colors"
+                        className="w-full px-6 py-5 flex items-center justify-between bg-white/80 hover:bg-white/80 transition-colors"
                         onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
                       >
                         <span className="text-noir-950 font-semibold text-left">{faq.q || faq.question}</span>
-                        <div className={`w-8 h-8 rounded-full border border-noir-700 flex items-center justify-center text-gold-500 transition-transform ${openFaq === idx ? 'rotate-180' : ''}`}>
+                        <div className={`w-8 h-8 rounded-full border border-noir-950/15 flex items-center justify-center text-gold-500 transition-transform ${openFaq === idx ? 'rotate-180' : ''}`}>
                           <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>
                         </div>
                       </button>
-                      <div className={`px-6 overflow-hidden transition-all duration-300 ${openFaq === idx ? 'max-h-96 py-5 border-t border-noir-800' : 'max-h-0 py-0'}`}>
-                        <p className="text-noir-300 text-sm leading-relaxed">{faq.a || faq.answer}</p>
+                      <div className={`px-6 overflow-hidden transition-all duration-300 ${openFaq === idx ? 'max-h-96 py-5 border-t border-noir-950/10' : 'max-h-0 py-0'}`}>
+                        <p className="text-noir-700 text-sm leading-relaxed">{faq.a || faq.answer}</p>
                       </div>
                     </div>
                   ))}
@@ -339,7 +339,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
 
             {/* Video Player Section */}
             {product.videoUrl && (
-              <div className="mt-12 rounded-[2.5rem] overflow-hidden border border-noir-800 bg-transparent aspect-video relative group shadow-2xl">
+              <div className="mt-12 rounded-[2.5rem] overflow-hidden border border-noir-950/10 bg-transparent aspect-video relative group shadow-2xl">
                 {!showVideo ? (
                   <div 
                     className="absolute inset-0 cursor-pointer flex items-center justify-center"

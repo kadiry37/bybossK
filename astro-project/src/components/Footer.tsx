@@ -214,7 +214,7 @@ export default function Footer({ navData: initialNavData, data: initialData, lan
                 </div>
                 <div>
                   <span className="block text-[10px] uppercase text-noir-600 font-bold tracking-tighter mb-1">{lang === 'en' ? 'Address' : (lang === 'ar' ? 'عنوان' : 'Adres')}</span>
-                  <span className="text-noir-300 text-sm leading-snug block">
+                  <span className="text-noir-700 text-sm leading-snug block">
                     {contact.address}
                   </span>
                 </div>

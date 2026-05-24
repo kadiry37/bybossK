@@ -36,7 +36,7 @@ export default function BlogPostView({ initialPost: post, lang = 'tr' }: { initi
               ← {lang === 'en' ? 'Back to Blog' : (lang === 'ar' ? 'العودة إلى المدونة' : 'Bloğa Dön')}
             </a>
             {post.category_name && (
-              <span className="px-5 py-2 bg-noir-800 text-[10px] font-bold uppercase tracking-widest text-noir-700 rounded-full border border-noir-700/50">
+              <span className="px-5 py-2 bg-white/80 text-[10px] font-bold uppercase tracking-widest text-noir-700 rounded-full border border-noir-950/15/50">
                 {post.category_name}
               </span>
             )}
@@ -55,7 +55,7 @@ export default function BlogPostView({ initialPost: post, lang = 'tr' }: { initi
           {/* Featured Image */}
           {post.featured_image && (
             <div 
-              className="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden mb-16 border border-noir-800 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] animate-fade-in cursor-pointer group"
+              className="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden mb-16 border border-noir-950/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] animate-fade-in cursor-pointer group"
               style={{ animationDelay: '0.2s' } as React.CSSProperties}
               onClick={() => setLightbox({ isOpen: true, index: 0 })}
             >
@@ -80,8 +80,8 @@ export default function BlogPostView({ initialPost: post, lang = 'tr' }: { initi
 
           {/* HowTo Section */}
           {post.howtoJson && Array.isArray(post.howtoJson) && post.howtoJson.length > 0 && (
-            <div className="mt-20 bg-noir-800/20 p-8 md:p-12 rounded-[3rem] border border-noir-800/50 animate-fade-in">
-              <div className="flex items-center gap-4 mb-10 border-b border-noir-800/50 pb-6">
+            <div className="mt-20 bg-white/80/20 p-8 md:p-12 rounded-[3rem] border border-noir-950/10/50 animate-fade-in">
+              <div className="flex items-center gap-4 mb-10 border-b border-noir-950/10/50 pb-6">
                  <div className="w-12 h-12 rounded-full bg-gold-500/10 flex items-center justify-center">
                     <Wrench className="text-gold-500" size={24} />
                  </div>
@@ -95,7 +95,7 @@ export default function BlogPostView({ initialPost: post, lang = 'tr' }: { initi
                     </div>
                     <div className="pt-2">
                       <h4 className="text-noir-950 text-xl font-bold mb-3 font-serif tracking-wide group-hover:text-gold-500 transition-colors">{step.name || step.step}</h4>
-                      <p className="text-noir-300 text-base leading-relaxed font-light">{step.text || step.description}</p>
+                      <p className="text-noir-700 text-base leading-relaxed font-light">{step.text || step.description}</p>
                     </div>
                   </div>
                 ))}
@@ -114,21 +114,21 @@ export default function BlogPostView({ initialPost: post, lang = 'tr' }: { initi
               </div>
               <div className="space-y-4">
                 {post.faqJson.map((faq: any, idx: number) => (
-                  <div key={idx} className="bg-white/80 rounded-[2rem] overflow-hidden border border-noir-800/50 hover:border-gold-500/30 transition-colors">
+                  <div key={idx} className="bg-white/80 rounded-[2rem] overflow-hidden border border-noir-950/10/50 hover:border-gold-500/30 transition-colors">
                     <button 
                       className="w-full px-8 py-6 flex items-center justify-between text-left group"
                       onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
                     >
                       <span className="text-noir-950 font-serif text-lg font-bold group-hover:text-gold-500 transition-colors pr-8">{faq.q || faq.question}</span>
-                      <div className={`flex-shrink-0 w-10 h-10 rounded-full border border-noir-700 flex items-center justify-center text-gold-500 transition-all duration-300 ${openFaq === idx ? 'bg-gold-500 text-noir-900 border-gold-500 rotate-180' : 'group-hover:border-gold-500/50'}`}>
+                      <div className={`flex-shrink-0 w-10 h-10 rounded-full border border-noir-950/15 flex items-center justify-center text-gold-500 transition-all duration-300 ${openFaq === idx ? 'bg-gold-500 text-noir-900 border-gold-500 rotate-180' : 'group-hover:border-gold-500/50'}`}>
                         <svg width="14" height="10" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </div>
                     </button>
                     <div className={`px-8 overflow-hidden transition-all duration-500 ease-in-out ${openFaq === idx ? 'max-h-96 pb-8 opacity-100' : 'max-h-0 pb-0 opacity-0'}`}>
-                      <div className="w-full h-px bg-noir-800 mb-6"></div>
-                      <p className="text-noir-300 text-base leading-relaxed font-light">{faq.a || faq.answer}</p>
+                      <div className="w-full h-px bg-white/80 mb-6"></div>
+                      <p className="text-noir-700 text-base leading-relaxed font-light">{faq.a || faq.answer}</p>
                     </div>
                   </div>
                 ))}
@@ -137,7 +137,7 @@ export default function BlogPostView({ initialPost: post, lang = 'tr' }: { initi
           )}
 
           {/* Author / Footer */}
-          <footer className="mt-24 pt-12 border-t border-noir-800 flex flex-wrap justify-between items-center gap-8">
+          <footer className="mt-24 pt-12 border-t border-noir-950/10 flex flex-wrap justify-between items-center gap-8">
             <div className="flex items-center gap-5">
                <div className="w-12 h-12 rounded-full bg-gold-500/20 border border-gold-500/30 flex items-center justify-center text-gold-500">
                   <span className="font-serif font-bold italic text-xl">D</span>
@@ -148,9 +148,9 @@ export default function BlogPostView({ initialPost: post, lang = 'tr' }: { initi
                 </div>
             </div>
             
-            <div className="bg-white/80/50 border border-noir-800 rounded-3xl p-4 flex items-center gap-6">
+            <div className="bg-white/80/50 border border-noir-950/10 rounded-3xl p-4 flex items-center gap-6">
                <span className="text-noir-600 text-[10px] font-bold uppercase tracking-widest pl-2">{lang === 'en' ? 'Reading Time' : (lang === 'ar' ? 'وقت القراءة' : 'Okuma Süresi')}: ~{Math.max(1, Math.round(((post[`content${suffix}`] || post.content) || '').replace(/<[^>]*>/g, '').split(/\s+/).length / 200))} {lang === 'en' ? 'min' : (lang === 'ar' ? 'دقيقة' : 'dk')}</span>
-               <div className="w-px h-8 bg-noir-800"></div>
+               <div className="w-px h-8 bg-white/80"></div>
                <button 
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 className="text-gold-500 hover:text-noir-950 transition-colors"

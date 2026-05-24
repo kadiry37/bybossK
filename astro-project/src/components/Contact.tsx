@@ -152,7 +152,7 @@ export default function Contact({ data: serverData, lang = 'tr' }: { data?: any,
             </div>
 
             {/* Hızlı İletişim Formu Card */}
-            <div className="bg-noir-800/50 backdrop-blur-xl border border-noir-700 p-8 rounded-2xl shadow-2xl relative overflow-hidden group">
+            <div className="bg-white/80/50 backdrop-blur-xl border border-noir-950/15 p-8 rounded-2xl shadow-2xl relative overflow-hidden group">
                <div className="absolute top-0 right-0 w-32 h-32 bg-gold-500/5 blur-3xl group-hover:bg-gold-500/10 transition-colors duration-500"></div>
                <h3 className="text-noir-950 text-xl font-bold mb-6 flex items-center gap-2">
                  <Send className="w-5 h-5 text-gold-500" />
@@ -160,9 +160,9 @@ export default function Contact({ data: serverData, lang = 'tr' }: { data?: any,
                </h3>
 
               <form onSubmit={handleSubmit} className="space-y-4">
-                 <input type="text" name="name" required placeholder={lang === 'en' ? 'Your Name' : (lang === 'ar' ? 'اسمك' : 'Adınız Soyadınız')} className="w-full bg-white/80/50 border border-noir-700 rounded-xl px-4 py-4 text-noir-950 focus:border-gold-500 outline-none transition-all placeholder:text-noir-600" />
-                 <input type="email" name="email" required placeholder={lang === 'en' ? 'Your Email' : (lang === 'ar' ? 'بريدك الإلكتروني' : 'E-Posta Adresiniz')} className="w-full bg-white/80/50 border border-noir-700 rounded-xl px-4 py-4 text-noir-950 focus:border-gold-500 outline-none transition-all placeholder:text-noir-600" />
-                 <textarea name="message" required rows={4} placeholder={lang === 'en' ? 'Your Message...' : (lang === 'ar' ? 'رسالتك...' : 'Mesajınız...')} className="w-full bg-white/80/50 border border-noir-700 rounded-xl px-4 py-4 text-noir-950 focus:border-gold-500 outline-none transition-all placeholder:text-noir-600 resize-none"></textarea>
+                 <input type="text" name="name" required placeholder={lang === 'en' ? 'Your Name' : (lang === 'ar' ? 'اسمك' : 'Adınız Soyadınız')} className="w-full bg-white/80/50 border border-noir-950/15 rounded-xl px-4 py-4 text-noir-950 focus:border-gold-500 outline-none transition-all placeholder:text-noir-600" />
+                 <input type="email" name="email" required placeholder={lang === 'en' ? 'Your Email' : (lang === 'ar' ? 'بريدك الإلكتروني' : 'E-Posta Adresiniz')} className="w-full bg-white/80/50 border border-noir-950/15 rounded-xl px-4 py-4 text-noir-950 focus:border-gold-500 outline-none transition-all placeholder:text-noir-600" />
+                 <textarea name="message" required rows={4} placeholder={lang === 'en' ? 'Your Message...' : (lang === 'ar' ? 'رسالتك...' : 'Mesajınız...')} className="w-full bg-white/80/50 border border-noir-950/15 rounded-xl px-4 py-4 text-noir-950 focus:border-gold-500 outline-none transition-all placeholder:text-noir-600 resize-none"></textarea>
 
                  {/* Turnstile CAPTCHA */}
                  <div className="flex justify-center">
@@ -223,7 +223,7 @@ export default function Contact({ data: serverData, lang = 'tr' }: { data?: any,
 
           {/* Harita */}
           <div className="lg:col-span-7 h-[600px] lg:h-auto min-h-[500px">
-            <div className="w-full h-full rounded-3xl overflow-hidden border border-noir-700 shadow-2xl relative">
+            <div className="w-full h-full rounded-3xl overflow-hidden border border-noir-950/15 shadow-2xl relative">
               <iframe
                 src={mapSrc}
                 className="w-full h-full grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
@@ -245,7 +245,7 @@ export default function Contact({ data: serverData, lang = 'tr' }: { data?: any,
 
 function ContactInfoItem({ icon, title, detail, link }: { icon: any, title: string, detail: string, link?: string }) {
   const content = (
-    <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-noir-800/50 transition-colors group">
+    <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/80/50 transition-colors group">
       <div className="w-12 h-12 flex items-center justify-center bg-gold-500/10 text-gold-500 rounded-lg border border-gold-500/20 group-hover:bg-gold-500 group-hover:text-noir-900 transition-all duration-500">
         {icon}
       </div>

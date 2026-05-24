@@ -111,7 +111,7 @@ export default function Projects({ data, lang = 'tr', isHomePage = false }: { da
 
         <div className="flex justify-center gap-4 mb-12">
           {categories.map((cat) => (
-            <button key={cat.id} onClick={() => setActiveCategory(cat.id)} className={`px-6 py-3 text-sm font-medium transition-all duration-300 border uppercase ${activeCategory === cat.id ? 'bg-gold-500 text-noir-900 border-gold-500' : 'bg-transparent text-noir-300 border-noir-700 hover:border-gold-500/50 hover:text-noir-950'}`}>
+            <button key={cat.id} onClick={() => setActiveCategory(cat.id)} className={`px-6 py-3 text-sm font-medium transition-all duration-300 border uppercase ${activeCategory === cat.id ? 'bg-gold-500 text-noir-900 border-gold-500' : 'bg-transparent text-noir-700 border-noir-950/15 hover:border-gold-500/50 hover:text-noir-950'}`}>
               {cat.label}
             </button>
           ))}
@@ -122,7 +122,7 @@ export default function Projects({ data, lang = 'tr', isHomePage = false }: { da
               <a 
                 href={`/${lang}/proje/${project.slug}`}
                 key={`${project.id}-${index}`} 
-                className="group relative bg-noir-800 overflow-hidden card-hover block flex flex-col h-full"
+                className="group relative bg-white/80 overflow-hidden card-hover block flex flex-col h-full"
               >
                 {project.featured && (
                   <div className="absolute top-4 left-4 z-20 flex items-center gap-1 px-3 py-1 bg-gold-500 text-noir-900 text-xs font-semibold uppercase">
@@ -171,7 +171,7 @@ export default function Projects({ data, lang = 'tr', isHomePage = false }: { da
             <button
               onClick={() => { setCurrentPage(p => Math.max(1, p - 1)); setShouldScroll(true); }}
               disabled={currentPage === 1}
-              className="px-4 py-2 border border-noir-700 rounded-lg text-noir-300 disabled:opacity-50 hover:bg-noir-800 transition-colors"
+              className="px-4 py-2 border border-noir-950/15 rounded-lg text-noir-700 disabled:opacity-50 hover:bg-white/80 transition-colors"
             >
               {lang === 'en' ? 'Previous' : (lang === 'ar' ? 'السابق' : 'Önceki')}
             </button>
@@ -180,7 +180,7 @@ export default function Projects({ data, lang = 'tr', isHomePage = false }: { da
                 <button
                   key={i}
                   onClick={() => { setCurrentPage(i + 1); setShouldScroll(true); }}
-                  className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${currentPage === i + 1 ? 'bg-gold-500 text-noir-900 font-bold' : 'border border-noir-700 text-noir-300 hover:bg-noir-800'}`}
+                  className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${currentPage === i + 1 ? 'bg-gold-500 text-noir-900 font-bold' : 'border border-noir-950/15 text-noir-700 hover:bg-white/80'}`}
                 >
                   {i + 1}
                 </button>
@@ -189,7 +189,7 @@ export default function Projects({ data, lang = 'tr', isHomePage = false }: { da
             <button
               onClick={() => { setCurrentPage(p => Math.min(totalPages, p + 1)); setShouldScroll(true); }}
               disabled={currentPage === totalPages}
-              className="px-4 py-2 border border-noir-700 rounded-lg text-noir-300 disabled:opacity-50 hover:bg-noir-800 transition-colors"
+              className="px-4 py-2 border border-noir-950/15 rounded-lg text-noir-700 disabled:opacity-50 hover:bg-white/80 transition-colors"
             >
               {lang === 'en' ? 'Next' : (lang === 'ar' ? 'التالي' : 'Sonraki')}
             </button>

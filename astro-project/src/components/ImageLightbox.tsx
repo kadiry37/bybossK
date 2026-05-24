@@ -79,7 +79,7 @@ export default function ImageLightbox({ images, isOpen, onClose, initialIndex = 
         className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-[20010] pointer-events-none"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="text-noir-300 text-sm font-medium px-4 py-2 bg-white/5 rounded-full border border-noir-950/10 backdrop-blur-md">
+        <div className="text-noir-700 text-sm font-medium px-4 py-2 bg-white/5 rounded-full border border-noir-950/10 backdrop-blur-md">
           {currentIndex + 1} / {totalImages}
         </div>
         <div className="flex gap-4 pointer-events-auto">

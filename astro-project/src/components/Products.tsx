@@ -95,7 +95,7 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
         <div className="flex justify-center gap-4 mb-12 flex-wrap">
           <button 
             onClick={() => setActiveCategory('all')} 
-            className={`px-6 py-2 text-sm font-medium transition-all duration-300 border uppercase ${activeCategory === 'all' ? 'bg-gold-500 text-noir-900 border-gold-500' : 'bg-transparent text-noir-300 border-noir-700'}`}
+            className={`px-6 py-2 text-sm font-medium transition-all duration-300 border uppercase ${activeCategory === 'all' ? 'bg-gold-500 text-noir-900 border-gold-500' : 'bg-transparent text-noir-700 border-noir-950/15'}`}
           >
             {lang === 'en' ? 'All' : (lang === 'ar' ? 'الكل' : 'Tümü')}
           </button>
@@ -103,7 +103,7 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
             <button 
               key={catSlug} 
               onClick={() => setActiveCategory(catSlug)} 
-              className={`px-6 py-2 text-sm font-medium transition-all duration-300 border uppercase ${activeCategory === catSlug ? 'bg-gold-500 text-noir-900 border-gold-500' : 'bg-transparent text-noir-300 border-noir-700'}`}
+              className={`px-6 py-2 text-sm font-medium transition-all duration-300 border uppercase ${activeCategory === catSlug ? 'bg-gold-500 text-noir-900 border-gold-500' : 'bg-transparent text-noir-700 border-noir-950/15'}`}
             >
               {categoryMap.get(catSlug) || catSlug.replace(/-/g, ' ')}
             </button>
@@ -122,7 +122,7 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
                 <a 
                   href={`/${lang}/urun/${product.slug}/`}
                   key={`${product.id}-${index}`} 
-                  className="card-hover bg-noir-800 border border-noir-700 p-6 relative flex flex-col h-full group cursor-pointer block"
+                  className="card-hover bg-white/80 border border-noir-950/15 p-6 relative flex flex-col h-full group cursor-pointer block"
                 >
                   {product.stock_status === 'in_stock' && (
                     <span className="absolute top-4 right-4 bg-green-500/10 border border-green-500/20 text-green-400 text-[10px] px-2 py-1 uppercase tracking-widest font-bold z-20">
@@ -130,7 +130,7 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
                     </span>
                   )}
                   
-                  <div className="relative w-full aspect-[4/3] shrink-0 mb-6 overflow-hidden bg-white/80 border border-noir-700">
+                  <div className="relative w-full aspect-[4/3] shrink-0 mb-6 overflow-hidden bg-white/80 border border-noir-950/15">
                     <img 
                       src={product.mainImage && product.mainImage.length > 5 ? product.mainImage : 'https://bybossmimarlik.com/uploads/placeholder.jpg'} 
                       alt={cleanName}
@@ -186,7 +186,7 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
               );
             })}
           {filteredProducts.length === 0 && products.length > 0 && (
-            <div className="col-span-full py-20 text-center border border-dashed border-noir-800 rounded-3xl">
+            <div className="col-span-full py-20 text-center border border-dashed border-noir-950/10 rounded-3xl">
                <p className="text-noir-700">{lang === 'en' ? 'No products found in this category.' : (lang === 'ar' ? 'لم يتم العثور على منتجات في هذه الفئة.' : 'Bu kategoride henüz ürün bulunamadı.')}</p>
             </div>
           )}
@@ -202,7 +202,7 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
                 setShouldScroll(true);
               }}
               disabled={currentPage === 1}
-              className="px-4 py-2 border border-noir-700 rounded-lg text-noir-300 disabled:opacity-50 hover:bg-noir-800 transition-colors"
+              className="px-4 py-2 border border-noir-950/15 rounded-lg text-noir-700 disabled:opacity-50 hover:bg-white/80 transition-colors"
             >
               {lang === 'en' ? 'Previous' : (lang === 'ar' ? 'السابق' : 'Önceki')}
             </button>
@@ -218,7 +218,7 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
                   className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
                     currentPage === i + 1 
                       ? 'bg-gold-500 text-noir-900 font-bold' 
-                      : 'border border-noir-700 text-noir-300 hover:bg-noir-800'
+                      : 'border border-noir-950/15 text-noir-700 hover:bg-white/80'
                   }`}
                 >
                   {i + 1}
@@ -232,7 +232,7 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
                 setShouldScroll(true);
               }}
               disabled={currentPage === totalPages}
-              className="px-4 py-2 border border-noir-700 rounded-lg text-noir-300 disabled:opacity-50 hover:bg-noir-800 transition-colors"
+              className="px-4 py-2 border border-noir-950/15 rounded-lg text-noir-700 disabled:opacity-50 hover:bg-white/80 transition-colors"
             >
               {lang === 'en' ? 'Next' : (lang === 'ar' ? 'التالي' : 'Sonraki')}
             </button>

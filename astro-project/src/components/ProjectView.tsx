@@ -94,7 +94,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
           {/* Left: Images & Details */}
           <div className="lg:col-span-7 space-y-8">
             <div 
-              className="aspect-[16/10] overflow-hidden bg-white/80 border border-noir-800 cursor-pointer group relative rounded-2xl"
+              className="aspect-[16/10] overflow-hidden bg-white/80 border border-noir-950/10 cursor-pointer group relative rounded-2xl"
               onClick={() => openLightbox(activeImageIndex)}
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
@@ -118,7 +118,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                     className={`aspect-[4/3] overflow-hidden bg-white/80 border cursor-pointer relative rounded-xl transition-all duration-300 ${
                       i === activeImageIndex 
                         ? 'border-gold-500 ring-2 ring-gold-500/20' 
-                        : 'border-noir-800 hover:border-noir-600'
+                        : 'border-noir-950/10 hover:border-noir-600'
                     }`}
                     onClick={() => setActiveImageIndex(i)}
                   >
@@ -133,7 +133,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
             )}
 
             {/* Project Details Description */}
-            <div className="prose prose-invert max-w-none pt-6 border-t border-noir-800/80">
+            <div className="prose prose-invert max-w-none pt-6 border-t border-noir-950/10/80">
               <h3 className="text-noir-950 text-2xl font-serif font-bold mb-6 flex items-center gap-3">
                 <span className="w-1.5 h-6 bg-gold-500 rounded-full inline-block"></span>
                 {lang === 'en' ? 'Project Details' : (lang === 'ar' ? 'تفاصيل المشروع' : 'Proje Detayları')}
@@ -146,14 +146,14 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
 
             {/* Specifications Details */}
             {project.specifications && (
-              <div className="border-t border-noir-800 pt-8">
+              <div className="border-t border-noir-950/10 pt-8">
                 <h3 className="text-noir-950 text-2xl font-serif font-bold mb-6 flex items-center gap-3">
                   <span className="w-1.5 h-6 bg-gold-500 rounded-full inline-block"></span>
                   {lang === 'en' ? 'Technical Specifications' : (lang === 'ar' ? 'المواصفات الفنية' : 'Teknik Özellikler')}
                 </h3>
-                <div className="bg-[#161618] border border-noir-800 rounded-2xl overflow-hidden shadow-md">
+                <div className="bg-white/80 border border-noir-950/10 rounded-2xl overflow-hidden shadow-md">
                   <div 
-                    className="p-6 text-noir-200 rich-content-view prose prose-invert max-w-none prose-sm prose-td:py-3.5 prose-td:px-5 prose-tr:border-b prose-tr:border-noir-800/60 prose-td:text-noir-200"
+                    className="p-6 text-noir-200 rich-content-view prose prose-invert max-w-none prose-sm prose-td:py-3.5 prose-td:px-5 prose-tr:border-b prose-tr:border-noir-950/10/60 prose-td:text-noir-200"
                     dangerouslySetInnerHTML={{ __html: parseMarkdown(project.specifications) }}
                   />
                 </div>
@@ -161,7 +161,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
             )}
 
             {/* Info Box */}
-            <div className="p-6 bg-[#161618] border border-gold-500/15 rounded-2xl flex gap-4 items-start shadow-md">
+            <div className="p-6 bg-white/80 border border-gold-500/15 rounded-2xl flex gap-4 items-start shadow-md">
               <div className="p-3 bg-gold-500/10 rounded-xl text-gold-500 shrink-0 border border-gold-500/20">
                 <ClipboardCheck size={22} />
               </div>
@@ -182,7 +182,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
 
           {/* Right: Sticky Action Panel */}
           <div className="lg:col-span-5">
-            <div className="sticky top-32 space-y-8 bg-[#161618] p-6 sm:p-8 border border-noir-800 rounded-2xl shadow-lg">
+            <div className="sticky top-32 space-y-8 bg-white/80 p-6 sm:p-8 border border-noir-950/10 rounded-2xl shadow-lg">
               <div>
                 <span className="inline-block px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-500 text-[10px] font-bold uppercase tracking-widest rounded-md mb-4">
                   {project.category === 'architecture' ? (lang === 'en' ? 'Architectural Project' : (lang === 'ar' ? 'مشروع معماري' : 'Mimari Proje')) : (lang === 'en' ? 'Furniture & Decoration' : (lang === 'ar' ? 'أثاث وديكور' : 'Mobilya & Dekorasyon'))}
@@ -194,8 +194,8 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
               </div>
 
               {/* Location and Year Grid */}
-              <div className="grid grid-cols-2 gap-4 pb-6 border-b border-noir-800/80">
-                <div className="p-4 bg-transparent/60 border border-noir-800/85 rounded-xl flex items-center gap-3">
+              <div className="grid grid-cols-2 gap-4 pb-6 border-b border-noir-950/10/80">
+                <div className="p-4 bg-transparent/60 border border-noir-950/10/85 rounded-xl flex items-center gap-3">
                   <div className="text-gold-500 bg-gold-500/5 p-2.5 rounded-lg border border-gold-500/10">
                     <MapPin size={18} />
                   </div>
@@ -204,7 +204,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                     <p className="text-noir-950 font-medium text-sm truncate max-w-[120px]">{project.location || (lang === 'en' ? 'Not specified' : (lang === 'ar' ? 'غير محدد' : 'Belirtilmedi'))}</p>
                   </div>
                 </div>
-                <div className="p-4 bg-transparent/60 border border-noir-800/85 rounded-xl flex items-center gap-3">
+                <div className="p-4 bg-transparent/60 border border-noir-950/10/85 rounded-xl flex items-center gap-3">
                   <div className="text-gold-500 bg-gold-500/5 p-2.5 rounded-lg border border-gold-500/10">
                     <Calendar size={18} />
                   </div>
@@ -239,7 +239,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                   {/* Call Button */}
                   <a 
                     href={`tel:${directPhone}`}
-                    className="w-full py-3.5 px-6 bg-white/80 hover:bg-noir-800 text-noir-950 font-bold border border-noir-800 hover:border-noir-700 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 active:scale-[0.98] text-sm shadow-lg"
+                    className="w-full py-3.5 px-6 bg-white/80 hover:bg-white/80 text-noir-950 font-bold border border-noir-950/10 hover:border-noir-950/15 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 active:scale-[0.98] text-sm shadow-lg"
                   >
                     <Phone size={20} className="text-gold-500" />
                     <span>{lang === 'en' ? `Call Now: ${directPhone}` : (lang === 'ar' ? `اتصل الآن: ${directPhone}` : `Hemen Ara: ${directPhone}`)}</span>

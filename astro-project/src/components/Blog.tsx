@@ -39,7 +39,7 @@ export default function BlogList(props: any) {
           <a 
             key={post.id}
             href={`/${props.lang || 'tr'}/blog/${post.slug}`}
-            className={`blog-card group relative bg-noir-800/10 border border-noir-800 hover:border-gold-500/30 rounded-[2rem] overflow-hidden transition-all duration-500`}
+            className={`blog-card group relative bg-white/80/10 border border-noir-950/10 hover:border-gold-500/30 rounded-[2rem] overflow-hidden transition-all duration-500`}
             style={{ animationDelay: `${idx * 0.1}s` }}
           >
             {/* Image */}
@@ -76,7 +76,7 @@ export default function BlogList(props: any) {
                 {post.title}
               </h3>
               
-              <p className="text-noir-300 text-sm leading-relaxed mb-6 line-clamp-3">
+              <p className="text-noir-700 text-sm leading-relaxed mb-6 line-clamp-3">
                 {post.excerpt}
               </p>
               
@@ -97,7 +97,7 @@ export default function BlogList(props: any) {
           <button
             onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
             disabled={currentPage === 1}
-            className="px-4 py-2 border border-noir-700 rounded-lg text-noir-300 disabled:opacity-50 hover:bg-noir-800 transition-colors"
+            className="px-4 py-2 border border-noir-950/15 rounded-lg text-noir-700 disabled:opacity-50 hover:bg-white/80 transition-colors"
           >
             {props.lang === 'en' ? 'Previous' : (props.lang === 'ar' ? 'السابق' : 'Önceki')}
           </button>
@@ -110,7 +110,7 @@ export default function BlogList(props: any) {
                 className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
                   currentPage === i + 1 
                     ? 'bg-gold-500 text-noir-900 font-bold' 
-                    : 'border border-noir-700 text-noir-300 hover:bg-noir-800'
+                    : 'border border-noir-950/15 text-noir-700 hover:bg-white/80'
                 }`}
               >
                 {i + 1}
@@ -121,7 +121,7 @@ export default function BlogList(props: any) {
           <button
             onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 border border-noir-700 rounded-lg text-noir-300 disabled:opacity-50 hover:bg-noir-800 transition-colors"
+            className="px-4 py-2 border border-noir-950/15 rounded-lg text-noir-700 disabled:opacity-50 hover:bg-white/80 transition-colors"
           >
             {props.lang === 'en' ? 'Next' : (props.lang === 'ar' ? 'التالي' : 'Sonraki')}
           </button>

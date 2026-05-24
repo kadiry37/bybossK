@@ -94,7 +94,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
           {/* Left: Images & Details */}
           <div className="lg:col-span-7 space-y-8">
             <div 
-              className="aspect-[16/10] overflow-hidden bg-white/80 border border-noir-800 cursor-pointer group relative rounded-2xl"
+              className="aspect-[16/10] overflow-hidden bg-white/80 border border-noir-950/10 cursor-pointer group relative rounded-2xl"
               onClick={() => openLightbox(activeImageIndex)}
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
@@ -118,7 +118,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
                     className={`aspect-[4/3] overflow-hidden bg-white/80 border cursor-pointer relative rounded-xl transition-all duration-300 ${
                       i === activeImageIndex 
                         ? 'border-gold-500 ring-2 ring-gold-500/20' 
-                        : 'border-noir-800 hover:border-noir-600'
+                        : 'border-noir-950/10 hover:border-noir-600'
                     }`}
                     onClick={() => setActiveImageIndex(i)}
                   >
@@ -133,7 +133,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
             )}
 
             {/* Service Details Description */}
-            <div className="prose prose-invert max-w-none pt-6 border-t border-noir-800/80">
+            <div className="prose prose-invert max-w-none pt-6 border-t border-noir-950/10/80">
               <h3 className="text-noir-950 text-2xl font-serif font-bold mb-6 flex items-center gap-3">
                 <span className="w-1.5 h-6 bg-gold-500 rounded-full inline-block"></span>
                 {lang === 'en' ? 'Detailed Description' : (lang === 'ar' ? 'الوصف التفصيلي' : 'Detaylı Açıklama')}
@@ -145,7 +145,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
             </div>
 
             {/* Service Process Timeline */}
-            <div className="mt-12 border-t border-noir-800 pt-10">
+            <div className="mt-12 border-t border-noir-950/10 pt-10">
               <h3 className="text-noir-950 text-2xl font-serif font-bold mb-8 flex items-center gap-3">
                 <span className="w-1.5 h-6 bg-gold-500 rounded-full inline-block"></span>
                 {lang === 'en' ? 'Our Service Process' : (lang === 'ar' ? 'عملية خدمتنا' : 'Hizmet Süreç Adımlarımız')}
@@ -157,7 +157,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
                   { step: "03", title: lang === 'en' ? 'Production' : (lang === 'ar' ? 'إنتاج' : 'Üretim'), desc: lang === 'en' ? 'High-quality manufacture in our atelier.' : (lang === 'ar' ? 'تصنيع عالي الجودة في ورشتنا.' : 'Atölyemizde yüksek kaliteli imalat süreci.') },
                   { step: "04", title: lang === 'en' ? 'Assembly' : (lang === 'ar' ? 'تركيب' : 'Montaj'), desc: lang === 'en' ? 'Professional delivery and installation.' : (lang === 'ar' ? 'تسليم وتركيب احتraفي.' : 'Uzman ekiplerimizle yerinde sorunsuz montaj.') }
                 ].map((item, idx) => (
-                  <div key={idx} className="relative p-6 bg-[#161618] border border-noir-800 rounded-2xl group hover:border-gold-500/30 transition-all duration-300 shadow-md">
+                  <div key={idx} className="relative p-6 bg-white/80 border border-noir-950/10 rounded-2xl group hover:border-gold-500/30 transition-all duration-300 shadow-md">
                     <span className="text-4xl font-serif font-bold text-gold-500/25 group-hover:text-gold-500/35 transition-colors block mb-2">{item.step}</span>
                     <h4 className="text-noir-950 font-serif text-lg font-semibold mb-2">{item.title}</h4>
                     <p className="text-noir-200 text-sm leading-relaxed">{item.desc}</p>
@@ -167,7 +167,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
             </div>
 
             {/* Info Box */}
-            <div className="p-6 bg-[#161618] border border-gold-500/15 rounded-2xl flex gap-4 items-start shadow-md">
+            <div className="p-6 bg-white/80 border border-gold-500/15 rounded-2xl flex gap-4 items-start shadow-md">
               <div className="p-3 bg-gold-500/10 rounded-xl text-gold-500 shrink-0 border border-gold-500/20">
                 <ClipboardCheck size={22} />
               </div>
@@ -188,7 +188,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
 
           {/* Right: Sticky Action Panel */}
           <div className="lg:col-span-5">
-            <div className="sticky top-32 space-y-8 bg-[#161618] p-6 sm:p-8 border border-noir-800 rounded-2xl shadow-lg">
+            <div className="sticky top-32 space-y-8 bg-white/80 p-6 sm:p-8 border border-noir-950/10 rounded-2xl shadow-lg">
               <div>
                 <h1 className="font-serif text-3xl lg:text-4xl font-bold text-noir-950 leading-tight uppercase mb-4">
                   {service[`name${suffix}`] || service.name}
@@ -197,7 +197,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
                 <p className="text-gold-500 font-medium text-lg leading-relaxed">{service[`shortDescription${suffix}`] || service.shortDescription}</p>
               </div>
 
-              <div className="space-y-4 pt-2 border-t border-noir-800/80">
+              <div className="space-y-4 pt-2 border-t border-noir-950/10/80">
                 <button 
                   onClick={() => setIsQuoteModalOpen(true)}
                   className="w-full py-4 bg-gold-500 text-noir-900 font-bold uppercase tracking-wider hover:bg-white hover:text-noir-950 transition-all duration-300 rounded-xl flex items-center justify-center gap-3 shadow-xl shadow-gold-500/10 group active:scale-[0.98] text-sm"
@@ -221,7 +221,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
                   {/* Call Button */}
                   <a 
                     href={`tel:${directPhone}`}
-                    className="w-full py-3.5 px-6 bg-white/80 hover:bg-noir-800 text-noir-950 font-bold border border-noir-800 hover:border-noir-700 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 active:scale-[0.98] text-sm shadow-lg"
+                    className="w-full py-3.5 px-6 bg-white/80 hover:bg-white/80 text-noir-950 font-bold border border-noir-950/10 hover:border-noir-950/15 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 active:scale-[0.98] text-sm shadow-lg"
                   >
                     <Phone size={20} className="text-gold-500" />
                     <span>{lang === 'en' ? `Call Now: ${directPhone}` : (lang === 'ar' ? `اتصل الآن: ${directPhone}` : `Hemen Ara: ${directPhone}`)}</span>

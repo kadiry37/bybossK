@@ -298,7 +298,7 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
           isScrolled
             ? 'scrolled'
             : 'bg-transparent'
-        } ${isScrolled ? 'bg-[#0b0b0f]/82 backdrop-blur-[28px] saturate-[1.4] border-b border-noir-950/10 shadow-2xl' : ''}`}
+        } ${isScrolled ? 'bg-white/95 backdrop-blur-[28px] saturate-[1.4] border-b border-noir-950/10 shadow-2xl' : ''}`}
         id="hd"
         style={{ overflow: langMenuOpen ? 'visible' : '' }}
       >
@@ -325,7 +325,7 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
                   <ChevronDown size={11} className={`transition-transform duration-300 ${langMenuOpen ? 'rotate-180' : ''}`} />
                 </div>
                 {langMenuOpen && (
-                  <div className={`absolute top-full right-0 mt-2 bg-[#0b0b0f] border border-noir-950/10 rounded-lg shadow-2xl overflow-hidden min-w-[110px] p-1 z-[99999]`}>
+                  <div className={`absolute top-full right-0 mt-2 bg-white/95 border border-noir-950/10 rounded-lg shadow-2xl overflow-hidden min-w-[110px] p-1 z-[99999]`}>
                     {Object.entries(langLabels).map(([code, { flag, name }]) => (
                       <button
                         key={code}

@@ -72,7 +72,7 @@ try {
                <span>{lang === 'en' ? 'Product' : (lang === 'ar' ? 'منتج' : 'Ürün')} <span class="gradient-text">{lang === 'en' ? 'Collection' : (lang === 'ar' ? 'مجموعة' : 'Koleksiyonu')}</span></span>
              )}
           </h1>
-          <p class="text-noir-300 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+          <p class="text-noir-700 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
              {settingsData?.general?.productsPageDesc || (lang === 'en' ? 'Explore our deck mounting systems that are resistant to the most demanding outdoor conditions, aesthetic and reliable.' : (lang === 'ar' ? 'استكشف أنظمة تثبيت الأسطح لدينا والمقاومة لأقسى الظروف الخارجية والجمالية والموثوقة.' : 'En zorlu dış mekan koşullarına dayanıklı, estetik ve güvenilir deck montaj sistemlerimizi keşfedin.'))}
           </p>
         </div>
@@ -86,7 +86,7 @@ try {
 
     {/* Quality Assurance Section */}
     <div class="container mx-auto px-6 pb-24">
-       <div class="bg-noir-800/20 border border-noir-800 rounded-[3rem] p-12 text-center backdrop-blur-xl">
+       <div class="bg-white/80/20 border border-noir-950/10 rounded-[3rem] p-12 text-center backdrop-blur-xl">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
              <div class="space-y-4">
                 <div class="text-3xl text-gold-500 font-bold font-serif">{settingsData?.features?.slogan1_title || (lang === 'en' ? 'Quality' : (lang === 'ar' ? 'جودة' : 'Yüksek Kalite'))}</div>
