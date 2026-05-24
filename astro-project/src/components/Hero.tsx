@@ -143,15 +143,15 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
               {videoId && (
                 <button
                   type="button"
-                  onClick={() => setVideoOpen(true
+                  onClick={() => setVideoOpen(true)}
                   className="flex items-center justify-center gap-4 group px-8 py-4 bg-white/5 hover:bg-white/10 border border-noir-950/10 rounded-xl transition-all"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-gold-500"><polygon points="8,5 20,12 8,19"/></svg>
                   <span className="text-noir-950 font-bold uppercase text-[12px] tracking-widest">
-                    {lang === 'en' ? 'Watch Video' : (lang === 'ar' ? 'شاهد الفيديو' : 'Videoyu İzleyin'
+                    {lang === 'en' ? 'Watch Video' : (lang === 'ar' ? 'شاهد الفيديو' : 'Videoyu İzleyin')}
                   </span>
                 </button>
-              
+              )}
             </div>
 
             <div className="flex items-center gap-16 mt-20 pt-10 border-t border-noir-950/10 w-full justify-center lg:justify-start">
@@ -165,7 +165,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
                   </div>
                   <div className="absolute -bottom-2 left-0 w-0 h-0.5 bg-gold-500 group-hover:w-full transition-all duration-700" />
                 </div>
-              )
+              )}
             </div>
           </div>
 
@@ -180,7 +180,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
                     </div>
                     <div className="p-5 bg-white/90/90 border-t border-noir-950/10">
                       <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider">{brandFirst} {brandSecond}</div>
-                      <div className="text-noir-700 text-[10px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Premium Design Solutions' : (lang === 'ar' ? 'تصاميم ممتازة' : 'Premium Tasarım Çözümleri'</div>
+                      <div className="text-noir-700 text-[10px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Premium Design Solutions' : (lang === 'ar' ? 'تصاميم ممتازة' : 'Premium Tasarım Çözümleri')}</div>
                     </div>
                   </div>
                   <div className="cube-face cube-right absolute inset-0 border border-noir-950/10 bg-transparent/90 flex flex-col overflow-hidden backdrop-blur-sm">
@@ -189,8 +189,8 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
                       <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-60" />
                     </div>
                     <div className="p-5 bg-white/90/90 border-t border-noir-950/10">
-                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider">{lang === 'en' ? 'Superior Quality' : (lang === 'ar' ? 'جودة فائقة' : 'Üstün Kalite'</div>
-                      <div className="text-noir-700 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'TSE Certified' : (lang === 'ar' ? 'معتمد من TSE' : 'TSE Belgeli'</div>
+                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider">{lang === 'en' ? 'Superior Quality' : (lang === 'ar' ? 'جودة فائقة' : 'Üstün Kalite')}</div>
+                      <div className="text-noir-700 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'TSE Certified' : (lang === 'ar' ? 'معتمد من TSE' : 'TSE Belgeli')}</div>
                     </div>
                   </div>
                   <div className="cube-face cube-back absolute inset-0 border border-noir-950/10 bg-transparent/90 flex flex-col overflow-hidden backdrop-blur-sm">
@@ -209,8 +209,8 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
                       <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-60" />
                     </div>
                     <div className="p-5 bg-white/90/90 border-t border-noir-950/10">
-                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider">{lang === 'en' ? 'Fast Installation' : (lang === 'ar' ? 'تركيب سريع' : 'Hızlı Montaj'</div>
-                      <div className="text-noir-700 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Professional Team' : (lang === 'ar' ? 'فريق محترف' : 'Profesyonel Ekip'</div>
+                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider">{lang === 'en' ? 'Fast Installation' : (lang === 'ar' ? 'تركيب سريع' : 'Hızlı Montaj')}</div>
+                      <div className="text-noir-700 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Professional Team' : (lang === 'ar' ? 'فريق محترف' : 'Profesyonel Ekip')}</div>
                     </div>
                   </div>
                   <div className="cube-face cube-top absolute inset-0 border border-noir-950/10 bg-transparent/90 flex flex-col overflow-hidden backdrop-blur-sm">
@@ -219,13 +219,13 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
                       <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-60" />
                     </div>
                     <div className="p-5 bg-white/90/90 border-t border-noir-950/10">
-                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider">{lang === 'en' ? 'Global Reach' : (lang === 'ar' ? 'تغطية عالمية' : 'Global Erişim'</div>
-                      <div className="text-noir-700 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Export to 50+ Countries' : (lang === 'ar' ? 'تصدير لأكثر من 50 دولة' : '50+ Ülkeye İhracat'</div>
+                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider">{lang === 'en' ? 'Global Reach' : (lang === 'ar' ? 'تغطية عالمية' : 'Global Erişim')}</div>
+                      <div className="text-noir-700 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Export to 50+ Countries' : (lang === 'ar' ? 'تصدير لأكثر من 50 دولة' : '50+ Ülkeye İhracat')}</div>
                     </div>
                   </div>
                   <div className="cube-face cube-bottom absolute inset-0 border border-noir-950/10 bg-transparent/90 flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative flex flex-col items-center justify-center p-8">
-                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider mb-2">{lang === 'en' ? 'Contact Us' : (lang === 'ar' ? 'اتصل بنا' : 'Bize Ulaşın'</div>
+                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider mb-2">{lang === 'en' ? 'Contact Us' : (lang === 'ar' ? 'اتصل بنا' : 'Bize Ulaşın')}</div>
                       <div className="text-gold-500 text-lg font-bold">{phone}</div>
                     </div>
                   </div>
@@ -246,10 +246,10 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
         .animate-pulse-slow { animation: pulseSlow 4s ease-in-out infinite; }
         .animate-orb-float-1 { animation: oF1 22s ease-in-out infinite; }
         .animate-orb-float-2 { animation: oF2 28s ease-in-out infinite; }
-        @keyframes oF1 { 0%,100%{transform:translate(0,0) scale(1 33%{transform:translate(-30px,40px) scale(1.06 66%{transform:translate(20px,-22px) scale(0.94 }
-        @keyframes oF2 { 0%,100%{transform:translate(0,0) scale(1 50%{transform:translate(40px,-30px) scale(1.07 }
-        @keyframes cubeRotate { 0%{transform:rotateX(-15deg) rotateY(0deg 100%{transform:rotateX(-15deg) rotateY(360deg }
-        @keyframes rotateSlow { from{transform:rotateX(60deg) rotateZ(0deg to{transform:rotateX(60deg) rotateZ(360deg }
+        @keyframes oF1 { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(-30px,40px) scale(1.06)} 66%{transform:translate(20px,-22px) scale(0.94)} }
+        @keyframes oF2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(40px,-30px) scale(1.07)} }
+        @keyframes cubeRotate { 0%{transform:rotateX(-15deg) rotateY(0deg)} 100%{transform:rotateX(-15deg) rotateY(360deg)} }
+        @keyframes rotateSlow { from{transform:rotateX(60deg) rotateZ(0deg)} to{transform:rotateX(60deg) rotateZ(360deg)} }
         .cube-face { backface-visibility: hidden; background: rgba(10,10,10,0.95); border: 1px solid rgba(255,255,255,0.1); }
         .cube-face img { image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; filter: contrast(1.1) saturate(1.1); transform: translateZ(0); }
         .cube-front { transform: rotateY(0deg) translateZ(120px); }
@@ -270,10 +270,10 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
     </section>
 
       {videoOpen && videoId && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-white/80 backdrop-blur-sm" onClick={() => setVideoOpen(false>
-          <div className="relative w-full max-w-4xl mx-4 aspect-video bg-white/90 rounded-2xl overflow-hidden shadow-2xl border border-noir-950/15" onClick={(e) => e.stopPropagation(>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-white/80 backdrop-blur-sm" onClick={() => setVideoOpen(false)}>
+          <div className="relative w-full max-w-4xl mx-4 aspect-video bg-white/90 rounded-2xl overflow-hidden shadow-2xl border border-noir-950/15" onClick={(e) => e.stopPropagation()}>
             <button
-              onClick={() => setVideoOpen(false
+              onClick={() => setVideoOpen(false)}
               className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90/80 border border-noir-950/20 flex items-center justify-center text-noir-950 hover:bg-gold-500 hover:border-gold-500 hover:text-noir-950 transition-all"
             >
               <X size={20} />
@@ -286,7 +286,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
             ></iframe>
           </div>
         </div>
-      
+      )}
     </>
   );
 }
