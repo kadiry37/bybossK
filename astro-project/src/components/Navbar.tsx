@@ -388,12 +388,12 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
                    }
                  }}
                  onMouseLeave={(e) => {
-                   const relatedTarget = e.relatedTarget as HTMLElement;
-                   if (relatedTarget && (relatedTarget.closest('[data-bridge]') || relatedTarget.closest('[data-mega]'))) {
-                     return;
-                   }
-                   closeTimeoutRef.current = setTimeout(() => setOpenDropdown(null), 200);
-                 }}
+                    const relatedTarget = e.relatedTarget as HTMLElement;
+                    if (relatedTarget && typeof relatedTarget.closest === 'function' && (relatedTarget.closest('[data-bridge]') || relatedTarget.closest('[data-mega]'))) {
+                      return;
+                    }
+                    closeTimeoutRef.current = setTimeout(() => setOpenDropdown(null), 200);
+                  }}
                >
                  <a
                    href={formatLink(link.href)}

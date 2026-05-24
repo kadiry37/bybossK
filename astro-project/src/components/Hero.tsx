@@ -154,7 +154,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
               )}
             </div>
 
-            <div className="flex items-center gap-16 mt-20 pt-10 border-t border-noir-950/10 w-full justify-center lg:justify-start">
+            <div className="flex flex-wrap items-center gap-8 md:gap-16 mt-20 pt-10 border-t border-noir-950/10 w-full justify-center lg:justify-start">
               {heroData.stats.map((stat: any, idx: number) => (
                 <div key={idx} className="relative group cursor-default">
                   <div className="text-4xl md:text-5xl font-fh font-bold text-noir-950 group-hover:text-gold-500 transition-all duration-500">
