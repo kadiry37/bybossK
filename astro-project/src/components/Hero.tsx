@@ -165,7 +165,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
                   </div>
                   <div className="absolute -bottom-2 left-0 w-0 h-0.5 bg-gold-500 group-hover:w-full transition-all duration-700" />
                 </div>
-              )}
+              ))}
             </div>
           </div>
 
