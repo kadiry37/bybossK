@@ -76,7 +76,7 @@
   body {
     @apply bg-white text-noir-950 font-sans antialiased;
     font-family: var(--fb);
-    background: url('/diffused_plaster.png') center/cover fixed;
+    background: url('/diffused_plaster.webp') center/cover fixed;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--fh);
