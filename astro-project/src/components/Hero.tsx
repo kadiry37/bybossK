@@ -13,6 +13,7 @@ const getFullUrl = (path: string) => {
 
 interface Props {
   data?: any;
+  settingsData?: any;
   lang?: string;
 }
 
@@ -45,9 +46,12 @@ function splitBrandName(name: string): [string, string] {
   return [parts[0] || 'By', parts.slice(1).join(' ') || 'Boss Mimarlık Mobilya'];
 }
 
-export default function Hero({ data, lang = 'tr' }: Props = {}) {
+export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
   const suffix = lang === 'tr' ? '' : `_${lang}`;
   const phone = data?.contact?.phone || '0 532 567 4537';
+
+  const logoPath = settingsData?.general?.logo || '';
+  const logoUrl = logoPath ? (logoPath.startsWith('http') ? logoPath : `https://bybossmimarlik.com${logoPath.startsWith('/') ? '' : '/'}${logoPath}`) : '';
 
   const heroData = (() => {
     if (!data) return defaultHero;
@@ -114,8 +118,12 @@ export default function Hero({ data, lang = 'tr' }: Props = {}) {
               </span>
             </div>
 
+            {logoUrl && (
+              <img src={logoUrl} alt="Logo" className="h-20 md:h-28 object-contain object-left mb-6 drop-shadow-xl" style={{ imageRendering: 'crisp-edges' }} />
+            )}
+
             <h1
-              className={`font-fh ${lang !== 'tr' ? 'text-5xl md:text-7xl xl:text-8xl' : 'text-5xl md:text-8xl xl:text-9xl'} font-bold leading-[0.95] mb-6 select-none tracking-tight uppercase`}
+              className={`font-fh ${lang !== 'tr' ? 'text-4xl md:text-6xl xl:text-7xl' : 'text-4xl md:text-7xl xl:text-8xl'} font-bold leading-[0.95] mb-6 select-none tracking-tight uppercase`}
             >
               <div className="text-white">{brandFirst}</div>
               <div className="gradient-text">{brandSecond}</div>
