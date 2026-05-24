@@ -406,7 +406,7 @@ const websiteSchema = {
     position: relative;
   }
 
-  /* The White Background Area - Shallow Slant/Arc */
+  /* The Wood Background Area - Shallow Slant/Arc */
   .nv .cx::before {
     content: '';
     position: absolute;
@@ -414,7 +414,7 @@ const websiteSchema = {
     left: -200px;
     width: 580px;
     height: 140px;
-    background: #ffffff;
+    background: url('/wood_texture.png') center/cover;
     /* Shallow professional slant */
     clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
     pointer-events: none;
@@ -438,7 +438,7 @@ const websiteSchema = {
 
   body.scrolled .nv .cx::before {
     width: 540px;
-    background: rgba(255, 255, 255, 0.98);
+    background: url('/wood_texture.png') center/cover;
   }
   
   body.scrolled .nv .cx::after {
