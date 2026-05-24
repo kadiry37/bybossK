@@ -70,20 +70,20 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
   const displayItems = isHomePage ? filteredProducts.slice(0, 6) : filteredProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
-    <section id="products" className="py-24 lg:py-32 bg-noir-900 relative overflow-hidden min-h-[1200px]" suppressHydrationWarning>
+    <section id="products" className="py-24 lg:py-32 bg-white/80 relative overflow-hidden min-h-[1200px]" suppressHydrationWarning>
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 border border-gold-500/30 text-gold-500 text-sm font-medium tracking-widest uppercase mb-6">
             {lang === 'en' ? 'Our Products' : (lang === 'ar' ? 'منتجاتنا' : 'Ürünlerimiz')}
           </span>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 uppercase">
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-noir-950 mb-6 uppercase">
             {settingsData?.general?.productsPageTitle ? (
               settingsData.general.productsPageTitle
             ) : (
               <><span>MOBİLYA</span><span className="gradient-text ml-4">{lang === 'en' ? 'Models' : (lang === 'ar' ? 'عارضات ازياء' : 'Modelleri')}</span></>
             )}
           </h2>
-          <p className="text-noir-400 text-lg max-w-2xl mx-auto">
+          <p className="text-noir-700 text-lg max-w-2xl mx-auto">
             {settingsData?.general?.productsPageDesc ? (
               settingsData.general.productsPageDesc
             ) : (
@@ -130,7 +130,7 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
                     </span>
                   )}
                   
-                  <div className="relative w-full aspect-[4/3] shrink-0 mb-6 overflow-hidden bg-noir-900 border border-noir-700">
+                  <div className="relative w-full aspect-[4/3] shrink-0 mb-6 overflow-hidden bg-white/80 border border-noir-700">
                     <img 
                       src={product.mainImage && product.mainImage.length > 5 ? product.mainImage : 'https://bybossmimarlik.com/uploads/placeholder.jpg'} 
                       alt={cleanName}
@@ -152,20 +152,20 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
                   <div className="text-gold-500 text-[10px] mb-2 uppercase tracking-widest font-black">
                     {catLabel}
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2 leading-tight group-hover:text-gold-500 transition-colors">
+                  <h3 className="text-xl font-bold text-noir-950 mb-2 leading-tight group-hover:text-gold-500 transition-colors">
                     {cleanName}
                   </h3>
-                  <div className="text-noir-400 text-sm mb-6 line-clamp-2 flex-grow">
+                  <div className="text-noir-700 text-sm mb-6 line-clamp-2 flex-grow">
                     {shortDesc}
                   </div>
                   
-                  <div className="flex justify-between items-center mt-auto border-t border-white/5 pt-5">
-                    <span className="text-xl font-bold text-white flex flex-col">
+                  <div className="flex justify-between items-center mt-auto border-t border-noir-950/10 pt-5">
+                    <span className="text-xl font-bold text-noir-950 flex flex-col">
                       {priceSafe ? (
                         <>
                           <div className="flex items-baseline gap-1">
                             <span className="text-gold-500">{priceSafe}</span>
-                            <span className="text-xs font-normal text-noir-500 ml-1">TL</span>
+                            <span className="text-xs font-normal text-noir-600 ml-1">TL</span>
                           </div>
                         </>
                       ) : (
@@ -187,7 +187,7 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
             })}
           {filteredProducts.length === 0 && products.length > 0 && (
             <div className="col-span-full py-20 text-center border border-dashed border-noir-800 rounded-3xl">
-               <p className="text-noir-400">{lang === 'en' ? 'No products found in this category.' : (lang === 'ar' ? 'لم يتم العثور على منتجات في هذه الفئة.' : 'Bu kategoride henüz ürün bulunamadı.')}</p>
+               <p className="text-noir-700">{lang === 'en' ? 'No products found in this category.' : (lang === 'ar' ? 'لم يتم العثور على منتجات في هذه الفئة.' : 'Bu kategoride henüz ürün bulunamadı.')}</p>
             </div>
           )}
         </div>

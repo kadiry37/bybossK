@@ -103,7 +103,7 @@ export default function Contact({ data: serverData, lang = 'tr' }: { data?: any,
     : (lang === 'en' ? 'An error occurred or CAPTCHA failed. Please try again.' : (lang === 'ar' ? 'حدث خطأ أو فشل التحقق. يرجى المحاولة مرة أخرى.' : 'Bir hata oluştu veya CAPTCHA başarısız. Lütfen tekrar deneyin.'));
 
   return (
-    <section id="contact" className="relative py-24 lg:py-32 bg-noir-900 overflow-hidden">
+    <section id="contact" className="relative py-24 lg:py-32 bg-white/80 overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold-500/5 blur-[120px] -z-10"></div>
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold-500/5 blur-[120px] -z-10"></div>
@@ -115,10 +115,10 @@ export default function Contact({ data: serverData, lang = 'tr' }: { data?: any,
           >
             {lang === 'en' ? 'Get In Touch' : (lang === 'ar' ? 'اتصل بنا' : 'İletişime Geçin')}
           </span>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6">
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-7xl font-bold text-noir-950 mb-6">
             {lang === 'en' ? 'Contact' : (lang === 'ar' ? 'اتصال' : 'Bize')} <span className="gradient-text">{lang === 'en' ? 'Us' : (lang === 'ar' ? 'بنا' : 'Ulaşın')}</span>
           </h2>
-          <p className="text-noir-400 text-lg max-w-2xl mx-auto">
+          <p className="text-noir-700 text-lg max-w-2xl mx-auto">
             {lang === 'en' ? 'You can fill out our form to get a quote for your projects or to get information about our products.' : (lang === 'ar' ? 'يمكنك ملء نموذجنا للحصول على عرض أسعار لمشاريعك أو للحصول على معلومات حول منتجاتنا.' : 'Projeleriniz için teklif almak veya ürünlerimiz hakkında bilgi edinmek için formumuzu doldurabilirsiniz.')}
           </p>
         </div>
@@ -154,15 +154,15 @@ export default function Contact({ data: serverData, lang = 'tr' }: { data?: any,
             {/* Hızlı İletişim Formu Card */}
             <div className="bg-noir-800/50 backdrop-blur-xl border border-noir-700 p-8 rounded-2xl shadow-2xl relative overflow-hidden group">
                <div className="absolute top-0 right-0 w-32 h-32 bg-gold-500/5 blur-3xl group-hover:bg-gold-500/10 transition-colors duration-500"></div>
-               <h3 className="text-white text-xl font-bold mb-6 flex items-center gap-2">
+               <h3 className="text-noir-950 text-xl font-bold mb-6 flex items-center gap-2">
                  <Send className="w-5 h-5 text-gold-500" />
                  {lang === 'en' ? 'Send Quick Message' : (lang === 'ar' ? 'إرسال رسالة سريعة' : 'Hızlı Mesaj Gönder')}
                </h3>
 
               <form onSubmit={handleSubmit} className="space-y-4">
-                 <input type="text" name="name" required placeholder={lang === 'en' ? 'Your Name' : (lang === 'ar' ? 'اسمك' : 'Adınız Soyadınız')} className="w-full bg-noir-900/50 border border-noir-700 rounded-xl px-4 py-4 text-white focus:border-gold-500 outline-none transition-all placeholder:text-noir-600" />
-                 <input type="email" name="email" required placeholder={lang === 'en' ? 'Your Email' : (lang === 'ar' ? 'بريدك الإلكتروني' : 'E-Posta Adresiniz')} className="w-full bg-noir-900/50 border border-noir-700 rounded-xl px-4 py-4 text-white focus:border-gold-500 outline-none transition-all placeholder:text-noir-600" />
-                 <textarea name="message" required rows={4} placeholder={lang === 'en' ? 'Your Message...' : (lang === 'ar' ? 'رسالتك...' : 'Mesajınız...')} className="w-full bg-noir-900/50 border border-noir-700 rounded-xl px-4 py-4 text-white focus:border-gold-500 outline-none transition-all placeholder:text-noir-600 resize-none"></textarea>
+                 <input type="text" name="name" required placeholder={lang === 'en' ? 'Your Name' : (lang === 'ar' ? 'اسمك' : 'Adınız Soyadınız')} className="w-full bg-white/80/50 border border-noir-700 rounded-xl px-4 py-4 text-noir-950 focus:border-gold-500 outline-none transition-all placeholder:text-noir-600" />
+                 <input type="email" name="email" required placeholder={lang === 'en' ? 'Your Email' : (lang === 'ar' ? 'بريدك الإلكتروني' : 'E-Posta Adresiniz')} className="w-full bg-white/80/50 border border-noir-700 rounded-xl px-4 py-4 text-noir-950 focus:border-gold-500 outline-none transition-all placeholder:text-noir-600" />
+                 <textarea name="message" required rows={4} placeholder={lang === 'en' ? 'Your Message...' : (lang === 'ar' ? 'رسالتك...' : 'Mesajınız...')} className="w-full bg-white/80/50 border border-noir-700 rounded-xl px-4 py-4 text-noir-950 focus:border-gold-500 outline-none transition-all placeholder:text-noir-600 resize-none"></textarea>
 
                  {/* Turnstile CAPTCHA */}
                  <div className="flex justify-center">
@@ -250,8 +250,8 @@ function ContactInfoItem({ icon, title, detail, link }: { icon: any, title: stri
         {icon}
       </div>
       <div>
-        <h4 className="text-noir-400 text-xs uppercase tracking-widest font-semibold mb-1">{title}</h4>
-        <p className="text-white text-lg font-medium" dir="ltr">{((detail || '') + '').trim()}</p>
+        <h4 className="text-noir-700 text-xs uppercase tracking-widest font-semibold mb-1">{title}</h4>
+        <p className="text-noir-950 text-lg font-medium" dir="ltr">{((detail || '') + '').trim()}</p>
       </div>
     </div>
   );

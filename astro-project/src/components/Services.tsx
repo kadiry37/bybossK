@@ -69,7 +69,7 @@ export default function Services({ data, lang = 'tr', isHomePage = false }: { da
   const displayItems = isHomePage ? services.slice(0, 4) : services.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
-    <section id="services" ref={sectionRef} className="py-24 lg:py-32 bg-noir-950 relative overflow-hidden min-h-[700px]">
+    <section id="services" ref={sectionRef} className="py-24 lg:py-32 bg-transparent relative overflow-hidden min-h-[700px]">
       <div className="absolute top-0 left-0 w-full h-px gold-line" />
       <div className="absolute top-1/4 -left-32 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl" />
@@ -80,12 +80,12 @@ export default function Services({ data, lang = 'tr', isHomePage = false }: { da
             <span className="inline-block px-4 py-2 border border-gold-500/30 text-gold-500 text-sm font-medium tracking-widest uppercase mb-6">
               {lang === 'en' ? 'Our Services' : (lang === 'ar' ? 'خدماتنا' : 'Hizmetlerimiz')}
             </span>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight uppercase">
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-noir-950 mb-6 leading-tight uppercase">
               {isHomePage ? (lang === 'en' ? 'Professional Design' : (lang === 'ar' ? 'تصميم احترافي' : 'Profesyonel Tasarım')) : (lang === 'en' ? 'All' : (lang === 'ar' ? 'جميع' : 'Tüm'))} <span className="gradient-text">{lang === 'en' ? 'Services' : (lang === 'ar' ? 'الخدمات' : 'Hizmetlerimiz')}</span>
             </h2>
           </div>
 
-          <p className="text-noir-400 text-lg leading-relaxed">
+          <p className="text-noir-700 text-lg leading-relaxed">
             {lang === 'en' ? 'We turn your dream spaces into reality with our search for perfection.' : (lang === 'ar' ? 'نحول مساحات أحلامك إلى حقيقة من خلال بحثنا عن الكمال.' : 'Hayalinizdeki mekanları gerçeğe dönüştürüyoruz. Her projede mükemmellik ve özgünlük arayışımızla yanınızdayız.')}
           </p>
         </div>
@@ -105,7 +105,7 @@ export default function Services({ data, lang = 'tr', isHomePage = false }: { da
             return (
                 <div
                   key={service.id}
-                  className={`service-card group relative bg-noir-900 border border-noir-800 p-8 hover:border-gold-500/50 transition-all duration-500 cursor-pointer flex flex-col h-full ${isVisible ? 'visible' : ''}`}
+                  className={`service-card group relative bg-white/80 border border-noir-800 p-8 hover:border-gold-500/50 transition-all duration-500 cursor-pointer flex flex-col h-full ${isVisible ? 'visible' : ''}`}
                   onClick={() => {
                     window.location.href = `/${lang}/hizmet/${service.slug}`;
                   }}
@@ -116,8 +116,8 @@ export default function Services({ data, lang = 'tr', isHomePage = false }: { da
                 <div className="w-14 h-14 bg-noir-800 group-hover:bg-gold-500 flex items-center justify-center mb-6 transition-colors duration-300">
                   <IconComponent className="text-gold-500 group-hover:text-noir-900 w-6 h-6 transition-colors duration-300" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-serif text-xl font-bold text-white mb-3 group-hover:text-gold-500 transition-colors">{service.name}</h3>
-                <p className="text-noir-400 text-sm leading-relaxed mb-6">{service.shortDescription}</p>
+                <h3 className="font-serif text-xl font-bold text-noir-950 mb-3 group-hover:text-gold-500 transition-colors">{service.name}</h3>
+                <p className="text-noir-700 text-sm leading-relaxed mb-6">{service.shortDescription}</p>
                 <div className="mt-auto pt-4 relative z-10">
                   <span className="inline-flex items-center gap-2 text-gold-500 text-sm font-medium group-hover:text-gold-400 transition-colors">
                     {lang === 'en' ? 'More Info' : (lang === 'ar' ? 'مزيد من المعلومات' : 'Detaylı Bilgi')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -169,8 +169,8 @@ export default function Services({ data, lang = 'tr', isHomePage = false }: { da
 
         <div className="mt-20 p-8 lg:p-12 bg-gradient-to-r from-noir-900 to-noir-800 border border-noir-700 flex flex-col lg:flex-row items-center justify-between gap-6">
           <div>
-            <h3 className="font-serif text-2xl lg:text-3xl font-bold text-white mb-2">{lang === "en" ? "Let's Work Together" : (lang === "ar" ? "لنعمل معا" : "Projeniz İçin Birlikte Çalışalım")}</h3>
-            <p className="text-noir-400">{lang === "en" ? "Contact us now for free consultation." : (lang === "ar" ? "اتصل بنا الآن للحصول على استشارة مجانية." : "Ücretsiz danışmanlık için hemen iletişime geçin.")}</p>
+            <h3 className="font-serif text-2xl lg:text-3xl font-bold text-noir-950 mb-2">{lang === "en" ? "Let's Work Together" : (lang === "ar" ? "لنعمل معا" : "Projeniz İçin Birlikte Çalışalım")}</h3>
+            <p className="text-noir-700">{lang === "en" ? "Contact us now for free consultation." : (lang === "ar" ? "اتصل بنا الآن للحصول على استشارة مجانية." : "Ücretsiz danışmanlık için hemen iletişime geçin.")}</p>
           </div>
           <button
             onClick={() => setIsQuoteModalOpen(true)}

@@ -14,7 +14,7 @@ export default function BlogList(props: any) {
   if (posts.length === 0) {
     return (
       <div className="container mx-auto px-6 py-24 text-center">
-        <p className="text-noir-400 italic">Yakında yeni blog yazıları eklenecektir.</p>
+        <p className="text-noir-700 italic">Yakında yeni blog yazıları eklenecektir.</p>
       </div>
     );
   }
@@ -43,14 +43,14 @@ export default function BlogList(props: any) {
             style={{ animationDelay: `${idx * 0.1}s` }}
           >
             {/* Image */}
-            <div className="aspect-[16/10] overflow-hidden relative bg-noir-1000 border-b border-white/5">
+            <div className="aspect-[16/10] overflow-hidden relative bg-noir-1000 border-b border-noir-950/10">
               <img 
                 src={`${post.featured_image && post.featured_image.length > 10 ? post.featured_image : 'https://bybossmimarlik.com/uploads/placeholder.jpg'}?v=${Date.now()}`} 
                 alt={post.title}
                 className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${(!post.featured_image || post.featured_image.length < 10) ? 'opacity-30 grayscale' : ''}`}
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-noir-950 via-transparent to-transparent opacity-80"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent opacity-80"></div>
               
               {/* Category Tag */}
               {post.category_name && (
@@ -62,7 +62,7 @@ export default function BlogList(props: any) {
 
             {/* Content */}
             <div className="p-8">
-              <div className="flex items-center gap-3 text-[10px] text-noir-400 font-bold uppercase tracking-widest mb-4">
+              <div className="flex items-center gap-3 text-[10px] text-noir-700 font-bold uppercase tracking-widest mb-4">
                 <span>
                   {post.published_at && post.published_at !== "0000-00-00 00:00:00" 
                     ? new Date(post.published_at.replace(/-/g, "/")).toLocaleDateString('tr-TR') 
@@ -72,7 +72,7 @@ export default function BlogList(props: any) {
                 <span>{post.author || 'By Boss Mimarlık Mobilya'}</span>
               </div>
               
-              <h3 className="text-white text-2xl font-serif font-bold mb-4 group-hover:text-gold-500 transition-colors line-clamp-2">
+              <h3 className="text-noir-950 text-2xl font-serif font-bold mb-4 group-hover:text-gold-500 transition-colors line-clamp-2">
                 {post.title}
               </h3>
               

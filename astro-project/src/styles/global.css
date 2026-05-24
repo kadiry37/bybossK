@@ -54,18 +54,18 @@
 
 @layer base {
   :root {
-    --bg-0: #000000;      /* Pure Vercel Black */
-    --bg-1: #0a0a0a;      /* Deep Dark Background */
-    --bg-2: #111111;      /* Section Background */
-    --bg-glass: rgba(0, 0, 0, 0.85);
-    --accent: #3a9ec0;    /* Keeping the signature blue */
-    --accent-l: #52b8da;
-    --accent-d: #2c809e;
-    --accent-glow: rgba(58, 158, 192, 0.15);
-    --txt: #ffffff;       /* Pure white for max contrast */
-    --txt-2: #a1a1a1;     /* High-quality gray for subtext */
-    --txt-3: #666666;     /* Muted text */
-    --brd: rgba(255, 255, 255, 0.12);
+    --bg-0: #fbfbfb;      /* Pure white alternative */
+    --bg-1: #f5f5f5;      /* Light background */
+    --bg-2: #ffffff;      /* Section Background */
+    --bg-glass: rgba(255, 255, 255, 0.85);
+    --accent: #c9a962;    /* Keeping the signature gold */
+    --accent-l: #e0c88f;
+    --accent-d: #9a7633;
+    --accent-glow: rgba(201, 169, 98, 0.15);
+    --txt: #111111;       /* Dark text for max contrast */
+    --txt-2: #444444;     /* Medium gray for subtext */
+    --txt-3: #888888;     /* Muted text */
+    --brd: rgba(0, 0, 0, 0.1);
     --brd-a: rgba(58, 158, 192, 0.3);
     --fh: 'Space Grotesk', sans-serif;
     --fb: 'DM Sans', sans-serif;
@@ -74,8 +74,9 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-noir-900 text-white font-sans antialiased;
+    @apply bg-white text-noir-950 font-sans antialiased;
     font-family: var(--fb);
+    background: url('/diffused_plaster.png') center/cover fixed;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--fh);
@@ -761,7 +762,7 @@
 .rich-content-view h3,
 .rich-content-view h4 {
   font-family: var(--fh);
-  color: #ffffff;
+  color: #111111;
   font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -787,11 +788,12 @@
 .rich-content-view p {
   margin-bottom: 1.25rem;
   line-height: 1.7;
+  color: #444444;
 }
 
 .rich-content-view strong,
 .rich-content-view b {
-  color: #ffffff;
+  color: #111111;
   font-weight: 600;
 }
 

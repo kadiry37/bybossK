@@ -51,12 +51,12 @@ try {
     })} />
 
   </Fragment>
-  <main class="min-h-screen bg-noir-900">
+  <main class="min-h-screen bg-transparent">
     <Navbar client:load data={settingsData} navData={navData?.header} productsData={productsData} servicesData={null} projectsData={null} lang={lang} />
 
     
     {/* Page Header */}
-    <div class="relative pt-40 pb-12 lg:pt-52 lg:pb-20 overflow-hidden bg-noir-900">
+    <div class="relative pt-40 pb-12 lg:pt-52 lg:pb-20 overflow-hidden bg-transparent">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(201,169,98,0.1),transparent_70%)] pointer-events-none"></div>
       
       <div class="container mx-auto px-6 relative z-10 text-center">
@@ -65,7 +65,7 @@ try {
              <span class="w-1.5 h-1.5 rounded-full bg-gold-500 animate-pulse"></span>
              {lang === 'en' ? 'Professional Solutions' : (lang === 'ar' ? 'حلول احترافية' : 'Profesyonel Çözümler')}
           </span>
-          <h1 class="text-white text-5xl md:text-8xl font-bold font-serif mb-8 leading-[1.1]">
+          <h1 class="text-noir-950 text-5xl md:text-8xl font-bold font-serif mb-8 leading-[1.1]">
              {settingsData?.general?.productsPageTitle ? (
                settingsData.general.productsPageTitle
              ) : (
@@ -90,15 +90,15 @@ try {
           <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
              <div class="space-y-4">
                 <div class="text-3xl text-gold-500 font-bold font-serif">{settingsData?.features?.slogan1_title || (lang === 'en' ? 'Quality' : (lang === 'ar' ? 'جودة' : 'Yüksek Kalite'))}</div>
-                <div class="text-white font-medium">{settingsData?.features?.slogan1_desc || (lang === 'en' ? 'Guaranteed Support' : (lang === 'ar' ? 'دعم مضمون' : 'Garantili Destek'))}</div>
+                <div class="text-noir-950 font-medium">{settingsData?.features?.slogan1_desc || (lang === 'en' ? 'Guaranteed Support' : (lang === 'ar' ? 'دعم مضمون' : 'Garantili Destek'))}</div>
              </div>
              <div class="space-y-4">
                 <div class="text-3xl text-gold-500 font-bold font-serif">{settingsData?.features?.slogan2_title || (lang === 'en' ? 'Stainless' : (lang === 'ar' ? 'ستانلس ستيل' : 'Paslanmaz'))}</div>
-                <div class="text-white font-medium">{settingsData?.features?.slogan2_desc || (lang === 'en' ? 'High Quality Steel' : (lang === 'ar' ? 'فولاذ عالي الجودة' : 'Yüksek Kalite Çelik'))}</div>
+                <div class="text-noir-950 font-medium">{settingsData?.features?.slogan2_desc || (lang === 'en' ? 'High Quality Steel' : (lang === 'ar' ? 'فولاذ عالي الجودة' : 'Yüksek Kalite Çelik'))}</div>
              </div>
              <div class="space-y-4">
                 <div class="text-3xl text-gold-500 font-bold font-serif">{settingsData?.features?.slogan3_title || (lang === 'en' ? 'A+ Grade' : (lang === 'ar' ? 'درجة A+' : 'A+ Seviye'))}</div>
-                <div class="text-white font-medium">{settingsData?.features?.slogan3_desc || (lang === 'en' ? 'UV Resistant Polymer' : (lang === 'ar' ? 'بوليمر مقاوم للأشعة فوق البنفسجية' : 'UV Dayanımlı Polimer'))}</div>
+                <div class="text-noir-950 font-medium">{settingsData?.features?.slogan3_desc || (lang === 'en' ? 'UV Resistant Polymer' : (lang === 'ar' ? 'بوليمر مقاوم للأشعة فوق البنفسجية' : 'UV Dayanımlı Polimer'))}</div>
              </div>
           </div>
        </div>

@@ -18,8 +18,8 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
   if (!product) {
     return (
       <div className="container mx-auto px-6 py-40 text-center">
-        <h2 className="text-white text-4xl font-serif font-bold mb-6">{lang === 'en' ? 'Product Not Found' : (lang === 'ar' ? 'لم يتم العثور على المنتج' : 'Ürün Bulunamadı')}</h2>
-        <p className="text-noir-400 mb-8">{lang === 'en' ? 'The product you are looking for may have been removed or moved.' : (lang === 'ar' ? 'قد يكون المنتج الذي تبحث عنه قد تم إزالته أو نقله.' : 'Aradığınız ürün yayından kaldırılmış veya taşınmış olabilir.')}</p>
+        <h2 className="text-noir-950 text-4xl font-serif font-bold mb-6">{lang === 'en' ? 'Product Not Found' : (lang === 'ar' ? 'لم يتم العثور على المنتج' : 'Ürün Bulunamadı')}</h2>
+        <p className="text-noir-700 mb-8">{lang === 'en' ? 'The product you are looking for may have been removed or moved.' : (lang === 'ar' ? 'قد يكون المنتج الذي تبحث عنه قد تم إزالته أو نقله.' : 'Aradığınız ürün yayından kaldırılmış veya taşınmış olabilir.')}</p>
         <a href={`/${lang}/urunler`} className="btn btn-gold">
           {lang === 'en' ? 'Back to Catalog' : (lang === 'ar' ? 'العودة إلى الكتالوج' : 'Ürün Kataloğuna Dön')}
         </a>
@@ -65,7 +65,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
         {/* Left Column: Images */}
         <div className="space-y-6">
         <div 
-          className="group relative rounded-[2.5rem] overflow-hidden border border-noir-800 bg-noir-950 aspect-square cursor-pointer active:scale-[0.98] transition-transform duration-300"
+          className="group relative rounded-[2.5rem] overflow-hidden border border-noir-800 bg-transparent aspect-square cursor-pointer active:scale-[0.98] transition-transform duration-300"
           onClick={() => openLightbox(0)}
         >
             {product.mainImage?.match(/\.(mp4|webm)$/i) ? (
@@ -100,14 +100,14 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
             )}
             <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/5 transition-all duration-500 flex items-center justify-center">
                 <div className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex flex-col items-center gap-3">
-                   <div className="bg-noir-900/80 backdrop-blur-md p-4 rounded-full border border-gold-500/30 text-gold-500">
+                   <div className="bg-white/80/80 backdrop-blur-md p-4 rounded-full border border-gold-500/30 text-gold-500">
                       <ZoomIn size={32} />
                    </div>
                    <span className="bg-gold-500 text-noir-900 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">Büyütmek İçin Tıkla</span>
                 </div>
             </div>
             {/* Visual corner hint */}
-            <div className="absolute bottom-6 right-6 w-12 h-12 rounded-2xl bg-noir-900/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/50 group-hover:scale-110 group-hover:text-gold-500 group-hover:border-gold-500/30 transition-all" aria-hidden="true">
+            <div className="absolute bottom-6 right-6 w-12 h-12 rounded-2xl bg-white/80/60 backdrop-blur-md border border-noir-950/10 flex items-center justify-center text-noir-950/50 group-hover:scale-110 group-hover:text-gold-500 group-hover:border-gold-500/30 transition-all" aria-hidden="true">
                 <ZoomIn size={24} />
             </div>
         </div>
@@ -118,7 +118,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
               {product.galleryImages.map((img: string, idx: number) => (
                 <div
                   key={idx}
-                  className="aspect-square rounded-2xl overflow-hidden border border-noir-800 bg-noir-900 cursor-pointer group relative active:scale-95 transition-all animate-gallery-item"
+                  className="aspect-square rounded-2xl overflow-hidden border border-noir-800 bg-white/80 cursor-pointer group relative active:scale-95 transition-all animate-gallery-item"
                   style={{ animationDelay: `${idx * 0.1}s` } as React.CSSProperties}
                   onClick={() => openLightbox(idx + 1)}
                 >
@@ -136,7 +136,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
                     />
                   )}
                   <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/20 transition-colors flex items-center justify-center">
-                     <ZoomIn size={20} className="text-white opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all" />
+                     <ZoomIn size={20} className="text-noir-950 opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all" />
                   </div>
                 </div>
               ))}
@@ -159,16 +159,16 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
                )}
             </div>
             
-            <h1 className="text-white text-5xl md:text-6xl font-serif font-bold leading-tight mb-6">
+            <h1 className="text-noir-950 text-5xl md:text-6xl font-serif font-bold leading-tight mb-6">
               {product[`name${suffix}`] || product.name}
             </h1>
             
-            <div className="text-4xl font-serif font-bold text-white flex items-baseline gap-2 mb-8 flex-wrap">
+            <div className="text-4xl font-serif font-bold text-noir-950 flex items-baseline gap-2 mb-8 flex-wrap">
               {product.price ? (
                 <>
                   <div className="flex items-baseline gap-1.5">
                     <span>{String(product.price).trim().replace(/[\r\n\u200B]/g, '')}</span>
-                    <span className="text-xl font-sans text-noir-400 font-medium">TL</span>
+                    <span className="text-xl font-sans text-noir-700 font-medium">TL</span>
                   </div>
                 </>
               ) : (
@@ -216,7 +216,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
                       alert(lang === 'en' ? 'Link copied!' : (lang === 'ar' ? 'تم نسخ الرابط!' : 'Link kopyalandı!'));
                    }
                 }}
-                className="p-5 bg-noir-800 hover:bg-noir-700 text-white border border-noir-700 rounded-2xl transition-all duration-300 flex items-center justify-center active:scale-95"
+                className="p-5 bg-noir-800 hover:bg-noir-700 text-noir-950 border border-noir-700 rounded-2xl transition-all duration-300 flex items-center justify-center active:scale-95"
                 aria-label={lang === 'en' ? 'Share Product' : (lang === 'ar' ? 'مشاركة المنتج' : 'Ürünü Paylaş')}
              >
                 <Share2 size={24} aria-hidden="true" />
@@ -226,7 +226,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
           {/* Detailed Description */}
           {(product[`longDescription${suffix}`] || product.longDescription) && (
             <div className="prose prose-invert max-w-none mb-12">
-              <h2 className="text-white font-bold mb-4 uppercase tracking-widest text-xs flex items-center gap-2">
+              <h2 className="text-noir-950 font-bold mb-4 uppercase tracking-widest text-xs flex items-center gap-2">
                 <Package className="text-gold-500" size={16} aria-hidden="true" /> {productName} {lang === 'en' ? 'Product Detail' : (lang === 'ar' ? 'تفاصيل المنتج' : 'Ürün Detayı')}
               </h2>
               {(() => {
@@ -245,16 +245,16 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-6">
                 <Info className="text-gold-500" size={18} aria-hidden="true" />
-                <h2 className="text-white font-bold uppercase tracking-widest text-xs">{productName} {lang === 'en' ? 'Technical Specifications' : (lang === 'ar' ? 'المواصفات الفنية' : 'Teknik Özellikleri')}</h2>
+                <h2 className="text-noir-950 font-bold uppercase tracking-widest text-xs">{productName} {lang === 'en' ? 'Technical Specifications' : (lang === 'ar' ? 'المواصفات الفنية' : 'Teknik Özellikleri')}</h2>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {allSpecs.map((item, idx) => (
                   <div 
                     key={idx} 
-                    className="bg-noir-900/40 backdrop-blur-sm p-5 rounded-2xl border border-noir-800/60 border-l-2 border-l-gold-500 hover:border-gold-500/30 hover:bg-noir-800/40 hover:scale-[1.02] transition-all duration-300 flex flex-col justify-center shadow-lg"
+                    className="bg-white/80/40 backdrop-blur-sm p-5 rounded-2xl border border-noir-800/60 border-l-2 border-l-gold-500 hover:border-gold-500/30 hover:bg-noir-800/40 hover:scale-[1.02] transition-all duration-300 flex flex-col justify-center shadow-lg"
                   >
-                    <span className="text-[10px] uppercase tracking-widest text-noir-400 font-semibold mb-1">{item.key}</span>
-                    <span className="text-white text-base font-bold tracking-wide">{item.val}</span>
+                    <span className="text-[10px] uppercase tracking-widest text-noir-700 font-semibold mb-1">{item.key}</span>
+                    <span className="text-noir-950 text-base font-bold tracking-wide">{item.val}</span>
                   </div>
                 ))}
               </div>
@@ -266,7 +266,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
               <div className="bg-noir-800/20 backdrop-blur-sm p-8 rounded-[2rem] border border-noir-800/30">
                 <div className="flex items-center gap-3 mb-6">
                    <BadgeCheck className="text-gold-500" size={18} aria-hidden="true" />
-                   <h2 className="text-white font-bold uppercase tracking-widest text-xs">{lang === 'en' ? 'Features' : (lang === 'ar' ? 'المميزات' : 'Özellikler')}</h2>
+                   <h2 className="text-noir-950 font-bold uppercase tracking-widest text-xs">{lang === 'en' ? 'Features' : (lang === 'ar' ? 'المميزات' : 'Özellikler')}</h2>
                 </div>
                 <div 
                   className="text-noir-300 text-sm leading-relaxed rich-content-view"
@@ -280,7 +280,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
               <div className="mt-12 bg-noir-800/30 backdrop-blur-sm p-8 rounded-[2rem] border border-noir-800/50">
                 <div className="flex items-center gap-3 mb-8">
                    <Wrench className="text-gold-500" size={24} aria-hidden="true" />
-                   <h2 className="text-white text-xl font-bold uppercase tracking-widest">{product.howtoTitle || `${productName} ${lang === 'en' ? 'Assembly Steps' : (lang === 'ar' ? 'خطوات التجميع' : 'Montaj Adımları')}`}</h2>
+                   <h2 className="text-noir-950 text-xl font-bold uppercase tracking-widest">{product.howtoTitle || `${productName} ${lang === 'en' ? 'Assembly Steps' : (lang === 'ar' ? 'خطوات التجميع' : 'Montaj Adımları')}`}</h2>
                 </div>
                 <div className="space-y-8">
                   {product.howtoJson.map((step: any, idx: number) => (
@@ -294,10 +294,10 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
                         )}
                       </div>
                       <div className="pb-4">
-                        <h4 className="text-white font-bold text-lg mb-2 group-hover:text-gold-500 transition-colors">
+                        <h4 className="text-noir-950 font-bold text-lg mb-2 group-hover:text-gold-500 transition-colors">
                           {step.name || step.step || (lang === 'en' ? `Step ${idx + 1}` : (lang === 'ar' ? `خطوة ${idx + 1}` : `Adım ${idx + 1}`))}
                         </h4>
-                        <p className="text-noir-400 text-sm leading-relaxed">
+                        <p className="text-noir-700 text-sm leading-relaxed">
                           {step.text || step.description}
                         </p>
                       </div>
@@ -312,16 +312,16 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
               <div className="mt-12">
                 <div className="flex items-center gap-3 mb-8">
                    <HelpCircle className="text-gold-500" size={24} aria-hidden="true" />
-                   <h2 className="text-white text-xl font-bold uppercase tracking-widest">{product.faqTitle || `${productName} ${lang === 'en' ? 'FAQ' : (lang === 'ar' ? 'أسئلة مكررة' : 'Sıkça Sorulan Sorular')}`}</h2>
+                   <h2 className="text-noir-950 text-xl font-bold uppercase tracking-widest">{product.faqTitle || `${productName} ${lang === 'en' ? 'FAQ' : (lang === 'ar' ? 'أسئلة مكررة' : 'Sıkça Sorulan Sorular')}`}</h2>
                 </div>
                 <div className="space-y-4">
                   {product.faqJson.map((faq: any, idx: number) => (
-                    <div key={idx} className="bg-noir-900 rounded-2xl overflow-hidden border border-noir-800/50">
+                    <div key={idx} className="bg-white/80 rounded-2xl overflow-hidden border border-noir-800/50">
                       <button 
-                        className="w-full px-6 py-5 flex items-center justify-between bg-noir-900 hover:bg-noir-800 transition-colors"
+                        className="w-full px-6 py-5 flex items-center justify-between bg-white/80 hover:bg-noir-800 transition-colors"
                         onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
                       >
-                        <span className="text-white font-semibold text-left">{faq.q || faq.question}</span>
+                        <span className="text-noir-950 font-semibold text-left">{faq.q || faq.question}</span>
                         <div className={`w-8 h-8 rounded-full border border-noir-700 flex items-center justify-center text-gold-500 transition-transform ${openFaq === idx ? 'rotate-180' : ''}`}>
                           <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -339,7 +339,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
 
             {/* Video Player Section */}
             {product.videoUrl && (
-              <div className="mt-12 rounded-[2.5rem] overflow-hidden border border-noir-800 bg-noir-950 aspect-video relative group shadow-2xl">
+              <div className="mt-12 rounded-[2.5rem] overflow-hidden border border-noir-800 bg-transparent aspect-video relative group shadow-2xl">
                 {!showVideo ? (
                   <div 
                     className="absolute inset-0 cursor-pointer flex items-center justify-center"
@@ -359,7 +359,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
                         <path d="M8 5v14l11-7z" />
                       </svg>
                     </div>
-                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity"> Videoyu Başlat </div>
+                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-noir-950/70 text-xs font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity"> Videoyu Başlat </div>
                   </div>
                 ) : (
                   product.videoUrl.includes('youtube.com') || product.videoUrl.includes('youtu.be') ? (

@@ -30,8 +30,8 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
   if (!project) {
     return (
       <div className="container mx-auto px-6 py-40 text-center">
-        <h2 className="text-white text-4xl font-serif font-bold mb-6">{lang === 'en' ? 'Project Not Found' : (lang === 'ar' ? 'لم يتم العثور على المشروع' : 'Proje Bulunamadı')}</h2>
-        <p className="text-noir-400 mb-8">{lang === 'en' ? 'The project you are looking for may not have been published or moved.' : (lang === 'ar' ? 'قد لا يكون المشروع الذي تبحث عنه قد تم نشره أو نقله.' : 'Aradığınız proje henüz yayınlanmamış veya taşınmış olabilir.')}</p>
+        <h2 className="text-noir-950 text-4xl font-serif font-bold mb-6">{lang === 'en' ? 'Project Not Found' : (lang === 'ar' ? 'لم يتم العثور على المشروع' : 'Proje Bulunamadı')}</h2>
+        <p className="text-noir-700 mb-8">{lang === 'en' ? 'The project you are looking for may not have been published or moved.' : (lang === 'ar' ? 'قد لا يكون المشروع الذي تبحث عنه قد تم نشره أو نقله.' : 'Aradığınız proje henüz yayınlanmamış veya taşınmış olabilir.')}</p>
         <a href={`/${lang}/#projects`} className="btn btn-gold">
           {lang === 'en' ? 'Back to Projects' : (lang === 'ar' ? 'العودة إلى المشاريع' : 'Projelere Dön')}
         </a>
@@ -85,7 +85,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
   return (
     <>
       <div className="container mx-auto px-6 py-12 animate-fade-in">
-         <a href={`/${lang}/#projects`} className="inline-flex items-center gap-2 text-gold-500 hover:text-white transition-colors mb-12 group">
+         <a href={`/${lang}/#projects`} className="inline-flex items-center gap-2 text-gold-500 hover:text-noir-950 transition-colors mb-12 group">
            <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
            <span>{lang === 'en' ? 'Back to All Projects' : (lang === 'ar' ? 'العودة إلى كافة المشاريع' : 'Tüm Projelere Dön')}</span>
          </a>
@@ -94,7 +94,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
           {/* Left: Images & Details */}
           <div className="lg:col-span-7 space-y-8">
             <div 
-              className="aspect-[16/10] overflow-hidden bg-noir-900 border border-noir-800 cursor-pointer group relative rounded-2xl"
+              className="aspect-[16/10] overflow-hidden bg-white/80 border border-noir-800 cursor-pointer group relative rounded-2xl"
               onClick={() => openLightbox(activeImageIndex)}
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
@@ -106,7 +106,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 animate-fade-in"
               />
               <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/10 transition-colors flex items-center justify-center">
-                 <ZoomIn size={48} className="text-white opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all duration-300" />
+                 <ZoomIn size={48} className="text-noir-950 opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all duration-300" />
               </div>
             </div>
             
@@ -115,7 +115,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                 {allImages.map((img, i) => (
                   <div 
                     key={i} 
-                    className={`aspect-[4/3] overflow-hidden bg-noir-900 border cursor-pointer relative rounded-xl transition-all duration-300 ${
+                    className={`aspect-[4/3] overflow-hidden bg-white/80 border cursor-pointer relative rounded-xl transition-all duration-300 ${
                       i === activeImageIndex 
                         ? 'border-gold-500 ring-2 ring-gold-500/20' 
                         : 'border-noir-800 hover:border-noir-600'
@@ -134,7 +134,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
 
             {/* Project Details Description */}
             <div className="prose prose-invert max-w-none pt-6 border-t border-noir-800/80">
-              <h3 className="text-white text-2xl font-serif font-bold mb-6 flex items-center gap-3">
+              <h3 className="text-noir-950 text-2xl font-serif font-bold mb-6 flex items-center gap-3">
                 <span className="w-1.5 h-6 bg-gold-500 rounded-full inline-block"></span>
                 {lang === 'en' ? 'Project Details' : (lang === 'ar' ? 'تفاصيل المشروع' : 'Proje Detayları')}
               </h3>
@@ -147,7 +147,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
             {/* Specifications Details */}
             {project.specifications && (
               <div className="border-t border-noir-800 pt-8">
-                <h3 className="text-white text-2xl font-serif font-bold mb-6 flex items-center gap-3">
+                <h3 className="text-noir-950 text-2xl font-serif font-bold mb-6 flex items-center gap-3">
                   <span className="w-1.5 h-6 bg-gold-500 rounded-full inline-block"></span>
                   {lang === 'en' ? 'Technical Specifications' : (lang === 'ar' ? 'المواصفات الفنية' : 'Teknik Özellikler')}
                 </h3>
@@ -166,7 +166,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                 <ClipboardCheck size={22} />
               </div>
               <div>
-                <h4 className="text-white font-serif text-lg font-semibold mb-2">
+                <h4 className="text-noir-950 font-serif text-lg font-semibold mb-2">
                   {lang === 'en' ? 'Bespoke Production & Architecture' : (lang === 'ar' ? 'إنتاج مخصص وهندسة معمارية' : 'Özel Üretim & Mimari Uygulama')}
                 </h4>
                 <p className="text-noir-200 text-sm leading-relaxed">
@@ -188,29 +188,29 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                   {project.category === 'architecture' ? (lang === 'en' ? 'Architectural Project' : (lang === 'ar' ? 'مشروع معماري' : 'Mimari Proje')) : (lang === 'en' ? 'Furniture & Decoration' : (lang === 'ar' ? 'أثاث وديكور' : 'Mobilya & Dekorasyon'))}
                 </span>
                 
-                <h1 className="font-serif text-3xl lg:text-4xl font-bold text-white leading-tight">
+                <h1 className="font-serif text-3xl lg:text-4xl font-bold text-noir-950 leading-tight">
                   {project[`name${suffix}`] || project.name}
                 </h1>
               </div>
 
               {/* Location and Year Grid */}
               <div className="grid grid-cols-2 gap-4 pb-6 border-b border-noir-800/80">
-                <div className="p-4 bg-noir-950/60 border border-noir-800/85 rounded-xl flex items-center gap-3">
+                <div className="p-4 bg-transparent/60 border border-noir-800/85 rounded-xl flex items-center gap-3">
                   <div className="text-gold-500 bg-gold-500/5 p-2.5 rounded-lg border border-gold-500/10">
                     <MapPin size={18} />
                   </div>
                   <div>
-                    <p className="text-noir-500 text-[10px] uppercase tracking-widest font-semibold">{lang === 'en' ? 'Location' : (lang === 'ar' ? 'الموقع' : 'Konum')}</p>
-                    <p className="text-white font-medium text-sm truncate max-w-[120px]">{project.location || (lang === 'en' ? 'Not specified' : (lang === 'ar' ? 'غير محدد' : 'Belirtilmedi'))}</p>
+                    <p className="text-noir-600 text-[10px] uppercase tracking-widest font-semibold">{lang === 'en' ? 'Location' : (lang === 'ar' ? 'الموقع' : 'Konum')}</p>
+                    <p className="text-noir-950 font-medium text-sm truncate max-w-[120px]">{project.location || (lang === 'en' ? 'Not specified' : (lang === 'ar' ? 'غير محدد' : 'Belirtilmedi'))}</p>
                   </div>
                 </div>
-                <div className="p-4 bg-noir-950/60 border border-noir-800/85 rounded-xl flex items-center gap-3">
+                <div className="p-4 bg-transparent/60 border border-noir-800/85 rounded-xl flex items-center gap-3">
                   <div className="text-gold-500 bg-gold-500/5 p-2.5 rounded-lg border border-gold-500/10">
                     <Calendar size={18} />
                   </div>
                   <div>
-                    <p className="text-noir-500 text-[10px] uppercase tracking-widest font-semibold">{lang === 'en' ? 'Year' : (lang === 'ar' ? 'السنة' : 'Yıl')}</p>
-                    <p className="text-white font-medium text-sm">{project.year || '-'}</p>
+                    <p className="text-noir-600 text-[10px] uppercase tracking-widest font-semibold">{lang === 'en' ? 'Year' : (lang === 'ar' ? 'السنة' : 'Yıl')}</p>
+                    <p className="text-noir-950 font-medium text-sm">{project.year || '-'}</p>
                   </div>
                 </div>
               </div>
@@ -230,7 +230,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3.5 px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl flex items-center justify-center gap-3 transition-all duration-300 active:scale-[0.98] text-sm shadow-lg shadow-emerald-600/10"
+                    className="w-full py-3.5 px-6 bg-emerald-600 hover:bg-emerald-500 text-noir-950 font-bold rounded-xl flex items-center justify-center gap-3 transition-all duration-300 active:scale-[0.98] text-sm shadow-lg shadow-emerald-600/10"
                   >
                     <WhatsAppIcon size={20} />
                     <span>{lang === 'en' ? 'Order via WhatsApp' : (lang === 'ar' ? 'طلب عبر الواتساب' : 'WhatsApp ile Sipariş')}</span>
@@ -239,7 +239,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                   {/* Call Button */}
                   <a 
                     href={`tel:${directPhone}`}
-                    className="w-full py-3.5 px-6 bg-noir-900 hover:bg-noir-800 text-white font-bold border border-noir-800 hover:border-noir-700 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 active:scale-[0.98] text-sm shadow-lg"
+                    className="w-full py-3.5 px-6 bg-white/80 hover:bg-noir-800 text-noir-950 font-bold border border-noir-800 hover:border-noir-700 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 active:scale-[0.98] text-sm shadow-lg"
                   >
                     <Phone size={20} className="text-gold-500" />
                     <span>{lang === 'en' ? `Call Now: ${directPhone}` : (lang === 'ar' ? `اتصل الآن: ${directPhone}` : `Hemen Ara: ${directPhone}`)}</span>

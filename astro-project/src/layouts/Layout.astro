@@ -237,7 +237,7 @@ const websiteSchema = {
       </>
     )}
   </head>
-  <body class="bg-noir-900 text-white font-sans antialiased">
+  <body class="bg-transparent text-noir-950 font-sans antialiased relative min-h-screen">
     <slot />
     {footerScripts && <Fragment set:html={footerScripts.replace(/crossorigin=['"]?[^'"]*['"]?/gi, '')} />}
   </body>

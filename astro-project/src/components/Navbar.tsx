@@ -298,12 +298,12 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
           isScrolled
             ? 'scrolled'
             : 'bg-transparent'
-        } ${isScrolled ? 'bg-[#0b0b0f]/82 backdrop-blur-[28px] saturate-[1.4] border-b border-white/5 shadow-2xl' : ''}`}
+        } ${isScrolled ? 'bg-[#0b0b0f]/82 backdrop-blur-[28px] saturate-[1.4] border-b border-noir-950/10 shadow-2xl' : ''}`}
         id="hd"
         style={{ overflow: langMenuOpen ? 'visible' : '' }}
       >
         {/* Top Bar */}
-        <div className={`tb transition-all duration-500 border-b border-white/5 hidden lg:flex ${
+        <div className={`tb transition-all duration-500 border-b border-noir-950/10 hidden lg:flex ${
           isScrolled ? 'max-h-0 opacity-0 pointer-events-none' : 'max-h-[36px] opacity-100'
         }`} style={{ overflow: langMenuOpen ? 'visible' : 'hidden' }}>
           <div className="cx flex items-center justify-between w-full h-full" style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
@@ -325,13 +325,13 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
                   <ChevronDown size={11} className={`transition-transform duration-300 ${langMenuOpen ? 'rotate-180' : ''}`} />
                 </div>
                 {langMenuOpen && (
-                  <div className={`absolute top-full right-0 mt-2 bg-[#0b0b0f] border border-white/10 rounded-lg shadow-2xl overflow-hidden min-w-[110px] p-1 z-[99999]`}>
+                  <div className={`absolute top-full right-0 mt-2 bg-[#0b0b0f] border border-noir-950/10 rounded-lg shadow-2xl overflow-hidden min-w-[110px] p-1 z-[99999]`}>
                     {Object.entries(langLabels).map(([code, { flag, name }]) => (
                       <button
                         key={code}
                         onClick={() => { switchLang(code); setLangMenuOpen(false); }}
                         className={`w-full flex items-center gap-2.5 px-3 py-2 rounded text-[11px] font-bold transition-all ${
-                          currentLang === code ? 'bg-[#3a9ec0]/10 text-[#52b8da]' : 'text-[#6a6d75] hover:text-white hover:bg-white/5'
+                          currentLang === code ? 'bg-[#3a9ec0]/10 text-[#52b8da]' : 'text-[#6a6d75] hover:text-noir-950 hover:bg-white/5'
                         }`}
                       >
                         <span>{flag}</span>
@@ -581,28 +581,28 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
           </ul>
         </nav>
         {/* Mobile Mega Menu Footer Links */}
-        <div className="mt-8 pt-6 border-t border-white/10">
+        <div className="mt-8 pt-6 border-t border-noir-950/10">
           <div className="text-gold-500 text-[13px] font-bold uppercase tracking-widest mb-4 opacity-80">
             {data?.features?.mega_title || 'Yılmazer Kalite Garantisi'}
           </div>
           <div className="flex flex-col gap-3">
             <a 
               href={data?.features?.mega_link1_url || `${currentLang === 'tr' ? '' : '/' + currentLang}/urunler`}
-              className="text-txt-2 hover:text-white text-[14px] flex items-center justify-between group"
+              className="text-txt-2 hover:text-noir-950 text-[14px] flex items-center justify-between group"
             >
               <span>{data?.features?.mega_link1_text || (currentLang === 'en' ? 'Technical File' : (currentLang === 'ar' ? 'الملف التقني' : 'Teknik Dosya'))}</span>
               <ChevronRight size={14} className="text-gold-500/50 group-hover:translate-x-1 transition-transform" />
             </a>
             <a 
               href={data?.features?.mega_link2_url || "#"}
-              className="text-txt-2 hover:text-white text-[14px] flex items-center justify-between group"
+              className="text-txt-2 hover:text-noir-950 text-[14px] flex items-center justify-between group"
             >
               <span>{data?.features?.mega_link2_text || (currentLang === 'en' ? 'Assembly Guide' : (currentLang === 'ar' ? 'دليل التجميع' : 'Montaj Rehberi'))}</span>
               <ChevronRight size={14} className="text-gold-500/50 group-hover:translate-x-1 transition-transform" />
             </a>
             <a 
               href={data?.features?.mega_link3_url || "#"}
-              className="text-txt-2 hover:text-white text-[14px] flex items-center justify-between group"
+              className="text-txt-2 hover:text-noir-950 text-[14px] flex items-center justify-between group"
             >
               <span>{data?.features?.mega_link3_text || (currentLang === 'en' ? 'Price List' : (currentLang === 'ar' ? 'قائمة الأسعار' : 'Fiyat Listesi'))}</span>
               <ChevronRight size={14} className="text-gold-500/50 group-hover:translate-x-1 transition-transform" />
@@ -610,7 +610,7 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-white/5">
+        <div className="mt-8 pt-6 border-t border-noir-950/10">
           <div className="flex items-center gap-3 mb-4">
             <span className="text-[11px] font-bold text-txt-3 uppercase tracking-wider">
               {currentLang === 'en' ? 'Language' : (currentLang === 'ar' ? 'لغة' : 'Dil Seçimi')}

@@ -86,7 +86,7 @@ export default function Footer({ navData: initialNavData, data: initialData, lan
   ];
 
   return (
-    <footer className="relative z-40 bg-noir-950 pt-20 pb-28 md:pb-12 overflow-hidden font-sans">
+    <footer className="relative z-40 bg-transparent pt-20 pb-28 md:pb-12 overflow-hidden font-sans">
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-gold-500/5 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gold-500/5 rounded-full blur-[120px] translate-y-1/2 pointer-events-none" />
@@ -107,20 +107,20 @@ export default function Footer({ navData: initialNavData, data: initialData, lan
                     onError={() => setLogoFailed(true)}
                   />
                 ) : (<div className="font-serif text-3xl font-bold uppercase tracking-tight">
-                  <span className="text-white">{brandFirst}</span>
+                  <span className="text-noir-950">{brandFirst}</span>
                   <span className="gradient-text ml-2">{brandSecond}</span>
                 </div>
               )}
             </a>
             
-            <p className="text-noir-400 text-base leading-relaxed max-w-sm">
+            <p className="text-noir-700 text-base leading-relaxed max-w-sm">
               {general?.description || (lang === 'en' ? 'With our industry expertise and innovative approach, we provide the most durable mounting solutions that add value to your outdoor spaces.' : (lang === 'ar' ? 'بخبرتنا في الصناعة ونهجنا المبتكر ، نقدم حلول التثبيت الأكثر متانة التي تضيف قيمة إلى مساحاتك الخارجية.' : 'Sektördeki tecrübemiz ve yenilikçi yaklaşımımızla, dış mekanlarınıza değer katan en dayanıklı montaj çözümlerini sunuyoruz.'))}
             </p>
 
             <div className="flex items-center gap-4">
               {socialLinks.map((s) => (
                 <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" 
-                   className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-noir-400 hover:bg-gold-500 hover:text-noir-950 hover:border-gold-500 transition-all duration-300">
+                   className="w-10 h-10 rounded-full bg-white/5 border border-noir-950/10 flex items-center justify-center text-noir-700 hover:bg-gold-500 hover:text-noir-950 hover:border-gold-500 transition-all duration-300">
                   {getSocialIcon(s.label)}
                 </a>
               ))}
@@ -133,7 +133,7 @@ export default function Footer({ navData: initialNavData, data: initialData, lan
             const colLinks = col.links || col.subitems || [];
             return (
             <div key={idx} className="lg:col-span-2">
-              <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-8 flex items-center gap-2">
+              <h4 className="text-noir-950 font-bold uppercase tracking-widest text-xs mb-8 flex items-center gap-2">
                 <span className="w-6 h-px bg-gold-500/50"></span>
                 {colTitle}
               </h4>
@@ -165,7 +165,7 @@ export default function Footer({ navData: initialNavData, data: initialData, lan
                   
                   return (
                     <li key={lIdx}>
-                      <a href={finalLink} className="text-noir-500 hover:text-gold-500 text-sm transition-colors flex items-center group">
+                      <a href={finalLink} className="text-noir-600 hover:text-gold-500 text-sm transition-colors flex items-center group">
                         <ArrowRight size={12} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all mr-2 text-gold-500" />
                         {rawLabel}
                       </a>
@@ -179,7 +179,7 @@ export default function Footer({ navData: initialNavData, data: initialData, lan
 
           {/* Contact Details */}
           <div className="lg:col-span-4">
-            <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-8 flex items-center gap-2">
+            <h4 className="text-noir-950 font-bold uppercase tracking-widest text-xs mb-8 flex items-center gap-2">
               <span className="w-6 h-px bg-gold-500/50"></span>
               {lang === 'en' ? 'Get In Touch' : (lang === 'ar' ? 'اتصل بنا' : 'İletişime Geçin')}
             </h4>
@@ -190,7 +190,7 @@ export default function Footer({ navData: initialNavData, data: initialData, lan
                 </div>
                 <div>
                   <span className="block text-[10px] uppercase text-noir-600 font-bold tracking-tighter mb-1">{lang === 'en' ? 'Phone' : (lang === 'ar' ? 'هاتف' : 'Telefon')}</span>
-                  <a href={`tel:${contact.phone}`} className="text-white hover:text-gold-500 transition-colors font-medium" dir="ltr">
+                  <a href={`tel:${contact.phone}`} className="text-noir-950 hover:text-gold-500 transition-colors font-medium" dir="ltr">
                     {contact.phone}
                   </a>
                 </div>
@@ -202,7 +202,7 @@ export default function Footer({ navData: initialNavData, data: initialData, lan
                 </div>
                 <div>
                   <span className="block text-[10px] uppercase text-noir-600 font-bold tracking-tighter mb-1">{lang === 'en' ? 'Email' : (lang === 'ar' ? 'بريد' : 'E-Posta')}</span>
-                  <a href={`mailto:${contact.email}`} className="text-white hover:text-gold-500 transition-colors font-medium" dir="ltr">
+                  <a href={`mailto:${contact.email}`} className="text-noir-950 hover:text-gold-500 transition-colors font-medium" dir="ltr">
                     {contact.email}
                   </a>
                 </div>
@@ -229,13 +229,13 @@ export default function Footer({ navData: initialNavData, data: initialData, lan
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8">
           <p className="text-noir-600 text-sm text-center">
-            © {currentYear} <span className="text-noir-400 font-semibold">{general.siteName}</span>. {lang === 'en' ? 'All Rights Reserved.' : (lang === 'ar' ? 'جميع الحقوق محفوظة.' : 'Tüm Hakları Saklıdır.')}
+            © {currentYear} <span className="text-noir-700 font-semibold">{general.siteName}</span>. {lang === 'en' ? 'All Rights Reserved.' : (lang === 'ar' ? 'جميع الحقوق محفوظة.' : 'Tüm Hakları Saklıdır.')}
           </p>
           <div className="flex items-center gap-8">
-            <a href={lang === 'tr' ? '/gizlilik-politikasi' : `/${lang}/gizlilik-politikasi`} className="text-noir-600 hover:text-white text-xs uppercase tracking-widest transition-colors font-bold">
+            <a href={lang === 'tr' ? '/gizlilik-politikasi' : `/${lang}/gizlilik-politikasi`} className="text-noir-600 hover:text-noir-950 text-xs uppercase tracking-widest transition-colors font-bold">
               {lang === 'en' ? 'Privacy' : (lang === 'ar' ? 'خصوصية' : 'Gizlilik')}
             </a>
-            <a href={lang === 'tr' ? '/kullanim-sartlari' : `/${lang}/kullanim-sartlari`} className="text-noir-600 hover:text-white text-xs uppercase tracking-widest transition-colors font-bold">
+            <a href={lang === 'tr' ? '/kullanim-sartlari' : `/${lang}/kullanim-sartlari`} className="text-noir-600 hover:text-noir-950 text-xs uppercase tracking-widest transition-colors font-bold">
               {lang === 'en' ? 'Terms' : (lang === 'ar' ? 'شروط' : 'Şartlar')}
             </a>
           </div>
@@ -248,17 +248,17 @@ export default function Footer({ navData: initialNavData, data: initialData, lan
           href={`https://wa.me/${(contact?.whatsapp || '905325674537').replace(/\D/g, '')}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-0 sm:gap-4 p-1.5 sm:py-2.5 sm:pl-2.5 sm:pr-6 bg-noir-100/10 backdrop-blur-3xl border border-white/10 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:border-green-500/40 hover:shadow-[0_20px_50px_rgba(34,197,94,0.2)] transition-all duration-500 group"
+          className="flex items-center gap-0 sm:gap-4 p-1.5 sm:py-2.5 sm:pl-2.5 sm:pr-6 bg-noir-100/10 backdrop-blur-3xl border border-noir-950/10 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.5)] hover:border-green-500/40 hover:shadow-[0_20px_50px_rgba(34,197,94,0.2)] transition-all duration-500 group"
           aria-label="WhatsApp"
         >
-          <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white flex-shrink-0 shadow-[0_4px_15px_rgba(37,211,102,0.4)]">
+          <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-noir-950 flex-shrink-0 shadow-[0_4px_15px_rgba(37,211,102,0.4)]">
             <MessageCircle size={22} className="sm:hidden" />
             <MessageCircle size={28} className="hidden sm:block" />
             <span className="absolute inset-0 rounded-full bg-green-500/40 animate-ping" style={{ animationDuration: '2.5s' }} />
           </div>
           <div className="hidden sm:flex flex-col pr-2">
             <span className="text-[10px] uppercase tracking-[0.2em] text-green-400 font-black leading-none mb-1">{lang === 'en' ? 'Customer Line' : (lang === 'ar' ? 'خط العملاء' : 'Müşteri Hattı')}</span>
-            <span className="text-[14px] text-white font-bold">{footerExtras?.whatsappText || (lang === 'en' ? 'Need help?' : (lang === 'ar' ? 'هل تحتاج مساعدة؟' : 'Yardım mı lazım?'))}</span>
+            <span className="text-[14px] text-noir-950 font-bold">{footerExtras?.whatsappText || (lang === 'en' ? 'Need help?' : (lang === 'ar' ? 'هل تحتاج مساعدة؟' : 'Yardım mı lazım?'))}</span>
           </div>
         </a>
       </div>

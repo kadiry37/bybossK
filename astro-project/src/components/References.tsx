@@ -42,7 +42,7 @@ export default function References({ data, lang = 'tr' }: ReferencesProps) {
   const scrollItems = [...data, ...data, ...data];
 
   return (
-    <section className="relative py-24 bg-noir-950 overflow-hidden">
+    <section className="relative py-24 bg-transparent overflow-hidden">
       {/* Background Gradients */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-1/2 h-1/2 bg-gold-500/5 rounded-full blur-[120px]" />
@@ -55,10 +55,10 @@ export default function References({ data, lang = 'tr' }: ReferencesProps) {
             <span className="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
             {text.badge}
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-fh font-bold text-white mb-6 uppercase tracking-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-fh font-bold text-noir-950 mb-6 uppercase tracking-tight">
             {text.title}
           </h2>
-          <p className="text-noir-400 text-lg md:text-xl font-light">
+          <p className="text-noir-700 text-lg md:text-xl font-light">
             {text.subtitle}
           </p>
         </div>
@@ -68,8 +68,8 @@ export default function References({ data, lang = 'tr' }: ReferencesProps) {
       <div className="relative w-full overflow-hidden flex items-center group py-10">
         
         {/* Shadow Masks for smooth fade out at edges */}
-        <div className="absolute top-0 bottom-0 left-0 w-32 md:w-64 bg-gradient-to-r from-noir-950 to-transparent z-20 pointer-events-none" />
-        <div className="absolute top-0 bottom-0 right-0 w-32 md:w-64 bg-gradient-to-l from-noir-950 to-transparent z-20 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 left-0 w-32 md:w-64 bg-gradient-to-r from-white/90 to-transparent z-20 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 right-0 w-32 md:w-64 bg-gradient-to-l from-white/90 to-transparent z-20 pointer-events-none" />
 
         <div className="flex animate-marquee hover:[animation-play-state:paused]">
           {scrollItems.map((ref, idx) => (
@@ -77,7 +77,7 @@ export default function References({ data, lang = 'tr' }: ReferencesProps) {
               key={`${ref.id}-${idx}`} 
               className="flex-shrink-0 mx-6 md:mx-10"
             >
-              <div className="relative group/card w-48 md:w-64 h-32 md:h-40 bg-noir-900 border border-white/5 rounded-2xl flex flex-col items-center justify-center p-6 transition-all duration-300 hover:bg-white/5 hover:border-gold-500/30 hover:shadow-[0_10px_30px_rgba(201,169,98,0.1)] hover:-translate-y-2">
+              <div className="relative group/card w-48 md:w-64 h-32 md:h-40 bg-white/80 border border-noir-950/10 rounded-2xl flex flex-col items-center justify-center p-6 transition-all duration-300 hover:bg-white/5 hover:border-gold-500/30 hover:shadow-[0_10px_30px_rgba(201,169,98,0.1)] hover:-translate-y-2">
                 {ref.websiteUrl ? (
                   <a href={ref.websiteUrl} target="_blank" rel="noopener noreferrer" className="absolute inset-0 z-10" aria-label={ref.name}></a>
                 ) : null}
@@ -90,14 +90,14 @@ export default function References({ data, lang = 'tr' }: ReferencesProps) {
                     loading="lazy"
                   />
                 ) : (
-                  <div className="text-white/40 font-bold text-xl uppercase tracking-widest text-center group-hover/card:text-gold-500 transition-colors duration-500">
+                  <div className="text-noir-950/40 font-bold text-xl uppercase tracking-widest text-center group-hover/card:text-gold-500 transition-colors duration-500">
                     {ref.name}
                   </div>
                 )}
 
                 {/* Tooltip on Hover */}
                 <div className="absolute -bottom-14 left-1/2 -translate-x-1/2 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none z-30">
-                  <div className="bg-noir-800 text-white text-xs py-2 px-4 rounded shadow-xl whitespace-nowrap border border-white/10">
+                  <div className="bg-noir-800 text-noir-950 text-xs py-2 px-4 rounded shadow-xl whitespace-nowrap border border-noir-950/10">
                     <span className="font-bold text-gold-500 block mb-0.5">{ref.name}</span>
                     {ref.description && <span className="text-noir-300">{ref.description}</span>}
                   </div>

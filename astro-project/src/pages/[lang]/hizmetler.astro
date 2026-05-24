@@ -51,11 +51,11 @@ try {
     })} />
   </Fragment>
 
-  <main class="min-h-screen bg-noir-900">
+  <main class="min-h-screen bg-transparent">
     <Navbar client:load data={settingsData} navData={navData?.header} servicesData={servicesData} lang={lang} />
 
     {/* Page Header */}
-    <div class="relative pt-40 pb-12 lg:pt-52 lg:pb-20 overflow-hidden bg-noir-950">
+    <div class="relative pt-40 pb-12 lg:pt-52 lg:pb-20 overflow-hidden bg-transparent">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,rgba(201,169,98,0.1),transparent_70%)] pointer-events-none"></div>
       
       <div class="container mx-auto px-6 relative z-10 text-center">
@@ -64,7 +64,7 @@ try {
              <span class="w-1.5 h-1.5 rounded-full bg-gold-500 animate-pulse"></span>
              {lang === 'en' ? 'What We Do' : (lang === 'ar' ? 'ماذا نفعل' : 'Neler Yapıyoruz')}
           </span>
-          <h1 class="text-white text-5xl md:text-8xl font-bold font-serif mb-8 leading-[1.1]">
+          <h1 class="text-noir-950 text-5xl md:text-8xl font-bold font-serif mb-8 leading-[1.1]">
              {lang === 'en' ? 'Professional' : (lang === 'ar' ? 'احترافي' : 'Profesyonel')} <span class="gradient-text">{lang === 'en' ? 'Services' : (lang === 'ar' ? 'الخدمات' : 'Hizmetlerimiz')}</span>
           </h1>
           <p class="text-noir-300 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">

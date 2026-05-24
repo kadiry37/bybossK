@@ -30,8 +30,8 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
   if (!service) {
     return (
       <div className="container mx-auto px-6 py-40 text-center">
-        <h2 className="text-white text-4xl font-serif font-bold mb-6">{lang === 'en' ? 'Service Not Found' : (lang === 'ar' ? 'لم يتم العثور على الخدمة' : 'Hizmet Bulunamadı')}</h2>
-        <p className="text-noir-400 mb-8">{lang === 'en' ? 'The service you are looking for may not have been published or moved.' : (lang === 'ar' ? 'قد لا تكون الخدمة التي تبحث عنها قد تم نشرها أو نقلها.' : 'Aradığınız hizmet henüz yayınlanmamış veya taşınmış olabilir.')}</p>
+        <h2 className="text-noir-950 text-4xl font-serif font-bold mb-6">{lang === 'en' ? 'Service Not Found' : (lang === 'ar' ? 'لم يتم العثور على الخدمة' : 'Hizmet Bulunamadı')}</h2>
+        <p className="text-noir-700 mb-8">{lang === 'en' ? 'The service you are looking for may not have been published or moved.' : (lang === 'ar' ? 'قد لا تكون الخدمة التي تبحث عنها قد تم نشرها أو نقلها.' : 'Aradığınız hizmet henüz yayınlanmamış veya taşınmış olabilir.')}</p>
         <a href={`/${lang}/#services`} className="btn btn-gold">
           {lang === 'en' ? 'Back to Services' : (lang === 'ar' ? 'العودة إلى الخدمات' : 'Hizmetlere Dön')}
         </a>
@@ -85,7 +85,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
   return (
     <>
       <div className="container mx-auto px-6 py-12 animate-fade-in">
-         <a href={`/${lang}/#services`} className="inline-flex items-center gap-2 text-gold-500 hover:text-white transition-colors mb-12 group">
+         <a href={`/${lang}/#services`} className="inline-flex items-center gap-2 text-gold-500 hover:text-noir-950 transition-colors mb-12 group">
             <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
             <span>{lang === 'en' ? 'Back to All Services' : (lang === 'ar' ? 'العودة إلى كافة الخدمات' : 'Tüm Hizmetlere Dön')}</span>
          </a>
@@ -94,7 +94,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
           {/* Left: Images & Details */}
           <div className="lg:col-span-7 space-y-8">
             <div 
-              className="aspect-[16/10] overflow-hidden bg-noir-900 border border-noir-800 cursor-pointer group relative rounded-2xl"
+              className="aspect-[16/10] overflow-hidden bg-white/80 border border-noir-800 cursor-pointer group relative rounded-2xl"
               onClick={() => openLightbox(activeImageIndex)}
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
@@ -106,7 +106,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 animate-fade-in"
               />
               <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/10 transition-colors flex items-center justify-center">
-                 <ZoomIn size={48} className="text-white opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all duration-300" />
+                 <ZoomIn size={48} className="text-noir-950 opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all duration-300" />
               </div>
             </div>
             
@@ -115,7 +115,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
                 {allImages.map((img, i) => (
                   <div 
                     key={i} 
-                    className={`aspect-[4/3] overflow-hidden bg-noir-900 border cursor-pointer relative rounded-xl transition-all duration-300 ${
+                    className={`aspect-[4/3] overflow-hidden bg-white/80 border cursor-pointer relative rounded-xl transition-all duration-300 ${
                       i === activeImageIndex 
                         ? 'border-gold-500 ring-2 ring-gold-500/20' 
                         : 'border-noir-800 hover:border-noir-600'
@@ -134,7 +134,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
 
             {/* Service Details Description */}
             <div className="prose prose-invert max-w-none pt-6 border-t border-noir-800/80">
-              <h3 className="text-white text-2xl font-serif font-bold mb-6 flex items-center gap-3">
+              <h3 className="text-noir-950 text-2xl font-serif font-bold mb-6 flex items-center gap-3">
                 <span className="w-1.5 h-6 bg-gold-500 rounded-full inline-block"></span>
                 {lang === 'en' ? 'Detailed Description' : (lang === 'ar' ? 'الوصف التفصيلي' : 'Detaylı Açıklama')}
               </h3>
@@ -146,7 +146,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
 
             {/* Service Process Timeline */}
             <div className="mt-12 border-t border-noir-800 pt-10">
-              <h3 className="text-white text-2xl font-serif font-bold mb-8 flex items-center gap-3">
+              <h3 className="text-noir-950 text-2xl font-serif font-bold mb-8 flex items-center gap-3">
                 <span className="w-1.5 h-6 bg-gold-500 rounded-full inline-block"></span>
                 {lang === 'en' ? 'Our Service Process' : (lang === 'ar' ? 'عملية خدمتنا' : 'Hizmet Süreç Adımlarımız')}
               </h3>
@@ -159,7 +159,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
                 ].map((item, idx) => (
                   <div key={idx} className="relative p-6 bg-[#161618] border border-noir-800 rounded-2xl group hover:border-gold-500/30 transition-all duration-300 shadow-md">
                     <span className="text-4xl font-serif font-bold text-gold-500/25 group-hover:text-gold-500/35 transition-colors block mb-2">{item.step}</span>
-                    <h4 className="text-white font-serif text-lg font-semibold mb-2">{item.title}</h4>
+                    <h4 className="text-noir-950 font-serif text-lg font-semibold mb-2">{item.title}</h4>
                     <p className="text-noir-200 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
@@ -172,7 +172,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
                 <ClipboardCheck size={22} />
               </div>
               <div>
-                <h4 className="text-white font-serif text-lg font-semibold mb-2">
+                <h4 className="text-noir-950 font-serif text-lg font-semibold mb-2">
                   {lang === 'en' ? 'Quality Guarantee & Professionalism' : (lang === 'ar' ? 'ضمان الجودة والاحترافية' : 'Kalite Garantisi & Profesyonel Montaj')}
                 </h4>
                 <p className="text-noir-200 text-sm leading-relaxed">
@@ -190,7 +190,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
           <div className="lg:col-span-5">
             <div className="sticky top-32 space-y-8 bg-[#161618] p-6 sm:p-8 border border-noir-800 rounded-2xl shadow-lg">
               <div>
-                <h1 className="font-serif text-3xl lg:text-4xl font-bold text-white leading-tight uppercase mb-4">
+                <h1 className="font-serif text-3xl lg:text-4xl font-bold text-noir-950 leading-tight uppercase mb-4">
                   {service[`name${suffix}`] || service.name}
                 </h1>
                 
@@ -212,7 +212,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3.5 px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl flex items-center justify-center gap-3 transition-all duration-300 active:scale-[0.98] text-sm shadow-lg shadow-emerald-600/10"
+                    className="w-full py-3.5 px-6 bg-emerald-600 hover:bg-emerald-500 text-noir-950 font-bold rounded-xl flex items-center justify-center gap-3 transition-all duration-300 active:scale-[0.98] text-sm shadow-lg shadow-emerald-600/10"
                   >
                     <WhatsAppIcon size={20} />
                     <span>{lang === 'en' ? 'Order via WhatsApp' : (lang === 'ar' ? 'طلب عبر الواتساب' : 'WhatsApp ile Sipariş')}</span>
@@ -221,7 +221,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
                   {/* Call Button */}
                   <a 
                     href={`tel:${directPhone}`}
-                    className="w-full py-3.5 px-6 bg-noir-900 hover:bg-noir-800 text-white font-bold border border-noir-800 hover:border-noir-700 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 active:scale-[0.98] text-sm shadow-lg"
+                    className="w-full py-3.5 px-6 bg-white/80 hover:bg-noir-800 text-noir-950 font-bold border border-noir-800 hover:border-noir-700 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 active:scale-[0.98] text-sm shadow-lg"
                   >
                     <Phone size={20} className="text-gold-500" />
                     <span>{lang === 'en' ? `Call Now: ${directPhone}` : (lang === 'ar' ? `اتصل الآن: ${directPhone}` : `Hemen Ara: ${directPhone}`)}</span>

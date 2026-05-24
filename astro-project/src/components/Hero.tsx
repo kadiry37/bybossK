@@ -83,7 +83,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
 
   return (
     <>
-    <section className="hero relative min-h-[calc(100vh-102px)] flex items-start pt-[8vh] overflow-hidden bg-noir-950">
+    <section className="hero relative min-h-[calc(100vh-102px)] flex items-start pt-[8vh] overflow-hidden bg-transparent">
       <div className="h-bg absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
         <div
           className="h-grid absolute inset-0 opacity-40"
@@ -103,7 +103,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
           </div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] border border-dashed border-gold-500/5 rounded-full animate-rotate-slow" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-noir-950/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/90" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -125,11 +125,11 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
             <h1
               className={`font-fh ${lang !== 'tr' ? 'text-4xl md:text-6xl xl:text-7xl' : 'text-4xl md:text-7xl xl:text-8xl'} font-bold leading-[0.95] mb-6 select-none tracking-tight uppercase`}
             >
-              <div className="text-white">{brandFirst}</div>
+              <div className="text-noir-950">{brandFirst}</div>
               <div className="gradient-text">{brandSecond}</div>
             </h1>
 
-            <p className="text-noir-400 text-lg md:text-xl font-fh font-light mb-10 max-w-lg">
+            <p className="text-noir-700 text-lg md:text-xl font-fh font-light mb-10 max-w-lg">
               {heroData.subtitle}
             </p>
 
@@ -148,23 +148,23 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
                 <button
                   type="button"
                   onClick={() => setVideoOpen(true)}
-                  className="flex items-center justify-center gap-4 group px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl transition-all"
+                  className="flex items-center justify-center gap-4 group px-8 py-4 bg-white/5 hover:bg-white/10 border border-noir-950/10 rounded-xl transition-all"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-gold-500"><polygon points="8,5 20,12 8,19"/></svg>
-                  <span className="text-white font-bold uppercase text-[12px] tracking-widest">
+                  <span className="text-noir-950 font-bold uppercase text-[12px] tracking-widest">
                     {lang === 'en' ? 'Watch Video' : (lang === 'ar' ? 'شاهد الفيديو' : 'Videoyu İzleyin')}
                   </span>
                 </button>
               )}
             </div>
 
-            <div className="flex items-center gap-16 mt-20 pt-10 border-t border-white/5 w-full justify-center lg:justify-start">
+            <div className="flex items-center gap-16 mt-20 pt-10 border-t border-noir-950/10 w-full justify-center lg:justify-start">
               {heroData.stats.map((stat: any, idx: number) => (
                 <div key={idx} className="relative group cursor-default">
-                  <div className="text-4xl md:text-5xl font-fh font-bold text-white group-hover:text-gold-500 transition-all duration-500">
+                  <div className="text-4xl md:text-5xl font-fh font-bold text-noir-950 group-hover:text-gold-500 transition-all duration-500">
                      {stat.value}
                   </div>
-                  <div className="text-noir-500 text-[10px] uppercase tracking-[0.3em] font-bold mt-2 group-hover:text-noir-300 transition-colors">
+                  <div className="text-noir-600 text-[10px] uppercase tracking-[0.3em] font-bold mt-2 group-hover:text-noir-300 transition-colors">
                      {stat.label}
                   </div>
                   <div className="absolute -bottom-2 left-0 w-0 h-0.5 bg-gold-500 group-hover:w-full transition-all duration-700" />
@@ -177,59 +177,59 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
           <div className="relative order-1 lg:order-2 flex items-center justify-center py-12">
             <div className="cube-wrapper relative z-20" style={{ perspective: '2500px' }}>
               <div className="hero-cube relative w-[240px] h-[240px] md:w-[360px] md:h-[360px] preserve-3d animate-rotate-cube">
-                  <div className="cube-face cube-front absolute inset-0 border border-white/10 bg-noir-950/90 flex flex-col overflow-hidden backdrop-blur-sm">
+                  <div className="cube-face cube-front absolute inset-0 border border-noir-950/10 bg-transparent/90 flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative">
                       <img src={img0} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-100" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-noir-950 to-transparent opacity-60" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-60" />
                     </div>
-                    <div className="p-5 bg-noir-900/90 border-t border-white/5">
-                      <div className="text-white font-bold text-[14px] font-fh uppercase tracking-wider">{brandFirst} {brandSecond}</div>
-                      <div className="text-noir-400 text-[10px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Premium Design Solutions' : (lang === 'ar' ? 'تصاميم ممتازة' : 'Premium Tasarım Çözümleri')}</div>
+                    <div className="p-5 bg-white/90/90 border-t border-noir-950/10">
+                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider">{brandFirst} {brandSecond}</div>
+                      <div className="text-noir-700 text-[10px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Premium Design Solutions' : (lang === 'ar' ? 'تصاميم ممتازة' : 'Premium Tasarım Çözümleri')}</div>
                     </div>
                   </div>
-                  <div className="cube-face cube-right absolute inset-0 border border-white/10 bg-noir-950/90 flex flex-col overflow-hidden backdrop-blur-sm">
+                  <div className="cube-face cube-right absolute inset-0 border border-noir-950/10 bg-transparent/90 flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative">
                       <img src={img1} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-100" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-noir-950 to-transparent opacity-60" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-60" />
                     </div>
-                    <div className="p-5 bg-noir-900/90 border-t border-white/5">
-                      <div className="text-white font-bold text-[14px] font-fh uppercase tracking-wider">{lang === 'en' ? 'Superior Quality' : (lang === 'ar' ? 'جودة فائقة' : 'Üstün Kalite')}</div>
-                      <div className="text-noir-400 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'TSE Certified' : (lang === 'ar' ? 'معتمد من TSE' : 'TSE Belgeli')}</div>
+                    <div className="p-5 bg-white/90/90 border-t border-noir-950/10">
+                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider">{lang === 'en' ? 'Superior Quality' : (lang === 'ar' ? 'جودة فائقة' : 'Üstün Kalite')}</div>
+                      <div className="text-noir-700 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'TSE Certified' : (lang === 'ar' ? 'معتمد من TSE' : 'TSE Belgeli')}</div>
                     </div>
                   </div>
-                  <div className="cube-face cube-back absolute inset-0 border border-white/10 bg-noir-950/90 flex flex-col overflow-hidden backdrop-blur-sm">
+                  <div className="cube-face cube-back absolute inset-0 border border-noir-950/10 bg-transparent/90 flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative text-center flex flex-col items-center justify-center p-10">
                       <div className="text-gold-500 font-bold text-6xl font-fh animate-pulse">
                         {heroData.stats[0]?.value || '500+'}
                       </div>
-                      <div className="text-noir-400 text-[13px] mt-2 uppercase tracking-[0.2em] font-bold">
+                      <div className="text-noir-700 text-[13px] mt-2 uppercase tracking-[0.2em] font-bold">
                         {heroData.stats[0]?.label || 'Tamamlanan Proje'}
                       </div>
                     </div>
                   </div>
-                  <div className="cube-face cube-left absolute inset-0 border border-white/10 bg-noir-950/90 flex flex-col overflow-hidden backdrop-blur-sm">
+                  <div className="cube-face cube-left absolute inset-0 border border-noir-950/10 bg-transparent/90 flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative">
                       <img src={img3} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-100" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-noir-950 to-transparent opacity-60" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-60" />
                     </div>
-                    <div className="p-5 bg-noir-900/90 border-t border-white/5">
-                      <div className="text-white font-bold text-[14px] font-fh uppercase tracking-wider">{lang === 'en' ? 'Fast Installation' : (lang === 'ar' ? 'تركيب سريع' : 'Hızlı Montaj')}</div>
-                      <div className="text-noir-400 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Professional Team' : (lang === 'ar' ? 'فريق محترف' : 'Profesyonel Ekip')}</div>
+                    <div className="p-5 bg-white/90/90 border-t border-noir-950/10">
+                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider">{lang === 'en' ? 'Fast Installation' : (lang === 'ar' ? 'تركيب سريع' : 'Hızlı Montaj')}</div>
+                      <div className="text-noir-700 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Professional Team' : (lang === 'ar' ? 'فريق محترف' : 'Profesyonel Ekip')}</div>
                     </div>
                   </div>
-                  <div className="cube-face cube-top absolute inset-0 border border-white/10 bg-noir-950/90 flex flex-col overflow-hidden backdrop-blur-sm">
+                  <div className="cube-face cube-top absolute inset-0 border border-noir-950/10 bg-transparent/90 flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative">
                       <img src={img4} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-100" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-noir-950 to-transparent opacity-60" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-60" />
                     </div>
-                    <div className="p-5 bg-noir-900/90 border-t border-white/5">
-                      <div className="text-white font-bold text-[14px] font-fh uppercase tracking-wider">{lang === 'en' ? 'Global Reach' : (lang === 'ar' ? 'تغطية عالمية' : 'Global Erişim')}</div>
-                      <div className="text-noir-400 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Export to 50+ Countries' : (lang === 'ar' ? 'تصدير لأكثر من 50 دولة' : '50+ Ülkeye İhracat')}</div>
+                    <div className="p-5 bg-white/90/90 border-t border-noir-950/10">
+                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider">{lang === 'en' ? 'Global Reach' : (lang === 'ar' ? 'تغطية عالمية' : 'Global Erişim')}</div>
+                      <div className="text-noir-700 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Export to 50+ Countries' : (lang === 'ar' ? 'تصدير لأكثر من 50 دولة' : '50+ Ülkeye İhracat')}</div>
                     </div>
                   </div>
-                  <div className="cube-face cube-bottom absolute inset-0 border border-white/10 bg-noir-950/90 flex flex-col overflow-hidden backdrop-blur-sm">
+                  <div className="cube-face cube-bottom absolute inset-0 border border-noir-950/10 bg-transparent/90 flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative flex flex-col items-center justify-center p-8">
-                      <div className="text-white font-bold text-[14px] font-fh uppercase tracking-wider mb-2">{lang === 'en' ? 'Contact Us' : (lang === 'ar' ? 'اتصل بنا' : 'Bize Ulaşın')}</div>
+                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider mb-2">{lang === 'en' ? 'Contact Us' : (lang === 'ar' ? 'اتصل بنا' : 'Bize Ulaşın')}</div>
                       <div className="text-gold-500 text-lg font-bold">{phone}</div>
                     </div>
                   </div>
@@ -274,11 +274,11 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
     </section>
 
       {videoOpen && videoId && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={() => setVideoOpen(false)}>
-          <div className="relative w-full max-w-4xl mx-4 aspect-video bg-noir-900 rounded-2xl overflow-hidden shadow-2xl border border-noir-700" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-white/80 backdrop-blur-sm" onClick={() => setVideoOpen(false)}>
+          <div className="relative w-full max-w-4xl mx-4 aspect-video bg-white/90 rounded-2xl overflow-hidden shadow-2xl border border-noir-700" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setVideoOpen(false)}
-              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-noir-900/80 border border-white/20 flex items-center justify-center text-white hover:bg-gold-500 hover:border-gold-500 hover:text-noir-950 transition-all"
+              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90/80 border border-noir-950/20 flex items-center justify-center text-noir-950 hover:bg-gold-500 hover:border-gold-500 hover:text-noir-950 transition-all"
             >
               <X size={20} />
             </button>

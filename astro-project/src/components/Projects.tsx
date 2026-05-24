@@ -77,7 +77,7 @@ export default function Projects({ data, lang = 'tr', isHomePage = false }: { da
   const displayItems = isHomePage ? filteredProjects.slice(0, 6) : filteredProjects.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
-    <section id="projects" ref={sectionRef} className="py-24 lg:py-32 bg-noir-900 relative overflow-hidden min-h-[800px]">
+    <section id="projects" ref={sectionRef} className="py-24 lg:py-32 bg-white/80 relative overflow-hidden min-h-[800px]">
       <style>{`
         .project-title-el {
           opacity: 0;
@@ -101,17 +101,17 @@ export default function Projects({ data, lang = 'tr', isHomePage = false }: { da
           <span className="project-title-el inline-block px-4 py-2 border border-gold-500/30 text-gold-500 text-sm font-medium tracking-widest uppercase mb-6">
             {lang === 'en' ? 'Portfolio' : (lang === 'ar' ? 'محفظة' : 'Portfölyo')}
           </span>
-          <h2 className="project-title-el font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 uppercase">
+          <h2 className="project-title-el font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-noir-950 mb-6 uppercase">
             {isHomePage ? (lang === 'en' ? 'Featured' : (lang === 'ar' ? 'متميز' : 'Öne Çıkan')) : (lang === 'en' ? 'All' : (lang === 'ar' ? 'جميع' : 'Tüm'))} <span className="gradient-text">{lang === 'en' ? 'Projects' : (lang === 'ar' ? 'المشاريع' : 'Projeler')}</span>
           </h2>
-          <p className="project-title-el text-noir-400 text-lg max-w-2xl mx-auto">
+          <p className="project-title-el text-noir-700 text-lg max-w-2xl mx-auto">
             {lang === 'en' ? 'Each of our projects is a reflection of unique vision and flawless craftsmanship.' : (lang === 'ar' ? 'كل مشروع من مشاريعنا هو انعكاس للرؤية الفريدة والحرفية التي لا تشوبها شائبة.' : 'Her projemiz, benzersiz vizyonun ve kusursuz işçiliğin bir yansımasıdır.')}
           </p>
         </div>
 
         <div className="flex justify-center gap-4 mb-12">
           {categories.map((cat) => (
-            <button key={cat.id} onClick={() => setActiveCategory(cat.id)} className={`px-6 py-3 text-sm font-medium transition-all duration-300 border uppercase ${activeCategory === cat.id ? 'bg-gold-500 text-noir-900 border-gold-500' : 'bg-transparent text-noir-300 border-noir-700 hover:border-gold-500/50 hover:text-white'}`}>
+            <button key={cat.id} onClick={() => setActiveCategory(cat.id)} className={`px-6 py-3 text-sm font-medium transition-all duration-300 border uppercase ${activeCategory === cat.id ? 'bg-gold-500 text-noir-900 border-gold-500' : 'bg-transparent text-noir-300 border-noir-700 hover:border-gold-500/50 hover:text-noir-950'}`}>
               {cat.label}
             </button>
           ))}
@@ -146,12 +146,12 @@ export default function Projects({ data, lang = 'tr', isHomePage = false }: { da
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-gold-500 text-xs font-medium uppercase tracking-wider">{project.categoryName || project.category}</span>
                     <span className="text-noir-600">•</span>
-                    <span className="text-noir-500 text-xs">{project.year}</span>
+                    <span className="text-noir-600 text-xs">{project.year}</span>
                   </div>
-                  <h3 className="font-serif text-xl font-bold text-white mb-2 group-hover:text-gold-500 transition-colors">
+                  <h3 className="font-serif text-xl font-bold text-noir-950 mb-2 group-hover:text-gold-500 transition-colors">
                     {project.name}
                   </h3>
-                  <p className="text-noir-400 text-sm line-clamp-2 mb-4">{project.description}</p>
+                  <p className="text-noir-700 text-sm line-clamp-2 mb-4">{project.description}</p>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gold-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               </a>

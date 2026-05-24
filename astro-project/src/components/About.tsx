@@ -55,7 +55,7 @@ export default function About({ data: serverData, lang = 'tr' }: { data?: any, l
   });
 
   return (
-    <section id="about" className="py-24 lg:py-40 bg-noir-900 relative overflow-hidden min-h-[800px]">
+    <section id="about" className="py-24 lg:py-40 bg-white/80 relative overflow-hidden min-h-[800px]">
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(circle at 2px 2px, #c9a962 1px, transparent 0)`, backgroundSize: '60px 60px' }} />
       </div>
@@ -74,7 +74,7 @@ export default function About({ data: serverData, lang = 'tr' }: { data?: any, l
               >
                 <img src={aboutData.images[0]} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt={lightboxImages[0]?.alt || "Hakkımızda görseli"} title={lightboxImages[0]?.title} loading="lazy" />
                 <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/10 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <div className="bg-noir-900/80 backdrop-blur-md p-3 rounded-full border border-gold-500/30 text-gold-500">
+                  <div className="bg-white/80/80 backdrop-blur-md p-3 rounded-full border border-gold-500/30 text-gold-500">
                     <ZoomIn size={24} />
                   </div>
                 </div>
@@ -85,7 +85,7 @@ export default function About({ data: serverData, lang = 'tr' }: { data?: any, l
               >
                 <img src={aboutData.images[1]} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt={lightboxImages[1]?.alt || "Deck sistemleri görseli"} title={lightboxImages[1]?.title} loading="lazy" />
                 <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/10 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <div className="bg-noir-900/80 backdrop-blur-md p-3 rounded-full border border-gold-500/30 text-gold-500">
+                  <div className="bg-white/80/80 backdrop-blur-md p-3 rounded-full border border-gold-500/30 text-gold-500">
                     <ZoomIn size={24} />
                   </div>
                 </div>
@@ -98,7 +98,7 @@ export default function About({ data: serverData, lang = 'tr' }: { data?: any, l
               >
                 <img src={aboutData.images[2]} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt={lightboxImages[2]?.alt || "Kurumsal hizmet görseli"} title={lightboxImages[2]?.title} loading="lazy" />
                 <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/10 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <div className="bg-noir-900/80 backdrop-blur-md p-3 rounded-full border border-gold-500/30 text-gold-500">
+                  <div className="bg-white/80/80 backdrop-blur-md p-3 rounded-full border border-gold-500/30 text-gold-500">
                     <ZoomIn size={24} />
                   </div>
                 </div>
@@ -109,7 +109,7 @@ export default function About({ data: serverData, lang = 'tr' }: { data?: any, l
               >
                 <img src={aboutData.images[3]} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt={lightboxImages[3]?.alt || "Montaj kalite görseli"} title={lightboxImages[3]?.title} loading="lazy" />
                 <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/10 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <div className="bg-noir-900/80 backdrop-blur-md p-3 rounded-full border border-gold-500/30 text-gold-500">
+                  <div className="bg-white/80/80 backdrop-blur-md p-3 rounded-full border border-gold-500/30 text-gold-500">
                     <ZoomIn size={24} />
                   </div>
                 </div>
@@ -123,7 +123,7 @@ export default function About({ data: serverData, lang = 'tr' }: { data?: any, l
                 {lang === 'en' ? 'Quality and Assurance' : (lang === 'ar' ? 'الجودة والضمان' : 'Kalite ve Güvence')}
               </span>
 
-              <h2 className="font-serif text-5xl md:text-6xl font-bold text-white mb-8 leading-tight uppercase flex flex-wrap gap-x-4">
+              <h2 className="font-serif text-5xl md:text-6xl font-bold text-noir-950 mb-8 leading-tight uppercase flex flex-wrap gap-x-4">
                 <span>{titleFirst}</span><span className="gradient-text">{titleRest}</span>
               </h2>
 
@@ -134,7 +134,7 @@ export default function About({ data: serverData, lang = 'tr' }: { data?: any, l
               <p className="text-noir-200 text-xl leading-relaxed italic font-light font-serif">
                 &quot;{aboutData.text1}&quot;
               </p>
-              <p className="text-noir-400 text-base leading-relaxed font-light">
+              <p className="text-noir-700 text-base leading-relaxed font-light">
                 {aboutData.text2}
               </p>
             </div>
