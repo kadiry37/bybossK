@@ -211,7 +211,7 @@ switch ($activeTab) {
             
             <div class="form-group">
                 <label class="form-label">Kategori Adı (TR) *</label>
-                <input type="text" name="name" id="cat-name" class="form-input" value="<?php echo htmlspecialchars($editCat['name'] ?? ''); ?>" required placeholder="Örn: Metal Deck Klips">
+                <input type="text" name="name" id="cat-name" class="form-input" value="<?php echo htmlspecialchars($editCat['name'] ?? ''); ?>" required placeholder="Örn: Metal BY BOSS Mimarl�k Mobilya">
             </div>
             
             <div class="form-group">
@@ -353,3 +353,4 @@ switch ($activeTab) {
         </div>
     </div>
 </div>
+

@@ -446,9 +446,9 @@ async function translateAllFields(targetLang) {
                 slugTarget.dispatchEvent(new Event('change', { bubbles: true }));
                 slugTarget.dispatchEvent(new Event('input', { bubbles: true }));
             }
-            if (seoTitleTarget && !seoTitleTarget.value) seoTitleTarget.value = nameTarget.value + ' - DECK Klips';
+            if (seoTitleTarget && !seoTitleTarget.value) seoTitleTarget.value = nameTarget.value + ' - BY BOSS Mimarlýk Mobilya';
             if (seoDescTarget && !seoDescTarget.value && excerptTarget && excerptTarget.value) seoDescTarget.value = excerptTarget.value.substring(0, 155);
-            if (seoKeywordsTarget && !seoKeywordsTarget.value) seoKeywordsTarget.value = nameTarget.value.toLowerCase().split(' ').join(', ') + ', deck klips';
+            if (seoKeywordsTarget && !seoKeywordsTarget.value) seoKeywordsTarget.value = nameTarget.value.toLowerCase().split(' ').join(', ') + ', BY BOSS Mimarlýk Mobilya';
         }
         
         btn.innerText = `âœ… ${translated_count} alan Ã§evrildi!`;
@@ -552,3 +552,4 @@ document.addEventListener('DOMContentLoaded', function() {
     );
 });
 </script>
+

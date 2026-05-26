@@ -51,7 +51,7 @@ try {
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <?php $siteName = getSetting('site_name', 'DECK Klips'); ?>
+    <?php $siteName = getSetting('site_name', 'BY BOSS Mimarlýk Mobilya'); ?>
     <title>Yeni Åžifre Belirle - <?php echo htmlspecialchars($siteName); ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -88,3 +88,4 @@ try {
     </div>
 </body>
 </html>
+

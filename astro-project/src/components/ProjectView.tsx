@@ -195,7 +195,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
 
               {/* Location and Year Grid */}
               <div className="grid grid-cols-2 gap-4 pb-6 border-b border-noir-950/10/80">
-                <div className="p-4 bg-transparent/60 border border-noir-950/10/85 rounded-xl flex items-center gap-3">
+                <div className="p-4 bg-white/60 backdrop-blur-md border border-noir-950/10/85 rounded-xl flex items-center gap-3">
                   <div className="text-gold-500 bg-gold-500/5 p-2.5 rounded-lg border border-gold-500/10">
                     <MapPin size={18} />
                   </div>
@@ -204,7 +204,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                     <p className="text-noir-950 font-medium text-sm truncate max-w-[120px]">{project.location || (lang === 'en' ? 'Not specified' : (lang === 'ar' ? 'غير محدد' : 'Belirtilmedi'))}</p>
                   </div>
                 </div>
-                <div className="p-4 bg-transparent/60 border border-noir-950/10/85 rounded-xl flex items-center gap-3">
+                <div className="p-4 bg-white/60 backdrop-blur-md border border-noir-950/10/85 rounded-xl flex items-center gap-3">
                   <div className="text-gold-500 bg-gold-500/5 p-2.5 rounded-lg border border-gold-500/10">
                     <Calendar size={18} />
                   </div>
@@ -276,3 +276,4 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
     </>
   );
 }
+

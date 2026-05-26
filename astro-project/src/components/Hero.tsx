@@ -173,7 +173,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
           <div className="relative order-1 lg:order-2 flex items-center justify-center py-12">
             <div className="cube-wrapper relative z-20" style={{ perspective: '2500px' }}>
               <div className="hero-cube relative w-[240px] h-[240px] md:w-[360px] md:h-[360px] preserve-3d animate-rotate-cube">
-                  <div className="cube-face cube-front absolute inset-0 border border-noir-950/10 bg-transparent/90 flex flex-col overflow-hidden backdrop-blur-sm">
+                  <div className="cube-face cube-front absolute inset-0 border border-noir-950/10 bg-white/80 backdrop-blur-md flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative">
                       <img src={img0} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-100" />
                       <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-60" />
@@ -183,7 +183,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
                       <div className="text-noir-700 text-[10px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Premium Design Solutions' : (lang === 'ar' ? 'تصاميم ممتازة' : 'Premium Tasarım Çözümleri')}</div>
                     </div>
                   </div>
-                  <div className="cube-face cube-right absolute inset-0 border border-noir-950/10 bg-transparent/90 flex flex-col overflow-hidden backdrop-blur-sm">
+                  <div className="cube-face cube-right absolute inset-0 border border-noir-950/10 bg-white/80 backdrop-blur-md flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative">
                       <img src={img1} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-100" />
                       <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-60" />
@@ -193,7 +193,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
                       <div className="text-noir-700 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'TSE Certified' : (lang === 'ar' ? 'معتمد من TSE' : 'TSE Belgeli')}</div>
                     </div>
                   </div>
-                  <div className="cube-face cube-back absolute inset-0 border border-noir-950/10 bg-transparent/90 flex flex-col overflow-hidden backdrop-blur-sm">
+                  <div className="cube-face cube-back absolute inset-0 border border-noir-950/10 bg-white/80 backdrop-blur-md flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative text-center flex flex-col items-center justify-center p-10">
                       <div className="text-gold-500 font-bold text-6xl font-fh animate-pulse">
                         {heroData.stats[0]?.value || '500+'}
@@ -203,7 +203,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
                       </div>
                     </div>
                   </div>
-                  <div className="cube-face cube-left absolute inset-0 border border-noir-950/10 bg-transparent/90 flex flex-col overflow-hidden backdrop-blur-sm">
+                  <div className="cube-face cube-left absolute inset-0 border border-noir-950/10 bg-white/80 backdrop-blur-md flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative">
                       <img src={img3} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-100" />
                       <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-60" />
@@ -213,7 +213,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
                       <div className="text-noir-700 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Professional Team' : (lang === 'ar' ? 'فريق محترف' : 'Profesyonel Ekip')}</div>
                     </div>
                   </div>
-                  <div className="cube-face cube-top absolute inset-0 border border-noir-950/10 bg-transparent/90 flex flex-col overflow-hidden backdrop-blur-sm">
+                  <div className="cube-face cube-top absolute inset-0 border border-noir-950/10 bg-white/80 backdrop-blur-md flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative">
                       <img src={img4} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-100" />
                       <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-60" />
@@ -223,7 +223,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
                       <div className="text-noir-700 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Export to 50+ Countries' : (lang === 'ar' ? 'تصدير لأكثر من 50 دولة' : '50+ Ülkeye İhracat')}</div>
                     </div>
                   </div>
-                  <div className="cube-face cube-bottom absolute inset-0 border border-noir-950/10 bg-transparent/90 flex flex-col overflow-hidden backdrop-blur-sm">
+                  <div className="cube-face cube-bottom absolute inset-0 border border-noir-950/10 bg-white/80 backdrop-blur-md flex flex-col overflow-hidden backdrop-blur-sm">
                     <div className="flex-1 relative flex flex-col items-center justify-center p-8">
                       <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider mb-2">{lang === 'en' ? 'Contact Us' : (lang === 'ar' ? 'اتصل بنا' : 'Bize Ulaşın')}</div>
                       <div className="text-gold-500 text-lg font-bold">{phone}</div>
@@ -290,3 +290,4 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
     </>
   );
 }
+

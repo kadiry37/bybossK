@@ -1,6 +1,6 @@
 <?php
 $currentPage = $_GET['page'] ?? 'dashboard';
-$siteName = getSetting('site_name', 'DECK Klips');
+$siteName = getSetting('site_name', 'BY BOSS Mimarlýk Mobilya');
 $flash = getFlash();
 
 // Count unread messages
@@ -33,7 +33,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'manual_deploy') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - <?php echo htmlspecialchars($siteName); ?></title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { font-family: 'Inter', sans-serif; }
@@ -267,3 +267,4 @@ if (isset($_GET['action']) && $_GET['action'] === 'manual_deploy') {
                     <?php echo htmlspecialchars($flash['message']); ?>
                 </div>
             <?php endif; ?>
+

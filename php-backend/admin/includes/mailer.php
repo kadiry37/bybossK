@@ -1,6 +1,6 @@
 <?php
 /**
- * DECK Klips - Secure Mailer Utility
+ * BY BOSS Mimarlýk Mobilya - Secure Mailer Utility
  */
 
 function sendEmail($to, $subject, $body, $altBody = '') {
@@ -19,7 +19,7 @@ function sendEmail($to, $subject, $body, $altBody = '') {
         $user = $settings['smtp_user'] ?? '';
         $pass = $settings['smtp_pass'] ?? '';
         $encryption = $settings['smtp_encryption'] ?? 'tls';
-        $fromName = 'DECK Klips Bilgi';
+        $fromName = 'BY BOSS Mimarlýk Mobilya Bilgi';
         
         // SMTP AyarlarÄ± Eksikse mail() fonksiyonunu kullan (Fallback)
         if (empty($host) || empty($user) || empty($pass)) {
@@ -45,3 +45,4 @@ function sendEmail($to, $subject, $body, $altBody = '') {
         return false;
     }
 }
+

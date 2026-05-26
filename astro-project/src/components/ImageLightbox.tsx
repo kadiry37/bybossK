@@ -65,7 +65,7 @@ export default function ImageLightbox({ images, isOpen, onClose, initialIndex = 
   return (
     <div
       ref={overlayRef}
-      className={`fixed inset-0 z-[20000] flex items-center justify-center bg-transparent/98 backdrop-blur-2xl transition-opacity duration-300 ${
+      className={`fixed inset-0 z-[20000] flex items-center justify-center bg-white/90 backdrop-blur-2xl transition-opacity duration-300 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
       onClick={onClose}
@@ -185,3 +185,4 @@ export default function ImageLightbox({ images, isOpen, onClose, initialIndex = 
     </div>
   );
 }
+

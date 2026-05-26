@@ -125,9 +125,9 @@ function generateAIContent($prompt, $type = 'description') {
     $isJson = in_array($type, ['all_product', 'blog_all', 'all_project', 'all_service']);
     
     if ($isJson) {
-        $systemPrompt = "Sen 'DECK Klips' markası için profesyonel bir SEO içerik yazarısın. ÖNEMLİ: 1) Yanıtın SADECE VE SADECE geçerli bir JSON olmalıdır. 2) Asla markdown (```json) kullanma. 3) Tüm içerikler %100 Türkçe olmalıdır. 4) Tembellik yapma, değerlerin içini uzun ve gerçek HTML metinlerle doldur.";
+        $systemPrompt = "Sen 'BY BOSS Mimarl�k Mobilya' markası için profesyonel bir SEO içerik yazarısın. ÖNEMLİ: 1) Yanıtın SADECE VE SADECE geçerli bir JSON olmalıdır. 2) Asla markdown (```json) kullanma. 3) Tüm içerikler %100 Türkçe olmalıdır. 4) Tembellik yapma, değerlerin içini uzun ve gerçek HTML metinlerle doldur.";
     } else {
-        $systemPrompt = "Sen 'DECK Klips' markası için profesyonel bir Türkçe SEO içerik yazarısın. %100 Türkçe, profesyonel ve SEO uyumlu içerik üret. Markdown kullanma.";
+        $systemPrompt = "Sen 'BY BOSS Mimarl�k Mobilya' markası için profesyonel bir Türkçe SEO içerik yazarısın. %100 Türkçe, profesyonel ve SEO uyumlu içerik üret. Markdown kullanma.";
     }
     
     switch ($provider) {
@@ -386,7 +386,7 @@ function callOpenRouter($prompt, $system, $type = 'description') {
             'Content-Type: application/json',
             'Authorization: Bearer ' . $key,
             'HTTP-Referer: https://deckklips.com.tr',
-            'X-Title: DECK Klips Admin'
+            'X-Title: BY BOSS Mimarl�k Mobilya Admin'
         ],
         CURLOPT_POSTFIELDS => json_encode($data),
         CURLOPT_TIMEOUT => 180
@@ -438,3 +438,4 @@ function paginate($table, $conditions = '', $params = [], $perPage = 20) {
         'offset' => $offset
     ];
 }
+

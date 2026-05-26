@@ -64,7 +64,7 @@ if (!isLoggedIn()) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <?php
-        $siteName = getSetting('site_name', 'DECK Klips');
+        $siteName = getSetting('site_name', 'BY BOSS Mimarl�k Mobilya');
         ?>
         <title>Admin Giriş - <?php echo htmlspecialchars($siteName); ?></title>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -131,12 +131,12 @@ if (isset($_GET['ajax'])) {
         $type = $_POST['type'] ?? 'description';
         
         $aiPromptMap = [
-            'description' => "Aşağıdaki ürün/konu için SEO uyumlu, son derece detaylı, alt başlıklar ve paragraflar içeren zengin bir açıklama yaz (en az 250-400 kelime, HTML formatında h2, h3, p etiketleri kullan). Bu ürünü satan, tedarik eden veya üreten bir firma sayfası gibi yaz. Ürünü aşırı övme, bunun yerine ürünün ne olduğunu, ne işe yaradığını, hangi alanlarda kullanıldığını ve teknik avantajlarını doyurucu şekilde açıkla. Ürün başlığı ile alakası olmayan ürünlerden (klips, montaj aparatı vb.) bahsetme. Asla [Marka Adı] gibi yer tutucular kullanma, marka yazman gerekirse 'DECK Klips' yaz. Markdown formatı (**, __, ### gibi) kesinlikle kullanma, sadece temiz HTML etiketleri kullan:\n\n",
+            'description' => "Aşağıdaki ürün/konu için SEO uyumlu, son derece detaylı, alt başlıklar ve paragraflar içeren zengin bir açıklama yaz (en az 250-400 kelime, HTML formatında h2, h3, p etiketleri kullan). Bu ürünü satan, tedarik eden veya üreten bir firma sayfası gibi yaz. Ürünü aşırı övme, bunun yerine ürünün ne olduğunu, ne işe yaradığını, hangi alanlarda kullanıldığını ve teknik avantajlarını doyurucu şekilde açıkla. Ürün başlığı ile alakası olmayan ürünlerden (klips, montaj aparatı vb.) bahsetme. Asla [Marka Adı] gibi yer tutucular kullanma, marka yazman gerekirse 'BY BOSS Mimarl�k Mobilya' yaz. Markdown formatı (**, __, ### gibi) kesinlikle kullanma, sadece temiz HTML etiketleri kullan:\n\n",
             'short_description' => "Aşağıdaki ürün/konu için tedarikçi sayfasına uygun, kısa ve bilgilendirici bir özet yaz (1-2 cümle, maksimum 150 karakter). Ürünü aşırı övme, ne olduğunu kısaca açıkla. Asla [Marka Adı] gibi yer tutucular kullanma. Markdown formatı kullanma:\n\n",
-            'seo_title' => "Aşağıdaki ürün/konu için SEO uyumlu bir sayfa başlığı yaz (maksimum 60 karakter). Asla [Marka Adı] gibi yer tutucular kullanma, marka ekleyeceksen doğrudan 'DECK Klips' yaz. Markdown kullanma:\n\n",
+            'seo_title' => "Aşağıdaki ürün/konu için SEO uyumlu bir sayfa başlığı yaz (maksimum 60 karakter). Asla [Marka Adı] gibi yer tutucular kullanma, marka ekleyeceksen doğrudan 'BY BOSS Mimarl�k Mobilya' yaz. Markdown kullanma:\n\n",
             'seo_description' => "Aşağıdaki ürün/konu için SEO uyumlu meta açıklama yaz (maksimum 155 karakter). Asla [Marka Adı] kullanma. Markdown kullanma:\n\n",
             'seo_keywords' => "Aşağıdaki ürün/konu için virgülle ayrılmış SEO anahtar kelimeleri üret (maksimum 5-8 kelime). Yalnızca verilen ürünle ilgili anahtar kelimeler kullan. Markdown kullanma:\n\n",
-            'blog_content' => "Aşağıdaki konu hakkında SEO uyumlu, detaylı bir blog yazısı yaz (500-800 kelime, HTML formatında h2, h3, p etiketleri kullan). Asla [Marka Adı] gibi yer tutucular kullanma, doğrudan 'DECK Klips' yaz. Markdown formatı (**, __ gibi) KESİNLİKLE kullanma, sadece HTML kullan:\n\n",
+            'blog_content' => "Aşağıdaki konu hakkında SEO uyumlu, detaylı bir blog yazısı yaz (500-800 kelime, HTML formatında h2, h3, p etiketleri kullan). Asla [Marka Adı] gibi yer tutucular kullanma, doğrudan 'BY BOSS Mimarl�k Mobilya' yaz. Markdown formatı (**, __ gibi) KESİNLİKLE kullanma, sadece HTML kullan:\n\n",
             'blog_excerpt' => "Aşağıdaki blog yazısı için kısa bir özet yaz (2-3 cümle, max 150 karakter). Markdown kullanma:\n\n",
             'features' => "Aşağıdaki ürün için ürünün kalitesini, özelliklerini ve kullanım avantajlarını anlatan akıcı bir düz yazı (paragraf) yaz. Kesinlikle liste/maddeleme yapma, sadece akıcı bir paragraf metni üret. Markdown kullanma:\n\n",
             'specifications' => "Aşağıdaki ürün için teknik özellikler tablosu oluştur. Her satırda MUTLAKA 'Özellik Adı: Değer' formatında yaz. Her bir özellik yeni satırda olmalı. Örnek format:\nMalzeme: Paslanmaz Çelik\nBoyut: 50x30mm\nAğırlık: 25g\nRenk: Gümüş\nDüz metin paragrafı YAZMA, kesinlikle satır satır 'Anahtar: Değer' formatında yaz. Markdown kullanma:\n\n",
@@ -214,3 +214,4 @@ if (file_exists($pageFile)) {
 
 // Include footer
 require_once __DIR__ . '/includes/footer.php';
+

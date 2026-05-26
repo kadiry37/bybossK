@@ -228,7 +228,7 @@ if ($action === 'edit' && $id) {
                         <label class="flex items-center gap-3 cursor-pointer" for="status_toggle">
                             <div class="relative">
                                 <input type="checkbox" id="status_toggle" name="status" value="1" class="sr-only peer" <?php echo (!isset($item['status']) || $item['status'] == 1) ? 'checked' : ''; ?>>
-                                <div class="w-11 h-6 bg-gray-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gold-500"></div>
+                                <div class="w-11 h-6 bg-gray-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-yellow-500"></div>
                             </div>
                             <span class="text-sm font-medium text-gray-300">Aktif</span>
                         </label>
