@@ -27,14 +27,22 @@ function splitBrandName(name: string): [string, string] {
   return [parts[0] || 'By', parts.slice(1).join(' ') || 'Boss Mimarlık Mobilya'];
 }
 
+const brandColors: Record<string, string> = {
+  instagram: '#E4405F',
+  facebook: '#1877F2',
+  twitter: '#000000',
+  youtube: '#FF0000',
+  linkedin: '#0A66C2',
+};
+
 const getSocialIcon = (label: string) => {
   const l = label.toLowerCase();
-  if (l.includes('instagram')) return <Instagram size={18} />;
-  if (l.includes('linkedin')) return <Linkedin size={18} />;
-  if (l.includes('facebook')) return <Facebook size={18} />;
-  if (l.includes('twitter')) return <Twitter size={18} />;
-  if (l.includes('youtube')) return <Youtube size={18} />;
-  return <Globe size={18} />;
+  if (l.includes('instagram')) return <Instagram size={24} />;
+  if (l.includes('linkedin')) return <Linkedin size={24} />;
+  if (l.includes('facebook')) return <Facebook size={24} />;
+  if (l.includes('twitter')) return <Twitter size={24} />;
+  if (l.includes('youtube')) return <Youtube size={24} />;
+  return <Globe size={24} />;
 };
 
 export default function Footer({ navData: initialNavData, data: initialData, lang = 'tr' }: { navData?: any[], data?: any, lang?: string }) {
@@ -118,12 +126,24 @@ export default function Footer({ navData: initialNavData, data: initialData, lan
             </p>
 
             <div className="flex items-center gap-4">
-              {socialLinks.map((s) => (
-                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" 
-                   className="w-10 h-10 rounded-full bg-white/5 border border-noir-950/10 flex items-center justify-center text-noir-700 hover:bg-gold-500 hover:text-noir-950 hover:border-gold-500 transition-all duration-300">
-                  {getSocialIcon(s.label)}
-                </a>
-              ))}
+              {socialLinks.map((s) => {
+                const color = brandColors[s.label.toLowerCase()] || '#666';
+                return (
+                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" 
+                     className="w-12 h-12 rounded-full bg-white/5 border border-noir-950/10 flex items-center justify-center transition-all duration-300 hover:scale-110"
+                     style={{ color }}
+                     onMouseEnter={(e) => {
+                       e.currentTarget.style.borderColor = color;
+                       e.currentTarget.style.boxShadow = `0 0 20px ${color}30, 0 0 40px ${color}15`;
+                     }}
+                     onMouseLeave={(e) => {
+                       e.currentTarget.style.borderColor = 'rgba(0,0,0,0.1)';
+                       e.currentTarget.style.boxShadow = 'none';
+                     }}>
+                    {getSocialIcon(s.label)}
+                  </a>
+                );
+              })}
             </div>
           </div>
 
