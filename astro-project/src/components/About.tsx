@@ -131,7 +131,7 @@ export default function About({ data: serverData, lang = 'tr' }: { data?: any, l
             </div>
 
             <div className="space-y-6 mb-12">
-              <p className="text-noir-200 text-xl leading-relaxed italic font-light font-serif">
+              <p className="text-noir-700 text-xl leading-relaxed italic font-light font-serif">
                 &quot;{aboutData.text1}&quot;
               </p>
               <p className="text-noir-700 text-base leading-relaxed font-light">
@@ -163,3 +163,4 @@ export default function About({ data: serverData, lang = 'tr' }: { data?: any, l
     </section>
   );
 }
+

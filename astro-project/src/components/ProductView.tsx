@@ -225,7 +225,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
 
           {/* Detailed Description */}
           {(product[`longDescription${suffix}`] || product.longDescription) && (
-            <div className="prose prose-invert max-w-none mb-12">
+            <div className="prose  max-w-none mb-12">
               <h2 className="text-noir-950 font-bold mb-4 uppercase tracking-widest text-xs flex items-center gap-2">
                 <Package className="text-gold-500" size={16} aria-hidden="true" /> {productName} {lang === 'en' ? 'Product Detail' : (lang === 'ar' ? 'تفاصيل المنتج' : 'Ürün Detayı')}
               </h2>
@@ -412,3 +412,4 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
     </div>
   );
 }
+

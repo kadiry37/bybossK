@@ -17,7 +17,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
     return (
       <div className="container mx-auto px-6 py-40 text-center">
         <h2 className="text-noir-950 text-4xl font-serif font-bold mb-6">{lang === 'en' ? 'Project Not Found' : (lang === 'ar' ? 'لم يتم العثور على المشروع' : 'Proje Bulunamadı')}</h2>
-        <p className="text-noir-400 mb-8">{lang === 'en' ? 'The project you are looking for may not have been published or moved.' : (lang === 'ar' ? 'قد لا يكون المشروع الذي تبحث عنه قد تم نشره أو نقله.' : 'Aradığınız proje henüz yayınlanmamış veya taşınmış olabilir.')}</p>
+        <p className="text-noir-700 mb-8">{lang === 'en' ? 'The project you are looking for may not have been published or moved.' : (lang === 'ar' ? 'قد لا يكون المشروع الذي تبحث عنه قد تم نشره أو نقله.' : 'Aradığınız proje henüz yayınlanmamış veya taşınmış olabilir.')}</p>
         <a href={`/${lang}/#projects`} className="btn btn-gold">
           {lang === 'en' ? 'Back to Projects' : (lang === 'ar' ? 'العودة إلى المشاريع' : 'Projelere Dön')}
         </a>
@@ -116,10 +116,10 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                 </div>
               </div>
 
-              <div className="prose prose-invert max-w-none mb-12">
+              <div className="prose  max-w-none mb-12">
                 <h3 className="text-noir-950 text-xl mb-4 font-serif">{lang === 'en' ? 'Project Details' : (lang === 'ar' ? 'تفاصيل المشروع' : 'Proje Detayları')}</h3>
                 <div 
-                  className="text-noir-400 leading-relaxed text-lg whitespace-pre-line rich-content-view"
+                  className="text-noir-700 leading-relaxed text-lg whitespace-pre-line rich-content-view"
                   dangerouslySetInnerHTML={{ __html: parseMarkdown(project[`description${suffix}`] || project.description) }}
                 ></div>
               </div>
@@ -173,3 +173,4 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
     </>
   );
 }
+

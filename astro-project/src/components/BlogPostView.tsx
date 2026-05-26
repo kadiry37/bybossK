@@ -73,9 +73,9 @@ export default function BlogPostView({ initialPost: post, lang = 'tr' }: { initi
           )}
 
           {/* Content */}
-          <div className="prose prose-invert prose-gold prose-lg max-w-none animate-fade-in"
+          <div className="prose  prose-gold prose-lg max-w-none animate-fade-in"
                style={{ animationDelay: '0.3s' } as React.CSSProperties}>
-            <div className="blog-content font-light text-noir-200 leading-relax rich-content-view" dangerouslySetInnerHTML={{ __html: parseMarkdown(post[`content${suffix}`] || post.content) }}></div>
+            <div className="blog-content font-light text-noir-700 leading-relax rich-content-view" dangerouslySetInnerHTML={{ __html: parseMarkdown(post[`content${suffix}`] || post.content) }}></div>
           </div>
 
           {/* HowTo Section */}
@@ -177,3 +177,4 @@ export default function BlogPostView({ initialPost: post, lang = 'tr' }: { initi
     </article>
   );
 }
+

@@ -133,13 +133,13 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
             )}
 
             {/* Service Details Description */}
-            <div className="prose prose-invert max-w-none pt-6 border-t border-noir-950/10/80">
+            <div className="prose  max-w-none pt-6 border-t border-noir-950/10/80">
               <h3 className="text-noir-950 text-2xl font-serif font-bold mb-6 flex items-center gap-3">
                 <span className="w-1.5 h-6 bg-gold-500 rounded-full inline-block"></span>
                 {lang === 'en' ? 'Detailed Description' : (lang === 'ar' ? 'الوصف التفصيلي' : 'Detaylı Açıklama')}
               </h3>
               <div 
-                className="text-noir-200 leading-relaxed text-lg whitespace-pre-line rich-content-view"
+                className="text-noir-700 leading-relaxed text-lg whitespace-pre-line rich-content-view"
                 dangerouslySetInnerHTML={{ __html: parseMarkdown(service[`longDescription${suffix}`] || service.longDescription || (lang === 'en' ? 'No detailed information available.' : (lang === 'ar' ? 'لا توجد معلومات مفصلة متاحة.' : 'Detaylı bilgi bulunmamaktadır.'))) }}
               ></div>
             </div>
@@ -160,7 +160,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
                   <div key={idx} className="relative p-6 bg-white/80 border border-noir-950/10 rounded-2xl group hover:border-gold-500/30 transition-all duration-300 shadow-md">
                     <span className="text-4xl font-serif font-bold text-gold-500/25 group-hover:text-gold-500/35 transition-colors block mb-2">{item.step}</span>
                     <h4 className="text-noir-950 font-serif text-lg font-semibold mb-2">{item.title}</h4>
-                    <p className="text-noir-200 text-sm leading-relaxed">{item.desc}</p>
+                    <p className="text-noir-700 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -175,7 +175,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
                 <h4 className="text-noir-950 font-serif text-lg font-semibold mb-2">
                   {lang === 'en' ? 'Quality Guarantee & Professionalism' : (lang === 'ar' ? 'ضمان الجودة والاحترافية' : 'Kalite Garantisi & Profesyonel Montaj')}
                 </h4>
-                <p className="text-noir-200 text-sm leading-relaxed">
+                <p className="text-noir-700 text-sm leading-relaxed">
                   {lang === 'en' 
                     ? 'All our services are backed by our quality guarantee and performed by experienced specialists.' 
                     : (lang === 'ar' 
@@ -255,3 +255,4 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
     </>
   );
 }
+

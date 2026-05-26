@@ -133,13 +133,13 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
             )}
 
             {/* Project Details Description */}
-            <div className="prose prose-invert max-w-none pt-6 border-t border-noir-950/10/80">
+            <div className="prose  max-w-none pt-6 border-t border-noir-950/10/80">
               <h3 className="text-noir-950 text-2xl font-serif font-bold mb-6 flex items-center gap-3">
                 <span className="w-1.5 h-6 bg-gold-500 rounded-full inline-block"></span>
                 {lang === 'en' ? 'Project Details' : (lang === 'ar' ? 'تفاصيل المشروع' : 'Proje Detayları')}
               </h3>
               <div 
-                className="text-noir-200 leading-relaxed text-lg whitespace-pre-line rich-content-view"
+                className="text-noir-700 leading-relaxed text-lg whitespace-pre-line rich-content-view"
                 dangerouslySetInnerHTML={{ __html: parseMarkdown(project[`description${suffix}`] || project.description) }}
               ></div>
             </div>
@@ -153,7 +153,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                 </h3>
                 <div className="bg-white/80 border border-noir-950/10 rounded-2xl overflow-hidden shadow-md">
                   <div 
-                    className="p-6 text-noir-200 rich-content-view prose prose-invert max-w-none prose-sm prose-td:py-3.5 prose-td:px-5 prose-tr:border-b prose-tr:border-noir-950/10/60 prose-td:text-noir-200"
+                    className="p-6 text-noir-700 rich-content-view prose  max-w-none prose-sm prose-td:py-3.5 prose-td:px-5 prose-tr:border-b prose-tr:border-noir-950/10/60 prose-td:text-noir-700"
                     dangerouslySetInnerHTML={{ __html: parseMarkdown(project.specifications) }}
                   />
                 </div>
@@ -169,7 +169,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                 <h4 className="text-noir-950 font-serif text-lg font-semibold mb-2">
                   {lang === 'en' ? 'Bespoke Production & Architecture' : (lang === 'ar' ? 'إنتاج مخصص وهندسة معمارية' : 'Özel Üretim & Mimari Uygulama')}
                 </h4>
-                <p className="text-noir-200 text-sm leading-relaxed">
+                <p className="text-noir-700 text-sm leading-relaxed">
                   {lang === 'en' 
                     ? 'All our projects are custom designed and produced according to the project area specifications. Contact us for detailed info and custom solutions.' 
                     : (lang === 'ar' 
@@ -276,4 +276,5 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
     </>
   );
 }
+
 
