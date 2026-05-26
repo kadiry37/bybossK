@@ -121,8 +121,14 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
             <h1
               className={`font-fh ${lang !== 'tr' ? 'text-4xl md:text-6xl xl:text-7xl' : 'text-4xl md:text-7xl xl:text-8xl'} font-bold leading-[0.95] mb-6 select-none tracking-tight uppercase`}
             >
-              <div className="text-noir-950">{brandFirst}</div>
-              <div className="gradient-text">{brandSecond}</div>
+              <div className="text-gold-500" style={{ textShadow: '0 1px 12px rgba(201,169,98,0.25)' }}>{brandFirst}</div>
+              <div style={{
+                background: 'linear-gradient(135deg, #c9a962 0%, #f6e393 25%, #e8d48b 45%, #3a9ec0 72%, #2c7a9a 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                filter: 'drop-shadow(0 2px 10px rgba(201,169,98,0.15)) drop-shadow(0 0 30px rgba(58,158,192,0.08))'
+              }}>{brandSecond}</div>
             </h1>
 
             <p className="text-noir-700 text-lg md:text-xl font-fh font-light mb-10 max-w-lg">
