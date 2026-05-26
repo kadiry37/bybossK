@@ -458,8 +458,8 @@ const websiteSchema = {
     align-items: center;
     justify-content: center;
     align-self: flex-start;
-    height: 140px;
-    width: 360px;
+    height: 120px;
+    width: 320px;
     margin-left: -24px;
     z-index: 10;
   }
@@ -483,6 +483,8 @@ const websiteSchema = {
     max-width: 90%;
     object-fit: contain;
     object-position: center;
+    image-rendering: auto;
+    transform: translateZ(0);
   }
 
   .logo-ph {
@@ -919,7 +921,7 @@ const websiteSchema = {
   @media (max-width: 991px) {
     .tb { display: none !important; }
     #hd { position: fixed; background: var(--bg-glass); backdrop-filter: blur(20px); border-bottom: 1px solid var(--brd); }
-    .logo-w { height: 80px; }
+    .logo-w { height: 72px; }
     .logo-ph { font-size: 14px; }
   }
 
@@ -1100,12 +1102,12 @@ const websiteSchema = {
         clip-path: polygon(0 0, 96% 0, 84% 100%, 0 100%);
     }
     .logo-w {
-        height: 100px;
+        height: 90px;
         margin: 0; 
     }
     .logo {
-        height: 100px;
-        width: 200px;
+        height: 90px;
+        width: 180px;
         margin-left: -24px;
         justify-content: center;
         padding-left: 0;
@@ -1127,11 +1129,11 @@ const websiteSchema = {
         height: 80px;
     }
     .logo-w {
-        height: 80px;
+        height: 72px;
     }
     .logo {
-        height: 80px;
-        width: 160px;
+        height: 72px;
+        width: 144px;
         margin-left: -24px;
         padding-left: 0;
     }

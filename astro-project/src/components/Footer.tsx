@@ -7,9 +7,7 @@ import {
   Phone, 
   MapPin, 
   ArrowRight, 
-  Instagram, 
   Linkedin, 
-  Facebook, 
   Twitter, 
   Youtube,
   Globe
@@ -37,9 +35,29 @@ const brandColors: Record<string, string> = {
 
 const getSocialIcon = (label: string) => {
   const l = label.toLowerCase();
-  if (l.includes('instagram')) return <Instagram size={24} />;
+  if (l.includes('facebook')) return (
+    <svg viewBox="0 0 24 24" width={28} height={28} fill="none">
+      <rect width="24" height="24" rx="5" fill="#1877F2"/>
+      <path d="M15.217 10.014h-2.175v-1.42c0-.542.36-.669.613-.669.253 0 1.539.007 1.539.007V5.5l-2.12-.009C10.694 5.491 10.154 7.271 10.154 8.409v1.605H8.772v2.572h1.382V19h2.888v-6.414h1.947l.248-2.572z" fill="#fff"/>
+    </svg>
+  );
+  if (l.includes('instagram')) return (
+    <svg viewBox="0 0 24 24" width={28} height={28}>
+      <defs>
+        <linearGradient id="ig-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#F58529"/>
+          <stop offset="0.25" stopColor="#E4405F"/>
+          <stop offset="0.5" stopColor="#D62976"/>
+          <stop offset="0.75" stopColor="#962FBF"/>
+          <stop offset="1" stopColor="#4F5BD5"/>
+        </linearGradient>
+      </defs>
+      <rect x="2" y="2" width="20" height="20" rx="5" fill="url(#ig-grad)"/>
+      <circle cx="12" cy="12" r="5" fill="none" stroke="#fff" strokeWidth="1.2"/>
+      <circle cx="17.5" cy="6.5" r="1.5" fill="#fff"/>
+    </svg>
+  );
   if (l.includes('linkedin')) return <Linkedin size={24} />;
-  if (l.includes('facebook')) return <Facebook size={24} />;
   if (l.includes('twitter')) return <Twitter size={24} />;
   if (l.includes('youtube')) return <Youtube size={24} />;
   return <Globe size={24} />;
