@@ -99,7 +99,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
           <div className="h-orb h-orb-1 absolute w-[650px] h-[650px] rounded-full bg-gold-500/10 blur-[110px] -top-[20%] -right-[10%] animate-orb-float-1" />
           <div className="h-orb h-orb-2 absolute w-[500px] h-[500px] rounded-full bg-gold-600/5 blur-[110px] -bottom-[15%] -left-[10%] animate-orb-float-2" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[730px] h-[730px] border border-gold-500/3 rounded-full animate-rotate-slow-reverse" style={{ perspective: '2500px' }}>
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-gold-600 rounded-full shadow-[0_0_7px_rgba(58,158,192,0.5)]" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-gold-600 rounded-full shadow-[0_0_7px_rgba(195,150,60,0.5)]" />
           </div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] border border-dashed border-gold-500/5 rounded-full animate-rotate-slow" />
         </div>
@@ -123,11 +123,11 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
             >
               <div className="text-gold-500" style={{ textShadow: '0 1px 12px rgba(201,169,98,0.25)' }}>{brandFirst}</div>
               <div style={{
-                background: 'linear-gradient(135deg, #c9a962 0%, #f6e393 25%, #e8d48b 45%, #3a9ec0 72%, #2c7a9a 100%)',
+                background: 'linear-gradient(135deg, #c9a962 0%, #f6e393 25%, #e8d48b 45%, #bab7b0 78%, #e9e7e3 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-                filter: 'drop-shadow(0 2px 10px rgba(201,169,98,0.15)) drop-shadow(0 0 30px rgba(58,158,192,0.08))'
+                filter: 'drop-shadow(0 2px 10px rgba(201,169,98,0.15)) drop-shadow(0 0 30px rgba(195,150,60,0.08))'
               }}>{brandSecond}</div>
             </h1>
 
@@ -138,7 +138,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
             <div className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto relative z-30 lg:justify-start">
               <a
                 href={heroData.buttonLink}
-                className="group relative overflow-hidden bg-gold-500 px-10 py-4.5 rounded-xl flex items-center justify-center gap-3 shadow-[0_20px_40px_-10px_rgba(58,158,192,0.3)] transition-all hover:-translate-y-1"
+                className="group relative overflow-hidden bg-gold-500 px-10 py-4.5 rounded-xl flex items-center justify-center gap-3 shadow-[0_20px_40px_-10px_rgba(195,150,60,0.3)] transition-all hover:-translate-y-1"
               >
                 <span className="text-noir-950 font-bold uppercase text-sm tracking-wider relative z-10">
                    {heroData.buttonText}

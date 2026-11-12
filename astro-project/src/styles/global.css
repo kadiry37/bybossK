@@ -54,9 +54,9 @@
 
 @layer base {
   :root {
-    --bg-0: #fbfbfb;      /* Pure white alternative */
-    --bg-1: #f5f5f5;      /* Light background */
-    --bg-2: #ffffff;      /* Section Background */
+    --bg-0: #faf9f6;
+    --bg-1: #f4f2ed;
+    --bg-2: #fffefa;
     --bg-glass: rgba(255, 255, 255, 0.85);
     --accent: #c9a962;    /* Keeping the signature gold */
     --accent-l: #e0c88f;
@@ -66,7 +66,7 @@
     --txt-2: #444444;     /* Medium gray for subtext */
     --txt-3: #888888;     /* Muted text */
     --brd: rgba(0, 0, 0, 0.1);
-    --brd-a: rgba(58, 158, 192, 0.3);
+    --brd-a: rgba(195, 150, 60, 0.3);
     --fh: 'Space Grotesk', sans-serif;
     --fb: 'DM Sans', sans-serif;
   }
@@ -76,11 +76,17 @@
   body {
     @apply bg-white text-noir-950 font-sans antialiased;
     font-family: var(--fb);
-    background: url('/diffused_plaster.webp') center/cover fixed;
+    background: radial-gradient(ellipse at 18% 0%, #fbf6e9 0%, transparent 62%),
+      linear-gradient(150deg, #f8f6f0 0%, #eeece8 100%);
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--fh);
   }
+}
+
+/* Shared branding image in the navigation and footer. */
+.site-brand-logo {
+  border-radius: clamp(6px, 0.9vw, 12px);
 }
 
 /* Custom Scrollbar */
@@ -489,7 +495,7 @@
 }
 
 .quote-modal-product-cat {
-  color: #64748b;
+  color: #625c53;
   font-size: 12px;
   margin-top: 4px;
 }
@@ -532,7 +538,7 @@
 
 .quote-modal-input::placeholder,
 .quote-modal-textarea::placeholder {
-  color: #64748b;
+  color: #625c53;
 }
 
 .quote-modal-input:focus,
@@ -600,7 +606,7 @@
 
 .quote-modal-footer {
   text-align: center;
-  color: #64748b;
+  color: #625c53;
   font-size: 12px;
 }
 
@@ -638,7 +644,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  color: #64748b;
+  color: #625c53;
   font-size: 14px;
 }
 

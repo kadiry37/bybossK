@@ -129,7 +129,7 @@ export default function Footer({ navData: initialNavData, data: initialData, lan
                     alt={general?.siteName || 'Logo'} 
                     width={320} 
                     height={120} 
-                    className={`w-auto h-24 md:h-32 object-contain filter drop-shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-opacity duration-300 ${logoFailed ? 'opacity-0' : 'opacity-100'}`}
+                    className={`site-brand-logo w-auto h-24 md:h-32 object-contain filter drop-shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-opacity duration-300 ${logoFailed ? 'opacity-0' : 'opacity-100'}`}
                     onError={() => setLogoFailed(true)}
                   />
                 ) : (<div className="font-serif text-3xl font-bold uppercase tracking-tight">

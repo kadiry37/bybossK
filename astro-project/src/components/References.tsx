@@ -46,7 +46,7 @@ export default function References({ data, lang = 'tr' }: ReferencesProps) {
       {/* Background Gradients */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-1/2 h-1/2 bg-gold-500/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-1/2 h-1/2 bg-[#3a9ec0]/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-1/2 h-1/2 bg-[#c3963c]/5 rounded-full blur-[120px]" />
       </div>
 
       <div className="container mx-auto px-6 relative z-10 mb-16">
