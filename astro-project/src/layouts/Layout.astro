@@ -214,7 +214,7 @@ const websiteSchema = {
     <meta name="twitter:image" content={image} />
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#151412" />
 
     <!-- Structured Data -->
     {organizationSchema && <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />}
@@ -249,19 +249,19 @@ const websiteSchema = {
   /* ===== MENU ===== */
 
   :root {
-    --bg-0: #000000;      /* Pure Vercel Black */
-    --bg-1: #0a0a0a;      /* Deep Dark Background */
-    --bg-2: #111111;      /* Section/Card Background */
-    --bg-glass: rgba(0, 0, 0, 0.82);
-    --accent: #3a9ec0;    /* Signature Corporate Blue */
-    --accent-l: #52b8da;
-    --accent-d: #2c809e;
-    --accent-glow: rgba(58, 158, 192, 0.15);
+    --bg-0: #100f0e;
+    --bg-1: #151412;      /* Deep Dark Background */
+    --bg-2: #1e1c19;      /* Section/Card Background */
+    --bg-glass: rgba(21, 20, 18, 0.92);
+    --accent: #c3963c;
+    --accent-l: #e2c67e;
+    --accent-d: #9b7028;
+    --accent-glow: rgba(195, 150, 60, 0.15);
     --txt: #ffffff;       /* Pure white for maximum contrast */
-    --txt-2: #a1a1a1;     /* High-quality gray for subtext */
-    --txt-3: #666666;     /* Muted/Disabled text */
+    --txt-2: #c5c1b9;     /* High-quality gray for subtext */
+    --txt-3: #aaa49a;     /* Muted/Disabled text */
     --brd: rgba(255, 255, 255, 0.12); /* Subtle but clean borders */
-    --brd-a: rgba(58, 158, 192, 0.3);
+    --brd-a: rgba(195, 150, 60, 0.3);
     --fh: 'Space Grotesk', sans-serif;
     --fb: 'DM Sans', sans-serif;
     --top-h: 36px;
@@ -413,7 +413,7 @@ const websiteSchema = {
     left: -200px;
     width: 580px;
     height: 140px;
-    background: url('/wood_texture.webp') center/cover;
+    background: linear-gradient(130deg, #100f0e 0%, #25211b 68%, #39352f 100%);
     /* Shallow professional slant */
     clip-path: polygon(0 0, 100% 0, 92% 100%, 0 100%);
     pointer-events: none;
@@ -437,7 +437,7 @@ const websiteSchema = {
 
   body.scrolled .nv .cx::before {
     width: 540px;
-    background: url('/wood_texture.webp') center/cover;
+    background: linear-gradient(130deg, #100f0e 0%, #25211b 68%, #39352f 100%);
   }
   
   body.scrolled .nv .cx::after {
@@ -446,7 +446,7 @@ const websiteSchema = {
 
   /* Adjust logo text color for white background */
   .logo-ph {
-    background: #111111 !important;
+    background: #1e1c19 !important;
     color: #fff !important;
   }
 
@@ -592,7 +592,7 @@ const websiteSchema = {
   .cta-n:hover {
     background: var(--accent-l);
     transform: translateY(-1px);
-    box-shadow: 0 6px 22px rgba(58, 158, 192, 0.28);
+    box-shadow: 0 6px 22px rgba(195, 150, 60, 0.28);
   }
 
   .cta-n::before {
@@ -686,8 +686,8 @@ const websiteSchema = {
     grid-template-columns: 190px 1fr auto;
     align-items: center;
     gap: 20px;
-    background: linear-gradient(135deg, var(--bg-2), rgba(58, 158, 192, 0.05));
-    border: 1px solid rgba(58, 158, 192, 0.08);
+    background: linear-gradient(135deg, var(--bg-2), rgba(195, 150, 60, 0.05));
+    border: 1px solid rgba(195, 150, 60, 0.08);
     margin-bottom: 10px;
     opacity: 0;
     transform: translateY(5px);
@@ -800,7 +800,7 @@ const websiteSchema = {
 
   .mc:hover {
     border-color: var(--brd-a);
-    background: rgba(58, 158, 192, 0.025);
+    background: rgba(195, 150, 60, 0.025);
     transform: translateY(-2px) !important;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   }

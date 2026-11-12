@@ -331,7 +331,7 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
                         key={code}
                         onClick={() => { switchLang(code); setLangMenuOpen(false); }}
                         className={`w-full flex items-center gap-2.5 px-3 py-2 rounded text-[11px] font-bold transition-all ${
-                          currentLang === code ? 'bg-[#3a9ec0]/10 text-[#52b8da]' : 'text-[#6a6d75] hover:text-noir-950 hover:bg-white/5'
+                          currentLang === code ? 'bg-[#c3963c]/10 text-[#e2c67e]' : 'text-[#6a6d75] hover:text-noir-950 hover:bg-white/5'
                         }`}
                       >
                         <span>{flag}</span>
@@ -361,7 +361,7 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
                     alt={siteName}
                     width={320}
                     height={120}
-                    className={`w-auto h-full object-contain object-left transition-opacity duration-300 ${logoFailed ? 'opacity-0' : 'opacity-100'}`}
+                    className={`site-brand-logo w-auto h-full object-contain object-left transition-opacity duration-300 ${logoFailed ? 'opacity-0' : 'opacity-100'}`}
                     onError={() => setLogoFailed(true)}
                   />
                 )}
