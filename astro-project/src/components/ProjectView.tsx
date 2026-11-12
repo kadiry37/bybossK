@@ -42,10 +42,15 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
   const projectName = project[`name${suffix}`] || project.name;
   const mainImgUrl = project.mainImage || 'https://bybossmimarlik.com/uploads/placeholder.jpg';
   
-  const allImages = [
-    { url: mainImgUrl, alt: projectName },
-    ...(project.gallery_images ? project.gallery_images.split(',').map((img: string) => ({ url: img, alt: projectName })) : [])
-  ].filter(i => i.url);
+  const gallery: unknown[] = Array.isArray(project.galleryImages)
+    ? project.galleryImages
+    : typeof project.gallery_images === 'string' ? project.gallery_images.split(',') : [];
+  const galleryUrls = gallery
+    .filter((url): url is string => typeof url === 'string')
+    .map(url => url.trim())
+    .filter(Boolean);
+  const allImages = [...new Set([mainImgUrl, ...galleryUrls])]
+    .map(url => ({ url, alt: projectName }));
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -113,8 +118,10 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
             {allImages.length > 1 && (
               <div className="grid grid-cols-4 sm:grid-cols-6 gap-3">
                 {allImages.map((img, i) => (
-                  <div 
-                    key={i} 
+                  <button
+                    type="button"
+                    key={img.url}
+                    aria-pressed={i === activeImageIndex}
                     className={`aspect-[4/3] overflow-hidden bg-white/80 border cursor-pointer relative rounded-xl transition-all duration-300 ${
                       i === activeImageIndex 
                         ? 'border-gold-500 ring-2 ring-gold-500/20' 
@@ -125,9 +132,10 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                     <img 
                       src={img.url} 
                       alt={img.alt}
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-300" 
+                      loading="lazy"
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                     />
-                  </div>
+                  </button>
                 ))}
               </div>
             )}
