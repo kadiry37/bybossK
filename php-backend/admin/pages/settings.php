@@ -306,6 +306,14 @@ $s = getSettings();
                 <label class="form-label">Telefon (Global)</label>
                 <input type="text" name="site_phone" class="form-input" value="<?php echo htmlspecialchars($s['site_phone'] ?? ''); ?>">
             </div>
+            <div class="form-group">
+                <label class="form-label" for="site_phone_2">İkinci Telefon (Global)</label>
+                <input type="tel" id="site_phone_2" name="site_phone_2" class="form-input" value="<?php echo htmlspecialchars($s['site_phone_2'] ?? ''); ?>">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="site_whatsapp">WhatsApp (Global)</label>
+                <input type="tel" id="site_whatsapp" name="site_whatsapp" class="form-input" value="<?php echo htmlspecialchars($s['site_whatsapp'] ?? ''); ?>">
+            </div>
             <div class="form-group" style="grid-column: span 2;">
                 <label class="form-label">Google Haritalar Embed Kodu</label>
                 <textarea name="google_maps_embed" class="form-textarea" rows="3" placeholder="<iframe src='...' ></iframe>"><?php echo htmlspecialchars($s['google_maps_embed'] ?? ''); ?></textarea>

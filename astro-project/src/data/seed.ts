@@ -126,7 +126,7 @@ export const companyInfo: CompanyInfo = {
   name: 'ATELIER NOIR',
   tagline: 'Where Vision Meets Architecture',
   email: 'info@ateliernoir.com',
-  phone: '+90 212 555 0123',
+  phone: '+90 532 567 45 37',
   address: 'Levent Mahallesi, Büyükdere Caddesi No:123, Şişli, İstanbul, Türkiye',
   socialLinks: {
     instagram: 'https://instagram.com/ateliernoir',

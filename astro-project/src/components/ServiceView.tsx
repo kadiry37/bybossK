@@ -72,9 +72,9 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
     setLightbox({ isOpen: true, index });
   };
 
-  const whatsappPhone = settings?.contact?.whatsapp || '+90 539 711 80 95';
+  const whatsappPhone = settings?.contact?.whatsapp || '+90 532 567 45 37';
   const cleanWhatsappPhone = whatsappPhone.replace(/\D/g, '');
-  const directPhone = settings?.contact?.phone || '+90 539 711 80 95';
+  const directPhone = settings?.contact?.phone || '+90 532 567 45 37';
 
   const whatsappText = lang === 'en' 
     ? `Hello, I would like to get information about the "${serviceName}" service.` 
