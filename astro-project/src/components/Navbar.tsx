@@ -228,9 +228,22 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
     }
     
     if (isProducts) {
-      return getCatalogGroups(currentLang).map(({ slug, label }) => {
+      return getCatalogGroups(currentLang).map(({ slug, label, categories }) => {
+        const candidates = productsData.filter(
+          (product) => categories.includes(product.category) && product.mainImage
+        );
+        const featured = candidates.reduce<any>((newest, product) => (
+          !newest || Number(product.id) > Number(newest.id) ? product : newest
+        ), undefined);
         const href = `${lp}/urunler/?kategori=${slug}`;
-        return { name: label, label, href, url: href };
+        return {
+          name: label,
+          label,
+          href,
+          url: href,
+          description: featured?.name || '',
+          image: ensureFullUrl(featured?.mainImage || ''),
+        };
       });
     }
 
@@ -568,6 +581,9 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
                         href={formatLink(sub.href || '#')}
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
+                        {sub.image && sub.href.includes('/urunler/?kategori=') && (
+                          <img src={sub.image} alt="" loading="lazy" className="mb-2 h-24 w-full rounded object-contain" />
+                        )}
                         {sub.name}
                       </a>
                     ))}
