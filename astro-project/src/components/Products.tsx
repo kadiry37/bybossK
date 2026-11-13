@@ -1,1 +1,276 @@
-J3VzZSBjbGllbnQnOwoKaW1wb3J0IHsgdXNlU3RhdGUsIHVzZVJlZiwgdXNlRWZmZWN0IH0gZnJvbSAncmVhY3QnOwppbXBvcnQgeyBBcnJvd1VwUmlnaHQsIFN0YXIgfSBmcm9tICdsdWNpZGUtcmVhY3QnOwppbXBvcnQgeyBnZXRQcm9kdWN0cyB9IGZyb20gJy4uL2xpYi9hcGknOwoKZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gUHJvZHVjdHMoeyBkYXRhLCBsYW5nID0gJ3RyJywgaXNIb21lUGFnZSA9IGZhbHNlLCBzZXR0aW5nc0RhdGEgfTogeyBkYXRhPzogYW55W10sIGxhbmc/OiBzdHJpbmcsIGlzSG9tZVBhZ2U/OiBib29sZWFuLCBzZXR0aW5nc0RhdGE/OiBhbnkgfSkgewogIGNvbnN0IHByb2R1Y3RzOiBhbnlbXSA9IGRhdGEgfHwgW107CiAgY29uc3Qgc3VmZml4ID0gbGFuZyA9PT0gJ3RyJyA/ICcnIDogYF8ke2xhbmd9YDsKCiAgY29uc3QgW2FjdGl2ZUNhdGVnb3J5LCBzZXRBY3RpdmVDYXRlZ29yeV0gPSB1c2VTdGF0ZSgnYWxsJyk7CiAgY29uc3QgW3NlYXJjaFRlcm0sIHNldFNlYXJjaFRlcm1dID0gdXNlU3RhdGUoJycpOwogIGNvbnN0IFtjdXJyZW50UGFnZSwgc2V0Q3VycmVudFBhZ2VdID0gdXNlU3RhdGUoMSk7CiAgY29uc3QgW3Nob3VsZFNjcm9sbCwgc2V0U2hvdWxkU2Nyb2xsXSA9IHVzZVN0YXRlKGZhbHNlKTsKCiAgdXNlRWZmZWN0KCgpID0+IHsKICAgIGlmIChzaG91bGRTY3JvbGwpIHsKICAgICAgY29uc3QgdGltZXIgPSBzZXRUaW1lb3V0KCgpID0+IHsKICAgICAgICBjb25zdCB0YXJnZXQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncHJvZHVjdHMnKTsKICAgICAgICBpZiAodGFyZ2V0KSB7CiAgICAgICAgICBjb25zdCBoZWFkZXJPZmZzZXQgPSAxMjA7CiAgICAgICAgICAvLyBVc2UgYWJzb2x1dGUgcG9zaXRpb24gcmVsYXRpdmUgdG8gYm9keQogICAgICAgICAgY29uc3QgcmVjdCA9IHRhcmdldC5nZXRCb3VuZGluZ0NsaWVudFJlY3QoKTsKICAgICAgICAgIGNvbnN0IGFic29sdXRlVG9wID0gcmVjdC50b3AgKyB3aW5kb3cucGFnZVlPZmZzZXQ7CiAgICAgICAgICBjb25zdCBvZmZzZXRQb3NpdGlvbiA9IGFic29sdXRlVG9wIC0gaGVhZGVyT2Zmc2V0OwogICAgICAgICAgCiAgICAgICAgICB3aW5kb3cuc2Nyb2xsVG8oewogICAgICAgICAgICB0b3A6IG9mZnNldFBvc2l0aW9uLAogICAgICAgICAgICBiZWhhdmlvcjogJ3Ntb290aCcKICAgICAgICAgIH0pOwogICAgICAgIH0KICAgICAgfSwgMzUwKTsKICAgICAgc2V0U2hvdWxkU2Nyb2xsKGZhbHNlKTsKICAgICAgcmV0dXJuICgpID0+IGNsZWFyVGltZW91dCh0aW1lcik7CiAgICB9CiAgfSwgW2N1cnJlbnRQYWdlLCBzaG91bGRTY3JvbGxdKTsKICBjb25zdCBpdGVtc1BlclBhZ2UgPSAxMjsKCiAgdXNlRWZmZWN0KCgpID0+IHsKICAgIGlmICh0eXBlb2Ygd2luZG93ICE9PSAndW5kZWZpbmVkJykgewogICAgICBjb25zdCBwYXJhbXMgPSBuZXcgVVJMU2VhcmNoUGFyYW1zKHdpbmRvdy5sb2NhdGlvbi5zZWFyY2gpOwogICAgICBjb25zdCBrYXRlZ29yaSA9IHBhcmFtcy5nZXQoJ2thdGVnb3JpJyk7CiAgICAgIGlmIChrYXRlZ29yaSkgewogICAgICAgIHNldEFjdGl2ZUNhdGVnb3J5KGthdGVnb3JpKTsKICAgICAgfQogICAgfQogIH0sIFtdKTsKCiAgLy8gQnVpbGQgY2F0ZWdvcnkgbGlzdCB3aXRoIHNsdWcgKGZvciBmaWx0ZXJpbmcpIGFuZCBkaXNwbGF5IG5hbWUgKGZvciBsYWJlbCkKICBjb25zdCBjYXRlZ29yeU1hcCA9IG5ldyBNYXA8c3RyaW5nLCBzdHJpbmc+KCk7CiAgcHJvZHVjdHMuZm9yRWFjaChwID0+IHsKICAgIGNvbnN0IHNsdWcgPSBwLmNhdGVnb3J5IHx8ICdnZW5lbCc7CiAgICBpZiAoIWNhdGVnb3J5TWFwLmhhcyhzbHVnKSkgewogICAgICBjYXRlZ29yeU1hcC5zZXQoc2x1ZywgcC5jYXRlZ29yeU5hbWUgfHwgc2x1Zy5yZXBsYWNlKC8tL2csICcgJykpOwogICAgfQogIH0pOwogIGNvbnN0IHVuaXF1ZUNhdGVnb3JpZXMgPSBBcnJheS5mcm9tKGNhdGVnb3J5TWFwLmtleXMoKSk7CgogIGNvbnN0IHF1ZXJ5ID0gc2VhcmNoVGVybS50cmltKCkudG9Mb3dlckNhc2UoKTsKICBjb25zdCBmaWx0ZXJlZFByb2R1Y3RzID0gcHJvZHVjdHMuZmlsdGVyKChwcm9kdWN0KSA9PiB7CiAgICBjb25zdCBtYXRjaGVzQ2F0ZWdvcnkgPSBhY3RpdmVDYXRlZ29yeSA9PT0gJ2FsbCcgfHwgKHByb2R1Y3QuY2F0ZWdvcnkgfHwgJ2dlbmVsJykgPT09IGFjdGl2ZUNhdGVnb3J5OwogICAgY29uc3QgbWF0Y2hlc1NlYXJjaCA9IFtwcm9kdWN0Lm5hbWUsIHByb2R1Y3Quc2VyaWVzTGFiZWxdLnNvbWUoCiAgICAgICh2YWx1ZSkgPT4gdHlwZW9mIHZhbHVlID09PSAnc3RyaW5nJyAmJiB2YWx1ZS50b0xvd2VyQ2FzZSgpLmluY2x1ZGVzKHF1ZXJ5KQogICAgKTsKICAgIHJldHVybiBtYXRjaGVzQ2F0ZWdvcnkgJiYgKCFxdWVyeSB8fCBtYXRjaGVzU2VhcmNoKTsKICB9KTsKICBjb25zdCBzZWFyY2hMYWJlbCA9IGxhbmcgPT09ICdhcicgPyAn2KfYqNit2Ksg2KjYp9iz2YUg2KfZhNmF2YbYqtisINij2Ygg2LHZhdiy2YcnIDogbGFuZyA9PT0gJ2VuJyA/ICdTZWFyY2ggYnkgcHJvZHVjdCBuYW1lIG9yIGNvZGUnIDogJ8OccsO8biBhZMSxIHZleWEga29kdXlsYSBhcmEnOwoKICAvLyBSZXNldCBwYWdlIHdoZW4gY2F0ZWdvcnkgY2hhbmdlcwogIHVzZUVmZmVjdCgoKSA9PiB7CiAgICBzZXRDdXJyZW50UGFnZSgxKTsKICB9LCBbYWN0aXZlQ2F0ZWdvcnksIHNlYXJjaFRlcm1dKTsKCiAgY29uc3QgdG90YWxQYWdlcyA9IE1hdGguY2VpbChmaWx0ZXJlZFByb2R1Y3RzLmxlbmd0aCAvIGl0ZW1zUGVyUGFnZSk7CiAgCiAgLy8gSWYgaG9tZSBwYWdlLCBvbmx5IHNob3cgdGhlIGZpcnN0IDYgcHJvZHVjdHMgKG5vIHBhZ2luYXRpb24pCiAgY29uc3QgZGlzcGxheUl0ZW1zID0gaXNIb21lUGFnZSA/IGZpbHRlcmVkUHJvZHVjdHMuc2xpY2UoMCwgNikgOiBmaWx0ZXJlZFByb2R1Y3RzLnNsaWNlKChjdXJyZW50UGFnZSAtIDEpICogaXRlbXNQZXJQYWdlLCBjdXJyZW50UGFnZSAqIGl0ZW1zUGVyUGFnZSk7CgogIHJldHVybiAoCiAgICA8c2VjdGlvbiBpZD0icHJvZHVjdHMiIGNsYXNzTmFtZT0icHktMjQgbGc6cHktMzIgYmctd2hpdGUvODAgcmVsYXRpdmUgb3ZlcmZsb3ctaGlkZGVuIG1pbi1oLVsxMjAwcHhdIiBzdXBwcmVzc0h5ZHJhdGlvbldhcm5pbmc+CiAgICAgIDxkaXYgY2xhc3NOYW1lPSJjb250YWluZXIgbXgtYXV0byBweC02IHJlbGF0aXZlIHotMTAiPgogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJ0ZXh0LWNlbnRlciBtYi0xNiI+CiAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9ImlubGluZS1ibG9jayBweC00IHB5LTIgYm9yZGVyIGJvcmRlci1nb2xkLTUwMC8zMCBtZXRhbC1nb2xkLWluayB0ZXh0LXNtIGZvbnQtbWVkaXVtIHRyYWNraW5nLXdpZGVzdCB1cHBlcmNhc2UgbWItNiI+CiAgICAgICAgICAgIHtsYW5nID09PSAnZW4nID8gJ091ciBQcm9kdWN0cycgOiAobGFuZyA9PT0gJ2FyJyA/ICfZhdmG2KrYrNin2KrZhtinJyA6ICfDnHLDvG5sZXJpbWl6Jyl9CiAgICAgICAgICA8L3NwYW4+CiAgICAgICAgICA8aDIgY2xhc3NOYW1lPSJmb250LXNlcmlmIHRleHQtNHhsIG1kOnRleHQtNXhsIGxnOnRleHQtNnhsIGZvbnQtYm9sZCB0ZXh0LW5vaXItOTUwIG1iLTYgdXBwZXJjYXNlIj4KICAgICAgICAgICAge3NldHRpbmdzRGF0YT8uZ2VuZXJhbD8ucHJvZHVjdHNQYWdlVGl0bGUgPyAoCiAgICAgICAgICAgICAgc2V0dGluZ3NEYXRhLmdlbmVyYWwucHJvZHVjdHNQYWdlVGl0bGUKICAgICAgICAgICAgKSA6ICgKICAgICAgICAgICAgICA8PjxzcGFuPk1PQsSwTFlBPC9zcGFuPjxzcGFuIGNsYXNzTmFtZT0iZ3JhZGllbnQtdGV4dCBtbC00Ij57bGFuZyA9PT0gJ2VuJyA/ICdNb2RlbHMnIDogKGxhbmcgPT09ICdhcicgPyAn2LnYp9ix2LbYp9iqINin2LLZitin2KEnIDogJ01vZGVsbGVyaScpfTwvc3Bhbj48Lz4KICAgICAgICAgICAgKX0KICAgICAgICAgIDwvaDI+CiAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQtbm9pci03MDAgdGV4dC1sZyBtYXgtdy0yeGwgbXgtYXV0byI+CiAgICAgICAgICAgIHtzZXR0aW5nc0RhdGE/LmdlbmVyYWw/LnByb2R1Y3RzUGFnZURlc2MgPyAoCiAgICAgICAgICAgICAgc2V0dGluZ3NEYXRhLmdlbmVyYWwucHJvZHVjdHNQYWdlRGVzYwogICAgICAgICAgICApIDogKAogICAgICAgICAgICAgIGxhbmcgPT09ICdlbicgPyAnU3VwZXJpb3IgY3VzdG9taXplZCBmdXJuaXR1cmUgYW5kIGFyY2hpdGVjdHVyYWwgZGVzaWducyBmb3IgeW91ciBwcm9qZWN0cy4nIDogKGxhbmcgPT09ICdhcicgPyAn2KrYtdin2YXZitmFINmF2LnZhdin2LHZitipINmI2KPYq9in2Ksg2YXYrti12LUg2YTZhdi02KfYsdmK2LnZgy4nIDogJ1Byb2plbGVyaW5peiBpw6dpbiBlbiB5w7xrc2VrIGthbGl0ZWxpIMO2emVsIHRhc2FyxLFtIG1vYmlseWEgdmUgbWltYXJpIMOnw7Z6w7xtbGVyLicpCiAgICAgICAgICAgICl9CiAgICAgICAgICA8L3A+CiAgICAgICAgPC9kaXY+CgogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4IGp1c3RpZnktY2VudGVyIGdhcC00IG1iLTEyIGZsZXgtd3JhcCI+CiAgICAgICAgICA8YnV0dG9uIAogICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRBY3RpdmVDYXRlZ29yeSgnYWxsJyl9IAogICAgICAgICAgICBjbGFzc05hbWU9e2BweC02IHB5LTIgdGV4dC1zbSBmb250LW1lZGl1bSB0cmFuc2l0aW9uLWFsbCBkdXJhdGlvbi0zMDAgYm9yZGVyIHVwcGVyY2FzZSAke2FjdGl2ZUNhdGVnb3J5ID09PSAnYWxsJyA/ICdiZy1nb2xkLTUwMCB0ZXh0LW5vaXItOTAwIGJvcmRlci1nb2xkLTUwMCcgOiAnYmctdHJhbnNwYXJlbnQgdGV4dC1ub2lyLTcwMCBib3JkZXItbm9pci05NTAvMTUnfWB9CiAgICAgICAgICA+CiAgICAgICAgICAgIHtsYW5nID09PSAnZW4nID8gJ0FsbCcgOiAobGFuZyA9PT0gJ2FyJyA/ICfYp9mE2YPZhCcgOiAnVMO8bcO8Jyl9CiAgICAgICAgICA8L2J1dHRvbj4KICAgICAgICAgIHt1bmlxdWVDYXRlZ29yaWVzLm1hcCgoY2F0U2x1ZykgPT4gKAogICAgICAgICAgICA8YnV0dG9uIAogICAgICAgICAgICAgIGtleT17Y2F0U2x1Z30gCiAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gc2V0QWN0aXZlQ2F0ZWdvcnkoY2F0U2x1Zyl9IAogICAgICAgICAgICAgIGNsYXNzTmFtZT17YHB4LTYgcHktMiB0ZXh0LXNtIGZvbnQtbWVkaXVtIHRyYW5zaXRpb24tYWxsIGR1cmF0aW9uLTMwMCBib3JkZXIgdXBwZXJjYXNlICR7YWN0aXZlQ2F0ZWdvcnkgPT09IGNhdFNsdWcgPyAnYmctZ29sZC01MDAgdGV4dC1ub2lyLTkwMCBib3JkZXItZ29sZC01MDAnIDogJ2JnLXRyYW5zcGFyZW50IHRleHQtbm9pci03MDAgYm9yZGVyLW5vaXItOTUwLzE1J31gfQogICAgICAgICAgICA+CiAgICAgICAgICAgICAge2NhdGVnb3J5TWFwLmdldChjYXRTbHVnKSB8fCBjYXRTbHVnLnJlcGxhY2UoLy0vZywgJyAnKX0KICAgICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICApKX0KICAgICAgICA8L2Rpdj4KCiAgICAgICAgeyFpc0hvbWVQYWdlICYmICgKICAgICAgICAgIDxsYWJlbCBjbGFzc05hbWU9Im14LWF1dG8gbWItOCBibG9jayBtYXgtdy1sZyB0ZXh0LW5vaXItOTUwIj4KICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJtYi0yIGJsb2NrIHRleHQtc20gZm9udC1zZW1pYm9sZCI+e3NlYXJjaExhYmVsfTwvc3Bhbj4KICAgICAgICAgICAgPGlucHV0CiAgICAgICAgICAgICAgdHlwZT0ic2VhcmNoIgogICAgICAgICAgICAgIHZhbHVlPXtzZWFyY2hUZXJtfQogICAgICAgICAgICAgIG9uQ2hhbmdlPXsoZXZlbnQpID0+IHNldFNlYXJjaFRlcm0oZXZlbnQudGFyZ2V0LnZhbHVlKX0KICAgICAgICAgICAgICBjbGFzc05hbWU9InctZnVsbCByb3VuZGVkIGJvcmRlciBib3JkZXItbm9pci05NTAvMzAgYmctd2hpdGUgcHgtNCBweS0zIgogICAgICAgICAgICAvPgogICAgICAgICAgPC9sYWJlbD4KICAgICAgICApfQoKICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZ3JpZCBncmlkLWNvbHMtMSBtZDpncmlkLWNvbHMtMiBsZzpncmlkLWNvbHMtMyBnYXAtNiBsZzpnYXAtOCI+CiAgICAgICAgICAgIHtkaXNwbGF5SXRlbXMubWFwKChwcm9kdWN0LCBpbmRleCkgPT4gewogICAgICAgICAgICAgIGNvbnN0IGlzTENQID0gaW5kZXggPCAyOyAvLyDEsGxrIDIgw7xyw7xuIExDUCBpw6dpbiBrcml0aWsgKG1vYmlsL3RhYmxldCkKICAgICAgICAgICAgICBjb25zdCBjbGVhbk5hbWUgPSAocHJvZHVjdFtgbmFtZSR7c3VmZml4fWBdIHx8IHByb2R1Y3QubmFtZSB8fCAnw5xyw7xuJykudHJpbSgpLnJlcGxhY2UoL1tcclxuXHUyMDBCXS9nLCAnICcpOwogICAgICAgICAgICAgIGNvbnN0IGNhdExhYmVsID0gKHByb2R1Y3QuY2F0ZWdvcnlOYW1lIHx8IChwcm9kdWN0LmNhdGVnb3J5IHx8ICdnZW5lbCcpLnJlcGxhY2UoLy0vZywgJyAnKSkudHJpbSgpLnJlcGxhY2UoL1tcclxuXHUyMDBCXS9nLCAnJyk7CiAgICAgICAgICAgICAgY29uc3Qgc2hvcnREZXNjID0gKHByb2R1Y3RbYHNob3J0RGVzY3JpcHRpb24ke3N1ZmZpeH1gXSB8fCBwcm9kdWN0LnNob3J0RGVzY3JpcHRpb24gfHwgJ1Byb2Zlc3lvbmVsIG1vbnRhaiDDp8O2esO8bWxlcmkgacOnaW4gecO8a3NlayBkYXlhbsSxbWzEsSBkZWNrIGtsaXBzaS4nKS50cmltKCkucmVwbGFjZSgvW1xyXG5cdTIwMEJdL2csICcgJyk7CiAgICAgICAgICAgICAgY29uc3QgcHJpY2VTYWZlID0gcHJvZHVjdC5wcmljZSA/IFN0cmluZyhwcm9kdWN0LnByaWNlKS50cmltKCkucmVwbGFjZSgvW1xyXG5cdTIwMEJdL2csICcnKSA6IG51bGw7CiAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgcmV0dXJuICgKICAgICAgICAgICAgICAgIDxhIAogICAgICAgICAgICAgICAgICBocmVmPXtgLyR7bGFuZ30vdXJ1bi8ke3Byb2R1Y3Quc2x1Z30vYH0KICAgICAgICAgICAgICAgICAga2V5PXtgJHtwcm9kdWN0LmlkfS0ke2luZGV4fWB9IAogICAgICAgICAgICAgICAgICBjbGFzc05hbWU9ImNhcmQtaG92ZXIgYmctd2hpdGUvODAgYm9yZGVyIGJvcmRlci1ub2lyLTk1MC8xNSBwLTYgcmVsYXRpdmUgZmxleCBmbGV4LWNvbCBoLWZ1bGwgZ3JvdXAgY3Vyc29yLXBvaW50ZXIgYmxvY2siCiAgICAgICAgICAgICAgICA+CiAgICAgICAgICAgICAgICAgIHtwcm9kdWN0LnN0b2NrX3N0YXR1cyA9PT0gJ2luX3N0b2NrJyAmJiAoCiAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJhYnNvbHV0ZSB0b3AtNCByaWdodC00IGJnLWdyZWVuLTUwMC8xMCBib3JkZXIgYm9yZGVyLWdyZWVuLTUwMC8yMCB0ZXh0LWdyZWVuLTQwMCB0ZXh0LVsxMHB4XSBweC0yIHB5LTEgdXBwZXJjYXNlIHRyYWNraW5nLXdpZGVzdCBmb250LWJvbGQgei0yMCI+CiAgICAgICAgICAgICAgICAgICAgICB7bGFuZyA9PT0gJ2VuJyA/ICdJbiBTdG9jaycgOiAobGFuZyA9PT0gJ2FyJyA/ICfZgdmKINin2YTZhdiu2LLZiNmGJyA6ICdTdG9rdGEnKX0KICAgICAgICAgICAgICAgICAgICA8L3NwYW4+CiAgICAgICAgICAgICAgICAgICl9CiAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0icmVsYXRpdmUgdy1mdWxsIGFzcGVjdC1bNC8zXSBzaHJpbmstMCBtYi02IG92ZXJmbG93LWhpZGRlbiBiZy13aGl0ZS84MCBib3JkZXIgYm9yZGVyLW5vaXItOTUwLzE1Ij4KICAgICAgICAgICAgICAgICAgICA8aW1nIAogICAgICAgICAgICAgICAgICAgICAgc3JjPXtwcm9kdWN0Lm1haW5JbWFnZSAmJiBwcm9kdWN0Lm1haW5JbWFnZS5sZW5ndGggPiA1ID8gcHJvZHVjdC5tYWluSW1hZ2UgOiAnaHR0cHM6Ly9ieWJvc3NtaW1hcmxpay5jb20vdXBsb2Fkcy9wbGFjZWhvbGRlci5qcGcnfSAKICAgICAgICAgICAgICAgICAgICAgIGFsdD17Y2xlYW5OYW1lfQogICAgICAgICAgICAgICAgICAgICAgd2lkdGg9IjYwMCIKICAgICAgICAgICAgICAgICAgICAgIGhlaWdodD0iNDUwIgogICAgICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPXtgdy1mdWxsIGgtZnVsbCBvYmplY3QtY292ZXIgdHJhbnNpdGlvbi10cmFuc2Zvcm0gZHVyYXRpb24tNzAwIGdyb3VwLWhvdmVyOnNjYWxlLTExMCAkeyghcHJvZHVjdC5tYWluSW1hZ2UgfHwgcHJvZHVjdC5tYWluSW1hZ2UubGVuZ3RoIDwgNSkgPyAnb3BhY2l0eS0yMCBncmF5c2NhbGUnIDogJyd9YH0KICAgICAgICAgICAgICAgICAgICAgIGxvYWRpbmc9eyhpc0xDUCB8fCBpbmRleCA8IDEpID8gImVhZ2VyIiA6ICJsYXp5In0KICAgICAgICAgICAgICAgICAgICAgIGZldGNoUHJpb3JpdHk9eyhpc0xDUCB8fCBpbmRleCA8IDEpID8gImhpZ2giIDogImxvdyJ9CiAgICAgICAgICAgICAgICAgICAgICBkZWNvZGluZz0iYXN5bmMiCiAgICAgICAgICAgICAgICAgICAgLz4KICAgICAgICAgICAgICAgICAgICB7cHJvZHVjdC5wcmljZVF1YW50aXR5ICYmICgKICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iYWJzb2x1dGUgdG9wLTAgbGVmdC0wIGJnLWdvbGQtNTAwIHRleHQtbm9pci05NTAgcHgtNCBweS0yIHJvdW5kZWQtYnItMnhsIHRleHQteHMgZm9udC1ibGFjayB1cHBlcmNhc2UgdHJhY2tpbmctd2lkZXN0IHNoYWRvdy1bMF8wXzI1cHhfcmdiYSgyMDEsMTY5LDk4LDAuOCldIGFuaW1hdGUtcHVsc2UgZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTEuNSB6LTEwIj4KICAgICAgICAgICAgICAgICAgICAgICAgICA8c3ZnIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlV2lkdGg9IjIuNSIgc3Ryb2tlTGluZWNhcD0icm91bmQiIHN0cm9rZUxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIxIDE2VjhhMiAyIDAgMCAwLTEtMS43M2wtNy00YTIgMiAwIDAgMC0yIDBsLTcgNEEyIDIgMCAwIDAgMyA4djhhMiAyIDAgMCAwIDEgMS43M2w3IDRhMiAyIDAgMCAwIDIgMGw3LTRBMiAyIDAgMCAwIDIxIDE2eiI+PC9wYXRoPjxwb2x5bGluZSBwb2ludHM9IjMuMjcgNi45NiAxMiAxMi4wMSAyMC43MyA2Ljk2Ij48L3BvbHlsaW5lPjxsaW5lIHgxPSIxMiIgeTE9IjIyLjA4IiB4Mj0iMTIiIHkyPSIxMiI+PC9saW5lPjwvc3ZnPgogICAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuPntwcm9kdWN0LnByaWNlUXVhbnRpdHl9PC9zcGFuPgogICAgICAgICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgICAgICAgICl9CiAgICAgICAgICAgICAgICAgIDwvZGl2PgoKICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9Im1ldGFsLWdvbGQtaW5rIHRleHQtWzEwcHhdIG1iLTIgdXBwZXJjYXNlIHRyYWNraW5nLXdpZGVzdCBmb250LWJsYWNrIj4KICAgICAgICAgICAgICAgICAgICB7Y2F0TGFiZWx9CiAgICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgICAgICA8aDMgY2xhc3NOYW1lPSJ0ZXh0LXhsIGZvbnQtYm9sZCB0ZXh0LW5vaXItOTUwIG1iLTIgbGVhZGluZy10aWdodCBncm91cC1ob3Zlcjp0ZXh0LWdvbGQtNzAwIHRyYW5zaXRpb24tY29sb3JzIj4KICAgICAgICAgICAgICAgICAgICB7Y2xlYW5OYW1lfQogICAgICAgICAgICAgICAgICA8L2gzPgogICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0idGV4dC1ub2lyLTcwMCB0ZXh0LXNtIG1iLTYgbGluZS1jbGFtcC0yIGZsZXgtZ3JvdyI+CiAgICAgICAgICAgICAgICAgICAge3Nob3J0RGVzY30KICAgICAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBqdXN0aWZ5LWJldHdlZW4gaXRlbXMtY2VudGVyIG10LWF1dG8gYm9yZGVyLXQgYm9yZGVyLW5vaXItOTUwLzEwIHB0LTUiPgogICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0idGV4dC14bCBmb250LWJvbGQgdGV4dC1ub2lyLTk1MCBmbGV4IGZsZXgtY29sIj4KICAgICAgICAgICAgICAgICAgICAgIHtwcmljZVNhZmUgPyAoCiAgICAgICAgICAgICAgICAgICAgICAgIDw+CiAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggaXRlbXMtYmFzZWxpbmUgZ2FwLTEiPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJtZXRhbC1nb2xkLWluayI+e3ByaWNlU2FmZX08L3NwYW4+CiAgICAgICAgICAgICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9InRleHQteHMgZm9udC1ub3JtYWwgdGV4dC1ub2lyLTYwMCBtbC0xIj5UTDwvc3Bhbj4KICAgICAgICAgICAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICAgICAgICAgICAgPC8+CiAgICAgICAgICAgICAgICAgICAgICApIDogKAogICAgICAgICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9InRleHQtZ29sZC01MDAvNTAgdGV4dC1bMTFweF0gdXBwZXJjYXNlIHRyYWNraW5nLXdpZGVyIj57bGFuZyA9PT0gJ2VuJyA/ICdHZXQgUHJpY2UnIDogKGxhbmcgPT09ICdhcicgPyAn2KfYrdi12YQg2LnZhNmJINi52LHYtiDYs9i52LEnIDogJ0ZpeWF0IEJpbGdpc2kgQWzEsW4nKX08L3NwYW4+CiAgICAgICAgICAgICAgICAgICAgICApfQogICAgICAgICAgICAgICAgICAgICAge3Byb2R1Y3QucHJpY2VRdWFudGl0eSAmJiAoCiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzTmFtZT0idGV4dC1bMTBweF0gdGV4dC1nb2xkLTUwMC83MCB1cHBlcmNhc2UgdHJhY2tpbmctd2lkZXN0IGZvbnQtc2VtaWJvbGQgbXQtMC41Ij57cHJvZHVjdC5wcmljZVF1YW50aXR5fTwvc3Bhbj4KICAgICAgICAgICAgICAgICAgICAgICl9CiAgICAgICAgICAgICAgICAgICAgPC9zcGFuPgogICAgICAgICAgICAgICAgICAgIDxkaXYgCiAgICAgICAgICAgICAgICAgICAgICBjbGFzc05hbWU9ImlubGluZS1mbGV4IGl0ZW1zLWNlbnRlciBnYXAtMiBweC00IHB5LTIgYmctZ29sZC01MDAvMTAgbWV0YWwtZ29sZC1pbmsgZ3JvdXAtaG92ZXI6YmctZ29sZC01MDAgZ3JvdXAtaG92ZXI6dGV4dC1ub2lyLTkwMCB0cmFuc2l0aW9uLWFsbCByb3VuZGVkLWxnIHRleHQteHMgZm9udC1ib2xkIHVwcGVyY2FzZSB0cmFja2luZy13aWRlciIKICAgICAgICAgICAgICAgICAgICA+CiAgICAgICAgICAgICAgICAgICAgICB7bGFuZyA9PT0gJ2VuJyA/ICdEZXRhaWxzJyA6IChsYW5nID09PSAnYXInID8gJ9iq2YHYp9i12YrZhCcgOiAnxLBuY2VsZScpfQogICAgICAgICAgICAgICAgICAgICAgPEFycm93VXBSaWdodCBzaXplPXsxNH0gLz4KICAgICAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgICAgICA8L2E+CiAgICAgICAgICAgICAgKTsKICAgICAgICAgICAgfSl9CiAgICAgICAgICB7ZmlsdGVyZWRQcm9kdWN0cy5sZW5ndGggPT09IDAgJiYgcHJvZHVjdHMubGVuZ3RoID4gMCAmJiAoCiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJjb2wtc3Bhbi1mdWxsIHB5LTIwIHRleHQtY2VudGVyIGJvcmRlciBib3JkZXItZGFzaGVkIGJvcmRlci1ub2lyLTk1MC8xMCByb3VuZGVkLTN4bCI+CiAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC1ub2lyLTcwMCI+e2xhbmcgPT09ICdlbicgPyAnTm8gcHJvZHVjdHMgZm91bmQgaW4gdGhpcyBjYXRlZ29yeS4nIDogKGxhbmcgPT09ICdhcicgPyAn2YTZhSDZitiq2YUg2KfZhNi52KvZiNixINi52YTZiSDZhdmG2KrYrNin2Kog2YHZiiDZh9iw2Ycg2KfZhNmB2KbYqS4nIDogJ0J1IGthdGVnb3JpZGUgaGVuw7x6IMO8csO8biBidWx1bmFtYWTEsS4nKX08L3A+CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgKX0KICAgICAgICA8L2Rpdj4KCiAgICAgICAgey8qIFBhZ2luYXRpb24gQ29udHJvbHMgLSBPTkxZIE9OIFBST0RVQ1QgUEFHRSAqL30KICAgICAgICB7IWlzSG9tZVBhZ2UgJiYgdG90YWxQYWdlcyA+IDEgJiYgKAogICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXgganVzdGlmeS1jZW50ZXIgaXRlbXMtY2VudGVyIGdhcC0yIG10LTE2Ij4KICAgICAgICAgICAgey8qIC4uLiBwYWdpbmF0aW9uIGJ1dHRvbnMgLi4uICovfQogICAgICAgICAgICA8YnV0dG9uCiAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gewogICAgICAgICAgICAgICAgc2V0Q3VycmVudFBhZ2UocCA9PiBNYXRoLm1heCgxLCBwIC0gMSkpOwogICAgICAgICAgICAgICAgc2V0U2hvdWxkU2Nyb2xsKHRydWUpOwogICAgICAgICAgICAgIH19CiAgICAgICAgICAgICAgZGlzYWJsZWQ9e2N1cnJlbnRQYWdlID09PSAxfQogICAgICAgICAgICAgIGNsYXNzTmFtZT0icHgtNCBweS0yIGJvcmRlciBib3JkZXItbm9pci05NTAvMTUgcm91bmRlZC1sZyB0ZXh0LW5vaXItNzAwIGRpc2FibGVkOm9wYWNpdHktNTAgaG92ZXI6Ymctd2hpdGUvODAgdHJhbnNpdGlvbi1jb2xvcnMiCiAgICAgICAgICAgID4KICAgICAgICAgICAgICB7bGFuZyA9PT0gJ2VuJyA/ICdQcmV2aW91cycgOiAobGFuZyA9PT0gJ2FyJyA/ICfYp9mE2LPYp9io2YInIDogJ8OWbmNla2knKX0KICAgICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICAgIAogICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBnYXAtMSI+CiAgICAgICAgICAgICAge0FycmF5LmZyb20oeyBsZW5ndGg6IHRvdGFsUGFnZXMgfSkubWFwKChfLCBpKSA9PiAoCiAgICAgICAgICAgICAgICA8YnV0dG9uCiAgICAgICAgICAgICAgICAgIGtleT17aX0KICAgICAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gewogICAgICAgICAgICAgICAgICAgIHNldEN1cnJlbnRQYWdlKGkgKyAxKTsKICAgICAgICAgICAgICAgICAgICBzZXRTaG91bGRTY3JvbGwodHJ1ZSk7CiAgICAgICAgICAgICAgICAgIH19CiAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT17YHctMTAgaC0xMCByb3VuZGVkLWxnIGZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktY2VudGVyIHRyYW5zaXRpb24tY29sb3JzICR7CiAgICAgICAgICAgICAgICAgICAgY3VycmVudFBhZ2UgPT09IGkgKyAxIAogICAgICAgICAgICAgICAgICAgICAgPyAnYmctZ29sZC01MDAgdGV4dC1ub2lyLTkwMCBmb250LWJvbGQnIAogICAgICAgICAgICAgICAgICAgICAgOiAnYm9yZGVyIGJvcmRlci1ub2lyLTk1MC8xNSB0ZXh0LW5vaXItNzAwIGhvdmVyOmJnLXdoaXRlLzgwJwogICAgICAgICAgICAgICAgICB9YH0KICAgICAgICAgICAgICAgID4KICAgICAgICAgICAgICAgICAge2kgKyAxfQogICAgICAgICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICAgICAgKSl9CiAgICAgICAgICAgIDwvZGl2PgoKICAgICAgICAgICAgPGJ1dHRvbgogICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHsKICAgICAgICAgICAgICAgIHNldEN1cnJlbnRQYWdlKHAgPT4gTWF0aC5taW4odG90YWxQYWdlcywgcCArIDEpKTsKICAgICAgICAgICAgICAgIHNldFNob3VsZFNjcm9sbCh0cnVlKTsKICAgICAgICAgICAgICB9fQogICAgICAgICAgICAgIGRpc2FibGVkPXtjdXJyZW50UGFnZSA9PT0gdG90YWxQYWdlc30KICAgICAgICAgICAgICBjbGFzc05hbWU9InB4LTQgcHktMiBib3JkZXIgYm9yZGVyLW5vaXItOTUwLzE1IHJvdW5kZWQtbGcgdGV4dC1ub2lyLTcwMCBkaXNhYmxlZDpvcGFjaXR5LTUwIGhvdmVyOmJnLXdoaXRlLzgwIHRyYW5zaXRpb24tY29sb3JzIgogICAgICAgICAgICA+CiAgICAgICAgICAgICAge2xhbmcgPT09ICdlbicgPyAnTmV4dCcgOiAobGFuZyA9PT0gJ2FyJyA/ICfYp9mE2KrYp9mE2YonIDogJ1NvbnJha2knKX0KICAgICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICA8L2Rpdj4KICAgICAgICApfQoKICAgICAgICB7LyogVmlldyBBbGwgQnV0dG9uIC0gT05MWSBPTiBIT01FIFBBR0UgKi99CiAgICAgICAge2lzSG9tZVBhZ2UgJiYgKAogICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXgganVzdGlmeS1jZW50ZXIgbXQtMTYiPgogICAgICAgICAgICA8YSAKICAgICAgICAgICAgICBocmVmPXtgLyR7bGFuZ30vdXJ1bmxlci9gfQogICAgICAgICAgICAgIGNsYXNzTmFtZT0icHgtMTAgcHktNCBiZy10cmFuc3BhcmVudCBib3JkZXIgYm9yZGVyLWdvbGQtNTAwIG1ldGFsLWdvbGQtaW5rIGZvbnQtYm9sZCB1cHBlcmNhc2UgdHJhY2tpbmctd2lkZXN0IGhvdmVyOmJnLWdvbGQtNTAwIGhvdmVyOnRleHQtbm9pci05NTAgdHJhbnNpdGlvbi1hbGwgZHVyYXRpb24tMzAwIHJvdW5kZWQteGwgZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTMiCiAgICAgICAgICAgID4KICAgICAgICAgICAgICB7bGFuZyA9PT0gJ2VuJyA/ICdWaWV3IEFsbCBQcm9kdWN0cycgOiAobGFuZyA9PT0gJ2FyJyA/ICfYudix2LYg2KzZhdmK2Lkg2KfZhNmF2YbYqtis2KfYqicgOiAnVMO8bSDDnHLDvG5sZXJpIEfDtnLDvG50w7xsZScpfQogICAgICAgICAgICAgIDxBcnJvd1VwUmlnaHQgc2l6ZT17MjB9IC8+CiAgICAgICAgICAgIDwvYT4KICAgICAgICAgIDwvZGl2PgogICAgICAgICl9CiAgICAgIDwvZGl2PgogICAgPC9zZWN0aW9uPgogICk7Cn0K
+'use client';
+
+import { useState, useRef, useEffect } from 'react';
+import { ArrowUpRight, Star } from 'lucide-react';
+import { getProducts } from '../lib/api';
+
+export default function Products({ data, lang = 'tr', isHomePage = false, settingsData }: { data?: any[], lang?: string, isHomePage?: boolean, settingsData?: any }) {
+  const products: any[] = data || [];
+  const suffix = lang === 'tr' ? '' : `_${lang}`;
+
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [shouldScroll, setShouldScroll] = useState(false);
+
+  useEffect(() => {
+    if (shouldScroll) {
+      const timer = setTimeout(() => {
+        const target = document.getElementById('products');
+        if (target) {
+          const headerOffset = 120;
+          // Use absolute position relative to body
+          const rect = target.getBoundingClientRect();
+          const absoluteTop = rect.top + window.pageYOffset;
+          const offsetPosition = absoluteTop - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 350);
+      setShouldScroll(false);
+      return () => clearTimeout(timer);
+    }
+  }, [currentPage, shouldScroll]);
+  const itemsPerPage = 12;
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const kategori = params.get('kategori');
+      if (kategori) {
+        setActiveCategory(kategori);
+      }
+    }
+  }, []);
+
+  // Build category list with slug (for filtering) and display name (for label)
+  const categoryMap = new Map<string, string>();
+  products.forEach(p => {
+    const slug = p.category || 'genel';
+    if (!categoryMap.has(slug)) {
+      categoryMap.set(slug, p.categoryName || slug.replace(/-/g, ' '));
+    }
+  });
+  const uniqueCategories = Array.from(categoryMap.keys());
+
+  const query = searchTerm.trim().toLowerCase();
+  const filteredProducts = products.filter((product) => {
+    const matchesCategory = activeCategory === 'all' || (product.category || 'genel') === activeCategory;
+    const matchesSearch = [product.name, product.seriesLabel].some(
+      (value) => typeof value === 'string' && value.toLowerCase().includes(query)
+    );
+    return matchesCategory && (!query || matchesSearch);
+  });
+  const searchLabel = lang === 'ar' ? 'ابحث باسم المنتج أو رمزه' : lang === 'en' ? 'Search by product name or code' : 'Ürün adı veya koduyla ara';
+
+  // Reset page when category changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeCategory, searchTerm]);
+
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  
+  // If home page, only show the first 6 products (no pagination)
+  const displayItems = isHomePage ? filteredProducts.slice(0, 6) : filteredProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+  return (
+    <section id="products" className="py-24 lg:py-32 bg-white/80 relative overflow-hidden min-h-[1200px]" suppressHydrationWarning>
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-2 border border-gold-500/30 metal-gold-ink text-sm font-medium tracking-widest uppercase mb-6">
+            {lang === 'en' ? 'Our Products' : (lang === 'ar' ? 'منتجاتنا' : 'Ürünlerimiz')}
+          </span>
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-noir-950 mb-6 uppercase">
+            {settingsData?.general?.productsPageTitle ? (
+              settingsData.general.productsPageTitle
+            ) : (
+              <><span>MOBİLYA</span><span className="gradient-text ml-4">{lang === 'en' ? 'Models' : (lang === 'ar' ? 'عارضات ازياء' : 'Modelleri')}</span></>
+            )}
+          </h2>
+          <p className="text-noir-700 text-lg max-w-2xl mx-auto">
+            {settingsData?.general?.productsPageDesc ? (
+              settingsData.general.productsPageDesc
+            ) : (
+              lang === 'en' ? 'Superior customized furniture and architectural designs for your projects.' : (lang === 'ar' ? 'تصاميم معمارية وأثاث مخصص لمشاريعك.' : 'Projeleriniz için en yüksek kaliteli özel tasarım mobilya ve mimari çözümler.')
+            )}
+          </p>
+        </div>
+
+        <div className="flex justify-center gap-4 mb-12 flex-wrap">
+          <button 
+            onClick={() => setActiveCategory('all')} 
+            className={`px-6 py-2 text-sm font-medium transition-all duration-300 border uppercase ${activeCategory === 'all' ? 'bg-gold-500 text-noir-900 border-gold-500' : 'bg-transparent text-noir-700 border-noir-950/15'}`}
+          >
+            {lang === 'en' ? 'All' : (lang === 'ar' ? 'الكل' : 'Tümü')}
+          </button>
+          {uniqueCategories.map((catSlug) => (
+            <button 
+              key={catSlug} 
+              onClick={() => setActiveCategory(catSlug)} 
+              className={`px-6 py-2 text-sm font-medium transition-all duration-300 border uppercase ${activeCategory === catSlug ? 'bg-gold-500 text-noir-900 border-gold-500' : 'bg-transparent text-noir-700 border-noir-950/15'}`}
+            >
+              {categoryMap.get(catSlug) || catSlug.replace(/-/g, ' ')}
+            </button>
+          ))}
+        </div>
+
+        {!isHomePage && (
+          <label className="mx-auto mb-8 block max-w-lg text-noir-950">
+            <span className="mb-2 block text-sm font-semibold">{searchLabel}</span>
+            <input
+              type="search"
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+              className="w-full rounded border border-noir-950/30 bg-white px-4 py-3"
+            />
+          </label>
+        )}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {displayItems.map((product, index) => {
+              const isLCP = index < 2; // İlk 2 ürün LCP için kritik (mobil/tablet)
+              const cleanName = (product[`name${suffix}`] || product.name || 'Ürün').trim().replace(/[\r\n\u200B]/g, ' ');
+              const catLabel = (product.categoryName || (product.category || 'genel').replace(/-/g, ' ')).trim().replace(/[\r\n\u200B]/g, '');
+              const shortDesc = (product[`shortDescription${suffix}`] || product.shortDescription || 'Profesyonel montaj çözümleri için yüksek dayanımlı deck klipsi.').trim().replace(/[\r\n\u200B]/g, ' ');
+              const priceSafe = product.price ? String(product.price).trim().replace(/[\r\n\u200B]/g, '') : null;
+              
+              return (
+                <a 
+                  href={`/${lang}/urun/${product.slug}/`}
+                  key={`${product.id}-${index}`} 
+                  className="card-hover bg-white/80 border border-noir-950/15 p-6 relative flex flex-col h-full group cursor-pointer block"
+                >
+                  {product.stock_status === 'in_stock' && (
+                    <span className="absolute top-4 right-4 bg-green-500/10 border border-green-500/20 text-green-400 text-[10px] px-2 py-1 uppercase tracking-widest font-bold z-20">
+                      {lang === 'en' ? 'In Stock' : (lang === 'ar' ? 'في المخزون' : 'Stokta')}
+                    </span>
+                  )}
+                  
+                  <div className="relative w-full aspect-[4/3] shrink-0 mb-6 overflow-hidden bg-white/80 border border-noir-950/15">
+                    <img 
+                      src={product.mainImage && product.mainImage.length > 5 ? product.mainImage : 'https://bybossmimarlik.com/uploads/placeholder.jpg'} 
+                      alt={cleanName}
+                      width="600"
+                      height="450"
+                      className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${(!product.mainImage || product.mainImage.length < 5) ? 'opacity-20 grayscale' : ''}`}
+                      loading={(isLCP || index < 1) ? "eager" : "lazy"}
+                      fetchPriority={(isLCP || index < 1) ? "high" : "low"}
+                      decoding="async"
+                    />
+                    {product.priceQuantity && (
+                       <div className="absolute top-0 left-0 bg-gold-500 text-noir-950 px-4 py-2 rounded-br-2xl text-xs font-black uppercase tracking-widest shadow-[0_0_25px_rgba(201,169,98,0.8)] animate-pulse flex items-center gap-1.5 z-10">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                          <span>{product.priceQuantity}</span>
+                       </div>
+                    )}
+                  </div>
+
+                  <div className="metal-gold-ink text-[10px] mb-2 uppercase tracking-widest font-black">
+                    {catLabel}
+                  </div>
+                  <h3 className="text-xl font-bold text-noir-950 mb-2 leading-tight group-hover:text-gold-700 transition-colors">
+                    {cleanName}
+                  </h3>
+                  <div className="text-noir-700 text-sm mb-6 line-clamp-2 flex-grow">
+                    {shortDesc}
+                  </div>
+                  
+                  <div className="flex justify-between items-center mt-auto border-t border-noir-950/10 pt-5">
+                    <span className="text-xl font-bold text-noir-950 flex flex-col">
+                      {priceSafe ? (
+                        <>
+                          <div className="flex items-baseline gap-1">
+                            <span className="metal-gold-ink">{priceSafe}</span>
+                            <span className="text-xs font-normal text-noir-600 ml-1">TL</span>
+                          </div>
+                        </>
+                      ) : (
+                        <span className="text-gold-500/50 text-[11px] uppercase tracking-wider">{lang === 'en' ? 'Get Price' : (lang === 'ar' ? 'احصل على عرض سعر' : 'Fiyat Bilgisi Alın')}</span>
+                      )}
+                      {product.priceQuantity && (
+                        <span className="text-[10px] text-gold-500/70 uppercase tracking-widest font-semibold mt-0.5">{product.priceQuantity}</span>
+                      )}
+                    </span>
+                    <div 
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-gold-500/10 metal-gold-ink group-hover:bg-gold-500 group-hover:text-noir-900 transition-all rounded-lg text-xs font-bold uppercase tracking-wider"
+                    >
+                      {lang === 'en' ? 'Details' : (lang === 'ar' ? 'تفاصيل' : 'İncele')}
+                      <ArrowUpRight size={14} />
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
+          {filteredProducts.length === 0 && products.length > 0 && (
+            <div className="col-span-full py-20 text-center border border-dashed border-noir-950/10 rounded-3xl">
+               <p className="text-noir-700">{lang === 'en' ? 'No products found in this category.' : (lang === 'ar' ? 'لم يتم العثور على منتجات في هذه الفئة.' : 'Bu kategoride henüz ürün bulunamadı.')}</p>
+            </div>
+          )}
+        </div>
+
+        {/* Pagination Controls - ONLY ON PRODUCT PAGE */}
+        {!isHomePage && totalPages > 1 && (
+          <div className="flex justify-center items-center gap-2 mt-16">
+            {/* ... pagination buttons ... */}
+            <button
+              onClick={() => {
+                setCurrentPage(p => Math.max(1, p - 1));
+                setShouldScroll(true);
+              }}
+              disabled={currentPage === 1}
+              className="px-4 py-2 border border-noir-950/15 rounded-lg text-noir-700 disabled:opacity-50 hover:bg-white/80 transition-colors"
+            >
+              {lang === 'en' ? 'Previous' : (lang === 'ar' ? 'السابق' : 'Önceki')}
+            </button>
+            
+            <div className="flex gap-1">
+              {Array.from({ length: totalPages }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    setCurrentPage(i + 1);
+                    setShouldScroll(true);
+                  }}
+                  className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
+                    currentPage === i + 1 
+                      ? 'bg-gold-500 text-noir-900 font-bold' 
+                      : 'border border-noir-950/15 text-noir-700 hover:bg-white/80'
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => {
+                setCurrentPage(p => Math.min(totalPages, p + 1));
+                setShouldScroll(true);
+              }}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 border border-noir-950/15 rounded-lg text-noir-700 disabled:opacity-50 hover:bg-white/80 transition-colors"
+            >
+              {lang === 'en' ? 'Next' : (lang === 'ar' ? 'التالي' : 'Sonraki')}
+            </button>
+          </div>
+        )}
+
+        {/* View All Button - ONLY ON HOME PAGE */}
+        {isHomePage && (
+          <div className="flex justify-center mt-16">
+            <a 
+              href={`/${lang}/urunler/`}
+              className="px-10 py-4 bg-transparent border border-gold-500 metal-gold-ink font-bold uppercase tracking-widest hover:bg-gold-500 hover:text-noir-950 transition-all duration-300 rounded-xl flex items-center gap-3"
+            >
+              {lang === 'en' ? 'View All Products' : (lang === 'ar' ? 'عرض جميع المنتجات' : 'Tüm Ürünleri Görüntüle')}
+              <ArrowUpRight size={20} />
+            </a>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
