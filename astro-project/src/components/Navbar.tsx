@@ -363,8 +363,8 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
         {/* Navigation */}
         <nav className="nv" aria-label="Ana navigasyon">
           <div className="cx">
-            <a href={currentLang === 'tr' ? '/' : `/${currentLang}/`} className="logo" aria-label="By Boss Mimarlık Mobilya">
-              <div className="logo-w relative">
+            <a href={currentLang === 'tr' ? '/' : `/${currentLang}/`} className="logo inline-flex items-center" aria-label="By Boss Mimarlık Mobilya">
+              <div className="logo-w">
                 {showLogoImage && (
                   <img
                     src={logoUrl}
@@ -378,10 +378,13 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
                 {(!showLogoImage || logoFailed) && (
                   <div className="logo-ph">BY BOSS <span>MİMARLIK</span></div>
                 )}
-                <span className="absolute bottom-0 right-0 whitespace-nowrap rounded-sm bg-[#211b13] px-1.5 py-0.5 text-[9px] font-semibold leading-tight tracking-wide text-[#f3d99b]">
-                  {currentLang === 'en' ? 'Est. 1990' : currentLang === 'ar' ? 'تأسست عام 1990' : 'Kuruluş 1990'}
-                </span>
               </div>
+              <span className="ms-2 inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-sm border border-[#816335] bg-[#171411] px-1.5 py-0.5 text-[9px] font-semibold leading-tight tracking-wide">
+                <span className="bg-gradient-to-b from-white via-[#dce0e6] to-[#a8b1be] bg-clip-text text-transparent">
+                  {currentLang === 'en' ? 'Est.' : currentLang === 'ar' ? 'تأسست عام' : 'Kuruluş'}
+                </span>
+                <span className="bg-gradient-to-b from-[#fff4ce] via-[#f8ce68] to-[#d8a343] bg-clip-text text-transparent">1990</span>
+              </span>
             </a>
 
            {/* Desktop Menu */}
