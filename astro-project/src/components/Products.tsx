@@ -1,5 +1,6 @@
 'use client';
 
+import { getCatalogGroups } from './catalogGroups';
 import { useState, useRef, useEffect } from 'react';
 import { ArrowUpRight, Star } from 'lucide-react';
 import { getProducts } from '../lib/api';
@@ -46,19 +47,12 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
     }
   }, []);
 
-  // Build category list with slug (for filtering) and display name (for label)
-  const categoryMap = new Map<string, string>();
-  products.forEach(p => {
-    const slug = p.category || 'genel';
-    if (!categoryMap.has(slug)) {
-      categoryMap.set(slug, p.categoryName || slug.replace(/-/g, ' '));
-    }
-  });
-  const uniqueCategories = Array.from(categoryMap.keys());
+  const catalogGroups = getCatalogGroups(lang);
+  const selectedGroup = catalogGroups.find((group) => group.slug === activeCategory);
 
   const query = searchTerm.trim().toLowerCase();
   const filteredProducts = products.filter((product) => {
-    const matchesCategory = activeCategory === 'all' || (product.category || 'genel') === activeCategory;
+    const matchesCategory = activeCategory === 'all' || (selectedGroup?.categories.includes(product.category) ?? product.category === activeCategory);
     const matchesSearch = [product.name, product.seriesLabel].some(
       (value) => typeof value === 'string' && value.toLowerCase().includes(query)
     );
@@ -106,13 +100,13 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
           >
             {lang === 'en' ? 'All' : (lang === 'ar' ? 'الكل' : 'Tümü')}
           </button>
-          {uniqueCategories.map((catSlug) => (
+          {catalogGroups.map(({ slug: catSlug, label }) => (
             <button 
               key={catSlug} 
               onClick={() => setActiveCategory(catSlug)} 
               className={`px-6 py-2 text-sm font-medium transition-all duration-300 border uppercase ${activeCategory === catSlug ? 'bg-gold-500 text-noir-900 border-gold-500' : 'bg-transparent text-noir-700 border-noir-950/15'}`}
             >
-              {categoryMap.get(catSlug) || catSlug.replace(/-/g, ' ')}
+              {label}
             </button>
           ))}
         </div>
