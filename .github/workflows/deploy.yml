@@ -80,6 +80,13 @@ jobs:
         run: |
           find dist -type d -name '_placeholder' -exec rm -rf {} + 2>/dev/null || true
 
+      - name: Ensure frontend directories exist on FTP
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: python3 ../.github/scripts/ensure-ftp-directories.py dist domains/bybossmimarlik.com/public_html/
+
       - name: Upload Frontend to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
