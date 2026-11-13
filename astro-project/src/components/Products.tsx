@@ -73,7 +73,7 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
     <section id="products" className="py-24 lg:py-32 bg-white/80 relative overflow-hidden min-h-[1200px]" suppressHydrationWarning>
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 border border-gold-500/30 text-gold-500 text-sm font-medium tracking-widest uppercase mb-6">
+          <span className="inline-block px-4 py-2 border border-gold-500/30 metal-gold-ink text-sm font-medium tracking-widest uppercase mb-6">
             {lang === 'en' ? 'Our Products' : (lang === 'ar' ? 'منتجاتنا' : 'Ürünlerimiz')}
           </span>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-noir-950 mb-6 uppercase">
@@ -149,10 +149,10 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
                     )}
                   </div>
 
-                  <div className="text-gold-500 text-[10px] mb-2 uppercase tracking-widest font-black">
+                  <div className="metal-gold-ink text-[10px] mb-2 uppercase tracking-widest font-black">
                     {catLabel}
                   </div>
-                  <h3 className="text-xl font-bold text-noir-950 mb-2 leading-tight group-hover:text-gold-500 transition-colors">
+                  <h3 className="text-xl font-bold text-noir-950 mb-2 leading-tight group-hover:text-gold-700 transition-colors">
                     {cleanName}
                   </h3>
                   <div className="text-noir-700 text-sm mb-6 line-clamp-2 flex-grow">
@@ -164,7 +164,7 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
                       {priceSafe ? (
                         <>
                           <div className="flex items-baseline gap-1">
-                            <span className="text-gold-500">{priceSafe}</span>
+                            <span className="metal-gold-ink">{priceSafe}</span>
                             <span className="text-xs font-normal text-noir-600 ml-1">TL</span>
                           </div>
                         </>
@@ -176,7 +176,7 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
                       )}
                     </span>
                     <div 
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-gold-500/10 text-gold-500 group-hover:bg-gold-500 group-hover:text-noir-900 transition-all rounded-lg text-xs font-bold uppercase tracking-wider"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-gold-500/10 metal-gold-ink group-hover:bg-gold-500 group-hover:text-noir-900 transition-all rounded-lg text-xs font-bold uppercase tracking-wider"
                     >
                       {lang === 'en' ? 'Details' : (lang === 'ar' ? 'تفاصيل' : 'İncele')}
                       <ArrowUpRight size={14} />
@@ -244,7 +244,7 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
           <div className="flex justify-center mt-16">
             <a 
               href={`/${lang}/urunler/`}
-              className="px-10 py-4 bg-transparent border border-gold-500 text-gold-500 font-bold uppercase tracking-widest hover:bg-gold-500 hover:text-noir-950 transition-all duration-300 rounded-xl flex items-center gap-3"
+              className="px-10 py-4 bg-transparent border border-gold-500 metal-gold-ink font-bold uppercase tracking-widest hover:bg-gold-500 hover:text-noir-950 transition-all duration-300 rounded-xl flex items-center gap-3"
             >
               {lang === 'en' ? 'View All Products' : (lang === 'ar' ? 'عرض جميع المنتجات' : 'Tüm Ürünleri Görüntüle')}
               <ArrowUpRight size={20} />

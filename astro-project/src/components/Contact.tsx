@@ -111,7 +111,7 @@ export default function Contact({ data: serverData, lang = 'tr' }: { data?: any,
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16 lg:mb-24">
           <span
-            className="inline-block px-4 py-2 border border-gold-500/30 text-gold-500 text-xs font-medium tracking-widest uppercase mb-6 rounded-full bg-gold-500/5"
+            className="inline-block px-4 py-2 border border-gold-500/30 metal-gold-ink text-xs font-medium tracking-widest uppercase mb-6 rounded-full bg-gold-500/5"
           >
             {lang === 'en' ? 'Get In Touch' : (lang === 'ar' ? 'اتصل بنا' : 'İletişime Geçin')}
           </span>
@@ -155,7 +155,7 @@ export default function Contact({ data: serverData, lang = 'tr' }: { data?: any,
             <div className="bg-white/80/50 backdrop-blur-xl border border-noir-950/15 p-8 rounded-2xl shadow-2xl relative overflow-hidden group">
                <div className="absolute top-0 right-0 w-32 h-32 bg-gold-500/5 blur-3xl group-hover:bg-gold-500/10 transition-colors duration-500"></div>
                <h3 className="text-noir-950 text-xl font-bold mb-6 flex items-center gap-2">
-                 <Send className="w-5 h-5 text-gold-500" />
+                 <Send className="w-5 h-5 metal-gold-ink" />
                  {lang === 'en' ? 'Send Quick Message' : (lang === 'ar' ? 'إرسال رسالة سريعة' : 'Hızlı Mesaj Gönder')}
                </h3>
 
@@ -246,7 +246,7 @@ export default function Contact({ data: serverData, lang = 'tr' }: { data?: any,
 function ContactInfoItem({ icon, title, detail, link }: { icon: any, title: string, detail: string, link?: string }) {
   const content = (
     <div className="flex items-start gap-4 p-4 rounded-xl hover:bg-white/80/50 transition-colors group">
-      <div className="w-12 h-12 flex items-center justify-center bg-gold-500/10 text-gold-500 rounded-lg border border-gold-500/20 group-hover:bg-gold-500 group-hover:text-noir-900 transition-all duration-500">
+      <div className="w-12 h-12 flex items-center justify-center bg-gold-500/10 metal-gold-ink rounded-lg border border-gold-500/20 group-hover:bg-gold-500 group-hover:text-noir-900 transition-all duration-500">
         {icon}
       </div>
       <div>

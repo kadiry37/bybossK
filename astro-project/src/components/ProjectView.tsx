@@ -90,7 +90,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
   return (
     <>
       <div className="container mx-auto px-6 py-12 animate-fade-in">
-         <a href={`/${lang}/#projects`} className="inline-flex items-center gap-2 text-gold-500 hover:text-noir-950 transition-colors mb-12 group">
+         <a href={`/${lang}/#projects`} className="inline-flex items-center gap-2 metal-gold-ink hover:text-noir-950 transition-colors mb-12 group">
            <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
            <span>{lang === 'en' ? 'Back to All Projects' : (lang === 'ar' ? 'العودة إلى كافة المشاريع' : 'Tüm Projelere Dön')}</span>
          </a>
@@ -170,7 +170,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
 
             {/* Info Box */}
             <div className="p-6 bg-white/80 border border-gold-500/15 rounded-2xl flex gap-4 items-start shadow-md">
-              <div className="p-3 bg-gold-500/10 rounded-xl text-gold-500 shrink-0 border border-gold-500/20">
+              <div className="p-3 bg-gold-500/10 rounded-xl metal-gold-ink shrink-0 border border-gold-500/20">
                 <ClipboardCheck size={22} />
               </div>
               <div>
@@ -192,7 +192,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
           <div className="lg:col-span-5">
             <div className="sticky top-32 space-y-8 bg-white/80 p-6 sm:p-8 border border-noir-950/10 rounded-2xl shadow-lg">
               <div>
-                <span className="inline-block px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-500 text-[10px] font-bold uppercase tracking-widest rounded-md mb-4">
+                <span className="inline-block px-3 py-1 bg-gold-500/10 border border-gold-500/30 metal-gold-ink text-[10px] font-bold uppercase tracking-widest rounded-md mb-4">
                   {project.category === 'architecture' ? (lang === 'en' ? 'Architectural Project' : (lang === 'ar' ? 'مشروع معماري' : 'Mimari Proje')) : (lang === 'en' ? 'Furniture & Decoration' : (lang === 'ar' ? 'أثاث وديكور' : 'Mobilya & Dekorasyon'))}
                 </span>
                 
@@ -204,7 +204,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
               {/* Location and Year Grid */}
               <div className="grid grid-cols-2 gap-4 pb-6 border-b border-noir-950/10/80">
                 <div className="p-4 bg-white/60 backdrop-blur-md border border-noir-950/10/85 rounded-xl flex items-center gap-3">
-                  <div className="text-gold-500 bg-gold-500/5 p-2.5 rounded-lg border border-gold-500/10">
+                  <div className="metal-gold-ink bg-gold-500/5 p-2.5 rounded-lg border border-gold-500/10">
                     <MapPin size={18} />
                   </div>
                   <div>
@@ -213,7 +213,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                   </div>
                 </div>
                 <div className="p-4 bg-white/60 backdrop-blur-md border border-noir-950/10/85 rounded-xl flex items-center gap-3">
-                  <div className="text-gold-500 bg-gold-500/5 p-2.5 rounded-lg border border-gold-500/10">
+                  <div className="metal-gold-ink bg-gold-500/5 p-2.5 rounded-lg border border-gold-500/10">
                     <Calendar size={18} />
                   </div>
                   <div>
@@ -249,7 +249,7 @@ export default function ProjectView({ project, lang = 'tr' }: { project?: any, l
                     href={`tel:${directPhone}`}
                     className="w-full py-3.5 px-6 bg-white/80 hover:bg-white/80 text-noir-950 font-bold border border-noir-950/10 hover:border-noir-950/15 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 active:scale-[0.98] text-sm shadow-lg"
                   >
-                    <Phone size={20} className="text-gold-500" />
+                    <Phone size={20} className="metal-gold-ink" />
                     <span>{lang === 'en' ? `Call Now: ${directPhone}` : (lang === 'ar' ? `اتصل الآن: ${directPhone}` : `Hemen Ara: ${directPhone}`)}</span>
                   </a>
                 </div>

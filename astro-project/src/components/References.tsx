@@ -51,7 +51,7 @@ export default function References({ data, lang = 'tr' }: ReferencesProps) {
 
       <div className="container mx-auto px-6 relative z-10 mb-16">
         <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 text-gold-500 text-[10px] font-bold tracking-[0.2em] uppercase mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 metal-gold-ink text-[10px] font-bold tracking-[0.2em] uppercase mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
             {text.badge}
           </div>
@@ -98,7 +98,7 @@ export default function References({ data, lang = 'tr' }: ReferencesProps) {
                 {/* Tooltip on Hover */}
                 <div className="absolute -bottom-14 left-1/2 -translate-x-1/2 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 pointer-events-none z-30">
                   <div className="bg-white/80 text-noir-950 text-xs py-2 px-4 rounded shadow-xl whitespace-nowrap border border-noir-950/10">
-                    <span className="font-bold text-gold-500 block mb-0.5">{ref.name}</span>
+                    <span className="font-bold metal-gold-ink block mb-0.5">{ref.name}</span>
                     {ref.description && <span className="text-noir-700">{ref.description}</span>}
                   </div>
                 </div>

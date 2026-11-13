@@ -582,7 +582,7 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
         </nav>
         {/* Mobile Mega Menu Footer Links */}
         <div className="mt-8 pt-6 border-t border-noir-950/10">
-          <div className="text-gold-500 text-[13px] font-bold uppercase tracking-widest mb-4 opacity-80">
+          <div className="metal-gold-ink text-[13px] font-bold uppercase tracking-widest mb-4">
             {data?.features?.mega_title || 'Yılmazer Kalite Garantisi'}
           </div>
           <div className="flex flex-col gap-3">

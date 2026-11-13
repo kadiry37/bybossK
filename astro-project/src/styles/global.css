@@ -64,7 +64,7 @@
     --accent-glow: rgba(201, 169, 98, 0.15);
     --txt: #111111;       /* Dark text for max contrast */
     --txt-2: #444444;     /* Medium gray for subtext */
-    --txt-3: #888888;     /* Muted text */
+    --txt-3: #5b5650;     /* Muted text */
     --brd: rgba(0, 0, 0, 0.1);
     --brd-a: rgba(195, 150, 60, 0.3);
     --fh: 'Space Grotesk', sans-serif;
@@ -223,7 +223,7 @@
    GRADIENT TEXT
    ============================================ */
 .gradient-text {
-  background: linear-gradient(135deg, #c9a962 0%, #f6e393 50%, #c9a962 100%);
+  background: linear-gradient(135deg, #654419 0%, #8b6024 47%, #5d4f39 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -885,4 +885,39 @@
 
 .rich-content-view tr:nth-child(even) {
   background: rgba(255, 255, 255, 0.01);
+}
+
+
+/* Logo-inspired metallic accents with separate colors for light and dark surfaces. */
+:root {
+  --metal-gold-ink: #78531f;
+  --metal-silver-ink: #42474f;
+  --metal-gold-highlight: #f4d487;
+  --metal-silver-highlight: #e6e8ed;
+}
+
+@layer utilities {
+  .metal-gold-ink {
+    color: var(--metal-gold-ink);
+  }
+}
+
+.hero-cube .hero-cube-caption {
+  flex: 0 0 auto;
+  padding: 0.9rem 1.15rem;
+  background: #18191e;
+  border-top: 2px solid #c3963c;
+}
+
+.hero-cube .hero-cube-title {
+  color: var(--metal-gold-highlight);
+  font-size: 0.875rem;
+  line-height: 1.25;
+}
+
+.hero-cube .hero-cube-subtitle {
+  color: var(--metal-silver-highlight);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.3;
 }

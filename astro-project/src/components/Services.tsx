@@ -77,7 +77,7 @@ export default function Services({ data, lang = 'tr', isHomePage = false }: { da
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20">
           <div>
-            <span className="inline-block px-4 py-2 border border-gold-500/30 text-gold-500 text-sm font-medium tracking-widest uppercase mb-6">
+            <span className="inline-block px-4 py-2 border border-gold-500/30 metal-gold-ink text-sm font-medium tracking-widest uppercase mb-6">
               {lang === 'en' ? 'Our Services' : (lang === 'ar' ? 'خدماتنا' : 'Hizmetlerimiz')}
             </span>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-noir-950 mb-6 leading-tight uppercase">
@@ -114,12 +114,12 @@ export default function Services({ data, lang = 'tr', isHomePage = false }: { da
                   {String((currentPage - 1) * itemsPerPage + index + 1).padStart(2, '0')}
                 </div>
                 <div className="w-14 h-14 bg-white/80 group-hover:bg-gold-500 flex items-center justify-center mb-6 transition-colors duration-300">
-                  <IconComponent className="text-gold-500 group-hover:text-noir-900 w-6 h-6 transition-colors duration-300" strokeWidth={1.5} />
+                  <IconComponent className="metal-gold-ink group-hover:text-noir-900 w-6 h-6 transition-colors duration-300" strokeWidth={1.5} />
                 </div>
-                <h3 className="font-serif text-xl font-bold text-noir-950 mb-3 group-hover:text-gold-500 transition-colors">{service.name}</h3>
+                <h3 className="font-serif text-xl font-bold text-noir-950 mb-3 group-hover:text-gold-700 transition-colors">{service.name}</h3>
                 <p className="text-noir-700 text-sm leading-relaxed mb-6">{service.shortDescription}</p>
                 <div className="mt-auto pt-4 relative z-10">
-                  <span className="inline-flex items-center gap-2 text-gold-500 text-sm font-medium group-hover:text-gold-400 transition-colors">
+                  <span className="inline-flex items-center gap-2 metal-gold-ink text-sm font-medium group-hover:text-gold-700 transition-colors">
                     {lang === 'en' ? 'More Info' : (lang === 'ar' ? 'مزيد من المعلومات' : 'Detaylı Bilgi')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </div>
@@ -131,7 +131,7 @@ export default function Services({ data, lang = 'tr', isHomePage = false }: { da
 
         {isHomePage && (
           <div className="text-center mt-16">
-            <a href={`/${lang}/hizmetler`} className="inline-flex items-center gap-2 px-10 py-4 border border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-noir-900 transition-all duration-300 font-bold uppercase tracking-widest rounded-xl shadow-lg">
+            <a href={`/${lang}/hizmetler`} className="inline-flex items-center gap-2 px-10 py-4 border border-gold-500 metal-gold-ink hover:bg-gold-500 hover:text-noir-900 transition-all duration-300 font-bold uppercase tracking-widest rounded-xl shadow-lg">
               {lang === 'en' ? 'View All Services' : (lang === 'ar' ? 'عرض جميع الخدمات' : 'Tüm Hizmetleri Görüntüle')} <ArrowRight className="w-4 h-4" />
             </a>
           </div>

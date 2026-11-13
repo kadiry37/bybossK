@@ -85,7 +85,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
   return (
     <>
       <div className="container mx-auto px-6 py-12 animate-fade-in">
-         <a href={`/${lang}/#services`} className="inline-flex items-center gap-2 text-gold-500 hover:text-noir-950 transition-colors mb-12 group">
+         <a href={`/${lang}/#services`} className="inline-flex items-center gap-2 metal-gold-ink hover:text-noir-950 transition-colors mb-12 group">
             <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
             <span>{lang === 'en' ? 'Back to All Services' : (lang === 'ar' ? 'العودة إلى كافة الخدمات' : 'Tüm Hizmetlere Dön')}</span>
          </a>
@@ -158,7 +158,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
                   { step: "04", title: lang === 'en' ? 'Assembly' : (lang === 'ar' ? 'تركيب' : 'Montaj'), desc: lang === 'en' ? 'Professional delivery and installation.' : (lang === 'ar' ? 'تسليم وتركيب احتraفي.' : 'Uzman ekiplerimizle yerinde sorunsuz montaj.') }
                 ].map((item, idx) => (
                   <div key={idx} className="relative p-6 bg-white/80 border border-noir-950/10 rounded-2xl group hover:border-gold-500/30 transition-all duration-300 shadow-md">
-                    <span className="text-4xl font-serif font-bold text-gold-500/25 group-hover:text-gold-500/35 transition-colors block mb-2">{item.step}</span>
+                    <span className="text-4xl font-serif font-bold text-gold-500/25 group-hover:text-gold-700/35 transition-colors block mb-2">{item.step}</span>
                     <h4 className="text-noir-950 font-serif text-lg font-semibold mb-2">{item.title}</h4>
                     <p className="text-noir-700 text-sm leading-relaxed">{item.desc}</p>
                   </div>
@@ -168,7 +168,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
 
             {/* Info Box */}
             <div className="p-6 bg-white/80 border border-gold-500/15 rounded-2xl flex gap-4 items-start shadow-md">
-              <div className="p-3 bg-gold-500/10 rounded-xl text-gold-500 shrink-0 border border-gold-500/20">
+              <div className="p-3 bg-gold-500/10 rounded-xl metal-gold-ink shrink-0 border border-gold-500/20">
                 <ClipboardCheck size={22} />
               </div>
               <div>
@@ -194,7 +194,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
                   {service[`name${suffix}`] || service.name}
                 </h1>
                 
-                <p className="text-gold-500 font-medium text-lg leading-relaxed">{service[`shortDescription${suffix}`] || service.shortDescription}</p>
+                <p className="metal-gold-ink font-medium text-lg leading-relaxed">{service[`shortDescription${suffix}`] || service.shortDescription}</p>
               </div>
 
               <div className="space-y-4 pt-2 border-t border-noir-950/10/80">
@@ -223,7 +223,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
                     href={`tel:${directPhone}`}
                     className="w-full py-3.5 px-6 bg-white/80 hover:bg-white/80 text-noir-950 font-bold border border-noir-950/10 hover:border-noir-950/15 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 active:scale-[0.98] text-sm shadow-lg"
                   >
-                    <Phone size={20} className="text-gold-500" />
+                    <Phone size={20} className="metal-gold-ink" />
                     <span>{lang === 'en' ? `Call Now: ${directPhone}` : (lang === 'ar' ? `اتصل الآن: ${directPhone}` : `Hemen Ara: ${directPhone}`)}</span>
                   </a>
                 </div>

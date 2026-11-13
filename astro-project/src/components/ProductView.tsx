@@ -100,14 +100,14 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
             )}
             <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/5 transition-all duration-500 flex items-center justify-center">
                 <div className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500 flex flex-col items-center gap-3">
-                   <div className="bg-white/80/80 backdrop-blur-md p-4 rounded-full border border-gold-500/30 text-gold-500">
+                   <div className="bg-white/80/80 backdrop-blur-md p-4 rounded-full border border-gold-500/30 metal-gold-ink">
                       <ZoomIn size={32} />
                    </div>
                    <span className="bg-gold-500 text-noir-900 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">Büyütmek İçin Tıkla</span>
                 </div>
             </div>
             {/* Visual corner hint */}
-            <div className="absolute bottom-6 right-6 w-12 h-12 rounded-2xl bg-white/80/60 backdrop-blur-md border border-noir-950/10 flex items-center justify-center text-noir-950/50 group-hover:scale-110 group-hover:text-gold-500 group-hover:border-gold-500/30 transition-all" aria-hidden="true">
+            <div className="absolute bottom-6 right-6 w-12 h-12 rounded-2xl bg-white/80/60 backdrop-blur-md border border-noir-950/10 flex items-center justify-center text-noir-950/50 group-hover:scale-110 group-hover:text-gold-700 group-hover:border-gold-500/30 transition-all" aria-hidden="true">
                 <ZoomIn size={24} />
             </div>
         </div>
@@ -148,7 +148,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
         <div className="flex flex-col">
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-6">
-               <span className="px-3 py-1 bg-gold-500/10 border border-gold-500/20 text-gold-500 text-[10px] font-bold uppercase tracking-[0.2em] rounded-lg">
+               <span className="px-3 py-1 bg-gold-500/10 border border-gold-500/20 metal-gold-ink text-[10px] font-bold uppercase tracking-[0.2em] rounded-lg">
                   {product.categoryName || (product.category || 'Deck Klips').replace(/-/g, ' ')}
                </span>
                {product.stock_status === 'in_stock' && (
@@ -172,11 +172,11 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
                   </div>
                 </>
               ) : (
-                <span className="text-gold-500">{lang === 'en' ? 'Get Price Quote' : (lang === 'ar' ? 'احصل على عرض سعر' : 'Fiyat Teklifi Alın')}</span>
+                <span className="metal-gold-ink">{lang === 'en' ? 'Get Price Quote' : (lang === 'ar' ? 'احصل على عرض سعر' : 'Fiyat Teklifi Alın')}</span>
               )}
               {product.priceQuantity && (
                 <div className="ml-2 bg-white/80 border border-noir-950/15 text-noir-700 px-3 py-1.5 rounded-lg text-xs font-sans font-semibold uppercase tracking-widest flex items-center gap-1.5">
-                   <Package size={14} className="text-gold-500" />
+                   <Package size={14} className="metal-gold-ink" />
                    {product.priceQuantity}
                 </div>
               )}
@@ -190,7 +190,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
 
           {product.seriesLabel && (
             <div className="mb-8 inline-flex items-center gap-2.5 px-5 py-2.5 bg-gradient-to-r from-noir-900 to-noir-800 border border-gold-500/30 rounded-xl shadow-[0_0_20px_rgba(201,169,98,0.05)] self-start">
-              <BadgeCheck className="text-gold-500" size={20} />
+              <BadgeCheck className="metal-gold-ink" size={20} />
               <span className="text-gold-100 font-bold tracking-widest uppercase text-sm">{product.seriesLabel}</span>
             </div>
           )}
@@ -227,7 +227,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
           {(product[`longDescription${suffix}`] || product.longDescription) && (
             <div className="prose  max-w-none mb-12">
               <h2 className="text-noir-950 font-bold mb-4 uppercase tracking-widest text-xs flex items-center gap-2">
-                <Package className="text-gold-500" size={16} aria-hidden="true" /> {productName} {lang === 'en' ? 'Product Detail' : (lang === 'ar' ? 'تفاصيل المنتج' : 'Ürün Detayı')}
+                <Package className="metal-gold-ink" size={16} aria-hidden="true" /> {productName} {lang === 'en' ? 'Product Detail' : (lang === 'ar' ? 'تفاصيل المنتج' : 'Ürün Detayı')}
               </h2>
               {(() => {
                 const rawDesc = product[`longDescription${suffix}`] || product.longDescription || '';
@@ -244,7 +244,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
           {product.showSpecifications !== false && allSpecs.length > 0 && (
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <Info className="text-gold-500" size={18} aria-hidden="true" />
+                <Info className="metal-gold-ink" size={18} aria-hidden="true" />
                 <h2 className="text-noir-950 font-bold uppercase tracking-widest text-xs">{productName} {lang === 'en' ? 'Technical Specifications' : (lang === 'ar' ? 'المواصفات الفنية' : 'Teknik Özellikleri')}</h2>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -265,7 +265,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
             {product.features && (
               <div className="bg-white/80/20 backdrop-blur-sm p-8 rounded-[2rem] border border-noir-950/10/30">
                 <div className="flex items-center gap-3 mb-6">
-                   <BadgeCheck className="text-gold-500" size={18} aria-hidden="true" />
+                   <BadgeCheck className="metal-gold-ink" size={18} aria-hidden="true" />
                    <h2 className="text-noir-950 font-bold uppercase tracking-widest text-xs">{lang === 'en' ? 'Features' : (lang === 'ar' ? 'المميزات' : 'Özellikler')}</h2>
                 </div>
                 <div 
@@ -279,7 +279,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
             {product.howtoJson && Array.isArray(product.howtoJson) && product.howtoJson.length > 0 && (
               <div className="mt-12 bg-white/80/30 backdrop-blur-sm p-8 rounded-[2rem] border border-noir-950/10/50">
                 <div className="flex items-center gap-3 mb-8">
-                   <Wrench className="text-gold-500" size={24} aria-hidden="true" />
+                   <Wrench className="metal-gold-ink" size={24} aria-hidden="true" />
                    <h2 className="text-noir-950 text-xl font-bold uppercase tracking-widest">{product.howtoTitle || `${productName} ${lang === 'en' ? 'Assembly Steps' : (lang === 'ar' ? 'خطوات التجميع' : 'Montaj Adımları')}`}</h2>
                 </div>
                 <div className="space-y-8">
@@ -294,7 +294,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
                         )}
                       </div>
                       <div className="pb-4">
-                        <h4 className="text-noir-950 font-bold text-lg mb-2 group-hover:text-gold-500 transition-colors">
+                        <h4 className="text-noir-950 font-bold text-lg mb-2 group-hover:text-gold-700 transition-colors">
                           {step.name || step.step || (lang === 'en' ? `Step ${idx + 1}` : (lang === 'ar' ? `خطوة ${idx + 1}` : `Adım ${idx + 1}`))}
                         </h4>
                         <p className="text-noir-700 text-sm leading-relaxed">
@@ -311,7 +311,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
             {product.faqJson && Array.isArray(product.faqJson) && product.faqJson.length > 0 && (
               <div className="mt-12">
                 <div className="flex items-center gap-3 mb-8">
-                   <HelpCircle className="text-gold-500" size={24} aria-hidden="true" />
+                   <HelpCircle className="metal-gold-ink" size={24} aria-hidden="true" />
                    <h2 className="text-noir-950 text-xl font-bold uppercase tracking-widest">{product.faqTitle || `${productName} ${lang === 'en' ? 'FAQ' : (lang === 'ar' ? 'أسئلة مكررة' : 'Sıkça Sorulan Sorular')}`}</h2>
                 </div>
                 <div className="space-y-4">
@@ -322,7 +322,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
                         onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
                       >
                         <span className="text-noir-950 font-semibold text-left">{faq.q || faq.question}</span>
-                        <div className={`w-8 h-8 rounded-full border border-noir-950/15 flex items-center justify-center text-gold-500 transition-transform ${openFaq === idx ? 'rotate-180' : ''}`}>
+                        <div className={`w-8 h-8 rounded-full border border-noir-950/15 flex items-center justify-center metal-gold-ink transition-transform ${openFaq === idx ? 'rotate-180' : ''}`}>
                           <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>

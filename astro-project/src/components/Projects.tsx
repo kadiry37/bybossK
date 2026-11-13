@@ -98,7 +98,7 @@ export default function Projects({ data, lang = 'tr', isHomePage = false }: { da
 
       <div className="container mx-auto px-6 relative z-10">
         <div ref={titleRef} className={`text-center mb-16 ${isTitleVisible ? 'project-title-visible' : ''}`}>
-          <span className="project-title-el inline-block px-4 py-2 border border-gold-500/30 text-gold-500 text-sm font-medium tracking-widest uppercase mb-6">
+          <span className="project-title-el inline-block px-4 py-2 border border-gold-500/30 metal-gold-ink text-sm font-medium tracking-widest uppercase mb-6">
             {lang === 'en' ? 'Portfolio' : (lang === 'ar' ? 'محفظة' : 'Portfölyo')}
           </span>
           <h2 className="project-title-el font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-noir-950 mb-6 uppercase">
@@ -144,11 +144,11 @@ export default function Projects({ data, lang = 'tr', isHomePage = false }: { da
 
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-gold-500 text-xs font-medium uppercase tracking-wider">{project.categoryName || project.category}</span>
+                    <span className="metal-gold-ink text-xs font-medium uppercase tracking-wider">{project.categoryName || project.category}</span>
                     <span className="text-noir-600">•</span>
                     <span className="text-noir-600 text-xs">{project.year}</span>
                   </div>
-                  <h3 className="font-serif text-xl font-bold text-noir-950 mb-2 group-hover:text-gold-500 transition-colors">
+                  <h3 className="font-serif text-xl font-bold text-noir-950 mb-2 group-hover:text-gold-700 transition-colors">
                     {project.name}
                   </h3>
                   <p className="text-noir-700 text-sm line-clamp-2 mb-4">{project.description}</p>
@@ -160,7 +160,7 @@ export default function Projects({ data, lang = 'tr', isHomePage = false }: { da
 
         {isHomePage && (
           <div className="text-center mt-16">
-            <a href={`/${lang}/projeler`} className="inline-flex items-center gap-2 px-10 py-4 border border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-noir-900 transition-all duration-300 font-bold uppercase tracking-widest rounded-xl shadow-lg">
+            <a href={`/${lang}/projeler`} className="inline-flex items-center gap-2 px-10 py-4 border border-gold-500 metal-gold-ink hover:bg-gold-500 hover:text-noir-900 transition-all duration-300 font-bold uppercase tracking-widest rounded-xl shadow-lg">
               {lang === 'en' ? 'View All Projects' : (lang === 'ar' ? 'عرض جميع المنتجات' : 'Tüm Projeleri Görüntüle')} <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>

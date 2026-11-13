@@ -72,7 +72,7 @@ export default function BlogList(props: any) {
                 <span>{post.author || 'By Boss Mimarlık Mobilya'}</span>
               </div>
               
-              <h3 className="text-noir-950 text-2xl font-serif font-bold mb-4 group-hover:text-gold-500 transition-colors line-clamp-2">
+              <h3 className="text-noir-950 text-2xl font-serif font-bold mb-4 group-hover:text-gold-700 transition-colors line-clamp-2">
                 {post.title}
               </h3>
               
@@ -80,7 +80,7 @@ export default function BlogList(props: any) {
                 {post.excerpt}
               </p>
               
-              <div className="flex items-center gap-2 text-gold-500 text-xs font-bold uppercase tracking-widest">
+              <div className="flex items-center gap-2 metal-gold-ink text-xs font-bold uppercase tracking-widest">
                 Yazıyı Oku (Güncel)
                 <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

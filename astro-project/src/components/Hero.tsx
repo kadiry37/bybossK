@@ -113,7 +113,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
 
             <div className="flex items-center gap-3 mb-8">
               <span className="h-px w-8 bg-gold-500/40 hidden lg:block"></span>
-              <span className="text-gold-500 text-[12px] font-bold tracking-[0.2em] uppercase bg-gold-500/10 px-4 py-1.5 rounded-full border border-gold-500/20">
+              <span className="metal-gold-ink text-[12px] font-bold tracking-[0.2em] uppercase bg-gold-500/10 px-4 py-1.5 rounded-full border border-gold-500/20">
                 {lang === 'en' ? 'Premium Design Solutions' : (lang === 'ar' ? 'تصاميم ممتازة' : 'Premium Tasarım Çözümleri')}
               </span>
             </div>
@@ -121,13 +121,9 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
             <h1
               className={`font-fh ${lang !== 'tr' ? 'text-4xl md:text-6xl xl:text-7xl' : 'text-4xl md:text-7xl xl:text-8xl'} font-bold leading-[0.95] mb-6 select-none tracking-tight uppercase`}
             >
-              <div className="text-gold-500" style={{ textShadow: '0 1px 12px rgba(201,169,98,0.25)' }}>{brandFirst}</div>
+              <div className="metal-gold-ink" style={{ textShadow: '0 1px 12px rgba(201,169,98,0.25)' }}>{brandFirst}</div>
               <div style={{
-                background: 'linear-gradient(135deg, #c9a962 0%, #f6e393 25%, #e8d48b 45%, #bab7b0 78%, #e9e7e3 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                filter: 'drop-shadow(0 2px 10px rgba(201,169,98,0.15)) drop-shadow(0 0 30px rgba(195,150,60,0.08))'
+                color: 'var(--metal-silver-ink)',
               }}>{brandSecond}</div>
             </h1>
 
@@ -184,9 +180,9 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
                       <img src={img0} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-100" />
                       <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-60" />
                     </div>
-                    <div className="p-5 bg-white/90/90 border-t border-noir-950/10">
-                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider">{brandFirst} {brandSecond}</div>
-                      <div className="text-noir-700 text-[10px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Premium Design Solutions' : (lang === 'ar' ? 'تصاميم ممتازة' : 'Premium Tasarım Çözümleri')}</div>
+                    <div className="hero-cube-caption">
+                      <div className="hero-cube-title font-bold font-fh uppercase tracking-wider">{brandFirst} {brandSecond}</div>
+                      <div className="hero-cube-subtitle mt-1 uppercase tracking-wider">{lang === 'en' ? 'Premium Design Solutions' : (lang === 'ar' ? 'تصاميم ممتازة' : 'Premium Tasarım Çözümleri')}</div>
                     </div>
                   </div>
                   <div className="cube-face cube-right absolute inset-0 border border-noir-950/10 bg-white/80 backdrop-blur-md flex flex-col overflow-hidden backdrop-blur-sm">
@@ -194,9 +190,9 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
                       <img src={img1} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-100" />
                       <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-60" />
                     </div>
-                    <div className="p-5 bg-white/90/90 border-t border-noir-950/10">
-                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider">{lang === 'en' ? 'Superior Quality' : (lang === 'ar' ? 'جودة فائقة' : 'Üstün Kalite')}</div>
-                      <div className="text-noir-700 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'TSE Certified' : (lang === 'ar' ? 'معتمد من TSE' : 'TSE Belgeli')}</div>
+                    <div className="hero-cube-caption">
+                      <div className="hero-cube-title font-bold font-fh uppercase tracking-wider">{lang === 'en' ? 'Superior Quality' : (lang === 'ar' ? 'جودة فائقة' : 'Üstün Kalite')}</div>
+                      <div className="hero-cube-subtitle mt-1 uppercase tracking-wider">{lang === 'en' ? 'TSE Certified' : (lang === 'ar' ? 'معتمد من TSE' : 'TSE Belgeli')}</div>
                     </div>
                   </div>
                   <div className="cube-face cube-back absolute inset-0 border border-noir-950/10 bg-white/80 backdrop-blur-md flex flex-col overflow-hidden backdrop-blur-sm">
@@ -214,9 +210,9 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
                       <img src={img3} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-100" />
                       <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-60" />
                     </div>
-                    <div className="p-5 bg-white/90/90 border-t border-noir-950/10">
-                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider">{lang === 'en' ? 'Fast Installation' : (lang === 'ar' ? 'تركيب سريع' : 'Hızlı Montaj')}</div>
-                      <div className="text-noir-700 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Professional Team' : (lang === 'ar' ? 'فريق محترف' : 'Profesyonel Ekip')}</div>
+                    <div className="hero-cube-caption">
+                      <div className="hero-cube-title font-bold font-fh uppercase tracking-wider">{lang === 'en' ? 'Fast Installation' : (lang === 'ar' ? 'تركيب سريع' : 'Hızlı Montaj')}</div>
+                      <div className="hero-cube-subtitle mt-1 uppercase tracking-wider">{lang === 'en' ? 'Professional Team' : (lang === 'ar' ? 'فريق محترف' : 'Profesyonel Ekip')}</div>
                     </div>
                   </div>
                   <div className="cube-face cube-top absolute inset-0 border border-noir-950/10 bg-white/80 backdrop-blur-md flex flex-col overflow-hidden backdrop-blur-sm">
@@ -224,9 +220,9 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
                       <img src={img4} alt={heroData.title} loading="lazy" width="440" height="440" className="w-full h-full object-cover opacity-100" />
                       <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-60" />
                     </div>
-                    <div className="p-5 bg-white/90/90 border-t border-noir-950/10">
-                      <div className="text-noir-950 font-bold text-[14px] font-fh uppercase tracking-wider">{lang === 'en' ? 'Global Reach' : (lang === 'ar' ? 'تغطية عالمية' : 'Global Erişim')}</div>
-                      <div className="text-noir-700 text-[11px] mt-1 uppercase tracking-widest">{lang === 'en' ? 'Export to 50+ Countries' : (lang === 'ar' ? 'تصدير لأكثر من 50 دولة' : '50+ Ülkeye İhracat')}</div>
+                    <div className="hero-cube-caption">
+                      <div className="hero-cube-title font-bold font-fh uppercase tracking-wider">{lang === 'en' ? 'Global Reach' : (lang === 'ar' ? 'تغطية عالمية' : 'Global Erişim')}</div>
+                      <div className="hero-cube-subtitle mt-1 uppercase tracking-wider">{lang === 'en' ? 'Export to 50+ Countries' : (lang === 'ar' ? 'تصدير لأكثر من 50 دولة' : '50+ Ülkeye İhracat')}</div>
                     </div>
                   </div>
                   <div className="cube-face cube-bottom absolute inset-0 border border-noir-950/10 bg-white/80 backdrop-blur-md flex flex-col overflow-hidden backdrop-blur-sm">

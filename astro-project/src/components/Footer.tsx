@@ -203,8 +203,8 @@ export default function Footer({ navData: initialNavData, data: initialData, lan
                   
                   return (
                     <li key={lIdx}>
-                      <a href={finalLink} className="text-noir-600 hover:text-gold-500 text-sm transition-colors flex items-center group">
-                        <ArrowRight size={12} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all mr-2 text-gold-500" />
+                      <a href={finalLink} className="text-noir-600 hover:text-gold-700 text-sm transition-colors flex items-center group">
+                        <ArrowRight size={12} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all mr-2 metal-gold-ink" />
                         {rawLabel}
                       </a>
                     </li>
@@ -223,31 +223,31 @@ export default function Footer({ navData: initialNavData, data: initialData, lan
             </h4>
             <div className="space-y-6">
               <div className="flex items-start gap-4 group">
-                <div className="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-500 shrink-0 group-hover:bg-gold-500 group-hover:text-noir-950 transition-all">
+                <div className="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center metal-gold-ink shrink-0 group-hover:bg-gold-500 group-hover:text-noir-950 transition-all">
                   <Phone size={18} />
                 </div>
                 <div>
                   <span className="block text-[10px] uppercase text-noir-600 font-bold tracking-tighter mb-1">{lang === 'en' ? 'Phone' : (lang === 'ar' ? 'هاتف' : 'Telefon')}</span>
-                  <a href={`tel:${contact.phone}`} className="text-noir-950 hover:text-gold-500 transition-colors font-medium" dir="ltr">
+                  <a href={`tel:${contact.phone}`} className="text-noir-950 hover:text-gold-700 transition-colors font-medium" dir="ltr">
                     {contact.phone}
                   </a>
                 </div>
               </div>
 
               <div className="flex items-start gap-4 group">
-                <div className="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-500 shrink-0 group-hover:bg-gold-500 group-hover:text-noir-950 transition-all">
+                <div className="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center metal-gold-ink shrink-0 group-hover:bg-gold-500 group-hover:text-noir-950 transition-all">
                   <Mail size={18} />
                 </div>
                 <div>
                   <span className="block text-[10px] uppercase text-noir-600 font-bold tracking-tighter mb-1">{lang === 'en' ? 'Email' : (lang === 'ar' ? 'بريد' : 'E-Posta')}</span>
-                  <a href={`mailto:${contact.email}`} className="text-noir-950 hover:text-gold-500 transition-colors font-medium" dir="ltr">
+                  <a href={`mailto:${contact.email}`} className="text-noir-950 hover:text-gold-700 transition-colors font-medium" dir="ltr">
                     {contact.email}
                   </a>
                 </div>
               </div>
 
               <div className="flex items-start gap-4 group">
-                <div className="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-500 shrink-0 group-hover:bg-gold-500 group-hover:text-noir-950 transition-all">
+                <div className="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center metal-gold-ink shrink-0 group-hover:bg-gold-500 group-hover:text-noir-950 transition-all">
                   <MapPin size={18} />
                 </div>
                 <div>

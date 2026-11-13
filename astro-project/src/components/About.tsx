@@ -74,7 +74,7 @@ export default function About({ data: serverData, lang = 'tr' }: { data?: any, l
               >
                 <img src={aboutData.images[0]} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt={lightboxImages[0]?.alt || "Hakkımızda görseli"} title={lightboxImages[0]?.title} loading="lazy" />
                 <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/10 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <div className="bg-white/80/80 backdrop-blur-md p-3 rounded-full border border-gold-500/30 text-gold-500">
+                  <div className="bg-white/80/80 backdrop-blur-md p-3 rounded-full border border-gold-500/30 metal-gold-ink">
                     <ZoomIn size={24} />
                   </div>
                 </div>
@@ -85,7 +85,7 @@ export default function About({ data: serverData, lang = 'tr' }: { data?: any, l
               >
                 <img src={aboutData.images[1]} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt={lightboxImages[1]?.alt || "Deck sistemleri görseli"} title={lightboxImages[1]?.title} loading="lazy" />
                 <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/10 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <div className="bg-white/80/80 backdrop-blur-md p-3 rounded-full border border-gold-500/30 text-gold-500">
+                  <div className="bg-white/80/80 backdrop-blur-md p-3 rounded-full border border-gold-500/30 metal-gold-ink">
                     <ZoomIn size={24} />
                   </div>
                 </div>
@@ -98,7 +98,7 @@ export default function About({ data: serverData, lang = 'tr' }: { data?: any, l
               >
                 <img src={aboutData.images[2]} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt={lightboxImages[2]?.alt || "Kurumsal hizmet görseli"} title={lightboxImages[2]?.title} loading="lazy" />
                 <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/10 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <div className="bg-white/80/80 backdrop-blur-md p-3 rounded-full border border-gold-500/30 text-gold-500">
+                  <div className="bg-white/80/80 backdrop-blur-md p-3 rounded-full border border-gold-500/30 metal-gold-ink">
                     <ZoomIn size={24} />
                   </div>
                 </div>
@@ -109,7 +109,7 @@ export default function About({ data: serverData, lang = 'tr' }: { data?: any, l
               >
                 <img src={aboutData.images[3]} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" alt={lightboxImages[3]?.alt || "Montaj kalite görseli"} title={lightboxImages[3]?.title} loading="lazy" />
                 <div className="absolute inset-0 bg-gold-500/0 group-hover:bg-gold-500/10 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
-                  <div className="bg-white/80/80 backdrop-blur-md p-3 rounded-full border border-gold-500/30 text-gold-500">
+                  <div className="bg-white/80/80 backdrop-blur-md p-3 rounded-full border border-gold-500/30 metal-gold-ink">
                     <ZoomIn size={24} />
                   </div>
                 </div>
@@ -119,7 +119,7 @@ export default function About({ data: serverData, lang = 'tr' }: { data?: any, l
 
           <div className="z-20">
             <div className="mb-10">
-              <span className="inline-block px-4 py-1.5 border border-gold-500/20 text-gold-500 text-[10px] font-black tracking-[0.3em] uppercase mb-6 bg-gold-500/5">
+              <span className="inline-block px-4 py-1.5 border border-gold-500/20 metal-gold-ink text-[10px] font-black tracking-[0.3em] uppercase mb-6 bg-gold-500/5">
                 {lang === 'en' ? 'Quality and Assurance' : (lang === 'ar' ? 'الجودة والضمان' : 'Kalite ve Güvence')}
               </span>
 
@@ -144,10 +144,10 @@ export default function About({ data: serverData, lang = 'tr' }: { data?: any, l
               className="group relative z-[999] inline-flex items-center gap-4 px-10 py-4 bg-transparent border border-gold-500/30 overflow-hidden transition-all hover:border-gold-500 cursor-pointer pointer-events-auto"
             >
               <div className="absolute inset-0 bg-gold-500 translate-x-full group-hover:translate-x-0 transition-transform duration-500 -z-10"></div>
-              <span className="text-gold-500 group-hover:text-noir-950 font-bold uppercase tracking-widest text-xs transition-colors duration-500">
+              <span className="metal-gold-ink group-hover:text-noir-950 font-bold uppercase tracking-widest text-xs transition-colors duration-500">
                 {lang === 'en' ? 'More About Us' : (lang === 'ar' ? 'المزيد عنا' : 'Hakkımızda Daha Fazlası')}
               </span>
-              <ArrowRight size={18} className="text-gold-500 group-hover:text-noir-950 transition-all group-hover:translate-x-1" />
+              <ArrowRight size={18} className="metal-gold-ink group-hover:text-noir-950 transition-all group-hover:translate-x-1" />
             </a>
           </div>
         </div>
