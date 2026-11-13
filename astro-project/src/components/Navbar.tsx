@@ -379,7 +379,7 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
                   <div className="logo-ph">BY BOSS <span>MİMARLIK</span></div>
                 )}
               </div>
-              <span className="absolute top-1/2 -right-10 flex -translate-y-1/2 -skew-x-[22deg] items-center gap-1 whitespace-nowrap rounded-sm border border-[#dbaf5e] bg-[#191510] px-1.5 py-0.5 text-[9px] font-bold leading-tight tracking-wide shadow-[0_0_8px_#e8b95770] min-[1101px]:-right-7 min-[1101px]:-skew-x-[18deg]">
+              <span className="absolute top-1/2 left-full flex -translate-y-1/2 -skew-x-[22deg] items-center gap-1 whitespace-nowrap rounded-sm border border-[#dbaf5e] bg-[#191510] px-1.5 py-0.5 text-[9px] font-bold leading-tight tracking-wide shadow-[0_0_8px_#e8b95770] min-[1101px]:-ml-2 min-[1101px]:-skew-x-[18deg]">
                 <span className="bg-gradient-to-b from-white via-[#f6fbff] to-[#adbbcf] bg-clip-text text-transparent">
                   {currentLang === 'en' ? 'EST.' : currentLang === 'ar' ? 'تأسست عام' : 'KURULUŞ'}
                 </span>
