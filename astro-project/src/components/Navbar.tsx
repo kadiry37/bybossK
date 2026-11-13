@@ -1,5 +1,6 @@
 'use client';
 
+import { getCatalogGroups } from './catalogGroups';
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown, ChevronRight, Phone, Mail, MapPin, Globe, ArrowUpRight } from 'lucide-react';
 import QuoteModal from './QuoteModal';
@@ -226,15 +227,11 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
       }));
     }
     
-    if (isProducts && productsData && productsData.length > 0) {
-      return productsData.map(p => ({
-        name: p.name,
-        label: p.name,
-        href: `${lp}/urun/${p.slug}/`,
-        url: `${lp}/urun/${p.slug}/`,
-        description: p.shortDescription || '',
-        image: ensureFullUrl(p.mainImage || '')
-      }));
+    if (isProducts) {
+      return getCatalogGroups(currentLang).map(({ slug, label }) => {
+        const href = `${lp}/urunler/?kategori=${slug}`;
+        return { name: label, label, href, url: href };
+      });
     }
 
     if (isProjects && projectsData && projectsData.length > 0) {
