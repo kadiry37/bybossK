@@ -363,15 +363,15 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
         {/* Navigation */}
         <nav className="nv" aria-label="Ana navigasyon">
           <div className="cx">
-            <a href={currentLang === 'tr' ? '/' : `/${currentLang}/`} className="logo inline-flex items-center" aria-label="By Boss Mimarlık Mobilya">
-              <div className="logo-w">
+            <a href={currentLang === 'tr' ? '/' : `/${currentLang}/`} className="logo relative" aria-label="By Boss Mimarlık Mobilya">
+              <div className="logo-w !h-[105%] !overflow-visible">
                 {showLogoImage && (
                   <img
                     src={logoUrl}
                     alt={siteName}
                     width={320}
                     height={120}
-                    className={`site-brand-logo w-auto h-full object-contain object-left transition-opacity duration-300 ${logoFailed ? 'opacity-0' : 'opacity-100'}`}
+                    className={`site-brand-logo w-auto h-full !max-w-[96%] object-contain object-left transition-opacity duration-300 ${logoFailed ? 'opacity-0' : 'opacity-100'}`}
                     onError={() => setLogoFailed(true)}
                   />
                 )}
@@ -379,11 +379,11 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
                   <div className="logo-ph">BY BOSS <span>MİMARLIK</span></div>
                 )}
               </div>
-              <span className="ms-2 inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-sm border border-[#816335] bg-[#171411] px-1.5 py-0.5 text-[9px] font-semibold leading-tight tracking-wide">
-                <span className="bg-gradient-to-b from-white via-[#dce0e6] to-[#a8b1be] bg-clip-text text-transparent">
-                  {currentLang === 'en' ? 'Est.' : currentLang === 'ar' ? 'تأسست عام' : 'Kuruluş'}
+              <span className="absolute top-1/2 -right-10 flex -translate-y-1/2 -skew-x-[22deg] items-center gap-1 whitespace-nowrap rounded-sm border border-[#dbaf5e] bg-[#191510] px-1.5 py-0.5 text-[9px] font-bold leading-tight tracking-wide shadow-[0_0_8px_#e8b95770] min-[1101px]:-right-7 min-[1101px]:-skew-x-[18deg]">
+                <span className="bg-gradient-to-b from-white via-[#f6fbff] to-[#adbbcf] bg-clip-text text-transparent">
+                  {currentLang === 'en' ? 'EST.' : currentLang === 'ar' ? 'تأسست عام' : 'KURULUŞ'}
                 </span>
-                <span className="bg-gradient-to-b from-[#fff4ce] via-[#f8ce68] to-[#d8a343] bg-clip-text text-transparent">1990</span>
+                <span className="bg-gradient-to-b from-[#fff8df] via-[#ffe08b] to-[#f5ad29] bg-clip-text text-transparent">1990</span>
               </span>
             </a>
 
