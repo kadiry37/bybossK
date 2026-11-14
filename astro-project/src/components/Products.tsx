@@ -68,7 +68,7 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   
   // If home page, only show the first 6 products (no pagination)
-  const displayItems = isHomePage ? filteredProducts.slice(0, 6) : filteredProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const displayItems = isHomePage ? filteredProducts.slice(0, 9) : filteredProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
     <section id="products" className="py-24 lg:py-32 bg-white/80 relative overflow-hidden min-h-[1200px]" suppressHydrationWarning>

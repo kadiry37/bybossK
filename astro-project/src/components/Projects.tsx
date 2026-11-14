@@ -74,7 +74,7 @@ export default function Projects({ data, lang = 'tr', isHomePage = false }: { da
   }, [activeCategory]);
 
   const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
-  const displayItems = isHomePage ? filteredProjects.slice(0, 6) : filteredProjects.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const displayItems = isHomePage ? filteredProjects.slice(0, 9) : filteredProjects.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
     <section id="projects" ref={sectionRef} className="py-24 lg:py-32 bg-white/80 relative overflow-hidden min-h-[800px]">

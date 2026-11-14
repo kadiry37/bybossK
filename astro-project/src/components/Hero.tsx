@@ -83,7 +83,7 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
 
   return (
     <>
-    <section className="hero relative min-h-[calc(100vh-102px)] flex items-start pt-[8vh] overflow-hidden bg-transparent">
+    <section className="hero relative py-8 lg:py-12 overflow-hidden bg-transparent">
       <div className="h-bg absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
         <div
           className="h-grid absolute inset-0 opacity-40"
@@ -107,11 +107,11 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+        <div className="grid lg:grid-cols-2 gap-5 lg:gap-8 items-center">
 
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1 max-w-2xl mx-auto lg:mx-0">
 
-            <div className="flex items-center gap-3 mb-8">
+            <div className="flex items-center gap-3 mb-5">
               <span className="h-px w-8 bg-gold-500/40 hidden lg:block"></span>
               <span className="metal-gold-ink text-[12px] font-bold tracking-[0.2em] uppercase bg-gold-500/10 px-4 py-1.5 rounded-full border border-gold-500/20">
                 {lang === 'en' ? 'Premium Design Solutions' : (lang === 'ar' ? 'تصاميم ممتازة' : 'Premium Tasarım Çözümleri')}
@@ -119,15 +119,15 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
             </div>
 
             <h1
-              className={`font-fh ${lang !== 'tr' ? 'text-4xl md:text-6xl xl:text-7xl' : 'text-4xl md:text-7xl xl:text-8xl'} font-bold leading-[0.95] mb-6 select-none tracking-tight uppercase`}
+              className={`font-fh ${lang !== 'tr' ? 'text-3xl md:text-5xl xl:text-6xl' : 'text-3xl md:text-6xl xl:text-7xl'} font-bold leading-[1.02] mb-4 select-none tracking-tight uppercase`}
             >
-              <div className="metal-gold-ink" style={{ textShadow: '0 1px 12px rgba(201,169,98,0.25)' }}>{brandFirst}</div>
+              <div className="metal-gold-ink">{brandFirst}</div>
               <div style={{
                 color: 'var(--metal-silver-ink)',
               }}>{brandSecond}</div>
             </h1>
 
-            <p className="text-noir-700 text-lg md:text-xl font-fh font-light mb-10 max-w-lg">
+            <p className="text-noir-700 text-lg md:text-xl font-fh font-light mb-7 max-w-lg">
               {heroData.subtitle}
             </p>
 
@@ -156,13 +156,13 @@ export default function Hero({ data, settingsData, lang = 'tr' }: Props = {}) {
               )}
             </div>
 
-            <div className="flex flex-wrap items-center gap-8 md:gap-16 mt-20 pt-10 border-t border-noir-950/10 w-full justify-center lg:justify-start">
+            <div className="flex flex-wrap items-center gap-x-7 gap-y-4 md:gap-x-10 mt-9 pt-5 border-t border-noir-950/10 w-full justify-center lg:justify-start">
               {heroData.stats.map((stat: any, idx: number) => (
                 <div key={idx} className="relative group cursor-default">
-                  <div className="text-4xl md:text-5xl font-fh font-bold text-noir-950 group-hover:text-gold-500 transition-all duration-500">
+                  <div className="text-2xl md:text-3xl font-fh font-bold leading-none tabular-nums text-noir-950 group-hover:text-[var(--metal-gold-ink)] transition-colors">
                      {stat.value}
                   </div>
-                  <div className="text-noir-600 text-[10px] uppercase tracking-[0.3em] font-bold mt-2 group-hover:text-noir-700 transition-colors">
+                  <div className="text-noir-700 text-xs leading-snug uppercase tracking-wider font-bold mt-1.5">
                      {stat.label}
                   </div>
                   <div className="absolute -bottom-2 left-0 w-0 h-0.5 bg-gold-500 group-hover:w-full transition-all duration-700" />
