@@ -4,6 +4,7 @@ import { getCatalogGroups } from './catalogGroups';
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X, ChevronDown, ChevronRight, Phone, Mail, MapPin, Globe, ArrowUpRight } from 'lucide-react';
 import QuoteModal from './QuoteModal';
+import SiteSearch from './SiteSearch';
 
 type NavLink = {
   name: string;
@@ -519,6 +520,7 @@ export default function Navbar({ data, navData: initialNavData, lang = 'tr', lan
              ))}
           </ul>
 
+          <SiteSearch lang={currentLang} products={productsData} projects={projectsData} services={servicesData} />
           <a href="#" className="cta-n" onClick={(e) => { e.preventDefault(); setIsQuoteModalOpen(true); }} aria-label={currentLang === 'en' ? 'Get Quote Request' : (currentLang === 'ar' ? 'طلب عرض سعر' : 'Teklif Alın')}>
             {currentLang === 'en' ? 'Get Quote' : (currentLang === 'ar' ? 'احصل على عرض' : 'Teklif Al')}
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
