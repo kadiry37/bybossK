@@ -171,14 +171,14 @@ if (!file_exists($placeholderPath)) {
 $html = file_get_contents($placeholderPath);
 
 // 3. Meta etiketlerini değiştir (Regex ile)
-$siteName = ' - DECK Klips';
+$siteName = ' | By Boss Mimarlık';
 $title = htmlspecialchars(trim($data['title']) . $siteName);
 $description = htmlspecialchars(trim(strip_tags($data['description'])));
-$image = $data['image'] ? (strpos($data['image'], 'http') === 0 ? $data['image'] : 'https://deckklips.com.tr' . $data['image']) : '';
+$image = $data['image'] ? (strpos($data['image'], 'http') === 0 ? $data['image'] : 'https://bybossmimarlik.com' . $data['image']) : '';
 
 // Lang-aware canonical URL
-$langPrefix = in_array($lang ?? 'tr', $validLangs) ? ($lang ?? 'tr') : 'tr';
-$schemaUrl = '/' . $langPrefix . '/' . $type . '/' . $slug . '/';
+$langPrefix = $lang === 'tr' ? '' : '/' . $lang;
+$schemaUrl = 'https://bybossmimarlik.com' . $langPrefix . $redirectMap[$type] . '/' . rawurlencode($slug) . '/';
 
 // Title
 $html = preg_replace('/<title>.*?<\/title>/is', "<title>{$title}</title>", $html);
@@ -205,7 +205,7 @@ if ($type === 'product' && !empty($data['gallery_images'])) {
     $videoUrl = null;
     foreach ($gallery as $item) {
         if (preg_match('/\.(mp4|webm)$/i', trim($item))) {
-            $videoUrl = strpos(trim($item), 'http') === 0 ? trim($item) : 'https://deckklips.com.tr' . trim($item);
+            $videoUrl = strpos(trim($item), 'http') === 0 ? trim($item) : 'https://bybossmimarlik.com' . trim($item);
             break;
         }
     }
@@ -216,7 +216,7 @@ if ($type === 'product' && !empty($data['gallery_images'])) {
             "@type" => "VideoObject",
             "name" => trim($data['title']),
             "description" => trim(strip_tags($data['description'])) ?: trim($data['title']),
-            "thumbnailUrl" => $image ?: 'https://deckklips.com.tr/assets/default-thumbnail.jpg',
+            "thumbnailUrl" => $image ?: 'https://bybossmimarlik.com/assets/default-thumbnail.jpg',
             "uploadDate" => date('c'),
             "contentUrl" => $videoUrl
         ];

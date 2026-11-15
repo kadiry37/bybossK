@@ -58,6 +58,10 @@ const { lang, slug } = Astro.params;
 const langPrefix = lang === 'tr' ? '' : `/${lang}`;
 
 const { product } = Astro.props;
+const productCode = typeof product?.seriesLabel === 'string' ? product.seriesLabel.trim() : '';
+const structuredSku = /^BYB-[A-Z0-9-]+$/i.test(productCode) ? productCode : undefined;
+const priceText = String(product?.price ?? '').trim();
+const hasPublishedPrice = /^\d+(?:\.\d{1,2})?$/.test(priceText) && Number(priceText) > 0;
 const suffix = lang === 'tr' ? '' : `_${lang}`;
 
 let settingsData = null;
@@ -153,32 +157,21 @@ const hreflangs = product?.langMappings ? Object.entries(product.langMappings).m
           "url": "https://bybossmimarlik.com"
         },
         "category": product.categoryName || (product.category && categoryMap[product.category] ? categoryMap[product.category][lang] : (product.category || '').split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')),
-        "sku": `${
-          (settingsData?.general?.siteName || 'By Boss Mimarlık Mobilya')
-            .split(' ')
-            .map(word => word.charAt(0).toUpperCase())
-            .join('')
-            .substring(0, 3)
-        }-${
-          product.category 
-            ? product.category.split('-').map(word => word.charAt(0).toUpperCase()).join('').substring(0, 3)
-            : 'GEN'
-        }-${product.id}`,
-        "offers": {
-          "@type": "Offer",
-          "url": `https://bybossmimarlik.com${langPrefix}/urun/${product.slug}/`,
-          "priceCurrency": product.currency || "TRY",
-          "price": product.price ? String(product.price).replace(/[^0-9.]/g, '') : "0",
-          "availability": product.stock_status === 'in_stock' 
-            ? "https://schema.org/InStock" 
-            : product.stock_status === 'pre_order' 
-              ? "https://schema.org/PreOrder" 
-              : "https://schema.org/OutOfStock",
-          "seller": {
-            "@type": "Organization",
-            "name": "By Boss Mimarlık Mobilya"
-          }
-        }
+        "sku": structuredSku,
+        "offers": hasPublishedPrice
+          ? {
+              "@type": "Offer",
+              "url": `https://bybossmimarlik.com${langPrefix}/urun/${product.slug}/`,
+              "priceCurrency": product.currency || "TRY",
+              "price": priceText,
+              "availability": product.stock_status === 'in_stock'
+                ? "https://schema.org/InStock"
+                : product.stock_status === 'pre_order'
+                  ? "https://schema.org/PreOrder"
+                  : "https://schema.org/OutOfStock",
+              "seller": { "@type": "Organization", "name": "By Boss Mimarlık Mobilya" }
+            }
+          : undefined
       })} />
     )}
     <script type="application/ld+json" set:html={JSON.stringify({
