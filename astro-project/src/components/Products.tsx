@@ -78,7 +78,13 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
             {lang === 'en' ? 'Our Products' : (lang === 'ar' ? 'منتجاتنا' : 'Ürünlerimiz')}
           </span>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-noir-950 mb-6 uppercase">
-            {settingsData?.general?.productsPageTitle ? (
+            {isHomePage ? (
+              lang === 'ar' ? (
+                <><span className="gradient-text">منتجاتنا</span> المميزة</>
+              ) : (
+                <>{lang === 'en' ? 'Featured' : 'Öne Çıkan'} <span className="gradient-text">{lang === 'en' ? 'Products' : 'Ürünlerimiz'}</span></>
+              )
+            ) : settingsData?.general?.productsPageTitle ? (
               settingsData.general.productsPageTitle
             ) : (
               <><span>MOBİLYA</span><span className="gradient-text ml-4">{lang === 'en' ? 'Models' : (lang === 'ar' ? 'عارضات ازياء' : 'Modelleri')}</span></>
