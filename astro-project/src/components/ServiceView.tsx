@@ -158,7 +158,7 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
                   { step: "04", title: lang === 'en' ? 'Assembly' : (lang === 'ar' ? 'تركيب' : 'Montaj'), desc: lang === 'en' ? 'Professional delivery and installation.' : (lang === 'ar' ? 'تسليم وتركيب احتraفي.' : 'Uzman ekiplerimizle yerinde sorunsuz montaj.') }
                 ].map((item, idx) => (
                   <div key={idx} className="relative p-6 bg-white/80 border border-noir-950/10 rounded-2xl group hover:border-gold-500/30 transition-all duration-300 shadow-md">
-                    <span className="text-4xl font-serif font-bold text-gold-500/25 group-hover:text-gold-700/35 transition-colors block mb-2">{item.step}</span>
+                    <span className="text-4xl font-serif font-bold text-gold-700 transition-colors block mb-2">{item.step}</span>
                     <h4 className="text-noir-950 font-serif text-lg font-semibold mb-2">{item.title}</h4>
                     <p className="text-noir-700 text-sm leading-relaxed">{item.desc}</p>
                   </div>
@@ -255,4 +255,3 @@ export default function ServiceView({ service, lang = 'tr' }: { service?: any, l
     </>
   );
 }
-

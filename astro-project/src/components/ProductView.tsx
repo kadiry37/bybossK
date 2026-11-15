@@ -190,7 +190,7 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
 
           {product.seriesLabel && (
             <div className="mb-8 inline-flex items-center gap-2.5 px-5 py-2.5 bg-gradient-to-r from-noir-900 to-noir-800 border border-gold-500/30 rounded-xl shadow-[0_0_20px_rgba(201,169,98,0.05)] self-start">
-              <BadgeCheck className="metal-gold-ink" size={20} />
+              <BadgeCheck className="text-gold-300" size={20} />
               <span className="text-gold-100 font-bold tracking-widest uppercase text-sm">{product.seriesLabel}</span>
             </div>
           )}
@@ -412,4 +412,3 @@ export default function ProductView({ product, lang = 'tr' }: { product?: any, l
     </div>
   );
 }
-

@@ -182,10 +182,10 @@ export default function Products({ data, lang = 'tr', isHomePage = false, settin
                           </div>
                         </>
                       ) : (
-                        <span className="text-gold-500/50 text-[11px] uppercase tracking-wider">{lang === 'en' ? 'Get Price' : (lang === 'ar' ? 'احصل على عرض سعر' : 'Fiyat Bilgisi Alın')}</span>
+                        <span className="text-gold-700 text-xs font-semibold uppercase tracking-wider">{lang === 'en' ? 'Get Price' : (lang === 'ar' ? 'احصل على عرض سعر' : 'Fiyat Bilgisi Alın')}</span>
                       )}
                       {product.priceQuantity && (
-                        <span className="text-[10px] text-gold-500/70 uppercase tracking-widest font-semibold mt-0.5">{product.priceQuantity}</span>
+                        <span className="text-xs text-gold-700 uppercase tracking-widest font-semibold mt-0.5">{product.priceQuantity}</span>
                       )}
                     </span>
                     <div 
