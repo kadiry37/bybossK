@@ -72,6 +72,7 @@ const hreflangs = langMappings ? Object.entries(langMappings).map(([l, href]) =>
 
 const seoTitle = project ? (project[`seo_title${suffix}`] || project.seo_title || project[`name${suffix}`] || project.name) : (lang === 'en' ? 'Project Detail' : (lang === 'ar' ? 'تفاصيل المشروع' : 'Proje Detayı'));
 const seoDesc = project ? (project[`seo_description${suffix}`] || project.seo_description || project[`description${suffix}`] || project.description || '').substring(0, 160) : '';
+const seoKeywords = (project?.[`seo_keywords${suffix}`] || project?.seo_keywords || '').trim();
 const projectImage = project?.mainImage ? (project.mainImage.startsWith('http') ? project.mainImage : `https://bybossmimarlik.com${project.mainImage}`) : '';
 
 ---
@@ -79,6 +80,7 @@ const projectImage = project?.mainImage ? (project.mainImage.startsWith('http') 
 <Layout 
   title={seoTitle} 
   description={seoDesc}
+  keywords={seoKeywords}
   image={projectImage}
   footerScripts={settingsData?.footer?.scripts || ''}
   logo={settingsData?.general?.logo || ''}
