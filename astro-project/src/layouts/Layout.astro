@@ -163,7 +163,7 @@ const websiteSchema = {
     <title>{fullTitle}</title>
     <meta name="title" content={fullTitle} />
     <meta name="description" content={description} />
-    <meta name="keywords" content={keywords} />
+    {keywords && <meta name="keywords" content={keywords} />}
     {googleSearchConsole && <meta name="google-site-verification" content={googleSearchConsole} />}
     {yandexVerification && <meta name="yandex-verification" content={yandexVerification} />}
     {bingVerification && <meta name="msvalidate.01" content={bingVerification} />}
