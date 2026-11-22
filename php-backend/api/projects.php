@@ -57,6 +57,9 @@ try {
                     if (!empty($trans['name'])) $project['name'] = $trans['name'];
                     if (!empty($trans['slug'])) $project['slug'] = $trans['slug'];
                     if (!empty($trans['description'])) $project['description'] = $trans['description'];
+                    foreach (['seo_title', 'seo_description', 'seo_keywords'] as $field) {
+                        if (trim($trans[$field] ?? '') !== '') $project[$field] = $trans[$field];
+                    }
                 }
             } catch (PDOException $te) {
                 // Ignore missing translation table
@@ -128,6 +131,9 @@ try {
                     if (!empty($t['name'])) $p['name'] = $t['name'];
                     if (!empty($t['slug'])) $p['slug'] = $t['slug'];
                     if (!empty($t['description'])) $p['description'] = $t['description'];
+                    foreach (['seo_title', 'seo_description', 'seo_keywords'] as $field) {
+                        if (trim($t[$field] ?? '') !== '') $p[$field] = $t[$field];
+                    }
                 }
             }
         } catch (PDOException $te) {
