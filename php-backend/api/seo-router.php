@@ -69,7 +69,7 @@ $placeholderPath = '';
 try {
     if ($type === 'product') {
         $stmt = $db->prepare("
-            SELECT p.name as title, p.short_description as description, p.main_image as image, p.category as keywords, p.gallery_images,
+            SELECT p.name as title, p.short_description as description, p.main_image as image, p.seo_keywords as keywords, p.gallery_images, p.seo_title as base_seo_title, p.seo_description as base_seo_description,
                    pt.name as trans_title, pt.short_description as trans_description, pt.seo_title, pt.seo_description, pt.seo_keywords
             FROM products p
             LEFT JOIN product_translations pt ON p.id = pt.product_id AND pt.lang_code = ?
@@ -78,8 +78,8 @@ try {
         $stmt->execute([$lang, $slug, $slug]);
         $data = $stmt->fetch();
         if ($data) {
-            $data['title'] = $data['seo_title'] ?: ($data['trans_title'] ?: $data['title']);
-            $data['description'] = $data['seo_description'] ?: ($data['trans_description'] ?: $data['description']);
+            $data['title'] = $data['seo_title'] ?: ($data['base_seo_title'] ?: ($data['trans_title'] ?: $data['title']));
+            $data['description'] = $data['seo_description'] ?: ($data['base_seo_description'] ?: ($data['trans_description'] ?: $data['description']));
             $data['keywords'] = $data['seo_keywords'] ?: $data['keywords'];
         }
         $placeholderPath = $_SERVER['DOCUMENT_ROOT'] . '/urun/placeholder/index.html';
@@ -106,16 +106,19 @@ try {
     elseif ($type === 'project') {
         $stmt = $db->prepare("
             SELECT p.name as title, p.description as description, p.main_image as image,
-                   pt.name as trans_title, pt.description as trans_description
+                   pt.name as trans_title, pt.description as trans_description,
+                   p.seo_title as base_seo_title, p.seo_description as base_seo_description, p.seo_keywords as keywords,
+                   pt.seo_title, pt.seo_description, pt.seo_keywords
             FROM projects p
             LEFT JOIN project_translations pt ON p.id = pt.project_id AND pt.lang_code = ?
-            WHERE (p.slug = ? OR pt.slug = ?)
+            WHERE (p.slug = ? OR pt.slug = ?) AND p.status = 'active'
         ");
         $stmt->execute([$lang, $slug, $slug]);
         $data = $stmt->fetch();
         if ($data) {
-            $data['title'] = $data['trans_title'] ?: $data['title'];
-            $data['description'] = $data['trans_description'] ?: $data['description'];
+            $data['title'] = $data['seo_title'] ?: ($data['base_seo_title'] ?: ($data['trans_title'] ?: $data['title']));
+            $data['description'] = $data['seo_description'] ?: ($data['base_seo_description'] ?: ($data['trans_description'] ?: $data['description']));
+            $data['keywords'] = $data['seo_keywords'] ?: $data['keywords'];
         }
         $placeholderPath = $_SERVER['DOCUMENT_ROOT'] . '/proje/placeholder/index.html';
     }
@@ -172,7 +175,8 @@ $html = file_get_contents($placeholderPath);
 
 // 3. Meta etiketlerini değiştir (Regex ile)
 $siteName = ' | By Boss Mimarlık';
-$title = htmlspecialchars(trim($data['title']) . $siteName);
+$pageTitle = trim($data['title'] ?? '');
+$title = htmlspecialchars(preg_match('/By Boss Mimarl[ıi]k/iu', $pageTitle) ? $pageTitle : $pageTitle . $siteName);
 $description = htmlspecialchars(trim(strip_tags($data['description'])));
 $image = $data['image'] ? (strpos($data['image'], 'http') === 0 ? $data['image'] : 'https://bybossmimarlik.com' . $data['image']) : '';
 
@@ -189,6 +193,18 @@ $html = preg_replace('/<meta name="twitter:title" content=".*?"/is', '<meta name
 $html = preg_replace('/<meta name="description" content=".*?"/is', '<meta name="description" content="' . $description . '"', $html);
 $html = preg_replace('/<meta property="og:description" content=".*?"/is', '<meta property="og:description" content="' . $description . '"', $html);
 $html = preg_replace('/<meta name="twitter:description" content=".*?"/is', '<meta name="twitter:description" content="' . $description . '"', $html);
+
+// Use page keywords on product and project fallbacks, including when none are set.
+if ($type === 'product' || $type === 'project') {
+    $keywords = htmlspecialchars(trim($data['keywords'] ?? ''));
+    $tag = $keywords === '' ? '' : '<meta name="keywords" content="' . $keywords . '">';
+    $pattern = '/<meta name="keywords" content="[^"]*"\s*\/?>/i';
+    if (preg_match($pattern, $html)) {
+        $html = preg_replace_callback($pattern, static fn () => $tag, $html);
+    } elseif ($tag !== '') {
+        $html = str_replace('</head>', $tag . '</head>', $html);
+    }
+}
 
 // Image
 if ($image) {
