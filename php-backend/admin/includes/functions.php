@@ -1,6 +1,6 @@
 <?php
 /**
- * DECK KLİPS - Admin Helper Functions
+ * DECK KLÄ°PS - Admin Helper Functions
  */
 
 // Ensure config is loaded
@@ -56,7 +56,7 @@ function setSetting($key, $value, $group = 'general') {
  */
 function createSlug($text) {
     $text = mb_strtolower($text, 'UTF-8');
-    $tr = ['ç'=>'c','ğ'=>'g','ı'=>'i','ö'=>'o','ş'=>'s','ü'=>'u',' '=>'-'];
+    $tr = ['Ã§'=>'c','ÄŸ'=>'g','Ä±'=>'i','Ã¶'=>'o','ÅŸ'=>'s','Ã¼'=>'u',' '=>'-'];
     $text = str_replace(array_keys($tr), array_values($tr), $text);
     // \p{L} = Any letter from any language, \p{N} = Any number
     $text = preg_replace('/[^\p{L}\p{N}-]/u', '', $text);
@@ -68,6 +68,23 @@ function createSlug($text) {
  * Handle file upload
  */
 function handleUpload($file, $folder = 'general') {
+    // Validate PHP upload status before reading the temporary file.
+    $uploadError = isset($file['error']) ? (int)$file['error'] : UPLOAD_ERR_NO_FILE;
+    if ($uploadError !== UPLOAD_ERR_OK) {
+        $messages = [
+            UPLOAD_ERR_INI_SIZE => 'Dosya sunucunun upload_max_filesize sinirini asiyor',
+            UPLOAD_ERR_FORM_SIZE => 'Dosya form boyutu sinirini asiyor',
+            UPLOAD_ERR_PARTIAL => 'Dosya yalnizca kismen yuklendi',
+            UPLOAD_ERR_NO_FILE => 'Dosya secilmedi',
+            UPLOAD_ERR_NO_TMP_DIR => 'Sunucuda gecici klasor eksik',
+            UPLOAD_ERR_CANT_WRITE => 'Dosya diske yazilamadi',
+            UPLOAD_ERR_EXTENSION => 'PHP eklentisi yuklemeyi engelledi',
+        ];
+        return ['error' => $messages[$uploadError] ?? ('Bilinmeyen yukleme hatasi: ' . $uploadError)];
+    }
+    if (empty($file['tmp_name']) || !is_uploaded_file($file['tmp_name'])) {
+        return ['error' => 'Gecerli bir HTTP dosya yuklemesi bulunamadi'];
+    }
     $uploadDir = __DIR__ . '/../../uploads/' . $folder . '/';
     if (!is_dir($uploadDir)) {
         mkdir($uploadDir, 0755, true);
@@ -77,11 +94,11 @@ function handleUpload($file, $folder = 'general') {
     $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
     
     if (!in_array($ext, $allowed)) {
-        return ['error' => 'Desteklenmeyen dosya formatı: ' . $ext];
+        return ['error' => 'Desteklenmeyen dosya formatÄ±: ' . $ext];
     }
     
     if ($file['size'] > 50 * 1024 * 1024) { // 50MB
-        return ['error' => 'Dosya boyutu çok büyük (max: 50MB)'];
+        return ['error' => 'Dosya boyutu Ã§ok bÃ¼yÃ¼k (max: 50MB)'];
     }
     
     $originalName = pathinfo($file['name'], PATHINFO_FILENAME);
@@ -112,7 +129,7 @@ function handleUpload($file, $folder = 'general') {
         return ['url' => $url, 'id' => $db->lastInsertId(), 'filename' => $filename];
     }
     
-    return ['error' => 'Dosya yüklenemedi'];
+    return ['error' => 'Dosya yÃ¼klenemedi'];
 }
 
 /**
@@ -120,14 +137,14 @@ function handleUpload($file, $folder = 'general') {
  */
 function generateAIContent($prompt, $type = 'description') {
     $provider = getSetting('ai_provider');
-    if (empty($provider)) return ['error' => 'AI sağlayıcı seçilmemiş'];
+    if (empty($provider)) return ['error' => 'AI saÄŸlayÄ±cÄ± seÃ§ilmemiÅŸ'];
     
     $isJson = in_array($type, ['all_product', 'blog_all', 'all_project', 'all_service']);
     
     if ($isJson) {
-        $systemPrompt = "Sen 'BY BOSS Mimarl�k Mobilya' markası için profesyonel bir SEO içerik yazarısın. ÖNEMLİ: 1) Yanıtın SADECE VE SADECE geçerli bir JSON olmalıdır. 2) Asla markdown (```json) kullanma. 3) Tüm içerikler %100 Türkçe olmalıdır. 4) Tembellik yapma, değerlerin içini uzun ve gerçek HTML metinlerle doldur.";
+        $systemPrompt = "Sen 'BY BOSS Mimarlýk Mobilya' markasÄ± iÃ§in profesyonel bir SEO iÃ§erik yazarÄ±sÄ±n. Ã–NEMLÄ°: 1) YanÄ±tÄ±n SADECE VE SADECE geÃ§erli bir JSON olmalÄ±dÄ±r. 2) Asla markdown (```json) kullanma. 3) TÃ¼m iÃ§erikler %100 TÃ¼rkÃ§e olmalÄ±dÄ±r. 4) Tembellik yapma, deÄŸerlerin iÃ§ini uzun ve gerÃ§ek HTML metinlerle doldur.";
     } else {
-        $systemPrompt = "Sen 'BY BOSS Mimarl�k Mobilya' markası için profesyonel bir Türkçe SEO içerik yazarısın. %100 Türkçe, profesyonel ve SEO uyumlu içerik üret. Markdown kullanma.";
+        $systemPrompt = "Sen 'BY BOSS Mimarlýk Mobilya' markasÄ± iÃ§in profesyonel bir TÃ¼rkÃ§e SEO iÃ§erik yazarÄ±sÄ±n. %100 TÃ¼rkÃ§e, profesyonel ve SEO uyumlu iÃ§erik Ã¼ret. Markdown kullanma.";
     }
     
     switch ($provider) {
@@ -150,12 +167,12 @@ function generateAIContent($prompt, $type = 'description') {
         case 'together':
             return callOpenAICompatibleGen('https://api.together.xyz/v1/chat/completions', getSetting('ai_together_key'), getSetting('ai_together_model', 'meta-llama/Llama-3-8b-chat-hf'), $prompt, $systemPrompt, $type);
         default:
-            return ['error' => 'Geçersiz AI sağlayıcı: ' . $provider];
+            return ['error' => 'GeÃ§ersiz AI saÄŸlayÄ±cÄ±: ' . $provider];
     }
 }
 
 function callOpenAICompatibleGen($url, $apiKey, $model, $prompt, $system, $type = 'description') {
-    if (empty($apiKey)) return ['error' => 'API anahtarı girilmemiş'];
+    if (empty($apiKey)) return ['error' => 'API anahtarÄ± girilmemiÅŸ'];
     
     $isJson = in_array($type, ['all_product', 'all_service', 'all_project', 'blog_all']);
     $maxTokens = $isJson ? 4000 : 2000;
@@ -190,7 +207,7 @@ function callOpenAICompatibleGen($url, $apiKey, $model, $prompt, $system, $type 
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     
     if ($httpCode !== 200) {
-        return ['error' => 'API hatası (HTTP ' . $httpCode . '): ' . substr($response, 0, 300)];
+        return ['error' => 'API hatasÄ± (HTTP ' . $httpCode . '): ' . substr($response, 0, 300)];
     }
     
     $result = json_decode($response, true);
@@ -200,7 +217,7 @@ function callOpenAICompatibleGen($url, $apiKey, $model, $prompt, $system, $type 
 function callMistral($prompt, $system, $type = 'description') {
     $key = getSetting('ai_mistral_key');
     $model = getSetting('ai_mistral_model', 'mistral-large-latest');
-    if (empty($key)) return ['error' => 'Mistral API anahtarı girilmemiş'];
+    if (empty($key)) return ['error' => 'Mistral API anahtarÄ± girilmemiÅŸ'];
     
     $isJson = in_array($type, ['all_product', 'all_service', 'all_project', 'blog_all']);
     $maxTokens = $isJson ? 4000 : 2000;
@@ -233,7 +250,7 @@ function callMistral($prompt, $system, $type = 'description') {
     $response = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     
-    if ($httpCode !== 200) return ['error' => 'Mistral API hatası (HTTP ' . $httpCode . ')'];
+    if ($httpCode !== 200) return ['error' => 'Mistral API hatasÄ± (HTTP ' . $httpCode . ')'];
     
     $result = json_decode($response, true);
     return ['content' => $result['choices'][0]['message']['content'] ?? ''];
@@ -242,7 +259,7 @@ function callMistral($prompt, $system, $type = 'description') {
 function callOpenAI($prompt, $system, $type = 'description') {
     $key = getSetting('ai_openai_key');
     $model = getSetting('ai_openai_model', 'gpt-4o-mini');
-    if (empty($key)) return ['error' => 'OpenAI API anahtarı girilmemiş'];
+    if (empty($key)) return ['error' => 'OpenAI API anahtarÄ± girilmemiÅŸ'];
     
     $isJson = in_array($type, ['all_product', 'all_service', 'all_project', 'blog_all']);
     $maxTokens = $isJson ? 4000 : 2000;
@@ -261,7 +278,7 @@ function callOpenAI($prompt, $system, $type = 'description') {
         $data['response_format'] = ['type' => 'json_object'];
     }
     
-    if (strpos($prompt, 'JSON Formatı') !== false || strpos($prompt, 'JSON olarak ver') !== false) {
+    if (strpos($prompt, 'JSON FormatÄ±') !== false || strpos($prompt, 'JSON olarak ver') !== false) {
         $data['response_format'] = ['type' => 'json_object'];
     }
     
@@ -281,7 +298,7 @@ function callOpenAI($prompt, $system, $type = 'description') {
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     // curl_close($ch); // Deprecated in PHP 8.5+
     
-    if ($httpCode !== 200) return ['error' => 'OpenAI API hatası (HTTP ' . $httpCode . ')'];
+    if ($httpCode !== 200) return ['error' => 'OpenAI API hatasÄ± (HTTP ' . $httpCode . ')'];
     
     $result = json_decode($response, true);
     return ['content' => $result['choices'][0]['message']['content'] ?? ''];
@@ -290,7 +307,7 @@ function callOpenAI($prompt, $system, $type = 'description') {
 function callGemini($prompt, $system, $type = 'description') {
     $key = getSetting('ai_gemini_key');
     $model = getSetting('ai_gemini_model', 'gemini-2.0-flash');
-    if (empty($key)) return ['error' => 'Gemini API anahtarı girilmemiş'];
+    if (empty($key)) return ['error' => 'Gemini API anahtarÄ± girilmemiÅŸ'];
     
     $maxTokens = in_array($type, ['all_product', 'all_service', 'all_project', 'blog_all']) ? 4000 : 2000;
     
@@ -301,7 +318,7 @@ function callGemini($prompt, $system, $type = 'description') {
         'generationConfig' => ['maxOutputTokens' => $maxTokens, 'temperature' => 0.7]
     ];
     
-    if (strpos($prompt, 'JSON Formatı') !== false || strpos($prompt, 'JSON olarak ver') !== false) {
+    if (strpos($prompt, 'JSON FormatÄ±') !== false || strpos($prompt, 'JSON olarak ver') !== false) {
         $data['generationConfig']['responseMimeType'] = 'application/json';
     }
     
@@ -319,7 +336,7 @@ function callGemini($prompt, $system, $type = 'description') {
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     // curl_close($ch); // Deprecated in PHP 8.5+
     
-    if ($httpCode !== 200) return ['error' => 'Gemini API hatası (HTTP ' . $httpCode . ')'];
+    if ($httpCode !== 200) return ['error' => 'Gemini API hatasÄ± (HTTP ' . $httpCode . ')'];
     
     $result = json_decode($response, true);
     return ['content' => $result['candidates'][0]['content']['parts'][0]['text'] ?? ''];
@@ -328,7 +345,7 @@ function callGemini($prompt, $system, $type = 'description') {
 function callAnthropic($prompt, $system, $type = 'description') {
     $key = getSetting('ai_anthropic_key');
     $model = getSetting('ai_anthropic_model', 'claude-sonnet-4-20250514');
-    if (empty($key)) return ['error' => 'Anthropic API anahtarı girilmemiş'];
+    if (empty($key)) return ['error' => 'Anthropic API anahtarÄ± girilmemiÅŸ'];
     
     $maxTokens = in_array($type, ['all_product', 'all_service', 'all_project', 'blog_all']) ? 4000 : 2000;
     
@@ -356,7 +373,7 @@ function callAnthropic($prompt, $system, $type = 'description') {
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     // curl_close($ch); // Deprecated in PHP 8.5+
     
-    if ($httpCode !== 200) return ['error' => 'Anthropic API hatası (HTTP ' . $httpCode . ')'];
+    if ($httpCode !== 200) return ['error' => 'Anthropic API hatasÄ± (HTTP ' . $httpCode . ')'];
     
     $result = json_decode($response, true);
     return ['content' => $result['content'][0]['text'] ?? ''];
@@ -365,7 +382,7 @@ function callAnthropic($prompt, $system, $type = 'description') {
 function callOpenRouter($prompt, $system, $type = 'description') {
     $key = getSetting('ai_openrouter_key');
     $model = getSetting('ai_openrouter_model', 'openrouter/auto');
-    if (empty($key)) return ['error' => 'OpenRouter API anahtarı girilmemiş'];
+    if (empty($key)) return ['error' => 'OpenRouter API anahtarÄ± girilmemiÅŸ'];
     
     $maxTokens = in_array($type, ['all_product', 'all_service', 'all_project', 'blog_all']) ? 4000 : 2000;
     
@@ -386,7 +403,7 @@ function callOpenRouter($prompt, $system, $type = 'description') {
             'Content-Type: application/json',
             'Authorization: Bearer ' . $key,
             'HTTP-Referer: https://deckklips.com.tr',
-            'X-Title: BY BOSS Mimarl�k Mobilya Admin'
+            'X-Title: BY BOSS Mimarlýk Mobilya Admin'
         ],
         CURLOPT_POSTFIELDS => json_encode($data),
         CURLOPT_TIMEOUT => 180
@@ -395,7 +412,7 @@ function callOpenRouter($prompt, $system, $type = 'description') {
     $response = curl_exec($ch);
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     
-    if ($httpCode !== 200) return ['error' => 'OpenRouter API hatası (HTTP ' . $httpCode . '): ' . substr($response, 0, 300)];
+    if ($httpCode !== 200) return ['error' => 'OpenRouter API hatasÄ± (HTTP ' . $httpCode . '): ' . substr($response, 0, 300)];
     
     $result = json_decode($response, true);
     return ['content' => $result['choices'][0]['message']['content'] ?? ''];
